@@ -33,5 +33,18 @@ class Gerecht_model extends CI_Model
         return $query->result();
     }
 
+    /**
+     * @fn functie GetByName(naam)
+     * @brief geeft alle gerechten terug met een bepaalde naam
+     * @pre Er bestaat een Gerecht_model klasse
+     * @post Er is een array met 0 of meerdere gerechten teruggegeven
+     * @param $naam
+     * @return array
+     */
+    function getByName($naam)
+    {
+        $query = $this->db->where('name',$naam);
+        return $query->result();
+    }
 }
 
