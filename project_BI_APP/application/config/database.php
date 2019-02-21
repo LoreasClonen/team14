@@ -75,10 +75,10 @@
 
     $db['default'] = array(
         'dsn' => '',
-        'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => 'mysql',
-        'database' => 'team14',
+        'hostname' => 'db.sinners.be',
+        'username' => 'r0672905',
+        'password' => 'TeamBI14',
+        'database' => 'r0672905',
         'dbdriver' => 'mysqli',
         'dbprefix' => '',
         'pconnect' => FALSE,
