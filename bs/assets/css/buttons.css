@@ -1,0 +1,23 @@
+.btn-round {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.btn-round.btn-lg {
+    width: 60px;
+    height: 60px;
+}
+
+.btn-round.btn-sm {
+    width: 36px;
+    height: 36px;
+}
+
+.btn-round.btn-xs {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+    padding-left: 7px;
+    padding-top: 4px;
+}
