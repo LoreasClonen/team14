@@ -8,6 +8,12 @@
 
 class Mail_model extends CI_Model
 {
+    /**
+     * @fn functie constructor Mail_model()
+     * @brief constructor voor de klasse Mail_model
+     * @post Er is een Mail_model klasse aangemaakt
+     *
+     */
     function __construct()
     {
         parent::__construct();
@@ -20,7 +26,6 @@ class Mail_model extends CI_Model
      * @post er is een array met 0 of meerdere mails teruggegeven
      * @return array
      */
-
     function getAllById()
     {
         $this->db->order_by('id', 'asc');
