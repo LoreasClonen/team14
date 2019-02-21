@@ -14,11 +14,11 @@ class Mail_model extends CI_Model
     }
 
     /**
-     @fn getAllById
-     @brief constructor voor Mail_model
-     @pre er bestaat een Mail_model
-     @post er is array met 0 of meerdere mails aangemaakt
-     @return returnt een array
+     @fn functie getAllById
+     @brief geeft alle mails terug in de mailtabel
+     @pre er bestaat een Mail_model klasse
+     @post er is een array met 0 of meerdere mails teruggegeven
+     @return array
      */
 
     function getAllById()
