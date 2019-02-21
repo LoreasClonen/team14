@@ -8,6 +8,12 @@
 
 class Nieuwsbericht_model extends CI_Model
 {
+    /**
+     * @fn functie constructor Nieuwsbericht_model()
+     * @brief constructor voor de klasse Nieuwsbericht_model
+     * @post Er is een Nieuwsbericht_model klasse aangemaakt
+     *
+     */
     function __construct()
     {
         parent::__construct();
@@ -20,7 +26,6 @@ class Nieuwsbericht_model extends CI_Model
     * @post er is een array met 0 of meerdere nieuwsberichten teruggegeven
     * @return array
      */
-
     function getAllById()
     {
         $this->db->order_by('id', 'asc');
