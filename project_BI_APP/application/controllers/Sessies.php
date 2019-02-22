@@ -28,4 +28,7 @@ class Sessies Extends CI_Controller
     public function meldAan(){
 
     }
+    public function meldAf(){
+
+    }
 }
