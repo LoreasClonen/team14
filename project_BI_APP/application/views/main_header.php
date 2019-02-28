@@ -1,2 +1,2 @@
-<h1>Lekkerbier</h1>
-<p>Welkom op de website van Lekkerbier. Hier vindt u alle informatie over de lekkerste Belgische bieren.</p>
+<h1>Kempenrust</h1>
+<p>Welkom op de webapplicatie van Kempenrust. Hier kan u terecht om makkelijk een zwemles te reserveren of om een zwemfeestje te boeken.</p>

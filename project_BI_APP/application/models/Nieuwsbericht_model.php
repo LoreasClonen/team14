@@ -20,11 +20,11 @@ class Nieuwsbericht_model extends CI_Model
     }
 
     /**
-    * functie getAllById
-    * @brief geeft alle nieuwsberichten terug in de nieuwsberichttabel
-    * @pre er bestaat een nieuwsbericht_model klasse
-    * @post er is een array met 0 of meerdere nieuwsberichten teruggegeven
-    * @return array
+     * functie getAllById
+     * @brief geeft alle nieuwsberichten terug in de nieuwsberichttabel
+     * @pre er bestaat een nieuwsbericht_model klasse
+     * @post er is een array met 0 of meerdere nieuwsberichten teruggegeven
+     * @return array
      */
     function getAllById()
     {
