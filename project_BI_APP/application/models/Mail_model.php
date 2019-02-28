@@ -9,7 +9,7 @@
 class Mail_model extends CI_Model
 {
     /**
-     * @fn functie constructor Mail_model()
+     * functie constructor Mail_model()
      * @brief constructor voor de klasse Mail_model
      * @post Er is een Mail_model klasse aangemaakt
      *
@@ -20,7 +20,7 @@ class Mail_model extends CI_Model
     }
 
     /**
-     * @fn functie getAllById
+     * functie getAllById
      * @brief geeft alle mails terug in de mailtabel
      * @pre er bestaat een Mail_model klasse
      * @post er is een array met 0 of meerdere mails teruggegeven

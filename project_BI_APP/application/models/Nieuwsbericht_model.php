@@ -9,7 +9,7 @@
 class Nieuwsbericht_model extends CI_Model
 {
     /**
-     * @fn functie constructor Nieuwsbericht_model()
+     * functie constructor Nieuwsbericht_model()
      * @brief constructor voor de klasse Nieuwsbericht_model
      * @post Er is een Nieuwsbericht_model klasse aangemaakt
      *
@@ -20,7 +20,7 @@ class Nieuwsbericht_model extends CI_Model
     }
 
     /**
-    * @fn functie getAllById
+    * functie getAllById
     * @brief geeft alle nieuwsberichten terug in de nieuwsberichttabel
     * @pre er bestaat een nieuwsbericht_model klasse
     * @post er is een array met 0 of meerdere nieuwsberichten teruggegeven
