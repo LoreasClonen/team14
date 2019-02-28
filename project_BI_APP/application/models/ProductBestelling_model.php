@@ -1,61 +1,47 @@
 <?php
-/**
- * @Class ProductBestelling_model
- */
-
-class ProductBestelling_model extends CI_Model
-{
     /**
-     * functie constructor ProductBestelling_model()
-     * @brief constructor voor de klasse ProductBestelling_model
-     * @post Er is een ProductBestelling_model klasse aangemaakt
-     *
+     * @Class ProductBestelling_model
      */
-    function __construct()
-    {
-        parent::__construct();
-    }
 
-    /**
-     * functie getAllByProductId()
-     * @brief geeft alle aantallen van producten per bestelling terug in een tabel
-     * @pre Er bestaat een ProductBestelling_model klasse
-     * @post Er is een array met 0 of meerdere aantallen producten teruggegeven
-     * @return array
-     */
-    function getAllByProductId()
+    class ProductBestelling_model extends CI_Model
     {
-        $this->db->order_by('productId', 'asc');
-        $query = $this->db->get('ProductBestelling');
-        return $query->result();
-    }
+        /**
+         * functie constructor ProductBestelling_model()
+         * @brief constructor voor de klasse ProductBestelling_model
+         * @post Er is een ProductBestelling_model klasse aangemaakt
+         *
+         */
+        function __construct()
+        {
+            parent::__construct();
+        }
 
-    /**
-     * functie getAllByProductId()
-     * @brief geeft alle aantallen van producten per bestelling terug in een tabel
-     * @pre Er bestaat een ProductBestelling_model klasse
-     * @post Er is een array met 0 of meerdere aantallen producten teruggegeven
-     * @return array
-     */
-    function getAllByBestellingId()
-    {
-        $this->db->order_by('bestellingId', 'asc');
-        $query = $this->db->get('ProductBestelling');
-        return $query->result();
-    }
+        /**
+         * functie getAllByProductId()
+         * @brief geeft alle aantallen van producten per bestelling terug in een tabel
+         * @pre Er bestaat een ProductBestelling_model klasse
+         * @post Er is een array met 0 of meerdere aantallen producten teruggegeven
+         * @return array
+         */
+        function getAllByProductId()
+        {
+            $this->db->order_by('productId', 'asc');
+            $query = $this->db->get('ProductBestelling');
+            return $query->result();
+        }
 
-    /**
-     * functie GetByAantal(naam)
-     * @brief geeft alle bestellingen terug met een bepaald aantal producten
-     * @pre Er bestaat een ProductBestelling_model klasse
-     * @post Er is een array met 0 of meerdere bestellingen teruggegeven
-     * @param $aantal
-     * @return array
-     */
-    function getByAantal($aantal)
-    {
-        $query = $this->db->where('aantal', $aantal);
-        return $query->result();
-    }
+        /**
+         * functie getAllByProductId()
+         * @brief geeft alle aantallen van producten per bestelling terug in een tabel
+         * @pre Er bestaat een ProductBestelling_model klasse
+         * @post Er is een array met 0 of meerdere aantallen producten teruggegeven
+         * @return array
+         */
+        function getAllByBestellingId()
+        {
+            $this->db->order_by('bestellingId', 'asc');
+            $query = $this->db->get('ProductBestelling');
+            return $query->result();
+        }
 
-}
+    }
