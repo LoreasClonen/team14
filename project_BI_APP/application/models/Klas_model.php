@@ -29,7 +29,7 @@
         function getAllById()
         {
             $this->db->order_by('klasnaam', 'asc');
-            $query = $this->db->get('Klas');
+            $query = $this->db->get('klas');
             return $query->result();
         }
 
@@ -43,7 +43,8 @@
          */
         function getByName($klasnaam)
         {
-            $query = $this->db->where('klasnaam',$klasnaam);
+            $this->db->where('klasnaam',$klasnaam);
+            $query = $this->db->get('klas');
             return $query->result();
         }
     }
