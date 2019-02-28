@@ -40,7 +40,8 @@ class Bestelling_model extends CI_Model
      */
     function getByNaam($naam)
     {
-        $query = $this->db->where('naam', $naam);
+        $this->db->where('naam', $naam);
+        $query =  $this->db->get('Bestelling');
         return $query->result();
     }
 
