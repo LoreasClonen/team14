@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>CodeIgniter &amp; Bootstrap</title>
+        <title>Kempenrust</title>
 
         <!-- Bootstrap CSS -->
         <?php echo pasStylesheetAan("bootstrap.css"); ?>
@@ -40,16 +40,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#bootstrap'; ?>">Bootstrap</a>
+                        <a class="nav-link" href="<?php echo site_url() . '#bootstrap'; ?>">Zwemles aanvragen</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#jquery'; ?>">jQuery</a>
+                        <a class="nav-link" href="<?php echo site_url() . '#jquery'; ?>">Zwemfeestje boeken</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#ajax'; ?>">Ajax</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#json'; ?>">JSON</a>
+                        <a class="nav-link" href="<?php echo site_url() . '#ajax'; ?>">Webshop</a>
                     </li>
                 </ul>
             </div>
