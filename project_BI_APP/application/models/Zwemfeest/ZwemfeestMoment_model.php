@@ -4,7 +4,7 @@
  * @Class Gerecht_model
  */
 
-class ZwemfeestMoment extends CI_Model
+class ZwemfeestMoment_model extends CI_Model
 {
     /**
      * functie constructor ZwemfeestMoment_model()
@@ -27,7 +27,7 @@ class ZwemfeestMoment extends CI_Model
     function getAllById()
     {
         $this->db->order_by('naam', 'asc');
-        $query = $this->db->get('zwemfeestMoment');
+        $query = $this->db->get('ZwemfeestMomentModel');
         return $query->result();
     }
 
