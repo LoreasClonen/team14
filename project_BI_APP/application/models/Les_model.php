@@ -29,7 +29,7 @@
         function getAllById()
         {
             $this->db->order_by('leerlingenaantal', 'asc');
-            $query = $this->db->get('Les');
+            $query = $this->db->get('les');
             return $query->result();
         }
     }
