@@ -9,14 +9,10 @@
 
     <p>Bootstrap kennismaking</p>
 
-    <?php echo smallDivAnchor('les1/toonAccordion', 'Accordion', 'class="btn btn-primary"'); ?>
-    <?php echo smallDivAnchor('les1/toonTabs', 'Tabs', 'class="btn btn-primary"'); ?>
-    <?php echo smallDivAnchor('les1/valideer', 'Invoercontrole', 'class="btn btn-primary"'); ?>
-    <?php echo smallDivAnchor('les1/toonButtons', 'Buttons', 'class="btn btn-primary"'); ?>
-    <?php echo smallDivAnchor('les1/toonSoortProductAccordion', 'Soort/product accordion', 'class="btn btn-outline-secondary"'); ?>
-    <?php echo smallDivAnchor('les1/toonSoortProductTabs', 'Soort/product tabs', 'class="btn btn-outline-secondary"'); ?>
-    <?php echo smallDivAnchor('brouwerij/index', 'Brouwerijen beheren', 'class="btn btn-outline-secondary"'); ?>
-</div>
+    <?php echo smallDivAnchor('les1/toonAccordion', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
+    <?php echo smallDivAnchor('les1/toonTabs', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?>
+    <?php echo smallDivAnchor('les1/valideer', 'Webshop', 'class="btn btn-primary"'); ?>
+    </div>
 
 <div class="col-8 offset-2 col-lg-3 offset-lg-0 py-5 px-3 text-center">
     <div class="row">

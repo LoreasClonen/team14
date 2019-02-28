@@ -40,13 +40,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#bootstrap'; ?>">Zwemles aanvragen</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#jquery'; ?>">Zwemfeestje boeken</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#ajax'; ?>">Webshop</a>
+                        <a class="nav-link" href="<?php echo site_url() . '#inloggen'; ?>">Inloggen</a>
                     </li>
                 </ul>
             </div>
@@ -77,7 +71,7 @@
             <footer>
                 <div class="row">
                     <div class="col-12">
-                        <p>Copyright 2018-2019 - Thomas More. Alle rechten voorbehouden</p>
+                        <p>Copyright 2018-2019 - Thomas More team14. Alle rechten voorbehouden</p>
                     </div>
                 </div>
             </footer>

@@ -24,7 +24,7 @@
 
         public function index()
         {
-            $data['titel'] = 'Lessen';
+            $data['titel'] = 'Nieuwsberichten';
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'main_menu');
