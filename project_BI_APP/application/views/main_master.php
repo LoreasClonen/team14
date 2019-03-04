@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>CodeIgniter &amp; Bootstrap</title>
+        <title>Kempenrust</title>
 
         <!-- Bootstrap CSS -->
         <?php echo pasStylesheetAan("bootstrap.css"); ?>
@@ -40,16 +40,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#bootstrap'; ?>">Bootstrap</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#jquery'; ?>">jQuery</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#ajax'; ?>">Ajax</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#json'; ?>">JSON</a>
+                        <a class="nav-link" href="<?php echo site_url() . '#inloggen'; ?>">Inloggen</a>
                     </li>
                 </ul>
             </div>
@@ -80,7 +71,7 @@
             <footer>
                 <div class="row">
                     <div class="col-12">
-                        <p>Copyright 2018-2019 - Thomas More. Alle rechten voorbehouden</p>
+                        <p>Copyright 2018-2019 - Thomas More team14. Alle rechten voorbehouden</p>
                     </div>
                 </div>
             </footer>
