@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="nav-link" href="<?php echo site_url() . '#inloggen'; ?>">Inloggen</a>
+                        <a class="nav-link" href="<?php echo site_url() . '/inlogger_inloggen/index.php'; ?>">Inloggen</a>
                     </li>
                 </ul>
             </div>
