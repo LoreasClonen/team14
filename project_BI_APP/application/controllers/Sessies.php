@@ -25,10 +25,23 @@ class Sessies Extends CI_Controller
         $this->template->load('main_master', $partials, $data);
 
     }
-    public function meldAan(){
 
+    public function meldAan()
+    {
+        $usernmame = $this->input->post("username");
+        $wachtwoord = $this->input->post("wachtwoord");
+        $this->load->model("Inlogger_model");
+        if($wachtwoord == $this->inlogger_model->getInloggerByName($usernmame)){
+            $this->session->set_userdata('gebruikersnaam',$usernmame);
+            $this->session->set_userdata('aangemeld',true);
+        }
     }
-    public function meldAf(){
+
+    public function meldAf()
+    {
+        $this->session->unset_userdata('gebruikersnaam');
+        $this->session->unset_userdata('aangemeld');
+        redirect("../views/index.php");
 
     }
 }
