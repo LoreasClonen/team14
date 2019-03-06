@@ -39,9 +39,11 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a class="nav-link" href="<?php echo site_url() . '/inlogger_inloggen/index.php'; ?>">Inloggen</a>
+                    <li class="nav-item">
+
+                        <?php echo anchor("Home/meldAan", "Inloggen","class = 'nav-link'")?>
                     </li>
+
                 </ul>
             </div>
         </nav>

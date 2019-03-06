@@ -26,7 +26,34 @@ class Inlogger_model extends CI_Model
     function getAllById()
     {
         $this->db->order_by('id', 'asc');
-        $query = $this->db->get('Inlogger');
+        $query = $this->db->get('inlogger');
         return $query->result();
+    }
+    /**
+     * functie getGebruiker($email, $wachtwoord)
+     * @brief geeft 1 specifieke inlogger terug
+     * @pre Er bestaat een Inlogger_model klasse
+     * @post Er is 1 inlogger object teruggegeven.
+     * @post Er is geen inlogger gevonden en er wordt null teruggegeven
+     * @return object
+     */
+    function getGebruiker($email, $wachtwoord){
+        $this->db->where('email',$email);
+        $this->db->where('actief', 1);
+        $query = $this->db->get('inlogger');
+
+        if ($query->num_rows() == 1){
+            $gebruiker = $query->row();
+
+            if (password_verify($wachtwoord,$gebruiker->wachtwoord)){
+                return $gebruiker;
+            }
+            else{
+                return null;
+            }
+        }
+        else{
+            return null;
+        }
     }
 }
