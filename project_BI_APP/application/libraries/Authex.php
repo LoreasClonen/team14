@@ -19,7 +19,7 @@ class Authex
     public function __construct()
     {
         $CI =& get_instance();
-        $CI->load->model('gebruiker_model');
+        $CI->load->model('Lessen/Inlogger_model', 'Inlogger_model');
     }
 
     function activeer($id)
@@ -27,7 +27,7 @@ class Authex
         // nieuwe gebruiker activeren
         $CI =& get_instance();
 
-        $CI->gebruiker_model->updateGeactiveerd($id);
+        $CI->Inlogger_model->updateGeactiveerd($id);
 
     }
 
@@ -52,24 +52,24 @@ class Authex
             return null;
         } else {
             $id = $CI->session->userdata('gebruiker_id');
-            return $CI->gebruiker_model->get($id);
+            return $CI->Inlogger_model->get($id);
         }
     }
 
     function meldAan($email, $wachtwoord)
     {
-        // gebruiker aanmelden met opgegeven email en wachtwoord
+        // gebruiker aanmelden met opgegeven naam en wachtwoord
         $CI =& get_instance();
 
-        $gebruiker = $CI->gebruiker_model->getGebruiker($email, $wachtwoord);
+        $gebruiker = $CI->Inlogger_model->getGebruiker($email, $wachtwoord);
 
         if ($gebruiker == null) {
             return false;
         }
         else
         {
-            $CI->gebruiker_model->updateLaatstAangemeld($gebruiker->id);
-            $CI->session->set_userdata('gebruiker_id', $gebruiker->id);
+
+            $CI->session->set_userdata('inlogger_id', $gebruiker->id);
             return true;
         }
     }
@@ -79,7 +79,7 @@ class Authex
         // afmelden, dus sessievariabele wegdoen
         $CI =& get_instance();
 
-        $CI->session->unset_userdata('gebruiker_id');
+        $CI->session->unset_userdata('inlogger_id');
     }
 
     function registreer($naam, $email, $wachtwoord)
@@ -87,8 +87,8 @@ class Authex
         // nieuwe gebruiker registreren als email nog niet bestaat
         $CI =& get_instance();
 
-        if ($CI->gebruiker_model->controleerEmailVrij($email)) {
-            $id = $CI->gebruiker_model->insert($naam, $email, $wachtwoord);
+        if ($CI->Inlogger_model->controleerEmailVrij($email)) {
+            $id = $CI->Inlogger_model->insert($naam,$email, $wachtwoord);
             return $id;
         } else {
             return 0;

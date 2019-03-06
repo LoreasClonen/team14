@@ -5,6 +5,7 @@
     | -------------------------------------------------------------------
     | AUTO-LOADER
     | -------------------------------------------------------------------
+    | -------------------------------------------------------------------
     | This file specifies which systems should be loaded by default.
     |
     | In order to keep the framework as light-weight as possible only the
@@ -58,7 +59,7 @@
     |
     |	$autoload['libraries'] = array('user_agent' => 'ua');
     */
-    $autoload['libraries'] = array('template', 'database');
+    $autoload['libraries'] = array('template', 'database','session','authex');
 
     /*
     | -------------------------------------------------------------------

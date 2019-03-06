@@ -21,6 +21,8 @@
         public function __construct()
         {
             parent::__construct();
+            $this->load->model('Lessen/Inlogger_model');
+            $this->load->helper('form');
         }
 
         public function index()
@@ -40,8 +42,8 @@
 
             $partials = array('hoofding' => 'main_header',
 
-                'inhoud' => 'inloggen_gorm',
-                'voetnoot' => 'main_footer');
+                'inhoud' => 'inloggen/inloggen_form',
+                );
 
             $this->template->load('main_master', $partials, $data);
         }
