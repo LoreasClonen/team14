@@ -39,11 +39,11 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="nav-item">
 
-                            <?php divanchor("Sessies/index", "Inloggen")?>
-
+                        <?php echo anchor("Home/meldAan", "Inloggen","class = 'nav-link'")?>
                     </li>
+
                 </ul>
             </div>
         </nav>

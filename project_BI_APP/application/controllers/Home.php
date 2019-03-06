@@ -4,6 +4,7 @@
 
     /**
      * @property Template $template
+     * @property Authex $authex
      */
     class Home extends CI_Controller
     {
