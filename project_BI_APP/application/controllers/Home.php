@@ -24,7 +24,7 @@
 
         public function index()
         {
-            $data['titel'] = 'Nieuwsberichten';
+            $data['titel'] = 'Zwembad informatie';
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'main_menu');
