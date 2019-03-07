@@ -5,17 +5,6 @@ if (!defined('BASEPATH'))
 
 class Authex
 {
-    // +----------------------------------------------------------
-    // | TV Shop
-    // +----------------------------------------------------------
-    // | 2ITF - 2018-2019
-    // +----------------------------------------------------------
-    // | Authex library
-    // +----------------------------------------------------------
-    // | Nelson Wells (http://nelsonwells.net/2010/05/creating-a-simple-extensible-codeigniter-authentication-library/)
-    // | aangepast door M. Decabooter, J. Janssen
-    // +----------------------------------------------------------
-
     public function __construct()
     {
         $CI =& get_instance();
