@@ -13,13 +13,14 @@
 
             if ($gebruiker == null) { // niet aangemeld
                 echo '<li class="nav-item">' . anchor("Inloggen/meldAan", "Inloggen", "class = 'nav-link'") . '</li>';
-                echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) . '</li>';
+
                 }
 
             else { // wel aangemeld
-                echo anchor('Inloggen/meldAf', 'Afmelden');
+                echo anchor('Inloggen/meldAf', 'Afmelden' , "class = nav-link outline-right");
                 switch ($gebruiker->isAdmin) {
                     case 1: // admin
+                        echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Agenda", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Zwemmers", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Wachtlijst", "class = 'nav-link'") . '</li>';

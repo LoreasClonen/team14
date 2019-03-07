@@ -10,6 +10,7 @@
 
         <!-- Bootstrap CSS -->
         <?php echo pasStylesheetAan("bootstrap.css"); ?>
+        <?php echo pasStylesheetAan("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css");?>
 
         <!-- Custom CSS -->
         <?php echo pasStylesheetAan("buttons.css"); ?>
