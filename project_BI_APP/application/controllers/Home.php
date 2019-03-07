@@ -32,12 +32,13 @@
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'main_menu'
-                );
+            );
 
             $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
 
             $this->template->load('main_master', $partials, $data);
         }
+
         public function meldAan()
         {
             $data['titel'] = 'Aanmelden';
@@ -46,10 +47,11 @@
             $partials = array('hoofding' => 'main_header',
 
                 'inhoud' => 'inloggen/inloggen_form',
-                );
+            );
 
             $this->template->load('main_master', $partials, $data);
         }
+
         public function controleerAanmelden()
         {
             $email = $this->input->post('email');
@@ -61,6 +63,7 @@
                 redirect('home/toonFout');
             }
         }
+
         public function toonFout()
         {
             $data['titel'] = 'Fout';
@@ -68,15 +71,29 @@
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => '/inloggen/inloggen_fout'
-                );
+            );
 
             $this->template->load('main_master', $partials, $data);
         }
+
         public function meldAf()
         {
             $this->authex->meldAf();
             redirect('home/index');
         }
+
+        public function wachtwoordVergeten()
+        {
+            $data['titel'] = 'Uw wachtwoord herstellen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => '/inloggen/wachtwoord_vergeten'
+            );
+
+            $this->template->load('main_master', $partials, $data);
+        }
+
         public function nieuwPaswoord()
         {
             $data['titel'] = 'Nieuw wachtwoord ingeven';
@@ -89,6 +106,7 @@
 
             $this->template->load('main_master', $partials, $data);
         }
+
         public function nieuwWachtwoord()
         {
             $poging1 = $this->input->post('poging1');
@@ -98,7 +116,6 @@
                 redirect('home/nieuwWachtwoord');
             }
         }
-
 
 
     }
