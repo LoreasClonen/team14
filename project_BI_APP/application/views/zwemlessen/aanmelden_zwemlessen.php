@@ -11,25 +11,6 @@
         echo form_radio('Kind');
 
 
-    echo form_label('Naam', 'voornaam');
-    $dataVoornaam = array('id' => 'voornaam',
-                        'name' => 'naam',
-                        'class' => 'form-control',
-                        'placeholder' => 'voornaam',
-                        'required' => 'required',
-                        'size' => '30');
-    echo form_input($dataVoornaam);
-
-
-    echo form_input($dataEmail);
-    echo form_label('achternaam', 'achternaam');
-    $dataNaam = array('id' => 'achternaam',
-        'name' => 'achternaam',
-        'class' => 'form-control',
-        'placeholder' => 'achternaam',
-        'required' => 'required',
-        'size' => '30');
-    echo form_input($dataNaam);
     echo form_label('email', 'email');
     $dataNaam = array('id' => 'email',
         'name' => 'email',
