@@ -1,7 +1,14 @@
 <?php
-    /**
-     * Created by PhpStorm.
-     * User: shari
-     * Date: 7/03/2019
-     * Time: 14:11
-     */
+    foreach ($producten as $product)
+    {
+        echo "<div>" . $product->id . ' ' . $product->groepsnaam . " </div>";
+    }
+
+
+
+
+
+
+
+
+    ?>

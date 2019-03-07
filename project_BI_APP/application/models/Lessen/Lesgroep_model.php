@@ -26,7 +26,7 @@ class Lesgroep_model extends CI_Model
     function getAllById()
     {
         $this->db->order_by('id', 'asc');
-        $query = $this->db->get('Lesgroep');
+        $query = $this->db->get('lesgroep');
         return $query->result();
     }
 }

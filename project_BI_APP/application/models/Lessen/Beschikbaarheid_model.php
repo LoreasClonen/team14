@@ -26,7 +26,7 @@ class Beschikbaarheid_model extends CI_Model
     function getAllById()
     {
         $this->db->order_by('klantId', 'asc');
-        $query = $this->db->get('Beschikbaarheid');
+        $query = $this->db->get('beschikbaarheid');
         return $query->result();
     }
 }

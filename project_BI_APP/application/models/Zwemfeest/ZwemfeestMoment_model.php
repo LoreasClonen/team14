@@ -27,7 +27,7 @@ class ZwemfeestMoment_model extends CI_Model
     function getAllById()
     {
         $this->db->order_by('naam', 'asc');
-        $query = $this->db->get('ZwemfeestMomentModel');
+        $query = $this->db->get('zwemfeestMoment');
         return $query->result();
     }
 
