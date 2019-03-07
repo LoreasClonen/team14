@@ -44,7 +44,7 @@ class Inlogger_model extends CI_Model
 
         if ($query->num_rows() == 1){
             $gebruiker = $query->row();
-    /** password verify gebruiken voor test of passwoord klopt*/
+    /** wachtwoord verify gebruiken voor test of wachtwoord klopt*/
             if (password_verify($wachtwoord,$gebruiker->wachtwoord)){
                 return $gebruiker;
             }
