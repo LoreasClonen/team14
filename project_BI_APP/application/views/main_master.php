@@ -43,7 +43,9 @@
 
                         <?php echo anchor("Home/meldAan", "Inloggen","class = 'nav-link'")?>
                     </li>
-
+                    <li class="nav-item">
+                        <?php echo anchor("Home/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) ?>
+                    </li>
                 </ul>
             </div>
         </nav>
