@@ -23,6 +23,7 @@
             parent::__construct();
             $this->load->model('Lessen/Inlogger_model');
             $this->load->helper('form');
+            $this->load->model('Extras/Nieuwsbericht_model', 'nieuwsbericht_model');
         }
 
         public function index()
@@ -33,7 +34,6 @@
                 'inhoud' => 'main_menu'
                 );
 
-            $this->load->model('nieuwsberichten');
             $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
 
             $this->template->load('main_master', $partials, $data);

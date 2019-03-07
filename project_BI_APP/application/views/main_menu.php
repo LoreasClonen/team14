@@ -1,14 +1,19 @@
 <?php
-$LijstBerichten = "";
-$LijstFotos = "";
+$lijstBerichten = "";
+$lijstFotos = "";
 
 foreach ($nieuwsberichten as $bericht) {
-    $ArrayBerichten[] = $berichten->bericht;
+    $arrayBerichten[] = $bericht->bericht;
 }
 
 foreach ($nieuwsberichten as $foto) {
-    $ArrayFotos[] = $foto->foto;
+    $arrayFotos[] = $foto->foto;
 }
+
+for ($i=0; $i < count($arrayBerichten); $i++){
+    $lijstBerichten .= $arrayBerichten[$i];
+}
+
 
 
 
