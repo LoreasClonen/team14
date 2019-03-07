@@ -1,7 +1,7 @@
 <div class="col-12 mt-3">
     <?php
         $attributes = array('name' => 'nieuwWachtwoord', 'id' => 'nieuwWachtwoordFormulier', 'role' => 'form');
-        echo form_open('home/nieuwWachtwoord', $attributes);
+        echo form_open('Home/nieuwWachtwoord', $attributes);
 
 
 
@@ -16,13 +16,13 @@
             'size' => '30');
         echo form_password($dataPoging1);
 
-        echo form_label('poging2', 'poging2');
         $dataPoging2 = array(  'id' => 'poging2',
             'name' => 'poging2',
             'class' => 'form-control',
             'placeholder' => 'Herhaal wachtwoord',
             'required' => 'required',
             'size' => '30');
+        echo form_label('poging2', 'poging2');
         echo form_password($dataPoging2);
 
         echo form_submit(array("content" => "Wachtwoord opslaan", "class" => "btn btn-primary my-3", "id" => "wachtwoordOpslaan"));
