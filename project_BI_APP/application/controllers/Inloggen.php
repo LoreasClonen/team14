@@ -68,17 +68,20 @@
         public function wachtwoordVergeten()
         {
             $data['titel'] = 'Uw wachtwoord herstellen';
-            $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => '/inloggen/wachtwoord_vergeten');
+                'inhoud' => 'inloggen/wachtwoord_vergeten');
 
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function mailWachtwoordVergeten()
+        public function mailWachtwoordVergeten($email)
         {
-        
+            $ontvanger = $email;
+            $onderwerp = "Nieuw wachtwoord";
+            $inhoud = "U had een aangevraag om een nieuw wachtwoord in te stellen.\nVia deze link kan u een nieuw wachtwoord instellen: ";
+            $headers = "r0709457@student.thomasmore.be";
+            mail($ontvanger, $onderwerp, $inhoud, $headers);
         }
 
         public function nieuwPaswoord()
