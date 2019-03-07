@@ -1,14 +1,19 @@
 <?php
-$LijstBerichten = "";
-$LijstFotos = "";
+$lijstBerichten = "";
+$lijstFotos = "";
 
 foreach ($nieuwsberichten as $bericht) {
-    $ArrayBerichten[] = $berichten->bericht;
+    $arrayBerichten[] = $bericht->bericht;
 }
 
 foreach ($nieuwsberichten as $foto) {
-    $ArrayFotos[] = $foto->foto;
+    $arrayFotos[] = $foto->foto;
 }
+
+for ($i=0; $i < count($arrayBerichten); $i++){
+    $lijstBerichten .= "<div class=\"col-8 offset-2 col-lg-9 offset-lg-0 py-5 px-3 text-center\">" . $arrayBerichten[$i] . toonAfbeelding("images/nieuwsberichten/$arrayFotos[$i]") . "</div>";
+}
+
 
 
 

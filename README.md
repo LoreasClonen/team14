@@ -9,3 +9,8 @@ Project APP/BI 2019 door Team14
 ## Planning:
 [Klik hier voor de planning te bekijken](https://drive.google.com/open?id=1V39BT_nt8qZtyv9G9MRxRpjLqUpamIHJ)
     
+## Opmerkingen views
+    header wordt -> nav verschilt op gebruiker
+    master per functionaliteit
+    header per functionaliteit 
+    

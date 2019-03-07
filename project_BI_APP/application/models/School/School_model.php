@@ -25,7 +25,7 @@
          */
         function getAllById()
         {
-            $this->db->order_by('schoolnaam', 'asc');
+            $this->db->order_by('id', 'asc');
             $query = $this->db->get('school');
             return $query->result();
         }
@@ -40,7 +40,7 @@
          */
         function getByName($schoolnaam)
         {
-            $this->db->where('schoolnaam',$schoolnaam);
+            $this->db->where('schoolnaam', $schoolnaam);
             $query = $this->db->get('school');
             return $query->result();
         }
