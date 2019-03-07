@@ -19,9 +19,9 @@
             else { // wel aangemeld
                 echo anchor('Inloggen/meldAf', 'Afmelden');
                 switch ($gebruiker->isAdmin) {
-                    case 0: // admin
+                    case 1: // admin
                         echo '<li class="nav-item">' . anchor("", "Agenda", "class = 'nav-link'") . '</li>';
-                        echo '<li class="nav-item">' . anchor("", "Zwememers", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("", "Zwemmers", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Wachtlijst", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Zwemgroep", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Scholen", "class = 'nav-link'") . '</li>';
@@ -36,7 +36,7 @@
                         break;
 
 
-                    case 1: // zwemleraar
+                    case 0: // zwemleraar
                         break;
                 }
             }
