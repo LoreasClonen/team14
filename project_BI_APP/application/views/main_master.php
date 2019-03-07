@@ -41,10 +41,10 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
 
-                        <?php echo anchor("Home/meldAan", "Inloggen","class = 'nav-link'")?>
+                        <?php echo anchor("Inloggen/meldAan", "Inloggen","class = 'nav-link'")?>
                     </li>
                     <li class="nav-item">
-                        <?php echo anchor("Home/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) ?>
+                        <?php echo anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) ?>
                     </li>
                 </ul>
             </div>

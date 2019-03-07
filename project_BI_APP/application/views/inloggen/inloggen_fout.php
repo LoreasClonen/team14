@@ -3,4 +3,4 @@
 
     <p>Probeer opnieuw!</p>
 
-<?php echo divanchor('home/meldAan', 'Terug');
+<?php echo divanchor('Inloggen/meldAan', 'Terug');
