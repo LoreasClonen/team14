@@ -1,4 +1,4 @@
-git<div class="col-12 mt-3">
+<div class="col-12 mt-3">
     <?php
         $attributes = array('name' => 'nieuwWachtwoord', 'id' => 'nieuwWachtwoordFormulier', 'role' => 'form');
         echo form_open('Home/nieuwWachtwoord', $attributes);

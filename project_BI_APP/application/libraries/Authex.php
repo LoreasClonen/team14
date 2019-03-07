@@ -22,10 +22,10 @@ class Authex
 
     function isAangemeld()
     {
-        // gebruiker is aangemeld als sessievariabele gebruiker_id bestaat
+        // gebruiker is aangemeld als sessievariabele inlogger_id bestaat
         $CI =& get_instance();
 
-        if ($CI->session->has_userdata('gebruiker_id')) {
+        if ($CI->session->has_userdata('inlogger_id')) {
             return true;
         } else {
             return false;
@@ -41,7 +41,7 @@ class Authex
             return null;
         } else {
             $id = $CI->session->userdata('inlogger_id');
-            return $CI->Inlogger_model->get($id);
+            return $CI->Inlogger_model->getById($id);
         }
     }
 
