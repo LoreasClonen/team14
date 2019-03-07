@@ -1,7 +1,7 @@
 # Team14
 Project APP/BI 2019 door Team14
 ## doxygen practice
-    @fn functie naam --> weglaten is redundant en zorgt voor fouten!!!!!
+    @fn functie naam --> weglaten, is redundant en zorgt voor fouten!!!!!
     @brief korte beschrijving
     @pre preconditie
     @post postconditie

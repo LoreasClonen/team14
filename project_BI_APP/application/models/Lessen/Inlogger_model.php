@@ -1,10 +1,11 @@
-5555555555555<?php
+<?php
     /**
      * @Class Inlogger_Model
      */
 
     class Inlogger_model extends CI_Model
     {
+
         /**
          * functie constructor Inlogger_model()
          * @brief constructor voor de klasse Inlogger_model
@@ -29,5 +30,5 @@
             $query = $this->db->get('Inlogger');
             return $query->result();
         }
-        
+
     }
