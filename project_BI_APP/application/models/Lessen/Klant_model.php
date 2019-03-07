@@ -26,7 +26,7 @@ class Klant_model extends CI_Model
     function getAllById()
     {
         $this->db->order_by('id', 'asc');
-        $query = $this->db->get('Klant');
+        $query = $this->db->get('klant');
         return $query->result();
     }
 }

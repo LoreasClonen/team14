@@ -26,7 +26,7 @@ class Zwemniveau_model extends CI_Model
     function getAllById()
     {
         $this->db->order_by('id', 'asc');
-        $query = $this->db->get('Zwemniveau');
+        $query = $this->db->get('zwemniveau');
         return $query->result();
     }
 }

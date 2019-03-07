@@ -15,6 +15,9 @@
             <li class="nav-item">
                 <?php echo anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) ?>
             </li>
+            <li class="nav-item">
+                <?php echo anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen ophalen", "class='nav-link'") ?>
+            </li>
         </ul>
     </div>
 </nav>
