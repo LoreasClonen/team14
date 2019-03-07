@@ -1,6 +1,5 @@
 <?php
 $lijstBerichten = "";
-$lijstFotos = "";
 
 foreach ($nieuwsberichten as $bericht) {
     $arrayBerichten[] = $bericht->bericht;
@@ -31,7 +30,7 @@ for ($i=0; $i < count($arrayBerichten); $i++){
     <h3 id="jquery" class="mt-4">Nieuwsberichten:</h3>
     <div><?php
 
-    echo toonAfbeelding("images/nieuwsberichten/test2.jpg");
+    echo $lijstBerichten;
     ?>
     </div>
 </div>
