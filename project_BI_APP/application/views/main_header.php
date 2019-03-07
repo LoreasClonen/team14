@@ -39,6 +39,7 @@
                     case 1: // zwemleraar
                         break;
                 }
+            }
             ?>
 
         </ul>
