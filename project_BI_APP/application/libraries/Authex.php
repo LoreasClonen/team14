@@ -40,7 +40,7 @@ class Authex
         if (!$this->isAangemeld()) {
             return null;
         } else {
-            $id = $CI->session->userdata('gebruiker_id');
+            $id = $CI->session->userdata('inlogger_id');
             return $CI->Inlogger_model->get($id);
         }
     }
