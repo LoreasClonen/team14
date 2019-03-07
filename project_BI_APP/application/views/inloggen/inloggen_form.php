@@ -7,11 +7,11 @@
 
     echo "<hr />";
 
-    echo form_label('naam', 'naam');
-    $dataNaam = array(  'id' => 'naam',
-                        'name' => 'naam',
+    echo form_label('email', 'email');
+    $dataNaam = array(  'id' => 'email',
+                        'name' => 'email',
                         'class' => 'form-control',
-                        'placeholder' => 'Username',
+                        'placeholder' => 'e-mail',
                         'required' => 'required',
                         'size' => '30');
     echo form_input($dataNaam);
@@ -27,7 +27,7 @@
 
     echo form_submit(array("content" => "Log in", "class" => "btn btn-primary my-3", "id" => "logIn"));
     echo form_close();
-    echo password_hash("admin",PASSWORD_DEFAULT);
+   // echo password_hash("admin",PASSWORD_DEFAULT);
     ?>
 </div>
 
