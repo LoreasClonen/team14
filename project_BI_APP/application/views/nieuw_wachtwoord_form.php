@@ -1,7 +1,7 @@
 <div class="col-12 mt-3">
     <?php
         $attributes = array('name' => 'nieuwWachtwoord', 'id' => 'nieuwWachtwoordFormulier', 'role' => 'form');
-        echo form_open('nieuwWachtwoord', $attributes);
+        echo form_open('home/nieuwWachtwoord', $attributes);
 
 
 
