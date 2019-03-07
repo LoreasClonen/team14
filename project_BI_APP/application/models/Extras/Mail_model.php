@@ -33,4 +33,19 @@ class Mail_model extends CI_Model
         return $query->result();
     }
 
+    /**
+     * functie getAllById
+     * @brief geeft alle mails terug met een bepaald mailtype
+     * @pre er bestaat een Mail_model klasse
+     * @post er is een array met 0 of meerdere mails teruggegeven
+     * @param $mailtype
+     * @return array
+     */
+    function getByMailtype($mailtype)
+    {
+        $this->db->where('mailtype', $mailtype);
+        $query = $this->db->get('mail');
+        return $query->result();
+    }
+
 }

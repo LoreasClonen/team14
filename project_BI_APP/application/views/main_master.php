@@ -41,7 +41,7 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
 
-                        <?php echo anchor("Home/meldAan", "Inloggen","class = 'nav-link'")?>
+                        <?php echo anchor("inloggen/inloggen_form.php", "Inloggen","class = 'nav-link'")?>
                     </li>
 
                 </ul>
