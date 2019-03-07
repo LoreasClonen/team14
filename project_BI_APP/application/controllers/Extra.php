@@ -13,6 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Extra extends CI_Controller
 {
+    /**
+     * functie stuurMail
+     * @brief stuurt een mail met de ingelezen data
+     * @pre er bestaat een Extra klasse
+     * @post er is een mail verstuurd
+     * @param $mailtype, $ontvanger
+     */
     public function stuurMail($mailtype, $ontvanger)
     {
         $this->load->model('mail_model');
