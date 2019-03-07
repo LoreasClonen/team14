@@ -33,6 +33,9 @@
                 'inhoud' => 'main_menu'
                 );
 
+            $this->load->model('nieuwsberichten');
+            $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
+
             $this->template->load('main_master', $partials, $data);
         }
         public function meldAan()
@@ -74,7 +77,27 @@
             $this->authex->meldAf();
             redirect('home/index');
         }
+        public function nieuwPaswoord()
+        {
+            $data['titel'] = 'Nieuw wachtwoord ingeven';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
+            $partials = array('hoofding' => 'main_header',
+
+                'inhoud' => 'nieuw_wachtwoord_form',
+            );
+
+            $this->template->load('main_master', $partials, $data);
+        }
+        public function nieuwWachtwoord()
+        {
+            $poging1 = $this->input->post('poging1');
+            $poging2 = $this->input->post('poging2');
+
+            if ($this->authex->nieuwPaswoord($poging1, $poging2)) {
+                redirect('home/nieuwWachtwoord');
+            }
+        }
 
 
 

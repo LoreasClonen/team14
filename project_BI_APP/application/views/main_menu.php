@@ -1,3 +1,20 @@
+<?php
+$LijstBerichten = "";
+$LijstFotos = "";
+
+foreach ($nieuwsberichten as $bericht) {
+    $ArrayBerichten[] = $berichten->bericht;
+}
+
+foreach ($nieuwsberichten as $foto) {
+    $ArrayFotos[] = $foto->foto;
+}
+
+
+
+
+?>
+
 <div class="col-8 offset-2 col-lg-3 offset-lg-0 py-5 px-3 text-center">
 
     <?php echo smallDivAnchor('les1/toonAccordion', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>

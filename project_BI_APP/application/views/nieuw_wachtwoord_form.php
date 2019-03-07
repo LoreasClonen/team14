@@ -7,7 +7,7 @@ git<div class="col-12 mt-3">
 
         echo "<hr />";
 
-        echo form_label('poging1', 'poging1');
+        echo form_label('Nieuw wachtwoord', 'Nieuw wachtwoord');
         $dataPoging1 = array(  'id' => 'poging1',
             'name' => 'poging1',
             'class' => 'form-control',
@@ -22,7 +22,7 @@ git<div class="col-12 mt-3">
             'placeholder' => 'Herhaal wachtwoord',
             'required' => 'required',
             'size' => '30');
-        echo form_label('poging2', 'poging2');
+        echo form_label('Herhaal wachtwoord', 'Herhaal wachtwoord');
         echo form_password($dataPoging2);
 
         echo form_submit(array("content" => "Wachtwoord opslaan", "class" => "btn btn-primary my-3", "id" => "wachtwoordOpslaan"));
