@@ -25,7 +25,7 @@
          */
         function getAllByProductId()
         {
-            $this->db->order_by('productId', 'asc');
+            $this->db->order_by('id', 'asc');
             $query = $this->db->get('ProductBestelling');
             return $query->result();
         }
