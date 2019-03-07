@@ -11,7 +11,7 @@ foreach ($nieuwsberichten as $foto) {
 }
 
 for ($i=0; $i < count($arrayBerichten); $i++){
-    $lijstBerichten .= $arrayBerichten[$i];
+    $lijstBerichten .= "<div class=\"col-8 offset-2 col-lg-9 offset-lg-0 py-5 px-3 text-center\">" . $arrayBerichten[$i] . toonAfbeelding("images/nieuwsberichten/$arrayFotos[$i]") . "</div>";
 }
 
 
