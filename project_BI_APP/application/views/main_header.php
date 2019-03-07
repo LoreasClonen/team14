@@ -23,7 +23,7 @@
                         echo anchor('product/bestel', 'Producten bestellen');
                         break;
                     case 0: // zwemleraar
-                        echo anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen ophalen", "class='nav-link'")
+                        echo anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen ophalen", "class='nav-link'");
                         echo anchor('product/beheer', 'Producten beheren');
                         echo anchor('admin/beheer', 'Gebruikers beheren');
                         echo anchor('admin/configureer', 'Configureren');
