@@ -33,6 +33,9 @@
                 'inhoud' => 'main_menu'
                 );
 
+            $this->load->model('nieuwsberichten');
+            $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
+
             $this->template->load('main_master', $partials, $data);
         }
         public function meldAan()
@@ -74,7 +77,6 @@
             $this->authex->meldAf();
             redirect('home/index');
         }
-
 
 
 
