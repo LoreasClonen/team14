@@ -35,7 +35,9 @@
                         echo anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen ophalen", "class='nav-link'");
                         break;
 
+
                     case 1: // zwemleraar
+                        break;
 
             ?>
 
