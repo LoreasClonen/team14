@@ -6,7 +6,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @class Extra
  * @brief Controller-klasse voor extra functionaliteiten
  * @property Mail_model $mail_model
- * @property Nieuwsbericht_model $nieuwsberichten_model
  * @property Template $template
  *
  * Controller klasse met alle methodes die gebruikt worden voor alles wat te maken heeft met het sturen van mails
@@ -14,6 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Extra extends CI_Controller
 {
+    /**
+     * functie stuurMail
+     * @brief stuurt een mail met de ingelezen data
+     * @pre er bestaat een Extra klasse
+     * @post er is een mail verstuurd
+     * @param $mailtype, $ontvanger
+     */
     public function stuurMail($mailtype, $ontvanger)
     {
         $this->load->model('mail_model');
@@ -25,11 +31,5 @@ class Extra extends CI_Controller
         $inhoud = $mail->mailtekst;
 
         mail($ontvanger, $onderwerp, $inhoud, $hoofding);
-    }
-
-    public function toonNieuwsberichten()
-    {
-        $this->load->model('nieuwsberichten_model');
-        $data['nieuwsberichten'] = $this->nieuwsberichten_model->getAllById();
     }
 }
