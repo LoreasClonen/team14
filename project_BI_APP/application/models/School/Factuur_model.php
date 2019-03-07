@@ -28,7 +28,7 @@
          */
         function getAllById()
         {
-            $this->db->order_by('naam', 'asc');
+            $this->db->order_by('id', 'asc');
             $query = $this->db->get('factuur');
             return $query->result();
         }
@@ -43,7 +43,7 @@
          */
         function getByName($naam)
         {
-            $this->db->where('naam',$naam);
+            $this->db->where('naam', $naam);
             $query = $this->db->get('factuur');
             return $query->result();
         }
