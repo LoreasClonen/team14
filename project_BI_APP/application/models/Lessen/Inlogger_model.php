@@ -29,6 +29,12 @@ class Inlogger_model extends CI_Model
         $query = $this->db->get('inlogger');
         return $query->result();
     }
+
+    function getById($id){
+        $this->db->where('id',$id );
+        $query = $this->db->get('inlogger');
+        return $query->result();
+    }
     /**
      * functie getGebruiker($email, $wachtwoord)
      * @brief geeft 1 specifieke inlogger terug

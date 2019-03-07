@@ -28,7 +28,6 @@
     echo form_submit(array("value" => "Inloggen", "class" => "btn btn-primary my-3", "id" => "logIn"));
     echo smallDivAnchor('Inloggen/wachtwoordVergeten', 'Wachtwoord vergeten', 'class="btn btn-primary"');
     echo form_close();
-    // echo password_hash("admin",PASSWORD_DEFAULT);
 
     ?>
 </div>

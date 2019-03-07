@@ -21,7 +21,7 @@ class inloggen extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Lessen/Inlogger_model');
+        $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
         $this->load->helper('form');
     }
     public function meldAan()
