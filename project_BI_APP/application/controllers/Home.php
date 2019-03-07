@@ -29,6 +29,7 @@ class Home extends CI_Controller
         public function index()
         {
             $data['titel'] = 'Zwembad informatie';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'main_menu'
