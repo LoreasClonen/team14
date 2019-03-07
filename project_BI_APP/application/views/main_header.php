@@ -8,16 +8,33 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li class="nav-item">
 
-                <?php echo anchor("Inloggen/meldAan", "Inloggen","class = 'nav-link'")?>
-            </li>
-            <li class="nav-item">
-                <?php echo anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) ?>
-            </li>
+            <?php
+
+            if ($gebruiker == null) { // niet aangemeld
+                echo '<li class="nav-item">' . anchor("Inloggen/meldAan", "Inloggen", "class = 'nav-link'") . '</li>';
+                echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) . '</li>';
+                }
+
+            else { // wel aangemeld
+                echo anchor('Inloggen/meldAf', 'Afmelden');
+                switch ($gebruiker->isAdmin) {
+                    case 1: // admin
+                        echo anchor('product/bestel', 'Producten bestellen');
+                        break;
+                    case 0: // zwemleraar
+                        echo anchor('product/beheer', 'Producten beheren');
+                        echo anchor('admin/beheer', 'Gebruikers beheren');
+                        echo anchor('admin/configureer', 'Configureren');
+                        break;
+                }
+            }
+
+            ?>
         </ul>
     </div>
 </nav>
+
 
 <div class="container my-4">
 <header class="jumbotron">

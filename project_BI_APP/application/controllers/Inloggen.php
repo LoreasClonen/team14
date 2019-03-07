@@ -42,7 +42,7 @@
             $wachtwoord = $this->input->post('wachtwoord');
 
             if ($this->authex->meldAan($email, $wachtwoord)) {
-                redirect('Inloggen/indexInlogger');
+                redirect('Home/index');
             } else {
                 redirect('Inloggen/toonFout');
             }
@@ -62,7 +62,7 @@
         public function meldAf()
         {
             $this->authex->meldAf();
-            redirect('home/index');
+            redirect('Home/index');
         }
 
         public function wachtwoordVergeten()
