@@ -8,8 +8,5 @@
      */
     class Lessen extends CI_Controller
     {
-        function herstelWachtwoord()
-        {
-
-        }
+        
     }
