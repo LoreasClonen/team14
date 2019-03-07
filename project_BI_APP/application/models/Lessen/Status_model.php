@@ -26,7 +26,7 @@ class Status_model extends CI_Model
     function getAllById()
     {
         $this->db->order_by('id', 'asc');
-        $query = $this->db->get('Status');
+        $query = $this->db->get('status');
         return $query->result();
     }
 }

@@ -26,7 +26,7 @@
         function getAllById()
         {
             $this->db->order_by('id', 'asc');
-            $query = $this->db->get('Product');
+            $query = $this->db->get('product');
             return $query->result();
         }
 
@@ -41,7 +41,7 @@
         function getByNaam($naam)
         {
             $this->db->where('naam', $naam);
-            $query = $this->db->get('Product');
+            $query = $this->db->get('product');
             return $query->result();
         }
 
@@ -56,7 +56,7 @@
         function getByPrijs($prijs)
         {
             $this->db->where('prijs', $prijs);
-            $query = $this->db->get('Product');
+            $query = $this->db->get('product');
             return $query->result();
         }
 
@@ -71,7 +71,7 @@
         function getByFoto($foto)
         {
             $this->db->where('foto', $foto);
-            $query = $this->db->get('Product');
+            $query = $this->db->get('product');
             return $query->result();
         }
 
@@ -86,7 +86,7 @@
         function getByProducttypeId($producttypeId)
         {
             $this->db->where('producttypeId', $producttypeId);
-            $query = $this->db->get('Product');
+            $query = $this->db->get('product');
             return $query->result();
         }
 

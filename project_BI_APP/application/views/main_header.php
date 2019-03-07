@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
-            <?php
+<?php
 
             if ($gebruiker == null) { // niet aangemeld
                 echo '<li class="nav-item">' . anchor("Inloggen/meldAan", "Inloggen", "class = 'nav-link'") . '</li>';
@@ -32,13 +32,13 @@
                         echo '<li class="nav-item">' . anchor("", "Aanwezigheden scholen","class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Gebruikers","class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Aanpassingen","class = 'nav-link'") . '</li>';
+                        echo anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen ophalen", "class='nav-link'");
                         break;
+
                     case 1: // zwemleraar
-                        break;
-                }
-            }
 
             ?>
+
         </ul>
     </div>
 </nav>

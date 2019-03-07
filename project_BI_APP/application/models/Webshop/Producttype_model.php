@@ -26,7 +26,7 @@
         function getAllById()
         {
             $this->db->order_by('id', 'asc');
-            $query = $this->db->get('Producttype');
+            $query = $this->db->get('producttype');
             return $query->result();
         }
 
@@ -41,7 +41,7 @@
         function getByNaam($naam)
         {
             $this->db->where('naam', $naam);
-            $query = $this->db->get('Producttype');
+            $query = $this->db->get('producttype');
             return $query->result();
         }
 

@@ -26,7 +26,7 @@
         function getAllById()
         {
             $this->db->order_by('id', 'asc');
-            $query = $this->db->get('Bestelling');
+            $query = $this->db->get('bestelling');
             return $query->result();
         }
 
@@ -41,7 +41,7 @@
         function getByNaam($naam)
         {
             $this->db->where('naam', $naam);
-            $query = $this->db->get('Bestelling');
+            $query = $this->db->get('bestelling');
             return $query->result();
         }
 
@@ -56,7 +56,7 @@
         function GetByEmail($email)
         {
             $this->db->where('email', $email);
-            $query = $this->db->get('Bestelling');
+            $query = $this->db->get('bestelling');
             return $query->result();
         }
 
@@ -71,7 +71,7 @@
         function GetByDatum($datum)
         {
             $this->db->where('datum', $datum);
-            $query = $this->db->get('Bestelling');
+            $query = $this->db->get('bestelling');
             return $query->result();
         }
 
@@ -100,7 +100,7 @@
         function GetByBestellingnr($bestellingnr)
         {
             $this->db->where('bestellingnr', $bestellingnr);
-            $query = $this->db->get('Bestelling');
+            $query = $this->db->get('bestelling');
             return $query->result();
         }
 
@@ -115,7 +115,7 @@
         function GetByTelefoonnr($telefoonnr)
         {
             $this->db->where('telefoonnr', $telefoonnr);
-            $query = $this->db->get('Bestelling');
+            $query = $this->db->get('bestelling');
             return $query->result();
         }
     }
