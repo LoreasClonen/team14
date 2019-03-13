@@ -29,7 +29,7 @@
 
         public function zwemgroepenOphalen()
         {
-            $data['zwemgroepen'] = $this->Lesgroep_model->getAllById();
+            $data['zwemgroepen'] = $this->lesgroep_model->getAllById();
 
             $data['titel'] = 'Overzicht zwemgroepen';
 
@@ -39,11 +39,11 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function zwemgroepOphalen($id)
+        public function getZwemgroep($id)
         {
-            $data['titel'] = 'Overzicht zwemgroep';
+            $data['titel'] = 'lesgroep';
 
-            $data['zwemgroep'] = $this->Lesgroep_model->get($id);
+            $data['zwemgroep'] = $this->lesgroep_model->get($id);
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'overzicht_zwemgroep');

@@ -18,7 +18,7 @@
 
             else { // wel aangemeld
                 echo '<li class="nav-item">' . anchor('Inloggen/meldAf', 'Afmelden' , "class = nav-link outline-right") . '</li>';
-                if ($gebruiker->isAdmin) {
+                if ($gebruiker->isAdmin == 1) {
                     echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Agenda", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Zwemmers", "class = 'nav-link'") . '</li>';
