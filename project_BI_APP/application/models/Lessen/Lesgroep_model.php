@@ -14,6 +14,8 @@ class Lesgroep_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
+
     }
 
     /**
@@ -37,18 +39,20 @@ class Lesgroep_model extends CI_Model
      * @post Er is een array met 1 lesgroep teruggegeven
      * @return array
      */
-    function getZwemgroep($id)
+    function getAllByIdWithInlogger()
     {
-        $this->db->where('id', $id);
+        $this->db->where('id', 'asc');
         $query = $this->db->get('lesgroep');
-        $lesgroepen = $query->row();
+        return $query->result();
 
-        $this->load->model('inlogger_model');
+        /*$lesgroepen = $query->result();
+
+        $this->load->model('Inlogger_model');
 
         foreach ($lesgroepen as $lesgroep) {
             $lesgroep->inlogger =
                 $this->inlogger_model->get($lesgroep->inloggerId);
         }
-        return $lesgroepen;
+        return $lesgroepen; */
     }
 }

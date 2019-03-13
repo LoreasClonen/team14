@@ -23,7 +23,7 @@
         public function __construct()
         {
             parent::__construct();
-            $this->load->model('Lessen/Lesgroep_model', 'Lesgroep_model');
+            $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
             $this->load->helper('form');
         }
 
@@ -39,14 +39,14 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function getZwemgroep($id)
+        public function getZwemgroepen()
         {
             $data['titel'] = 'lesgroep';
 
-            $data['zwemgroep'] = $this->lesgroep_model->get($id);
+            $data['zwemgroepen'] = $this->lesgroep_model->getAllByIdWithInlogger();
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'overzicht_zwemgroep');
+            'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep');
 
             $this->template->load('main_master', $partials, $data);
         }
