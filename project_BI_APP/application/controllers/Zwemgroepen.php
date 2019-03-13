@@ -38,4 +38,17 @@
 
             $this->template->load('main_master', $partials, $data);
         }
+
+        public function zwemgroepOphalen($id)
+        {
+
+            $data['titel'] = 'Overzicht zwemgroep';
+
+            $data['zwemgroep'] = $this->Lesgroep_model->get($id);
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'overzicht_zwemgroep');
+
+            $this->template->load('main_master', $partials, $data);
+        }
     }

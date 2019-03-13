@@ -29,4 +29,18 @@ class Lesgroep_model extends CI_Model
         $query = $this->db->get('lesgroep');
         return $query->result();
     }
+
+    /**
+     * functie get($id)
+     * @brief geeft 1 specifieke lesgroep terug in de lesgroep tabel
+     * @pre Er bestaat een Lesgroep model klasse en een lesgroep met overeenkomstige id
+     * @post Er is een array met 1 lesgroep teruggegeven
+     * @return array
+     */
+    function get($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('lesgroep');
+        return $query->row();
+    }
 }
