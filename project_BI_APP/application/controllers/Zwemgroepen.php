@@ -51,4 +51,6 @@
 
             $this->template->load('main_master', $partials, $data);
         }
+
+
     }

@@ -40,7 +40,9 @@ class Lesgroep_model extends CI_Model
     function get($id)
     {
         $this->db->where('id', $id);
-        $query = $this->db->get('lesgroep');
+        $query = $this->db->select('lesgroep.*, credentials.*');
         return $query->row();
+
+
     }
 }

@@ -60,10 +60,10 @@
         }
 
         public function meldAf()
-        {
-            $this->authex->meldAf();
-            redirect('Home/index');
-        }
+    {
+        $this->authex->meldAf();
+        redirect('Home/index');
+    }
 
         public function wachtwoordVergeten()
         {
