@@ -41,7 +41,6 @@
 
         public function zwemgroepOphalen($id)
         {
-
             $data['titel'] = 'Overzicht zwemgroep';
 
             $data['zwemgroep'] = $this->Lesgroep_model->get($id);

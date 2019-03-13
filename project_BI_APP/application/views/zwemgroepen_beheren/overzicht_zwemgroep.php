@@ -7,5 +7,4 @@
     echo '<div>' . $zwemgroep->weekdag . '</div>';
     echo '<div>Van ' . $zwemgroep->beginuur . ' tot ' .$zwemgroep->einduur . '</div>';
 
-
 ?>
