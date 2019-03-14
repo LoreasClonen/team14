@@ -42,11 +42,12 @@
             $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
         }
 
-        public function getZwemgroepen()
+        public function getZwemgroepen($id)
         {
             $data['titel'] = 'lesgroep';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
-            $data['weekdagen'] = $this->lesgroep_model->getAllByWeekdag();
+            $data['zwemgroep'] = $this->lesgroep_model->get($id);
 
 
             $partials = array('hoofding' => 'main_header',
