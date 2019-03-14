@@ -56,5 +56,17 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        public function zwemgroepToevoegenLaden()
+        {
+            $data['titel'] = 'Zwemgroep Toevoegen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'zwemgroepen_beheren/zwemgroep_toevoegen',
+                'footer' => 'main_footer');
+
+            $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
+        }
 
     }
