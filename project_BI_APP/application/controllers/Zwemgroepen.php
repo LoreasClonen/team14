@@ -46,7 +46,7 @@
         {
             $data['titel'] = 'lesgroep';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
-            $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe (T)';
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
 
             $data['zwemgroep'] = $this->lesgroep_model->get($id);
 
