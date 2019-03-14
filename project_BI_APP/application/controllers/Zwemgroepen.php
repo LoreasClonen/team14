@@ -46,15 +46,15 @@
         {
             $data['titel'] = 'lesgroep';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe (T)';
 
             $data['zwemgroep'] = $this->lesgroep_model->get($id);
-
 
             $partials = array('hoofding' => 'main_header',
             'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',
             'footer' => 'main_footer');
 
-            $this->template->load('zwemgroepen_beheren/zwemgroepen_masterr', $partials, $data);
+            $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
         }
 
         public function zwemgroepToevoegenLaden()
