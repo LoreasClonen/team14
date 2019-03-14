@@ -32,6 +32,7 @@
             $data['zwemgroepen'] = $this->lesgroep_model->getAllById();
 
             $data['titel'] = 'Overzicht zwemgroepen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
 
             $partials = array('hoofding' => 'main_header',
