@@ -23,7 +23,7 @@
                     echo '<li class="nav-item">' . anchor("", "Agenda", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Zwemmers", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Wachtlijst", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Zwemgroep", "class = 'nav-link'") . '</li>';
+                    echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Scholen", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Schoolfacturen", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Zwemfeestjes", "class = 'nav-link'") . '</li>';

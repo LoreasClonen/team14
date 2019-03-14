@@ -1,7 +1,7 @@
 <?php
-    foreach ($producten as $product)
+    foreach ($zwemgroepen as $zwemgroep)
     {
-        echo "<div>" . $product->id . ' ' . $product->groepsnaam . " </div>";
+        echo "<div>" . $zwemgroep->id . ' ' . $zwemgroep->groepsnaam . " </div>";
     }
 
 
