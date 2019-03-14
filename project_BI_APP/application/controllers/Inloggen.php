@@ -83,6 +83,7 @@
         {
             $email = $this->input->post('email');
 
+//            if ($email = ...) {
             $ontvanger = $email;
             $onderwerp = "Nieuw wachtwoord";
             $inhoud = "U had een aangevraag om een nieuw wachtwoord in te stellen.\nVia deze link kan u een nieuw wachtwoord instellen: " . base_url() . "Inloggen/nieuwPaswoord?" . $ontvanger;
@@ -90,12 +91,19 @@
             $headers = "MIME-Version: 1.0" . "\r\n" . "Content-type: text/html;charset=UTF-8" . "\r\n" . "From: " . $zender . "\r\n";
 
             mail($ontvanger, $onderwerp, $inhoud, $headers);
+//        }
+//        else {
+//            redirect('Inloggen/wachtwoordHerstellen');
+//        }
+
+
         }
 
         public function nieuwPaswoord()
         {
             $data['titel'] = 'Nieuw wachtwoord ingeven';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
+//            $data['email'] = $email;
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'nieuw_wachtwoord_form');
