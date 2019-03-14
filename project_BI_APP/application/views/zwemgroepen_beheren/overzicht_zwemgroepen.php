@@ -5,7 +5,7 @@
     }
 
 
-
+    echo smallDivAnchor('Zwemgroepen/zwemgroepToevoegen', 'Zwemgroep toevoegen', 'class="btn btn-primary"');
 
 
 
