@@ -9,6 +9,7 @@ class Authex
     {
         $CI =& get_instance();
         $CI->load->model('Lessen/Inlogger_model', 'Inlogger_model');
+
     }
 
     function activeer($id)

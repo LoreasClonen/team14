@@ -33,6 +33,7 @@ class Home extends CI_Controller
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'main_menu'
+
             );
 
             $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
