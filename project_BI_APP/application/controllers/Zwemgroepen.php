@@ -34,9 +34,9 @@
             $data['titel'] = 'Overzicht zwemgroepen';
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'overzicht_zwemgroepen');
+                'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroepen');
 
-            $this->template->load('main_master', $partials, $data);
+            $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
         }
 
         public function getZwemgroepen()
