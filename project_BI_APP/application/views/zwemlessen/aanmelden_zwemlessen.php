@@ -21,7 +21,7 @@
     echo form_input($dataVoornaam);
 
     echo form_label('achternaam', 'achternaam');
-    $dataAchternaam = array('id' => 'voornaam',
+    $dataAchternaam = array('id' => 'achternaam',
         'name' => 'achternaam',
         'class' => 'form-control',
         'placeholder' => 'achternaam',

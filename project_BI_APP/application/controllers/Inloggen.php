@@ -29,9 +29,11 @@
         {
             $data['titel'] = 'Aanmelden';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (0), Mats Mertens (T), Shari Nuyts , Sebastiaan Reggers, Steven Van Gansberghe';
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'inloggen/inloggen_form');
+                'inhoud' => 'inloggen/inloggen_form',
+                'footer');
 
             $this->template->load('main_master', $partials, $data);
         }
