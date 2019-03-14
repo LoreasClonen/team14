@@ -42,7 +42,7 @@
             $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
         }
 
-        public function getZwemgroepen($id)
+        public function getZwemgroep($id)
         {
             $data['titel'] = 'lesgroep';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -51,9 +51,10 @@
 
 
             $partials = array('hoofding' => 'main_header',
-            'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep');
+            'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',
+            'footer' => 'main_footer');
 
-            $this->template->load('main_master', $partials, $data);
+            $this->template->load('zwemgroepen_beheren/zwemgroepen_masterr', $partials, $data);
         }
 
         public function zwemgroepToevoegenLaden()
