@@ -46,7 +46,8 @@ class Lesgroep_model extends CI_Model
         return $query->row();
     }
 
-    function {
+    function getAllByIdWithInlogger()
+    {
 
         $this->db->order_by('id', 'asc');
         $query = $this->db->get('lesgroep');
@@ -59,5 +60,6 @@ class Lesgroep_model extends CI_Model
                 $this->inlogger_model->get($lesgroep->inloggerId);
         }
         return $lesgroepen;
+    }
 
 }
