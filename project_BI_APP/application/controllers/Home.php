@@ -30,13 +30,13 @@ class Home extends CI_Controller
         {
             $data['titel'] = 'Zwembad informatie';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
-
-            $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'main_menu'
-
-            );
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
 
             $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'main_menu',
+                'footer' => 'main_footer');
 
             $this->template->load('main_master', $partials, $data);
         }
