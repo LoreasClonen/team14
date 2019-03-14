@@ -46,6 +46,7 @@
 
             $data['zwemgroepen'] = $this->lesgroep_model->getAllByIdWithInlogger();
 
+
             $partials = array('hoofding' => 'main_header',
             'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep');
 

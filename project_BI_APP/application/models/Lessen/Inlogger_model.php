@@ -33,7 +33,7 @@ class Inlogger_model extends CI_Model
     function getById($id){
         $this->db->where('id',$id );
         $query = $this->db->get('inlogger');
-        return $query->result();
+        return $query->row();
     }
     /**
      * functie getGebruiker($email, $wachtwoord)
