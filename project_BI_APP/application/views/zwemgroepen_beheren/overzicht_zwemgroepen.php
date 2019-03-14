@@ -1,7 +1,7 @@
 <?php
     foreach ($zwemgroepen as $zwemgroep)
     {
-        echo "<button>" . $zwemgroep->id . ' ' . $zwemgroep->groepsnaam . " </button>";
+        echo "<button>" . anchor('Zwemgroepen/getZwemgroepen/' .$zwemgroep->id , $zwemgroep->id . ' ' . $zwemgroep->groepsnaam) . " </button>";
     }
 
 
