@@ -24,10 +24,6 @@
                 echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class = 'nav-link'") . '</li>';
                 if ($gebruiker->isAdmin == 1) {
                     echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Agenda", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Zwemmers", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Wachtlijst", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Scholen", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Schoolfacturen", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Zwemfeestjes", "class = 'nav-link'") . '</li>';
@@ -37,8 +33,7 @@
                     echo '<li class="nav-item">' . anchor("", "Gebruikers", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Aanpassingen", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class='nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("Zwemgroepen/getZwemgroepen/1", "Zwemgroep test", "class = 'nav-link'") . '</li>';
-                }
+                   }
             }
             ?>
 
