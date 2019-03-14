@@ -11,6 +11,7 @@
         'id' => 'groepsnaam',
         'name' => 'groepsnaam',
         'class' => 'form-control',
+        'type' => 'text',
         'placeholder' => 'groepsnaam',
         'required' => 'required',
         'size' => '30');
@@ -22,8 +23,7 @@
         'dinsdag' => 'Dinsdag',
         'woensdag' => 'Woensdag',
         'donderdag' => 'Donderdag',
-        'vrijdag' => 'Vrijdag',
-    );
+        'vrijdag' => 'Vrijdag');
     echo form_dropdown('weekdag', $dataWeekdag);
 
     echo form_label('Zwemniveau', 'zwemniveau');
@@ -37,9 +37,9 @@
         'id' => 'maxGrootte',
         'name' => 'maxGrootte',
         'class' => 'form-control',
+        'type' => 'number',
         'placeholder' => 'grootte',
-        'required' => 'required',
-        'size' => '2');
+        'required' => 'required');
     echo form_input($dataGrootte);
 
     echo form_label('Beginuur', 'beginuur');
@@ -48,7 +48,7 @@
         'name' => 'beginuur',
         'class' => 'form-control',
         'required' => 'required',
-        'size' => '5');
+        'type' => 'time');
     echo form_input($dataBeginuur);
 
     echo form_label('Einduur', 'einduur');
@@ -57,10 +57,10 @@
         'name' => 'einduur',
         'class' => 'form-control',
         'required' => 'required',
-        'size' => '5');
+        'type' => 'time');
     echo form_input($dataEinduur);
 
-    echo form_hidden('inlogger', ''/*inloggerId hier*/);
+    echo form_hidden('gebruiker', $gebruiker->Id);
 
     echo form_submit(array("value" => "Toevoegen", "class" => "btn btn-primary my-3", "id" => "voegZwemgroepToe"));
     echo form_close();

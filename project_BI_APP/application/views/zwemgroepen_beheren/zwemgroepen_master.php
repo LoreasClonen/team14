@@ -54,8 +54,9 @@
 <!--            footer-->
 <footer>
     <div class="row">
-        <div class="col-12">
-            <?php echo $teamleden; ?>
+        <div class="col-12 row">
+            <?php echo "<div class='col-5'>" .  $footer . "</div>" .
+                "<div class='col-7'>" . $teamleden . "</div>"; ?>
         </div>
     </div>
 </footer>

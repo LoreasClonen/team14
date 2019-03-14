@@ -62,14 +62,16 @@
         }
 
         public function meldAf()
-    {
-        $this->authex->meldAf();
-        redirect('Home/index');
-    }
+        {
+            $this->authex->meldAf();
+            redirect('Home/index');
+        }
 
         public function wachtwoordVergeten()
         {
             $data['titel'] = 'Uw wachtwoord herstellen';
+
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'inloggen/wachtwoord_vergeten');
@@ -77,12 +79,16 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function mailWachtwoordVergeten($email)
+        public function mailWachtwoordVergeten()
         {
+            $email = $this->input->post('email');
+
             $ontvanger = $email;
             $onderwerp = "Nieuw wachtwoord";
-            $inhoud = "U had een aangevraag om een nieuw wachtwoord in te stellen.\nVia deze link kan u een nieuw wachtwoord instellen: ";
-            $headers = "r0709457@student.thomasmore.be";
+            $inhoud = "U had een aangevraag om een nieuw wachtwoord in te stellen.\nVia deze link kan u een nieuw wachtwoord instellen: " . base_url() . "Inloggen/nieuwPaswoord?" . $ontvanger;
+            $zender = "admin@kempenrust.be";
+            $headers = "MIME-Version: 1.0" . "\r\n" . "Content-type: text/html;charset=UTF-8" . "\r\n" . "From: " . $zender . "\r\n";
+
             mail($ontvanger, $onderwerp, $inhoud, $headers);
         }
 

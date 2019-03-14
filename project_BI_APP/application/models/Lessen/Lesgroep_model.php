@@ -39,11 +39,15 @@ class Lesgroep_model extends CI_Model
      * @post Er is een array met 1 lesgroep teruggegeven
      * @return array
      */
-    function getAllByIdWithInlogger()
+    function get($id)
     {
-        $this->db->orderby('id', 'asc');
+        $this->db->where('id', $id);
         $query = $this->db->get('lesgroep');
-        return $query->result();
+        return $query->row();
+    }
+
+
+
 
         /*$lesgroepen = $query->result();
 
@@ -54,5 +58,5 @@ class Lesgroep_model extends CI_Model
                 $this->inlogger_model->get($lesgroep->inloggerId);
         }
         return $lesgroepen; */
-    }
+
 }
