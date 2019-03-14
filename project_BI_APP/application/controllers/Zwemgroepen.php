@@ -43,7 +43,7 @@
         {
             $data['titel'] = 'lesgroep';
 
-            $data['zwemgroepen'] = $this->lesgroep_model->getAllByIdWithInlogger();
+            $data['weekdagen'] = $this->lesgroep_model->getAllByWeekdag();
 
 
             $partials = array('hoofding' => 'main_header',

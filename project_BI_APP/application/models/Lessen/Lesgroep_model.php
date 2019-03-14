@@ -39,9 +39,9 @@ class Lesgroep_model extends CI_Model
      * @post Er is een array met 1 lesgroep teruggegeven
      * @return array
      */
-    function getAllByIdWithInlogger()
+    function getAllByWeekdag()
     {
-        $this->db->orderby('id', 'asc');
+        $this->db->order_by('weekdag', 'asc');
         $query = $this->db->get('lesgroep');
         return $query->result();
 
