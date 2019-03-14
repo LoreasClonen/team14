@@ -8,5 +8,15 @@
      */
     class Lessen extends CI_Controller
     {
-        
+        public function __construct()
+        {
+            parent::__construct();
+            $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
+            $this->load->helper('form');
+        }
+
+        public function verwijderZwemles($id)
+        {
+            
+        }
     }
