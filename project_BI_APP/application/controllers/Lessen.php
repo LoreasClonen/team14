@@ -17,6 +17,13 @@
 
         public function verwijderZwemles($id)
         {
-            
+            $this->load->model('Lessen/Status_model');
+
+            $data['titel'] = 'Registratie zwemles annuleren';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'registratie_annuleren',
+                'voetnoot' => 'main_footer');
+            $this->template->load('main_master', $partials, $data);
         }
     }
