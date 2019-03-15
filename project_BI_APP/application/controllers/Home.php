@@ -30,7 +30,7 @@ class Home extends CI_Controller
         {
             $data['titel'] = 'Zwembad informatie';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
-            $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe';
 
             $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
 
