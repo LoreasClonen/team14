@@ -18,13 +18,18 @@
     echo form_input($dataNaam);
 
     echo form_label('Weekdag', 'weekdag');
-    $dataWeekdag = array(
+    $inhoudWeekdag = array(
         'maandag' => 'Maandag',
         'dinsdag' => 'Dinsdag',
         'woensdag' => 'Woensdag',
         'donderdag' => 'Donderdag',
         'vrijdag' => 'Vrijdag');
-    echo form_dropdown('weekdag', $dataWeekdag);
+    $dataWeekdag = array(
+        'id' => 'weekdag',
+        'name' => 'weekdag',
+        'class' => 'form-control',
+        'required' => 'required');
+    echo form_dropdown($dataWeekdag, $inhoudWeekdag);
 
     echo form_label('Zwemniveau', 'zwemniveau');
     $dataZwemniveau = array(
@@ -60,7 +65,7 @@
         'type' => 'time');
     echo form_input($dataEinduur);
 
-    echo form_hidden('gebruiker', $gebruiker->Id);
+    echo form_hidden('gebruiker', $gebruiker->id);
 
     echo form_submit(array("value" => "Toevoegen", "class" => "btn btn-primary my-3", "id" => "voegZwemgroepToe"));
     echo form_close();
