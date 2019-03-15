@@ -14,7 +14,8 @@ class Lesgroep_model extends CI_Model
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
+        $CI =& get_instance();
+        $CI->load->model('/Lessen/Inlogger_model', 'inlogger_model');
 
     }
 
@@ -46,20 +47,16 @@ class Lesgroep_model extends CI_Model
         return $query->row();
     }
 
-    function getAllByIdWithInlogger()
+    function getIdWithInlogger($id)
     {
 
-        $this->db->order_by('id', 'asc');
+        $this->db->where('id', $id);
         $query = $this->db->get('lesgroep');
-        $lesgroepen = $query->result();
+        $lesgroep = $query->row();
 
-        $this->load->model('Inlogger_model');
+        $lesgroep->inlogger = $this->inlogger_model->getById($lesgroep->inloggerId);
 
-        foreach ($lesgroepen as $lesgroep) {
-            $lesgroep->inlogger =
-                $this->inlogger_model->get($lesgroep->inloggerId);
-        }
-        return $lesgroepen;
+        return $lesgroep;
     }
 
 }

@@ -24,6 +24,7 @@
         {
             parent::__construct();
             $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
+            $this->load->model('Lessen/Inlogger_model', 'inlogger_model');
             $this->load->helper('form');
         }
 
@@ -49,6 +50,8 @@
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
 
             $data['zwemgroep'] = $this->lesgroep_model->get($id);
+            $data['lesgroep'] = $this->lesgroep_model->getIdWithInlogger($id);
+
 
             $partials = array('hoofding' => 'main_header',
             'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',
