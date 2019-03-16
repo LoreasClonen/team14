@@ -48,7 +48,7 @@ class Lesgroep_model extends CI_Model
     }
 
     /**
-     * functie get($id)
+     * functie getIdWithInlogger($id)
      * @brief geeft 1 specifieke lesgroep met bijhorende inlogger terug in de lesgroep tabel
      * @pre Er bestaat een Lesgroep model klasse, een Inlogger model klasse, een lesgroep met overeenkomstige id en een inlogger met overeenkomstige id
      * @post Er is een array met 1 lesgroep teruggegeven
@@ -67,7 +67,7 @@ class Lesgroep_model extends CI_Model
     }
 
     /**
-     * functie get($id)
+     * functie getIdWithZwemniveau($id)
      * @brief geeft 1 specifieke lesgroep met bijhorende zwemniveau terug in de lesgroep tabel
      * @pre Er bestaat een Lesgroep model klasse, een Zwemniveau model klasse, een lesgroep met overeenkomstige id en een zwemniveau met overeenkomstige id
      * @post Er is een array met 1 lesgroep teruggegeven

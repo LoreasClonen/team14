@@ -31,7 +31,7 @@ class Zwemniveau_model extends CI_Model
     }
 
     /**
-     * functie get($id)
+     * functie getById($id)
      * @brief geeft 1 specifieke zwemniveau terug in de zwemniveau tabel
      * @pre Er bestaat een Zwemniveau model klasse en een zwemniveau met overeenkomstige id
      * @post Er is een array met 1 zwemniveau teruggegeven
