@@ -47,20 +47,21 @@ class Klant_model extends CI_Model
 
     /**
      * functie get($id)
-     * @brief geeft 1 specifieke klant met bijhorende zwemniveau terug in de klant tabel
+     * @brief geeft alle klanten met bijhorende zwemniveau terug in de klant tabel
      * @pre Er bestaat een Klant model klasse, een Zwemniveau model klasse, een klant met overeenkomstige id en een zwemniveau met overeenkomstige id
-     * @post Er is een array met 1 klant teruggegeven
+     * @post Er is een array met 0 of meerdere klanten teruggegeven
      * @return array
      */
-    function getIdWithZwemniveau($id)
+    function getAllByVoornaamWithZwemniveau($zwemniveauId)
     {
 
-        $this->db->where('id', $id);
+        $this->db->where('zwemniveauId', $zwemniveauId);
         $query = $this->db->get('klant');
-        $zwemniveau = $query->row();
+        $zwemniveaus = $query->result();
 
-        $zwemniveau->zwemniveau = $this->zwemniveau_model->getById($zwemniveau->zwemniveauId);
-
+        foreach ($zwemniveaus as $zwemniveau) {
+            $zwemniveau->zwemniveau = $this->zwemniveau_model->getById($zwemniveau->zwemniveauId);
+        }
         return $zwemniveau;
     }
 }

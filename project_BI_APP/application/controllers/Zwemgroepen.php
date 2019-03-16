@@ -25,6 +25,7 @@
             parent::__construct();
             $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
             $this->load->model('Lessen/Inlogger_model', 'inlogger_model');
+            $this->load->model('Lessen/Klant_model', 'klant_model');
             $this->load->helper('form');
         }
 
@@ -43,7 +44,7 @@
             $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
         }
 
-        public function getZwemgroep($id)
+        public function getZwemgroep($id, $zwemniveauId)
         {
             $data['titel'] = 'lesgroep';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -53,6 +54,7 @@
             $data['inlogger'] = $this->lesgroep_model->getIdWithInlogger($id);
             $data['zwemniveau'] = $this->lesgroep_model->getIdWithZwemniveau($id);
 
+            $data['klanten'] = $this->klant_model->getAllByVoornaamWithZwemniveau($zwemniveauId);
 
             $partials = array('hoofding' => 'main_header',
             'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',

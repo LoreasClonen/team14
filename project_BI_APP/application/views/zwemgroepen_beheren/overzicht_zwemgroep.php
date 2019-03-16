@@ -12,6 +12,9 @@
 
         echo '<h5>Leerlingen:</h5><hr>';
 
+        foreach ($klanten as $klant) {
+            echo '<div>' . $klant->klant->id . '.</div>';
+        }
 
     ?>
 </div>
