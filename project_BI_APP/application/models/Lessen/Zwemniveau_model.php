@@ -29,4 +29,10 @@ class Zwemniveau_model extends CI_Model
         $query = $this->db->get('zwemniveau');
         return $query->result();
     }
+
+    function getById($id){
+        $this->db->where('id',$id );
+        $query = $this->db->get('zwemniveau');
+        return $query->row();
+    }
 }

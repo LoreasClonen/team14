@@ -50,7 +50,8 @@
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
 
             $data['zwemgroep'] = $this->lesgroep_model->get($id);
-            $data['lesgroep'] = $this->lesgroep_model->getIdWithInlogger($id);
+            $data['inlogger'] = $this->lesgroep_model->getIdWithInlogger($id);
+            $data['zwemniveau'] = $this->lesgroep_model->getIdWithZwemniveau($id);
 
 
             $partials = array('hoofding' => 'main_header',

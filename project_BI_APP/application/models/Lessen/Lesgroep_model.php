@@ -14,8 +14,8 @@ class Lesgroep_model extends CI_Model
     function __construct()
     {
         parent::__construct();
-        $CI =& get_instance();
-        $CI->load->model('/Lessen/Inlogger_model', 'inlogger_model');
+        $this->load->model('/Lessen/Inlogger_model', 'inlogger_model');
+        $this->load->model('/Lessen/Zwemniveau_model', 'zwemniveau_model');
 
     }
 
@@ -52,11 +52,23 @@ class Lesgroep_model extends CI_Model
 
         $this->db->where('id', $id);
         $query = $this->db->get('lesgroep');
-        $lesgroep = $query->row();
+        $inlogger = $query->row();
 
-        $lesgroep->inlogger = $this->inlogger_model->getById($lesgroep->inloggerId);
+        $inlogger->inlogger = $this->inlogger_model->getById($inlogger->inloggerId);
 
-        return $lesgroep;
+        return $inlogger;
+    }
+
+    function getIdWithZwemniveau($id)
+    {
+
+        $this->db->where('id', $id);
+        $query = $this->db->get('lesgroep');
+        $zwemniveau = $query->row();
+
+        $zwemniveau->zwemniveau = $this->zwemniveau_model->getById($zwemniveau->zwemniveauId);
+
+        return $zwemniveau;
     }
 
 }
