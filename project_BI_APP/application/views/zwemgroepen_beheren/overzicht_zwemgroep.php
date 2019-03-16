@@ -12,9 +12,20 @@
 
         echo '<h5>Leerlingen:</h5><hr>';
 
-        foreach ($klanten as $klant) {
-            echo '<div>' . $klant->voornaam . '</div>';
+        echo '<table style="width:100%">
+                <tr>
+                    <th>Naam</th>
+                    <th>Leeftijd</th> 
+                </tr>';
+
+        foreach ($beschikbaarheden as $beschikbaarheid) {
+            echo '<tr>
+                    <th>' . $beschikbaarheid->klant->voornaam . ' ' . $beschikbaarheid->klant->voornaam . '</th>
+                    <th>' . $beschikbaarheid->klant->geboortedatum . '</th>
+                   </tr>';
         }
+
+        echo '</table>';
 
     ?>
 </div>

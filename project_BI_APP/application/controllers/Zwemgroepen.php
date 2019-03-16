@@ -25,7 +25,7 @@
             parent::__construct();
             $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
             $this->load->model('Lessen/Inlogger_model', 'inlogger_model');
-            $this->load->model('Lessen/Klant_model', 'klant_model');
+            $this->load->model('Lessen/Beschikbaarheid_model', 'beschikbaarheid_model');
             $this->load->helper('form');
         }
 
@@ -53,6 +53,9 @@
             $data['zwemgroep'] = $this->lesgroep_model->get($id);
             $data['inlogger'] = $this->lesgroep_model->getIdWithInlogger($id);
             $data['zwemniveau'] = $this->lesgroep_model->getIdWithZwemniveau($id);
+
+            $data['beschikbaarheden'] = $this->beschikbaarheid_model->getByLesgroepIdWithKlant($id);
+
 
             $partials = array('hoofding' => 'main_header',
             'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',
