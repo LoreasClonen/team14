@@ -14,6 +14,8 @@ class Klant_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->model('/Lessen/Zwemniveau_model', 'zwemniveau_model');
+
     }
 
     /**
@@ -28,5 +30,37 @@ class Klant_model extends CI_Model
         $this->db->order_by('id', 'asc');
         $query = $this->db->get('klant');
         return $query->result();
+    }
+
+    /**
+     * functie get($id)
+     * @brief geeft 1 specifieke klant terug in de klant tabel
+     * @pre Er bestaat een Klant model klasse en een klant met overeenkomstige id
+     * @post Er is een array met 1 klant teruggegeven
+     * @return array
+     */
+    function getById($id){
+        $this->db->where('id',$id );
+        $query = $this->db->get('klant');
+        return $query->row();
+    }
+
+    /**
+     * functie get($id)
+     * @brief geeft 1 specifieke klant met bijhorende zwemniveau terug in de klant tabel
+     * @pre Er bestaat een Klant model klasse, een Zwemniveau model klasse, een klant met overeenkomstige id en een zwemniveau met overeenkomstige id
+     * @post Er is een array met 1 klant teruggegeven
+     * @return array
+     */
+    function getIdWithZwemniveau($id)
+    {
+
+        $this->db->where('id', $id);
+        $query = $this->db->get('klant');
+        $zwemniveau = $query->row();
+
+        $zwemniveau->zwemniveau = $this->zwemniveau_model->getById($zwemniveau->zwemniveauId);
+
+        return $zwemniveau;
     }
 }
