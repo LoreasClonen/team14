@@ -12,7 +12,7 @@
 
         echo '<h5>Leerlingen:</h5><hr>';
 
-        echo '<table style="width:100%">
+        echo '<table border="1"">
                 <tr>
                     <th>Naam</th>
                     <th>Leeftijd</th> 
