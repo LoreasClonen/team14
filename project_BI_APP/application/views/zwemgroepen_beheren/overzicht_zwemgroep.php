@@ -20,8 +20,8 @@
 
         foreach ($beschikbaarheden as $beschikbaarheid) {
             echo '<tr>
-                    <th>' . $beschikbaarheid->klant->voornaam . ' ' . $beschikbaarheid->klant->voornaam . '</th>
-                    <th>' . $beschikbaarheid->klant->geboortedatum . '</th>
+                    <td>' . $beschikbaarheid->klant->voornaam . ' ' . $beschikbaarheid->klant->voornaam . '</td>
+                    <td>' . $beschikbaarheid->klant->geboortedatum . '</td>
                    </tr>';
         }
 

@@ -27,7 +27,7 @@ class Zwemfeestjes extends CI_Controller
 
     public function zwemfeestMomentenOphalen()
     {
-        $data['zwemfeestMomenten'] = $this->zwemfeestMoment_model->getAllById();
+        $data['zwemfeestMomenten'] = $this->zwemfeestMoment_model->getAllByDatum();
 
         $data['titel'] = 'Overzicht zwemfeestjes';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
