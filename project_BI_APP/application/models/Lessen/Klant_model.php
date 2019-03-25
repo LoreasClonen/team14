@@ -15,7 +15,8 @@
         function __construct()
         {
             parent::__construct();
-            $this->load->model('zwemniveau_model');
+            $this->load->model('/Lessen/Zwemniveau_model', 'zwemniveau_model');
+
         }
 
         /**
