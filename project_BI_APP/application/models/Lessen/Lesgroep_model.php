@@ -14,7 +14,8 @@ class Lesgroep_model extends CI_Model
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
+        $this->load->model('/Lessen/Inlogger_model', 'inlogger_model');
+        $this->load->model('/Lessen/Zwemniveau_model', 'zwemniveau_model');
 
     }
 
@@ -46,20 +47,42 @@ class Lesgroep_model extends CI_Model
         return $query->row();
     }
 
-    function getAllByIdWithInlogger()
+    /**
+     * functie getIdWithInlogger($id)
+     * @brief geeft 1 specifieke lesgroep met bijhorende inlogger terug in de lesgroep tabel
+     * @pre Er bestaat een Lesgroep model klasse, een Inlogger model klasse, een lesgroep met overeenkomstige id en een inlogger met overeenkomstige id
+     * @post Er is een array met 1 lesgroep teruggegeven
+     * @return array
+     */
+    function getIdWithInlogger($id)
     {
 
-        $this->db->order_by('id', 'asc');
+        $this->db->where('id', $id);
         $query = $this->db->get('lesgroep');
-        $lesgroepen = $query->result();
+        $inlogger = $query->row();
 
-        $this->load->model('Inlogger_model');
+        $inlogger->inlogger = $this->inlogger_model->getById($inlogger->inloggerId);
 
-        foreach ($lesgroepen as $lesgroep) {
-            $lesgroep->inlogger =
-                $this->inlogger_model->get($lesgroep->inloggerId);
-        }
-        return $lesgroepen;
+        return $inlogger;
+    }
+
+    /**
+     * functie getIdWithZwemniveau($id)
+     * @brief geeft 1 specifieke lesgroep met bijhorende zwemniveau terug in de lesgroep tabel
+     * @pre Er bestaat een Lesgroep model klasse, een Zwemniveau model klasse, een lesgroep met overeenkomstige id en een zwemniveau met overeenkomstige id
+     * @post Er is een array met 1 lesgroep teruggegeven
+     * @return array
+     */
+    function getIdWithZwemniveau($id)
+    {
+
+        $this->db->where('id', $id);
+        $query = $this->db->get('lesgroep');
+        $zwemniveau = $query->row();
+
+        $zwemniveau->zwemniveau = $this->zwemniveau_model->getById($zwemniveau->zwemniveauId);
+
+        return $zwemniveau;
     }
 
 }

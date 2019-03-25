@@ -29,11 +29,14 @@
         {
             $data['titel'] = 'Aanmelden';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
-            $data['teamleden'] = 'Loreas Clonen (0), Mats Mertens (T), Shari Nuyts , Sebastiaan Reggers, Steven Van Gansberghe';
+
+            $data['teamleden'] = 'Loreas Clonen (O), Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe';
+
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'inloggen/inloggen_form',
-                'footer');
+                 'footer' => 'main_footer');
+
 
             $this->template->load('main_master', $partials, $data);
         }
@@ -54,9 +57,12 @@
         {
             $data['titel'] = 'Fout';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (O), Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe';
+
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => '/inloggen/inloggen_fout');
+                'inhoud' => '/inloggen/inloggen_fout',
+                'footer' => 'main_footer');
 
             $this->template->load('main_master', $partials, $data);
         }
@@ -72,11 +78,19 @@
             $data['titel'] = 'Uw wachtwoord herstellen';
 
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'inloggen/wachtwoord_vergeten');
+                'inhoud' => 'inloggen/wachtwoord_vergeten',
+                'footer' => 'main_footer');
 
             $this->template->load('main_master', $partials, $data);
+        }
+
+        function inloggerBestaat($email)
+        {
+            $this->Inlogger_model->emailBestaat($email);
         }
 
         public function mailWachtwoordVergeten()
@@ -104,9 +118,12 @@
             $data['titel'] = 'Nieuw wachtwoord ingeven';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
 //            $data['email'] = $email;
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'nieuw_wachtwoord_form');
+                'inhoud' => 'nieuw_wachtwoord_form',
+                'footer' => 'main_footer');
 
             $this->template->load('main_master', $partials, $data);
         }

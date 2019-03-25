@@ -24,9 +24,9 @@ class ZwemfeestMoment_model extends CI_Model
      * @post Er is een array met 0 of meerdere zwemfeestmomenten teruggegeven
      * @return array
      */
-    function getAllById()
+    function getAllByDatum()
     {
-        $this->db->order_by('naam', 'asc');
+        $this->db->order_by('datum', 'asc');
         $query = $this->db->get('zwemfeestMoment');
         return $query->result();
     }

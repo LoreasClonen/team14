@@ -24,6 +24,8 @@
         {
             parent::__construct();
             $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
+            $this->load->model('Lessen/Inlogger_model', 'inlogger_model');
+            $this->load->model('Lessen/Beschikbaarheid_model', 'beschikbaarheid_model');
             $this->load->helper('form');
         }
 
@@ -42,18 +44,24 @@
             $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
         }
 
-        public function getZwemgroepen($id)
+        public function getZwemgroep($id)
         {
             $data['titel'] = 'lesgroep';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
 
             $data['zwemgroep'] = $this->lesgroep_model->get($id);
+            $data['inlogger'] = $this->lesgroep_model->getIdWithInlogger($id);
+            $data['zwemniveau'] = $this->lesgroep_model->getIdWithZwemniveau($id);
+
+            $data['beschikbaarheden'] = $this->beschikbaarheid_model->getByLesgroepIdWithKlant($id);
 
 
             $partials = array('hoofding' => 'main_header',
-            'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep');
+            'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',
+            'footer' => 'main_footer');
 
-            $this->template->load('main_master', $partials, $data);
+            $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
         }
 
         public function zwemgroepToevoegenLaden()

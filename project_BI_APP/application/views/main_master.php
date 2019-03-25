@@ -54,9 +54,9 @@
             <!--            footer-->
             <footer>
                 <div class="row">
-                    <div class="col-12">
-                        <p>Copyright 2018-2019 - Thomas More team14. Alle rechten voorbehouden</p>
-                    </div>
+                    <div class="col-12 row">
+                        <?php echo "<div class='col-5'>" .  $footer . "</div>" .
+                            "<div class='col-7'>" . $teamleden . "</div>"; ?>
                 </div>
             </footer>
 
