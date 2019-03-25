@@ -6,6 +6,7 @@
      * @property Authex $authex
      * @property Klant_model $klant_model
      * @property Zwemniveau_model $zwemniveau_model
+     * @property Beschikbaarheid_model $beschikbaarheid_model
      */
     class Zwemmer extends CI_Controller
     {
@@ -55,5 +56,6 @@
 
             $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
         }
+
 
     }

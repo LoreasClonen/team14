@@ -2,6 +2,8 @@
     /**
      * @Class Klant_Model
      * @property Zwemniveau_model $zwemniveau_model
+     * @property Beschikbaarheid_model $beschikbaarheid_model
+     * @property Lesgroep_model $lesgroep_model
      */
 
     class Klant_model extends CI_Model
@@ -16,6 +18,8 @@
         {
             parent::__construct();
             $this->load->model('/Lessen/Zwemniveau_model', 'zwemniveau_model');
+            $this->load->model('/Lessen/Beschikbaarheid_model', 'beschikbaarheid_model');
+            $this->load->model('/Lessen/Lesgroep_model', 'lesgroep_model');
 
         }
 
@@ -61,9 +65,16 @@
             $klanten = $query->result();
 
             foreach ($klanten as $klant) {
-                $klant->zwemniveauId =
+                $klant->zwemniveau =
                     $this->zwemniveau_model->getById($klant->zwemniveauId);
+
+                $klant->beschikbaarheid =
+                    $this->beschikbaarheid_model->getByKlantId($klant->id);
+
+                $klant->lesgroep =
+                    $this->lesgroep_model->get($klant->beschikbaarheid->lesgroepId);
             }
+
 
             return $klanten;
         }
