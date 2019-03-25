@@ -86,6 +86,11 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        function inloggerBestaat($email)
+        {
+            $this->Inlogger_model->emailBestaat($email);
+        }
+
         public function mailWachtwoordVergeten()
         {
             $email = $this->input->post('email');
