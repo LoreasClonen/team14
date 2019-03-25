@@ -40,7 +40,7 @@
 
             <!--            pagina-inhoud-->
             <div class="row">
-                <div class="col-12 mb-2">
+                <div class="col-12 mb-2 text-center">
                     <h2><?php echo $titel; ?></h2>
                 </div>
             </div>

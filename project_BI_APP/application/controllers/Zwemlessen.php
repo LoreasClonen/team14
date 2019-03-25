@@ -26,6 +26,11 @@ class Zwemlessen extends CI_Controller
     }
 
     public function Index(){
-        
+        $data["titel"] = "Zwemlessen";
+        $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            'inhoud' => 'zwemlessen/aanmelden_zwemlessen_main',
+            'footer' => 'zwemlessen/aanmelden_zwemlessen_footer'
+            );
+        $this->template->load('main_master', $partials, $data);
     }
 }
