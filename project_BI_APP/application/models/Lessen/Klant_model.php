@@ -15,6 +15,7 @@
         function __construct()
         {
             parent::__construct();
+            $this->load->model('zwemniveau_model');
         }
 
         /**
@@ -58,13 +59,11 @@
             $query = $this->db->get('klant');
             $klanten = $query->result();
 
-            $this->load->model('zwemniveau_model');
-
             foreach ($klanten as $klant) {
                 $klant->zwemniveauId =
-                    $this->zwemniveau_model->get($klant->zwemniveauId);
+                    $this->zwemniveau_model->getById($klant->zwemniveauId);
             }
 
-            return $query->result();
+            return $klanten;
         }
     }
