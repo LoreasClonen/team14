@@ -33,4 +33,14 @@ class Zwemlessen extends CI_Controller
             );
         $this->template->load('main_master', $partials, $data);
     }
+    public function addKlant(){
+        $this->load->model("klant_model");
+
+        $klant = new stdClass();
+        $klant->voonaam = $this->input->post("voornaam");
+        $klant->achternaam = $this->input->post("achternaam");
+        $klant->email = $this->input->post("email");
+        $klant->geboortedatum = $this->input->post("geboortedatum");
+        $this->klant_model->addKlant($klant);
+    }
 }

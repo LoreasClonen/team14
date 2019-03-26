@@ -15,8 +15,8 @@ class Zwemfeest_model extends CI_Model
     }
 
     /**
-     * functie getAllByID()
-     * @brief geeft alle gerechten terug in de gerecht tabel
+
+     * @brief getAllByID() geeft alle gerechten terug in de gerecht tabel
      * @pre Er bestaat een Gerecht_model klasse
      * @post Er is een array met 0 of meerdere gerechten teruggegeven
      * @return array

@@ -32,7 +32,7 @@ class Klant_model extends CI_Model
 
     /**
      * functie getById($id)
-     * @brief geeft 1 specifieke klant terug in de klant tabel
+         * @brief geeft 1 specifieke klant terug in de klant tabel
      * @pre Er bestaat een Klant model klasse en een klant met overeenkomstige id
      * @post Er is een array met 1 klant teruggegeven
      * @return array
@@ -42,5 +42,8 @@ class Klant_model extends CI_Model
         $query = $this->db->get('klant');
         return $query->row();
     }
-
+    function addKlant($klant){
+        $this->db->insert('klant',$klant);
+        return $this->db->insert_id();
+    }
 }

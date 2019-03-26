@@ -15,7 +15,6 @@ class Beschikbaarheid_model extends CI_Model
     {
         parent::__construct();
         $this->load->model('/Lessen/Klant_model', 'klant_model');
-
     }
 
     /**
@@ -50,4 +49,6 @@ class Beschikbaarheid_model extends CI_Model
         }
         return $beschikbaarheden;
     }
+
+
 }
