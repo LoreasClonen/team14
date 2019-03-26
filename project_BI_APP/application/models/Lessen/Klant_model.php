@@ -77,10 +77,16 @@
             return $klanten;
         }
 
+        /** addKlant()
+         * @brief voegt een nieuwe klant toe aan de database in de klant tabel
+         * @pre Er bestaat een Klant model klasse
+         * @post Er is een rij toegevoegd in de klant tabel
+         * @return true
+         */
+        function addKlant($klant){
+            $this->db->insert('klant',$klant);
+            return $this->db->insert_id();
+        }
 
-    function addKlant($klant){
-        $this->db->insert('klant',$klant);
-        return $this->db->insert_id();
-    }
 }
 
