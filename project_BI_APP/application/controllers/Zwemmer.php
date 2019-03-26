@@ -5,6 +5,8 @@
      * @property Template $template
      * @property Authex $authex
      * @property Klant_model $klant_model
+     * @property Zwemniveau_model $zwemniveau_model
+     * @property Beschikbaarheid_model $beschikbaarheid_model
      */
     class Zwemmer extends CI_Controller
     {
@@ -39,5 +41,21 @@
 
             $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
         }
+
+        public function zwemmersOphalen()
+        {
+            $data['zwemmers'] = $this->klant_model->getAllByAchternaamWithLesgroepWithZwemniveau();
+
+            $data['titel'] = 'Overzicht zwemmers';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'zwemmers_beheren/overzicht_zwemmers',
+                'footer' => 'main_footer');
+
+            $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
+        }
+
 
     }

@@ -9,32 +9,30 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
-<?php
+            <?php
 
-            if ($gebruiker == null) { // niet aangemeld
-                echo '<li class="nav-item">' . anchor("Inloggen/meldAan", "Inloggen", "class = 'nav-link'") . '</li>';
+                if ($gebruiker == null) { // niet aangemeld
+                    echo '<li class="nav-item">' . anchor("Inloggen/meldAan", "Inloggen", "class = 'nav-link'") . '</li>';
 
+                } else { // wel aangemeld
+                    echo '<li class="nav-item">' . anchor('Inloggen/meldAf', 'Afmelden', "class = nav-link outline-right") . '</li>';
+                    echo '<li class="nav-item">' . anchor("", "Agenda", "class = 'nav-link'") . '</li>';
+                    echo '<li class="nav-item">' . anchor("Zwemmer/zwemmersOphalen", "Zwemmers", "class = 'nav-link'") . '</li>';
+                    echo '<li class="nav-item">' . anchor("", "Wachtlijst", "class = 'nav-link'") . '</li>';
+                    echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class = 'nav-link'") . '</li>';
+                    if ($gebruiker->isAdmin == 1) {
+                        echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("", "Scholen", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("", "Schoolfacturen", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("Zwemfeestjes/zwemfeestMomentenOphalen", "Zwemfeestjes", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("", "Nieuwsberichten", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("", "Voorraad producten", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("", "Aanwezigheden scholen", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("", "Gebruikers", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("", "Aanpassingen", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class='nav-link'") . '</li>';
+                    }
                 }
-
-            else { // wel aangemeld
-                echo '<li class="nav-item">' . anchor('Inloggen/meldAf', 'Afmelden' , "class = nav-link outline-right") . '</li>';
-                echo '<li class="nav-item">' . anchor("", "Agenda", "class = 'nav-link'") . '</li>';
-                echo '<li class="nav-item">' . anchor("", "Zwemmers", "class = 'nav-link'") . '</li>';
-                echo '<li class="nav-item">' . anchor("", "Wachtlijst", "class = 'nav-link'") . '</li>';
-                echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class = 'nav-link'") . '</li>';
-                if ($gebruiker->isAdmin == 1) {
-                    echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'" ) . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Scholen", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Schoolfacturen", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("Zwemfeestjes/zwemfeestMomentenOphalen", "Zwemfeestjes", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Nieuwsberichten", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Voorraad producten", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Aanwezigheden scholen", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Gebruikers", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Aanpassingen", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class='nav-link'") . '</li>';
-                   }
-            }
             ?>
 
         </ul>
@@ -43,8 +41,9 @@
 
 
 <div class="container my-4">
-<header class="jumbotron">
-    <h1>Kempenrust</h1>
-    <p>Welkom bij zwembad Kempenrust. Hier kan u terecht om makkelijk een zwemles te reserveren of om een zwemfeestje te boeken.</p>
+    <header class="jumbotron">
+        <h1>Kempenrust</h1>
+        <p>Welkom bij zwembad Kempenrust. Hier kan u terecht om makkelijk een zwemles te reserveren of om een
+            zwemfeestje te boeken.</p>
 
-</header>
+    </header>
