@@ -7,6 +7,7 @@
      * @property Klant_model $klant_model
      * @property Zwemniveau_model $zwemniveau_model
      * @property Beschikbaarheid_model $beschikbaarheid_model
+     * @property Lesgroep_model $lesgroep_model
      */
     class Zwemmer extends CI_Controller
     {
@@ -29,13 +30,13 @@
 
         public function zwemmerOphalen($id)
         {
-            $data['zwemmer'] = $this->klant_model->getAllById();
+            $data['zwemmer'] = $this->klant_model->getById($id);
 
             $data['titel'] = 'Overzicht zwemmer';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
 
-            $data['zwemgroep'] = $this->klant_model->getById($id);
+            $data['zwemniveau'] = $this->lesgroep_model->getIdWithZwemniveau($id);
 
 
             $partials = array('hoofding' => 'main_header',

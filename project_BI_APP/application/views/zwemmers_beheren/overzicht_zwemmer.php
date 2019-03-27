@@ -26,7 +26,7 @@
                         ?>
                     </td>
                     <td>
-                        <?php echo $zwemmer->zwemniveau->niveauNaam ?>
+                        <?php echo $zwemniveau->niveauNaam ?>
                     </td>
                     <td>
                         <?php
