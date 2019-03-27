@@ -30,11 +30,11 @@
                     </td>
                     <td>
                         <?php
-                            if ($zwemmer->beschikbaarheid->statusId == 2) {
-                                echo $zwemmer->lesgroep->groepsnaam;
-                            } else {
-                                echo "Geen lesgroep";
+                            foreach($zwemgroep as $zwemgroepNaam) {
+                                echo $zwemgroepNaam->groepsnaam . ' ';
                             }
+
+
                         ?>
                     </td>
 
