@@ -35,6 +35,9 @@
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
 
+            $data['zwemgroep'] = $this->klant_model->getById($id);
+
+
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemmers_beheren/overzicht_zwemmer',
                 'footer' => 'main_footer');
