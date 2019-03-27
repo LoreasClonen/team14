@@ -53,6 +53,7 @@ class Zwemlessen extends CI_Controller
         $klant->achternaam = $this->input->post("achternaam");
         $klant->email = $this->input->post("email");
         $klant->geboortedatum = $this->input->post("geboortedatum");
+        $klant->zwemniveauId = $this->input->post("zwemniveau");
         $this->klant_model->addKlant($klant);
     }
 }

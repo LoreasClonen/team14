@@ -45,12 +45,37 @@
                     'size' => '30',
                     'type' => 'date');
                 echo form_input($dataGeboortedatum);
-                $options = array();
+            echo form_label('straatnaam', 'straatnaam');
+            $dataStraatnaam = array('id' => 'straatnaam',
+                'name' => 'email',
+                'class' => 'form-control',
+                'placeholder' => 'Straatnaam',
+                'required' => 'required',
+                'size' => '30');
+            echo form_input($dataStraatnaam);
+            echo form_label('Huisnummer', 'huisnummer');
+            $dataEmail = array('id' => 'email',
+                'name' => 'email',
+                'class' => 'form-control',
+                'placeholder' => 'e-mail',
+                'required' => 'required',
+                'size' => '30');
+            echo form_input($dataEmail);
+            echo form_label('postcode', 'postcode');
+            $dataPostcode = array('id' => 'postcode',
+                'name' => 'postcode',
+                'class' => 'form-control',
+                'placeholder' => 'postcode',
+                'required' => 'required',
+                'size' => '30');
+            echo form_input($dataPostcode);
+
+            $options = array();
                 foreach($zwemniveaus as $option){
-                    array_push($options, $option->niveauNaam);
+                    $options[$option->id] = $option->niveauNaam;
                 }
                 echo form_label("zwemniveau");
-                echo form_dropdown('zwemniveau', $options, '1', 'class="form-control dropdown"');
+                echo form_dropdown('zwemniveau', $options, 'kinderen beginner', 'class="form-control dropdown"');
 
 
                 echo form_submit(array("value" => "Inschrijven", "class" => "btn btn-primary my-3", "id" => "schrijfIn"));

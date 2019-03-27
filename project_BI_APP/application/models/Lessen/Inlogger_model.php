@@ -67,7 +67,7 @@
         function emailBestaat($email)
         {
             $this->db->where('email', $email);
-            $query = $this->db->get('Inlogger');
+            $query = $this->db->get('inlogger');
             if ($query->num_rows() > 0) {
                 return true;
             } else {

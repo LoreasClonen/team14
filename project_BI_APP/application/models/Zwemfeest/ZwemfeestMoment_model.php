@@ -16,6 +16,7 @@ class ZwemfeestMoment_model extends CI_Model
     {
         parent::__construct();
         $this->load->model('/Zwemfeest/Zwemfeest_model', 'zwemfeest_model');
+        $this->load->model('/Zwemfeest/Gerecht_model', 'gerecht_model');
 
     }
 
@@ -38,6 +39,21 @@ class ZwemfeestMoment_model extends CI_Model
             $zwemfeestMoment->zwemfeest = $this->zwemfeest_model->getById($zwemfeestMoment->zwemfeestId);
         }
         return $zwemfeestMomenten;
+    }
+
+    function getByIdWithEverything($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('zwemfeestMoment');
+        $zwemfeestMoment = $query->row();
+
+        $this->load->model('zwemfeest_model');
+        $zwemfeestMoment->zwemfeestje = $this->zwemfeest_model->getById($zwemfeestMoment->zwemfeestId);
+
+        $this->load->model('gerecht_model');
+        $zwemfeestMoment->gerecht = $this->gerecht_model->getById($zwemfeestMoment->zwemfeestId);
+
+        return $zwemfeestMoment;
     }
 
 

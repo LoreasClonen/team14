@@ -42,9 +42,9 @@ class Zwemfeestjes extends CI_Controller
         $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
     }
 
-    public function zwemfeestjeOphalen($id)
+    public function getZwemfeestje($id)
     {
-        $data['zwemfeest'] = $this->zwemfeest_model->getById($id);
+        $data['zwemfeestje'] = $this->zwemfeestMoment_model->getByIdWithEverything($id);
 
         $data['titel'] = 'Overzicht zwemfeestje';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();

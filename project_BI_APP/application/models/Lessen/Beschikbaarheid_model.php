@@ -40,11 +40,11 @@
          * @post Er is een array met 1 of meerdere beschikbaarheden teruggegeven
          * @return array
          */
-        function getByKlantId($id)
+        function getByKlantId($klantId)
         {
-            $this->db->where('id', $id);
+            $this->db->where('klantId', $klantId);
             $query = $this->db->get('beschikbaarheid');
-            return $query->row();
+            return $query->result();
         }
 
         /**

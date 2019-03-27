@@ -58,5 +58,20 @@ class Gerecht_model extends CI_Model
         $query = $this->db->where('prijs',$prijs);
         return $query->result();
     }
+
+    /**
+     * functie GetById(id)
+     * @brief geeft een gerecht terug met een bepaalde id
+     * @pre Er bestaat een Gerecht_model klasse
+     * @post Er is een array met 1 gerecht teruggegeven
+     * @param $id
+     * @return array
+     */
+    function getById($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('gerecht');
+        return $query->row();
+    }
 }
 
