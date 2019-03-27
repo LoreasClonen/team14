@@ -83,10 +83,9 @@
          * @post Er is een rij toegevoegd in de klant tabel
          * @return true
          */
-        function addKlant($klant)
-        {
-            $this->db->insert('klant', $klant);
-            return $this->db->insert_id();
+        function addKlant($klant){
+            $this->db->insert('klant',$klant);
+
         }
 
     }

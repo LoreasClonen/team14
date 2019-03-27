@@ -45,9 +45,12 @@ class Zwemlessen extends CI_Controller
     }
     public function addKlant(){
         $this->load->model("lessen/klant_model", "klant_model");
+        $this->load->model("lessen/Zwemniveau_model", "zwemniveau_model")
+
+
 
         $klant = new stdClass();
-        $klant->voonaam = $this->input->post("voornaam");
+        $klant->voornaam = $this->input->post("voornaam");
         $klant->achternaam = $this->input->post("achternaam");
         $klant->email = $this->input->post("email");
         $klant->geboortedatum = $this->input->post("geboortedatum");
