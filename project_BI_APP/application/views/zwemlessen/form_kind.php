@@ -7,12 +7,7 @@
 
 
                 echo "<hr />";
-                echo "<div>";
-                echo form_label('Mijzelf ', 'Persoon');
-                echo form_radio('Persoon','Volwassene') ;
-                echo form_label('Mijn kind ', 'Persoon');
-                echo form_radio('Persoon', 'Kind');
-                echo "</div>";
+
 
                 echo form_label('voornaam', 'voornaam');
                 $dataVoornaam = array('id' => 'voornaam',
@@ -55,7 +50,7 @@
                     array_push($options, $option->niveauNaam);
                 }
                 echo form_label("zwemniveau");
-                echo form_dropdown('zwemniveau', $options, '1', 'class="dropdown"');
+                echo form_dropdown('zwemniveau', $options, '1', 'class="form-control dropdown"');
 
 
                 echo form_submit(array("value" => "Inschrijven", "class" => "btn btn-primary my-3", "id" => "schrijfIn"));

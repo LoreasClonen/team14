@@ -42,6 +42,11 @@
             $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
         }
 
+        /**
+         * @brief Geeft een pagina weer die zwemmers oplijst in een tabel
+         * @pre er bestaat een Zwemmer controller
+         * @post Er word een pagina weergegeven die alle zwemmers in een tabel weergeeft
+         */
         public function zwemmersOphalen()
         {
             $data['zwemmers'] = $this->klant_model->getAllByAchternaamWithLesgroepWithZwemniveau();
