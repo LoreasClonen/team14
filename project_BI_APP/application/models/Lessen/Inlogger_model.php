@@ -37,6 +37,13 @@
             return $query->row();
         }
 
+        function getByEmail($email)
+        {
+            $this->db->where('email', $email);
+            $query = $this->db->get('inlogger');
+            return $query->row();
+        }
+
         /**
          * functie getGebruiker($email, $wachtwoord)
          * @brief geeft 1 specifieke inlogger terug
