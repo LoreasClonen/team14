@@ -1,9 +1,9 @@
 <div class="col-12 mb-2">
     <?php
 
-        //echo '<button>' . anchor("Zwemgroepen/zwemgroepenOphalen", "Terug", "class='nav-link'") . '</button>';
 
-        echo '<h3>Zwemgroep ' . $zwemgroep->groepsnaam . '</h3><hr>';
+
+        echo '<div class="row"><div class="col-8"><h3>Zwemgroep ' . $zwemgroep->groepsnaam . '</h3></div><div class="col-4 text-right">'  . anchor("Zwemgroepen/verwijderZwemgroep", "Verwijder deze zwemgroep", "class='btn btn-danger'") . ' ' . anchor("Zwemgroepen/zwemgroepenOphalen", "Terug", "class='btn btn-primary'") . '</div></div><hr>';
         echo '<div>Op ' . $zwemgroep->weekdag . ' van ' . date("H:i", strtotime($zwemgroep->beginuur)) . ' tot ' . date("H:i", strtotime($zwemgroep->einduur)) . '.</div>';
         echo '<div>Maximum ' . $zwemgroep->maxGrootte . ' leerlingen met zwemniveau "' . $zwemniveau->zwemniveau->niveauNaam . '" bij deze zwemgroep.</div>';
 
