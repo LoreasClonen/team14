@@ -29,6 +29,7 @@ class Zwemgroepen extends CI_Controller
         $this->load->model('Lessen/Beschikbaarheid_model', 'beschikbaarheid_model');
         $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
         $this->load->helper('form');
+        $this->load->helper('notation_helper');
     }
 
     public function zwemgroepenOphalen()

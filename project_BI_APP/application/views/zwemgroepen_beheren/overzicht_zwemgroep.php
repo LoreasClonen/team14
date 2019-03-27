@@ -15,13 +15,13 @@
         echo '<table class="table">
                 <tr>
                     <th scope="col">Naam</th>
-                    <th scope="col">Leeftijd</th> 
+                    <th scope="col">Geboortedatum</th> 
                 </tr>';
 
         foreach ($beschikbaarheden as $beschikbaarheid) {
             echo '<tr>
-                    <td>' . $beschikbaarheid->klant->voornaam . ' ' . $beschikbaarheid->klant->voornaam . '</td>
-                    <td>' . $beschikbaarheid->klant->geboortedatum . '</td>
+                    <td>' . $beschikbaarheid->klant->voornaam . ' ' . $beschikbaarheid->klant->achternaam . '</td>
+                    <td>' . zetOmNaarDDMMYYYY($beschikbaarheid->klant->geboortedatum) . '</td>
                    </tr>';
         }
 
