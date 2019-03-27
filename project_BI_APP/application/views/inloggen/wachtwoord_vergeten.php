@@ -1,12 +1,12 @@
 <div class="col-12 mt-3">
     <?php
-        $attributen = array('name' => 'wachtwoordVergeten', 'id' => 'wachtwoordVergeten');
+        $attributen = array('name' => 'wachtwoordVergeten', 'id' => 'wachtwoordVergetenFormulier', 'role' => 'form');
         echo form_open('Inloggen/mailWachtwoordVergeten', $attributen);
     ?>
 
     <div class="form-group">
         <?php
-            echo form_label('Email', 'email');
+            echo form_label('E-mail', 'email');
 
             $dataEmail = array('id' => 'email',
                 'type' => 'email',

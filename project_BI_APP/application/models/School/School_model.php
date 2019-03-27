@@ -17,15 +17,14 @@
         }
 
         /**
-         * functie getAllByID()
          * @brief geeft alle scholen terug in de school tabel
          * @pre Er bestaat een School_model klasse
          * @post Er is een array met 0 of meerdere scholen teruggegeven
          * @return array
          */
-        function getAllById()
+        function getAllBySchoolnaam()
         {
-            $this->db->order_by('id', 'asc');
+            $this->db->order_by('schoolnaam', 'asc');
             $query = $this->db->get('school');
             return $query->result();
         }

@@ -3,7 +3,7 @@
 
 
 
-        echo '<div class="row"><div class="col-8"><h3>Zwemgroep ' . $zwemgroep->groepsnaam . '</h3></div><div class="col-4 text-right">'  . anchor("Zwemgroepen/verwijderZwemgroep", "Verwijder", "class='btn btn-danger'") . ' ' . anchor("Zwemgroepen/zwemgroepenOphalen", "Terug", "class='btn btn-primary'") . '</div></div><hr>';
+        echo '<div class="row"><div class="col-8"><h3>Zwemgroep ' . $zwemgroep->groepsnaam . '</h3></div><div class="col-4 text-right">'  . anchor("Zwemgroepen/verwijderZwemgroep/" . $zwemgroep->id, "Verwijder", "class='btn btn-danger'") . ' ' . anchor("Zwemgroepen/zwemgroepenOphalen", "Terug", "class='btn btn-primary'") . '</div></div><hr>';
         echo '<div>Op ' . $zwemgroep->weekdag . ' van ' . date("H:i", strtotime($zwemgroep->beginuur)) . ' tot ' . date("H:i", strtotime($zwemgroep->einduur)) . '.</div>';
         echo '<div>Maximum ' . $zwemgroep->maxGrootte . ' leerlingen met zwemniveau "' . $zwemniveau->zwemniveau->niveauNaam . '" bij deze zwemgroep.</div>';
 

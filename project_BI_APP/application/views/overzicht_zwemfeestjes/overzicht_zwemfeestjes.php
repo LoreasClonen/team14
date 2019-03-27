@@ -11,7 +11,7 @@
     foreach ($zwemfeestMomenten as $zwemfeestMoment)
     {
         echo "<tr>
-                <td>" . anchor('Zwemfeestjes/getZwemfeestje/' . $zwemfeestMoment->id, zetOmNaarDDMMYYYY($zwemfeestMoment->datum)) . "</td>
+                <td>" . anchor('Zwemfeestjes/zwemfeestjeOphalen/' . $zwemfeestMoment->id, zetOmNaarDDMMYYYY($zwemfeestMoment->datum)) . "</td>
                 <td>" . $zwemfeestMoment->zwemfeest->voornaam . ' ' . $zwemfeestMoment->zwemfeest->achternaam . "</td>
                 <td>" . date("H:i", strtotime($zwemfeestMoment->beginuur)) . ' - ' .  date("H:i", strtotime($zwemfeestMoment->einduur)) . "</td>
                 <td>";

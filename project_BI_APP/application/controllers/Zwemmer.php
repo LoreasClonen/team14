@@ -7,6 +7,7 @@
      * @property Klant_model $klant_model
      * @property Zwemniveau_model $zwemniveau_model
      * @property Beschikbaarheid_model $beschikbaarheid_model
+     * @property Lesgroep_model $lesgroep_model
      */
     class Zwemmer extends CI_Controller
     {
@@ -24,19 +25,31 @@
         {
             parent::__construct();
             $this->load->model('Lessen/Klant_model', 'klant_model');
+            $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
+            $this->load->model('Lessen/Beschikbaarheid_model', 'beschikbaarheid_model');
+            $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
             $this->load->helper('form');
         }
 
         public function zwemmerOphalen($id)
         {
-            $data['zwemmer'] = $this->klant_model->getAllById();
+            $zwemmer = $this->klant_model->getById($id);
+            $data['zwemmer'] = $zwemmer;
 
             $data['titel'] = 'Overzicht zwemmer';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
 
-            $data['zwemgroep'] = $this->klant_model->getById($id);
+            $data['zwemniveau'] = $this->zwemniveau_model->getById($zwemmer->zwemniveauId);
 
+            $zwemgroepen = $this->beschikbaarheid_model->getByKlantId($id);
+            $groepsnamen = array();
+
+            foreach ($zwemgroepen as $zwemgroep)
+            {
+                array_push($groepsnamen, $this->lesgroep_model->get($zwemgroep->lesgroepId));
+            }
+            $data['zwemgroep'] = $groepsnamen;
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemmers_beheren/overzicht_zwemmer',

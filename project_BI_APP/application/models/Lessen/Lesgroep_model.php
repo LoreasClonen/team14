@@ -48,6 +48,19 @@ class Lesgroep_model extends CI_Model
     }
 
     /**
+     * functie get($id)
+     * @brief geeft 1 specifieke lesgroep terug in de lesgroep tabel
+     * @pre Er bestaat een Lesgroep model klasse en een lesgroep met overeenkomstige id
+     * @post Er is een array met 1 lesgroep teruggegeven
+     * @return array
+     */
+    function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('lesgroep');
+    }
+
+    /**
      * functie getIdWithInlogger($id)
      * @brief geeft 1 specifieke lesgroep met bijhorende inlogger terug in de lesgroep tabel
      * @pre Er bestaat een Lesgroep model klasse, een Inlogger model klasse, een lesgroep met overeenkomstige id en een inlogger met overeenkomstige id
