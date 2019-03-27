@@ -23,10 +23,13 @@ class Zwemlessen extends CI_Controller
         parent::__construct();
         $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
         $this->load->helper('form');
+        $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
     }
 
     public function Index(){
         $data["titel"] = "Zwemlessen";
+        $data["teamleden"]= "";
+        $data["zwemniveaus"] = $this->zwemniveau_model->getAllById();
         $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
             'inhoud' => 'zwemlessen/aanmelden_zwemlessen_main',
             'footer' => 'zwemlessen/aanmelden_zwemlessen_footer'

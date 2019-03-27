@@ -50,7 +50,10 @@
                     'size' => '30',
                     'type' => 'date');
                 echo form_input($dataGeboortedatum);
-
+                $options = array();
+                foreach($zwemniveaus as $option){
+                    array_push($options, $option->niveauNaam);
+                }
                 echo form_label("zwemniveau");
                 echo form_dropdown('zwemniveau', $options, '1', 'class="dropdown"');
 
