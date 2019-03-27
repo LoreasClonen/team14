@@ -43,4 +43,17 @@
             $query = $this->db->get('school');
             return $query->result();
         }
+
+        /**
+         * @brief geeft 1 specifieke school terug in de school tabel
+         * @pre Er bestaat een School model klasse en een school met overeenkomstige id
+         * @post Er is een array met 1 school teruggegeven
+         * @return array
+         */
+        function get($id)
+        {
+            $this->db->where('id', $id);
+            $query = $this->db->get('school');
+            return $query->row();
+        }
     }

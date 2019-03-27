@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Input $input
  * @property Authex $authex
  * @property School_model $school_model
+ * @property Factuur_model factuur_model
  */
 class Facturen extends CI_Controller
 {
@@ -24,9 +25,10 @@ class Facturen extends CI_Controller
     {
         parent::__construct();
         $this->load->model('School/School_model', 'school_model');
+        $this->load->model('School/Factuur_model', 'factuur_model');
     }
 
-    public function scholenOphalen()
+    public function getScholen()
     {
         $data['scholen'] = $this->school_model->getAllBySchoolnaam();
 
@@ -41,5 +43,19 @@ class Facturen extends CI_Controller
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
 
+    public function getSchool($schoolId)
+    {
+        $data['titel'] = 'Facturen';
+        $data['gebruiker'] = $this->authex->getGebruikerInfo();
+        $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
+
+        $data['zwemgroep'] = $this->factuur_model->get($schoolId);
+
+        $partials = array('hoofding' => 'main_header',
+            'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',
+            'footer' => 'main_footer');
+
+        $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
+    }
 
 }

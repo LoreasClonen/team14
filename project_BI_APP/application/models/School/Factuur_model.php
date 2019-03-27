@@ -17,6 +17,7 @@
         function __construct()
         {
             parent::__construct();
+            $this->load->model('/School/School_model', 'school_model');
         }
 
         /**
@@ -47,4 +48,37 @@
             $query = $this->db->get('factuur');
             return $query->result();
         }
+
+        /**
+         * @brief geeft 1 specifieke factuur terug in de factuur tabel
+         * @pre Er bestaat een Factuur model klasse en een factuur met overeenkomstige id
+         * @post Er is een array met 1 factuur teruggegeven
+         * @return array
+         */
+        function get($id)
+        {
+            $this->db->where('id', $id);
+            $query = $this->db->get('factuur');
+            return $query->row();
+        }
+
+        /**
+         * @brief geeft 1 specifieke lesgroep met bijhorende inlogger terug in de lesgroep tabel
+         * @pre Er bestaat een Lesgroep model klasse, een Inlogger model klasse, een lesgroep met overeenkomstige id en een inlogger met overeenkomstige id
+         * @post Er is een array met 1 lesgroep teruggegeven
+         * @return array
+         */
+        function getSchoolIdWithSchool($schoolId)
+        {
+
+            $this->db->where('schoolId', $schoolId);
+            $query = $this->db->get('factuur');
+            $school = $query->row();
+
+            $school->school = $this->school_model->get($school->inloggerId);
+
+            return $school;
+        }
+
+
     }
