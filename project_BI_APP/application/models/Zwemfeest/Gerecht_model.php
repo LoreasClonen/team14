@@ -27,7 +27,7 @@ class Gerecht_model extends CI_Model
     function getAllById()
     {
         $this->db->order_by('naam', 'asc');
-        $query = $this->db->get('Gerecht');
+        $query = $this->db->get('gerecht');
         return $query->result();
     }
 
