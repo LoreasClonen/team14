@@ -23,7 +23,7 @@
                     if ($gebruiker->isAdmin == 1) {
                         echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Scholen", "class = 'nav-link'") . '</li>';
-                        echo '<li class="nav-item">' . anchor("", "Schoolfacturen", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("Facturen/scholenOphalen", "Schoolfacturen", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("Zwemfeestjes/zwemfeestMomentenOphalen", "Zwemfeestjes", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Nieuwsberichten", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Voorraad producten", "class = 'nav-link'") . '</li>';

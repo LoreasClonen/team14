@@ -1,7 +1,16 @@
+<table class="table">
+
 <?php
-/**
- * Created by PhpStorm.
- * User: Mats
- * Date: 27/03/2019
- * Time: 14:34
- */
+
+foreach ($scholen as $school)
+{
+    echo "<tr>
+               <td scope='col'>" . $school->schoolnaam . "</td>
+               <td scope='col'>" . anchor('Facturen/factuurOverzicht/' . $school->id, '<i class="fas fa-angle-right"></i>'). "</td>
+                
+          </tr>";
+}
+
+echo '</table>';
+
+?>
