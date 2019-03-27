@@ -85,6 +85,7 @@
          */
         function addKlant($klant){
             $this->db->insert('klant',$klant);
+            $this->db->insert_id();
 
         }
 
