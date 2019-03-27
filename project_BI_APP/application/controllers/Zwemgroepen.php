@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * @property Template $template
+ * @property CI_Input $input
  * @property Authex $authex
  * @property Lesgroep_model $lesgroep_model
  * @property Zwemniveau_model $zwemniveau_model
+ * @property Beschikbaarheid_model $beschikbaarheid_model
  */
 
 class Zwemgroepen extends CI_Controller
@@ -83,9 +85,19 @@ class Zwemgroepen extends CI_Controller
 
     public function addZwemgroep()
     {
-        $groepsnaam = $this->input->post('email');
-        $weekdag = $this->input->post('wachtwoord');
+        $zwemgroep = new stdClass();
 
+        $zwemgroep->groepsnaam = $this->input->post('groepsnaam');
+        $zwemgroep->weekdag = $this->input->post('weekdag');
+        $zwemgroep->zwemniveauId = $this->input->post('zwemniveau');
+        $zwemgroep->maxGrootte = $this->input->post('maxGrootte');
+        $zwemgroep->beginuur = $this->input->post('beginuur');
+        $zwemgroep->einduur = $this->input->post('einduur');
+        $zwemgroep->inloggerId = $this->input->post('gebruiker');
+
+        $this->lesgroep_model->insert($zwemgroep);
+
+        $this->zwemgroepenOphalen();
     }
 
 }
