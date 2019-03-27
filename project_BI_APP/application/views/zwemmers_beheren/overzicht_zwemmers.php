@@ -17,7 +17,7 @@
             ?>
             <tr>
                 <td>
-                    <?php echo anchor("Zwemmer/zwemmerOphalen($zwemmer->id)", $naam); ?>
+                    <?php echo anchor('Zwemmer/zwemmerOphalen/' . $zwemmer->id, $naam); ?>
                 </td>
                 <td>
                     <?php
@@ -39,8 +39,8 @@
                         } ?>
                 </td>
                 <td class="text-center"><?php
-                        echo anchor("/Zwemmer/zwemmerOphalen($zwemmer->id)", "<i class='fas fa-edit'></i>") . " ";
-                        echo anchor("/Zwemmer/zwemmerVerwijderen($zwemmer->id)", "<i class='fas fa-trash-alt'></i>"); ?>
+                        echo anchor('Zwemmer/zwemmerOphalen/' . $zwemmer->id, "<i class='fas fa-edit'></i>") . " ";
+                        echo anchor('Zwemmer/zwemmerOphalen/' . $zwemmer->id, "<i class='fas fa-trash-alt'></i>"); ?>
                 </td>
             </tr>
         <?php } ?>

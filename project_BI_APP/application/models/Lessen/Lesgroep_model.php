@@ -85,6 +85,10 @@ class Lesgroep_model extends CI_Model
         return $zwemniveau;
     }
 
-
+    function insert($zwemgroep)
+    {
+        $this->db->insert('lesgroep', $zwemgroep);
+        $this->db->insert_id();
+    }
 
 }
