@@ -1,45 +1,45 @@
 <div class="col-12 mt-3">
-    <?php
-        $attributes = array('name' => 'overzicht_zwemmer', 'id' => 'overzichtZwemmerFormulier', 'role' => 'form');
-        echo form_open('', $attributes);
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Leeftijd</th>
+            <th scope="col">Niveau</th>
+            <th scope="col">Zwemgroep</th>
 
+        </tr>
+        </thead>
+        <tbody>
 
-        echo "<hr />";
+                <tr>
+                    <td>
+                        <?php echo "<i class=\"fas fa-user\"></i> " . $zwemmer->voornaam . " " . $zwemmer->achternaam; ?>
+                    </td>
+                    <td>
+                        <?php
+                            $leeftijd = (int)date("Y m d") - (int)$zwemmer->geboortedatum;
+                            if ($leeftijd == date("Y")) {
+                                echo "/";
+                            } else {
+                                echo $leeftijd . " jaar";
+                            }
+                        ?>
+                    </td>
+                    <td>
+                        <?php echo $zwemmer->zwemniveau->niveauNaam ?>
+                    </td>
+                    <td>
+                        <?php
+                            if ($zwemmer->beschikbaarheid->statusId == 2) {
+                                echo $zwemmer->lesgroep->groepsnaam;
+                            } else {
+                                echo "Geen lesgroep";
+                            }
+                        ?>
+                    </td>
 
-        echo form_label('Voornaam', 'voornaam');
-        $dataVoornaam = array(
-            'id' => 'voornaam',
-            'name' => 'voornaam',
-            'class' => 'form-control',
-            'placeholder' => '',
-            'required' => 'required',
-            'size' => '30');
-        echo form_input($dataVoornaam);
+                </tr>
 
-        echo form_label('Achternaam', 'achternaam');
-        $dataNaam = array(
-            'id' => 'achternaam',
-            'name' => 'achternaam',
-            'class' => 'form-control',
-            'placeholder' => '',
-            'required' => 'required',
-            'size' => '30');
-        echo form_input($dataNaam);
-
-        echo form_label('Zwemniveau', 'zwemniveau');
-        $dataZwemniveau = array(
-            'id' => 'zwemniveau',
-            'name' => 'zwemniveau',
-            'class' => 'form-control',
-            'placeholder' => '',
-            'required' => 'required',
-            'size' => '30');
-        echo form_input($dataZwemniveau);
-
-        echo form_input('zwemniveau', $dataZwemniveau);
-
-        echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary my-3", "id" => "slaZwemmerOp"));
-        echo form_close();
-
-    ?>
+        </tbody>
+    </table>
 </div>

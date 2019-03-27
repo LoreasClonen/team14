@@ -1,21 +1,27 @@
-<?php
+<table class="table">
+    <tr>
+        <th scope="col">Datum</th>
+        <th scope="col">Naam organisator</th>
+        <th scope="col">Tijd</th>
+        <th scope="col">Goedgekeurd</th>
+    </tr>
 
-    echo '<table border="1"">
-                <tr>
-                    <th>Datum</th>
-                    <th>Naam organisator</th> 
-                    <th>Tijd</th>
-                    <th>Goedgekeurd</th>
-                </tr>';
+<?php
 
     foreach ($zwemfeestMomenten as $zwemfeestMoment)
     {
         echo "<tr>
                 <td>" . anchor('Zwemfeestjes/getZwemfeestje/' . $zwemfeestMoment->id, $zwemfeestMoment->datum) . "</td>
-                <td>" . anchor('Zwemfeestjes/getZwemfeestje/' . $zwemfeestMoment->id, $zwemfeestMoment->id) . "</td>
-                <td>" . anchor('Zwemfeestjes/getZwemfeestje/' . $zwemfeestMoment->id, date("H:i", strtotime($zwemfeestMoment->beginuur)) . ' - ' .  date("H:i", strtotime($zwemfeestMoment->einduur))) . "</td>
-                <td>" . anchor('Zwemfeestjes/getZwemfeestje/' . $zwemfeestMoment->id, $zwemfeestMoment->zwemfeestId) . "</td>
-             </tr>";
+                <td>" . $zwemfeestMoment->zwemfeest->voornaam . ' ' . $zwemfeestMoment->zwemfeest->achternaam . "</td>
+                <td>" . date("H:i", strtotime($zwemfeestMoment->beginuur)) . ' - ' .  date("H:i", strtotime($zwemfeestMoment->einduur)) . "</td>
+                <td>";
+        if ($zwemfeestMoment->zwemfeest->isBevestigd == 1) {
+            echo "Ja";
+        }
+        else {
+            echo "Nee";
+        }
+        echo "</td></tr>";
     }
 
     echo '</table>';

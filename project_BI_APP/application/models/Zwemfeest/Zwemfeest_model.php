@@ -15,7 +15,7 @@ class Zwemfeest_model extends CI_Model
     }
 
     /**
-
+     * functie getAllById()
      * @brief getAllByID() geeft alle gerechten terug in de gerecht tabel
      * @pre Er bestaat een Gerecht_model klasse
      * @post Er is een array met 0 of meerdere gerechten teruggegeven
@@ -26,6 +26,20 @@ class Zwemfeest_model extends CI_Model
         $this->db->order_by('id', 'asc');
         $query = $this->db->get('zwemfeest');
         return $query->result();
+    }
+
+    /**
+     * functie getById($id)
+     * @brief geeft 1 specifieke klant terug in de klant tabel
+     * @pre Er bestaat een Klant model klasse en een klant met overeenkomstige id
+     * @post Er is een array met 1 klant teruggegeven
+     * @return array
+     */
+    function getById($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('zwemfeest');
+        return $query->row();
     }
 
     /**

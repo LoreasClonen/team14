@@ -15,6 +15,8 @@ class ZwemfeestMoment_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->model('/Zwemfeest/Zwemfeest_model', 'zwemfeest_model');
+
     }
 
     /**
@@ -24,11 +26,18 @@ class ZwemfeestMoment_model extends CI_Model
      * @post Er is een array met 0 of meerdere zwemfeestmomenten teruggegeven
      * @return array
      */
-    function getAllByDatum()
+    function getAllByDatumWithZwemfeest()
     {
         $this->db->order_by('datum', 'asc');
         $query = $this->db->get('zwemfeestMoment');
-        return $query->result();
+        $zwemfeestMomenten = $query->result();
+
+        $this->load->model('zwemfeest_model');
+
+        foreach ($zwemfeestMomenten as $zwemfeestMoment) {
+            $zwemfeestMoment->zwemfeest = $this->zwemfeest_model->getById($zwemfeestMoment->zwemfeestId);
+        }
+        return $zwemfeestMomenten;
     }
 
 
