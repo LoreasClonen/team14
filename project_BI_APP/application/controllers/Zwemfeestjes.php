@@ -23,7 +23,7 @@ class Zwemfeestjes extends CI_Controller
         parent::__construct();
         $this->load->model('Zwemfeest/ZwemfeestMoment_model', 'zwemfeestMoment_model');
         $this->load->helper('form');
-        $this->load->helper('notation_helper');
+        $this->load->helper('notation');
     }
 
     public function zwemfeestMomentenOphalen()
