@@ -56,6 +56,10 @@ class ZwemfeestMoment_model extends CI_Model
         return $zwemfeestMoment;
     }
 
-
+    function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('zwemfeestMoment');
+    }
 }
 

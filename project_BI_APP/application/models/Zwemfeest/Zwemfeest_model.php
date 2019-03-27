@@ -74,7 +74,7 @@ class Zwemfeest_model extends CI_Model
      * @brief geeft alle zwemfeesten terug met een bepaalde achternaam
      * @pre Er bestaat een Gerecht_model klasse
      * @post Er is een array met 0 of meerdere gerechten teruggegeven
-     * @param $achternaam
+     * @param $email
      * @return array
      */
     function GetByEmail($email)
@@ -83,5 +83,16 @@ class Zwemfeest_model extends CI_Model
         return $query->result();
     }
 
+    function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('zwemfeest');
+    }
+
+    function update($id, $zwemfeestData)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('zwemfeest', $zwemfeestData);
+    }
 }
 

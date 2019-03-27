@@ -1,10 +1,19 @@
 <div class="col-12 mb-2">
     <?php
+    echo '<hr />';
+
     $attributes = array('name' => 'overzicht_zwemfeestje', 'id' => 'zwemfeestjeAanpassenFormulier', 'role' => 'form');
     echo form_open('Zwemfeestjes/updateZwemfeestje', $attributes);
 
-    echo '<div class="row">' . "\n\t" . '<div class="col-8">' . "\n\t\t" . '<h3>' . $zwemfeestje->datum . ' van ' . $zwemfeestje->beginuur . ' tot ' . $zwemfeestje->einduur . '</h3>' . "\n\t" . '</div>' . "\n\t" . '<div class="col-4 text-right">' . "\n\t\t" . anchor("Zwemfeestjes/deleteZwemfeestje/" . $zwemfeestje->id, "Verwijderen", "class='btn btn-danger'") . ' ' . "\n\t\t" . form_submit(array("value" => "Opslaan", "class" => "btn btn-warning my-3", "id" => "updateZwemfeestje")) . ' ' . "\t\t" . anchor("Zwemfeestjes/zwemfeestMomentenOphalen", "Terug", "class='btn btn-primary'") . "\n\t" . '</div>' . "\n" . '</div>' . "\n" . '<hr />';
-    echo "\n";
+    echo '<div class="row">';
+    echo '<div class="col-8">' . anchor("Zwemfeestjes/zwemfeestMomentenOphalen", "Terug", "class='btn btn-primary'") . '</div>';
+    echo '<div class="col-4">' . anchor("Zwemfeestjes/deleteZwemfeestje/" . $zwemfeestje->id . "/" . $zwemfeestje->zwemfeest->id, "Verwijderen", "class='btn btn-danger'");
+    echo form_submit(array("value" => "Opslaan", "class" => "btn btn-warning", "id" => "updateZwemfeestje")) . '</div>';
+    echo '</div>';
+
+    echo '<hr />';
+
+    echo '<h3>' . $zwemfeestje->datum . ' van ' . $zwemfeestje->beginuur . ' tot ' . $zwemfeestje->einduur . '</h3>';
 
     echo form_label('Geboekt door:', 'klant');
     echo "\n";
@@ -91,5 +100,7 @@
         'size' => '255'
     );
     echo form_textarea($dataOpmerkingen);
+
+    echo form_hidden('zwemfeestId', $zwemfeestje->zwemfeest->id)
     ?>
 </div>
