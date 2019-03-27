@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Authex $authex
  * @property ZwemfeestMoment_model $zwemfeestMoment_model
  * @property Zwemfeest_model $zwemfeest_model
+ * @property Gerecht_model $gerecht_model
  */
 class Zwemfeestjes extends CI_Controller
 {
@@ -45,6 +46,7 @@ class Zwemfeestjes extends CI_Controller
     public function getZwemfeestje($id)
     {
         $data['zwemfeestje'] = $this->zwemfeestMoment_model->getByIdWithEverything($id);
+        $data['gerechten'] = $this->gerecht_model->getAllById();
 
         $data['titel'] = 'Overzicht zwemfeestje';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();

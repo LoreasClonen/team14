@@ -48,7 +48,7 @@ class ZwemfeestMoment_model extends CI_Model
         $zwemfeestMoment = $query->row();
 
         $this->load->model('zwemfeest_model');
-        $zwemfeestMoment->zwemfeestje = $this->zwemfeest_model->getById($zwemfeestMoment->zwemfeestId);
+        $zwemfeestMoment->zwemfeest = $this->zwemfeest_model->getById($zwemfeestMoment->zwemfeestId);
 
         $this->load->model('gerecht_model');
         $zwemfeestMoment->gerecht = $this->gerecht_model->getById($zwemfeestMoment->zwemfeestId);
