@@ -12,10 +12,10 @@
 
         echo '<h5>Leerlingen:</h5><hr>';
 
-        echo '<table border="1"">
+        echo '<table class="table">
                 <tr>
-                    <th>Naam</th>
-                    <th>Leeftijd</th> 
+                    <th scope="col">Naam</th>
+                    <th scope="col">Leeftijd</th> 
                 </tr>';
 
         foreach ($beschikbaarheden as $beschikbaarheid) {
