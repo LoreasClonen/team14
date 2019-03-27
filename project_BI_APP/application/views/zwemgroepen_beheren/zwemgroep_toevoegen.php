@@ -1,7 +1,7 @@
 <div class="col-12 mt-3">
     <?php
     $attributes = array('name' => 'zwemgroep_toevoegen', 'id' => 'zwemgroepToevoegenFormulier', 'role' => 'form');
-    echo form_open('Zwemgroepen/ControleerZwemgroep', $attributes);
+    echo form_open('Zwemgroepen/addZwemgroep', $attributes);
 
 
     echo "<hr />";
@@ -32,10 +32,17 @@
     echo form_dropdown($dataWeekdag, $inhoudWeekdag);
 
     echo form_label('Zwemniveau', 'zwemniveau');
+
+    $inhoudZwemniveau = array();
+    foreach ($zwemniveaus as $zwemniveau) {
+        $inhoudZwemniveau[$zwemniveau->id] = $zwemniveau->niveauNaam;
+    }
     $dataZwemniveau = array(
-            // Hier moeten de zwemniveaus ingelezen worden
-    );
-    echo form_dropdown('zwemniveau', $dataZwemniveau);
+        'id' => 'zwemniveau',
+        'name' => 'zwemniveau',
+        'class' => 'form-control',
+        'required' => 'required');
+    echo form_dropdown($dataZwemniveau, $inhoudZwemniveau);
 
     echo form_label('Max. Grootte', 'maxGrootte');
     $dataGrootte = array(
