@@ -35,7 +35,7 @@
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'inloggen/inloggen_form',
-                 'footer' => 'main_footer');
+                'footer' => 'main_footer');
 
 
             $this->template->load('main_master', $partials, $data);
@@ -76,7 +76,6 @@
         public function wachtwoordVergeten()
         {
             $data['titel'] = 'Uw wachtwoord herstellen';
-
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
 
@@ -88,37 +87,38 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        public function mailWachtwoordVergeten()
+        {
+            $data['titel'] = 'Aanvraag wachtwoord herstellen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $email = $this->input->post('email');
+            $data['email'] = $email;
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'inloggen/email_wachtwoord_vergeten',
+                'footer' => 'main_footer');
+
+            if ($this->Inlogger_model->emailBestaat($email)) {
+                $this->template->load('main_master', $partials, $data);
+            } else {
+                redirect('Inloggen/toonFout');
+            }
+
+
+        }
+
         function inloggerBestaat($email)
         {
             $this->Inlogger_model->emailBestaat($email);
-        }
-
-        public function mailWachtwoordVergeten()
-        {
-            $email = $this->input->post('email');
-
-//            if ($email = ...) {
-            $ontvanger = $email;
-            $onderwerp = "Nieuw wachtwoord";
-            $inhoud = "U had een aangevraag om een nieuw wachtwoord in te stellen.\nVia deze link kan u een nieuw wachtwoord instellen: " . base_url() . "Inloggen/nieuwPaswoord?" . $ontvanger;
-            $zender = "admin@kempenrust.be";
-            $headers = "MIME-Version: 1.0" . "\r\n" . "Content-type: text/html;charset=UTF-8" . "\r\n" . "From: " . $zender . "\r\n";
-
-            mail($ontvanger, $onderwerp, $inhoud, $headers);
-//        }
-//        else {
-//            redirect('Inloggen/wachtwoordHerstellen');
-//        }
-
-
         }
 
         public function nieuwPaswoord()
         {
             $data['titel'] = 'Nieuw wachtwoord ingeven';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
-//            $data['email'] = $email;
-            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
 
 
             $partials = array('hoofding' => 'main_header',
