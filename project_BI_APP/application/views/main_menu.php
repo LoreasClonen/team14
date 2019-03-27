@@ -21,7 +21,7 @@ for ($i=0; $i < count($arrayBerichten); $i++){
 
 <div class="col-8 offset-2 col-lg-3 offset-lg-0 py-5 px-3 text-center">
 
-    <?php echo smallDivAnchor('zwemlessen/index', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
+    <?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
     <?php echo smallDivAnchor('les1/toonTabs', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?>
     <?php echo smallDivAnchor('les1/valideer', 'Webshop', 'class="btn btn-primary"'); ?>
 </div>

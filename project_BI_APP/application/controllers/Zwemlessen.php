@@ -25,13 +25,20 @@ class Zwemlessen extends CI_Controller
         $this->load->helper('form');
         $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
     }
-
-    public function Index(){
+    public function keuze(){
+        $data["titel"]= "Zwemlessen";
+        $data["teamleden"]= "";
+        $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            'inhoud' => 'zwemlessen/keuze_inschrijvingen',
+            'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+        $this->template->load('main_master', $partials, $data);
+    }
+    public function Index($form){
         $data["titel"] = "Zwemlessen";
         $data["teamleden"]= "";
         $data["zwemniveaus"] = $this->zwemniveau_model->getAllById();
         $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
-            'inhoud' => 'zwemlessen/aanmelden_zwemlessen_main',
+            'inhoud' => 'zwemlessen/' . $form,
             'footer' => 'zwemlessen/aanmelden_zwemlessen_footer'
             );
         $this->template->load('main_master', $partials, $data);
