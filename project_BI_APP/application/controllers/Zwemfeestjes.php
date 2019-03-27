@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Template $template
  * @property Authex $authex
  * @property ZwemfeestMoment_model $zwemfeestMoment_model
+ * @property Zwemfeest_model $zwemfeest_model
  */
 class Zwemfeestjes extends CI_Controller
 {
@@ -38,7 +39,22 @@ class Zwemfeestjes extends CI_Controller
             'inhoud' => 'overzicht_zwemfeestjes/overzicht_zwemfeestjes',
             'footer' => 'main_footer');
 
-        $this->template->load('main_master', $partials, $data);
+        $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+    }
+
+    public function zwemfeestjeOphalen($id)
+    {
+        $data['zwemfeest'] = $this->zwemfeest_model->getById($id);
+
+        $data['titel'] = 'Overzicht zwemfeestje';
+        $data['gebruiker'] = $this->authex->getGebruikerInfo();
+        $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
+
+        $partials = array('hoofding' => 'main_header',
+            'inhoud' => 'overzicht_zwemfeestjes/overzicht_zwemfeestje',
+            'footer' => 'main_footer');
+
+        $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
     }
 
 }
