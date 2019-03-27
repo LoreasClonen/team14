@@ -45,8 +45,7 @@ class Zwemlessen extends CI_Controller
     }
     public function addKlant(){
         $this->load->model("lessen/klant_model", "klant_model");
-        $this->load->model("lessen/Zwemniveau_model", "zwemniveau_model")
-
+        $this->load->model("lessen/Zwemniveau_model", "zwemniveau_model");
 
 
         $klant = new stdClass();

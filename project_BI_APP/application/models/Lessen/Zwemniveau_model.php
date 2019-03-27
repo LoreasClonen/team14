@@ -45,5 +45,10 @@
             return $query->row();
         }
 
+        function getByName($name){
+            $this->db->where('niveauNaam', $name);
+            $query = $this->db->get('zwemniveau');
+            return $query->row();
+        }
 
     }
