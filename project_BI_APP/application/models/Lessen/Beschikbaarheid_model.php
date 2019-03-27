@@ -5,11 +5,7 @@
 
     class Beschikbaarheid_model extends CI_Model
     {
-<<<<<<< HEAD
-        parent::__construct();
-        $this->load->model('/Lessen/Klant_model', 'klant_model');
-    }
-=======
+
         /**
          * functie constructor Beschikbaarheid_model()
          * @brief constructor voor de klasse Beschikbaarheid_model
@@ -36,7 +32,7 @@
             $query = $this->db->get('beschikbaarheid');
             return $query->result();
         }
->>>>>>> ef9add0f015425e46b7e42ed53655217214b6bfe
+
 
         function getByKlantId($id)
         {
@@ -63,13 +59,6 @@
             }
             return $beschikbaarheden;
         }
-<<<<<<< HEAD
-        return $beschikbaarheden;
-    }
-
-
-}
-=======
 
 //        /**
 //         * functie getByKlantIdWithLesgroep($id)
@@ -90,4 +79,4 @@
 //            return $beschikbaarheden;
 //        }
     }
->>>>>>> ef9add0f015425e46b7e42ed53655217214b6bfe
+

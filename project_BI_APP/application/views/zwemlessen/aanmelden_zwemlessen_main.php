@@ -2,8 +2,8 @@
 <div class="container">
         <div class="col-12 mt-3">
             <?php
-                $attributes = array('name' => 'inloggen', 'id' => 'inlogFormulier', 'role' => 'form');
-                echo form_open('Inloggen/ControleerAanmelden', $attributes);
+                $attributes = array('name' => 'inschrijven', 'id' => 'inschrijfformulier', 'role' => 'form');
+                echo form_open('Zwemlessen/addKlant', $attributes);
 
 
                 echo "<hr />";
@@ -47,12 +47,16 @@
                     'class' => 'form-control',
                     'placeholder' => 'dag/maand/jaar',
                     'required' => 'required',
-                    'size' => '30');
-                echo form_input($dataEmail); ?>
+                    'size' => '30',
+                    'type' => 'date');
+                echo form_input($dataGeboortedatum);
 
-            <?php
-                echo form_submit(array("value" => "Inloggen", "class" => "btn btn-primary my-3", "id" => "logIn"));
-                echo smallDivAnchor('Inloggen/wachtwoordVergeten', 'Wachtwoord vergeten', 'class="btn btn-primary"');
+                echo form_label("zwemniveau");
+                echo form_dropdown('zwemniveau', $options, '1', 'class="dropdown"');
+
+
+                echo form_submit(array("value" => "Inschrijven", "class" => "btn btn-primary my-3", "id" => "schrijfIn"));
+
                 echo form_close();
             ?>
         </div>
