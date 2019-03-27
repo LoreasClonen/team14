@@ -114,7 +114,7 @@ class Zwemgroepen extends CI_Controller
 
         $this->lesgroep_model->insert($zwemgroep);
 
-        $this->zwemgroepenOphalen();
+        redirect('Zwemgroepen/zwemgroepenOphalen');
     }
 
 }
