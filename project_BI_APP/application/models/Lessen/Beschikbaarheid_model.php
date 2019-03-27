@@ -33,7 +33,13 @@
             return $query->result();
         }
 
-
+        /**
+         * functie getByKlantId($id)
+         * @brief geeft alle beschikbaarheden waarvoor klantId gelijk is aan $id
+         * @pre Er bestaat een Beschikbaarheid model klasse en een beschikbaarheid met overeenkomstige klantId
+         * @post Er is een array met 1 of meerdere beschikbaarheden teruggegeven
+         * @return array
+         */
         function getByKlantId($id)
         {
             $this->db->where('id', $id);

@@ -53,7 +53,7 @@
 
         /**
          * functie getAllByAchternaamWithLesgroepWithZwemniveau()
-         * @brief geeft alle klanten terug in de klant tabel
+         * @brief geeft alle klanten terug in de klant tabel samen met hun zwemniveau en de lesgroep waarin ze zitten
          * @pre Er bestaat een Klant_model klasse
          * @post Er is een array met 0 of meerdere klanten teruggegeven
          * @return array
@@ -83,10 +83,11 @@
          * @post Er is een rij toegevoegd in de klant tabel
          * @return true
          */
-        function addKlant($klant){
-            $this->db->insert('klant',$klant);
+        function addKlant($klant)
+        {
+            $this->db->insert('klant', $klant);
             return $this->db->insert_id();
         }
 
-}
+    }
 

@@ -1,5 +1,5 @@
 <div class="container">
-    <p><?php echo anchor("Zwemmer/zwemmerToevoegen()", "Zwemmer toevoegen", "class= 'btn btn-primary'"); ?></p>
+    <p><?php echo anchor("Zwemmer/zwemmerToevoegen()", "Zwemmer toevoegen", "class='btn btn-primary'"); ?></p>
     <table class="table">
         <thead>
         <tr>
