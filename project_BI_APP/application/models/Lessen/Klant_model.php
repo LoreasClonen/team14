@@ -65,14 +65,20 @@
             $klanten = $query->result();
 
             foreach ($klanten as $klant) {
+                $klant->heeftLesgroep = false;
+
                 $klant->zwemniveau =
                     $this->zwemniveau_model->getById($klant->zwemniveauId);
 
-                $klant->beschikbaarheid =
+                $klant->beschikbaarheden =
                     $this->beschikbaarheid_model->getByKlantId($klant->id);
 
-                $klant->lesgroep =
-                    $this->lesgroep_model->get($klant->beschikbaarheid->lesgroepId);
+                foreach ($klant->beschikbaarheden as $beschikbaarheid) {
+                    if ($beschikbaarheid->statusId == 2) {
+                        $klant->lesgroep = $this->lesgroep_model->get($beschikbaarheid->lesgroepId);
+                        $klant->heeftLesgroep = true;
+                    }
+                }
             }
             return $klanten;
         }

@@ -32,11 +32,12 @@
                     <?php echo $zwemmer->zwemniveau->niveauNaam; ?>
                 </td>
                 <td><?php
-                        if ($zwemmer->beschikbaarheid->statusId == 2) {
+                        if ($zwemmer->heeftLesgroep) {
                             echo $zwemmer->lesgroep->groepsnaam;
                         } else {
-                            echo "Geen lesgroep";
-                        } ?>
+                            echo 'Geen lesgroep';
+                        }
+                        ?>
                 </td>
                 <td class="text-center"><?php
                         echo anchor('Zwemmer/zwemmerOphalen/' . $zwemmer->id, "<i class='fas fa-edit'></i>") . " ";
