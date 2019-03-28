@@ -66,23 +66,6 @@
             return $beschikbaarheden;
         }
 
-//        /**
-//         * functie getByKlantIdWithLesgroep($id)
-//         * @brief geeft alle beschikbaarheden waarvoor klant = $id met bijhorende lesgroep terug in de klant tabel
-//         * @pre Er bestaat een Beschikbaarheid model klasse, een Klant model klasse, een beschikbaarheid met overeenkomstige lesgroepId en een klant met overeenkomstige id
-//         * @post Er is een array met 1 of meerdere beschikbaarheden teruggegeven
-//         * @return array
-//         */
-//        function getByKlantIdWithLesgroep($id)
-//        {
-//            $this->db->where('klantId', $id);
-//            $query = $this->db->get('beschikbaarheid');
-//            $beschikbaarheden = $query->result();
-//
-//            foreach ($beschikbaarheden as $beschikbaarheid) {
-//                $beschikbaarheid->lesgroep = $this->lesgroep_model->getById($beschikbaarheid->lesgroepId);
-//            }
-//            return $beschikbaarheden;
-//        }
+
     }
 

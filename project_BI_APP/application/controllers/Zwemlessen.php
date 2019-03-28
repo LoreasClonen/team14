@@ -54,6 +54,7 @@ class Zwemlessen extends CI_Controller
         $klant->email = $this->input->post("email");
         $klant->geboortedatum = $this->input->post("geboortedatum");
         $klant->zwemniveauId = $this->input->post("zwemniveau");
+        $klant->actief = '1';
         if($this->klant_model->addKlant($klant)){
             redirect('zwemlessen/succesmail');
         }
