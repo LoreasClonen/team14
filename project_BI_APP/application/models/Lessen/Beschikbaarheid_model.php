@@ -66,6 +66,10 @@
             return $beschikbaarheden;
         }
 
-
+        function delete($klantId)
+        {
+            $this->db->where('klantId', $klantId);
+            $this->db->delete('beschikbaarheid');
+        }
     }
 

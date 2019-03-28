@@ -83,7 +83,8 @@
             return $klanten;
         }
 
-        private function klantbestaatAl($email){
+        private function klantbestaatAl($email)
+        {
             $this->db->where('email', $email);
             $query = $this->db->get('klant');
             if ($query->num_rows() > 0) {
@@ -92,23 +93,30 @@
                 return false;
             }
         }
+
         /** addKlant()
          * @brief voegt een nieuwe klant toe aan de database in de klant tabel
          * @pre Er bestaat een Klant model klasse
          * @post Er is een rij toegevoegd in de klant tabel
          * @return true
          */
-        function addKlant($klant){
-            if(!($this->klantbestaatAl($klant->email)))
-            {
-                $this->db->insert('klant',$klant);
+        function addKlant($klant)
+        {
+            if (!($this->klantbestaatAl($klant->email))) {
+                $this->db->insert('klant', $klant);
                 $this->db->insert_id();
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
 
+        }
+
+        function updateStatus($id, $actief)
+        {
+            $this->db->where('id', $id);
+            $this->db->set('actief', $actief);
+            $this->db->update('klant');
         }
 
     }

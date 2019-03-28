@@ -1,5 +1,3 @@
-<?php
-?>
 <div class="container">
     <!-- Button trigger modal -->
     <div class="text-center">
