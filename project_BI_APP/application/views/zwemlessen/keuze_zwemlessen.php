@@ -23,7 +23,7 @@ echo '<div class="col">';
 echo form_submit(array("value" => "Keuze bevestigen", "class" => "btn btn-primary my-3", "id" => "keuzeKlant"));
 echo "</div>";
 echo '<div class="col">';
-echo smallDivAnchor('Zwemlessen/bevestigAnnuleerZwemles', 'Inschrijving annuleren', 'class="btn btn-danger"');
+echo smallDivAnchor('Zwemlessen/bevestigingAnnuleerZwemles', 'Inschrijving annuleren', 'class="btn btn-danger"');
 echo "</div>";
 echo "</div>";
 echo form_close();
