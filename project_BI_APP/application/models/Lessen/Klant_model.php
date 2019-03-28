@@ -60,7 +60,7 @@
          */
         function getAllByAchternaamWithLesgroepWithZwemniveau()
         {
-            $this->db->order_by('achternaam', 'asc');
+            $this->db->order_by('actief desc, achternaam asc');
             $query = $this->db->get('klant');
             $klanten = $query->result();
 
