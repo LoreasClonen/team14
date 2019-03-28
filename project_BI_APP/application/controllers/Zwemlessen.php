@@ -138,4 +138,16 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        public function mailBevestigingAnnuleerZwemles()
+        {
+            $data['titel'] = 'Inbox';
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'email_header',
+                'inhoud' => 'inloggen/mail_bevestiging_annuleer_zwemles',
+                'footer' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
+        }
+
     }
