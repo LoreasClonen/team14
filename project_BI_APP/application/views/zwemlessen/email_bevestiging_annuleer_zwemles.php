@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-2 mr-2"><i class="fas fa-user-circle display-4"></i></div>
                     <div class="col text-left">Kempenrust</br>
-                        Aanvraag wachtwoord herstellen
+                        Inschrijving zwemles geannuleerd
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Aanvraag wachtwoord herstellen</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Inschrijving zwemles geannuleerd</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -34,10 +34,21 @@
                         </div>
                         <p>Ontvanger: <?php echo $gebruiker->email ?></p>
                         <hr>
-                        <p>Beste <?php echo $gebruiker->voornaam ?></p>
-                        <p>Je hebt zonet een aanvraag gedaan om je wachtwoord te veranden. Klik op onderstaande link om
-                            een nieuw wachtwoord in te stellen.</p>
-                        <p><?php echo anchor('Inloggen/nieuwPaswoord', 'Stel hier uw nieuw wachtwoord in') ?></p>
+                        <p>Beste <?php
+                                if ($gebruiker->naamVoogd == null) {
+                                    echo $gebruiker->voornaam . " " . $gebruiker->achternaam;
+                                } else {
+                                    echo $gebruiker->naamVoogd;
+                                }
+                            ?></p>
+                        <p>U heeft zonet de inschrijving van de zwemles voor
+                            <?php
+                                if ($gebruiker->naamVoogd == null) {
+                                    echo "uzelf";
+                                } else {
+                                    echo "uw kind " . $gebruiker->voornaam;
+                                } ?>
+                            geannuleerd. Bij deze bevestigen wij uw annulatie.</p>
                         <p>Met vriendelijke groeten</p>
                         <p>Zwembad Kempenrust</p>
                     </div>

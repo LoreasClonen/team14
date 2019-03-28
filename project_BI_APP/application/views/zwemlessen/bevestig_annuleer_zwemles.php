@@ -12,7 +12,8 @@
                 </div>
                 <div class="card-footer text-muted">
                     <?php
-                        echo anchor('Zwemlessen/annuleerZwemles/' . $klantId, 'Ja', 'class="btn btn-primary"');
+                        echo anchor('Zwemlessen/annuleerZwemles/' . $klantId, 'Bevestigen', 'class="btn btn-primary m-1"');
+                        echo anchor('Home/index', 'Annuleren', 'class="btn btn-secondary m-1"');
                     ?>
                 </div>
             </div>
