@@ -4,8 +4,8 @@ echo '<div class="col-8">'. anchor("Facturen/getScholen", "Terug", "class='btn b
 ?>
 <table class="table">
     <tr>
-        <th scope="col">Factuur</th>
-        <th scope="col">Betaald</th>
+        <th style="width: 50%">Factuur</th>
+        <th style="width: 50%">Betaald</th>
     </tr>
 
 <?php
@@ -16,10 +16,10 @@ echo '<div class="col-8">'. anchor("Facturen/getScholen", "Terug", "class='btn b
                 <td>" . anchor(base_url() . 'application/invoices/' . $factuur->naam, $factuur->naam) . "</td><td>";
 
             if ($factuur->datumBetaald !== NULL) {
-                echo anchor('Facturen/deleteDatumBetaling/' . $factuur->id . '/' . $factuur->schoolId, '<i class="fa fa-check" aria-hidden="true"></i>') . ' Betaald op '. zetOmNaarDDMMYYYY($factuur->datumBetaald);
+                echo anchor('Facturen/deleteDatumBetaling/' . $factuur->id . '/' . $factuur->schoolId, '<i class="far fa-check-circle fa-2x"></i>') . ' Betaald op '. zetOmNaarDDMMYYYY($factuur->datumBetaald);
             }
             else {
-                echo anchor('Facturen/updateDatumBetaling/' . $factuur->id . '/' . $factuur->schoolId . '/' . date("Y-m-d", time()), '<i class="fa fa-times" aria-hidden="true"></i>');
+                echo anchor('Facturen/updateDatumBetaling/' . $factuur->id . '/' . $factuur->schoolId . '/' . date("Y-m-d", time()), '<i class="far fa-circle fa-2x"></i>');
             }
 
         echo "</td></tr>";
