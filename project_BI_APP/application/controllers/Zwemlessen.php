@@ -54,6 +54,30 @@ class Zwemlessen extends CI_Controller
         $klant->email = $this->input->post("email");
         $klant->geboortedatum = $this->input->post("geboortedatum");
         $klant->zwemniveauId = $this->input->post("zwemniveau");
-        $this->klant_model->addKlant($klant);
+        if($this->klant_model->addKlant($klant)){
+            redirect('zwemlessen/succesmail');
+        }
+        else{
+            redirect('zwemlessen/reeds_toegevoegd');
+        }
     }
+
+    public function succesmail(){
+        $data["titel"]= "succesmail";
+        $data["teamleden"]= "";
+        $partials = array(
+            'inhoud' => 'zwemlessen/succesmail',
+            'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+        $this->template->load('main_master', $partials, $data);
+    }
+
+    public function reeds_toegevoegd(){
+        $data["titel"]= "Zwemlessen";
+        $data["teamleden"]= "";
+        $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            'inhoud' => 'zwemlessen/reeds_toegevoegd',
+            'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+        $this->template->load('main_master', $partials, $data);
+    }
+
 }

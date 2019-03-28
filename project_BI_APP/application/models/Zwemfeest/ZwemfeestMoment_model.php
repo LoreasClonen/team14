@@ -41,6 +41,14 @@ class ZwemfeestMoment_model extends CI_Model
         return $zwemfeestMomenten;
     }
 
+    /**
+     * functie getByIdWithEverything(id)
+     * @brief geeft een bepaald zwemfeestmoment terug, gecombineerd met de daarbij horende zwemfeest en gerecht data
+     * @pre Er bestaat een ZwemfeestMoment_model klasse
+     * @post Er is een array met 1 bepaald zwemfeestMoment en de daarbij horende gerecht en zwemfeest data
+     * @param $id
+     * @return array
+     */
     function getByIdWithEverything($id)
     {
         $this->db->where('id', $id);
@@ -48,7 +56,7 @@ class ZwemfeestMoment_model extends CI_Model
         $zwemfeestMoment = $query->row();
 
         $this->load->model('zwemfeest_model');
-        $zwemfeestMoment->zwemfeestje = $this->zwemfeest_model->getById($zwemfeestMoment->zwemfeestId);
+        $zwemfeestMoment->zwemfeest = $this->zwemfeest_model->getById($zwemfeestMoment->zwemfeestId);
 
         $this->load->model('gerecht_model');
         $zwemfeestMoment->gerecht = $this->gerecht_model->getById($zwemfeestMoment->zwemfeestId);
@@ -56,6 +64,17 @@ class ZwemfeestMoment_model extends CI_Model
         return $zwemfeestMoment;
     }
 
-
+    /**
+     * functie delete(id)
+     * @brief verwijdert een bepaald zwemfeestMoment
+     * @pre Er bestaat een ZwemfeestMoment_model klasse
+     * @post Er is een zwemfeestMoment uit de database verwijdert
+     * @param $id
+     */
+    function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('zwemfeestMoment');
+    }
 }
 

@@ -89,14 +89,14 @@
 
         public function mailWachtwoordVergeten()
         {
-            $data['titel'] = 'Aanvraag wachtwoord herstellen';
+            $data['titel'] = 'Inbox';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
 
             $email = $this->input->post('email');
-            $data['email'] = $email;
+            $data['gebruiker'] = $this->Inlogger_model->getByEmail($email);
 
-            $partials = array('hoofding' => 'main_header',
+            $partials = array('hoofding' => 'inloggen/email_header',
                 'inhoud' => 'inloggen/email_wachtwoord_vergeten',
                 'footer' => 'main_footer');
 
