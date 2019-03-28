@@ -49,13 +49,13 @@ class Facturen extends CI_Controller
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
 
-        $data['zwemgroep'] = $this->factuur_model->get($schoolId);
+        $data['facturen'] = $this->factuur_model->get($schoolId);
 
         $partials = array('hoofding' => 'main_header',
-            'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',
+            'inhoud' => 'facturen_beheren/overzicht_facturen',
             'footer' => 'main_footer');
 
-        $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
+        $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
 
 }
