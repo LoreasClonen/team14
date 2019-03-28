@@ -63,16 +63,15 @@
             $klant->geboortedatum = $this->input->post("geboortedatum");
             $klant->zwemniveauId = $this->input->post("zwemniveau");
             $klant->actief = '1';
-            if($this->klant_model->addKlant($klant)){
+            if ($this->klant_model->addKlant($klant)) {
                 $this->session->set_flashdata('klantId', $klant->id);
                 $this->session->set_flashdata('zwemniveauId', $klant->zwemniveauId);
                 redirect('zwemlessen/keuze_zwemlessen');
-               }
-            else
-                {
-                    redirect('Zwemlessen/reeds_toegevoegd');
+            } else {
+                redirect('Zwemlessen/reeds_toegevoegd');
             }
         }
+
         public function succesmail()
         {
             $data["titel"] = "succesmail";
@@ -94,33 +93,39 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-    public function keuze_zwemlessen(){
-        $klantId = $this->session->flashdata('klantId');
-        $zwemniveauId = $this->session->flashdata('zwemniveauId');
-        $data['titel'] = 'Keuze zwemlessen';
-        $data['teamleden'] = '';
-        $data['klant'] = $this->klant_model->getById($klantId);
-        $data["lesgroepen"] = $this->lesgroep_model->getLesgroepByZwemniveaId($zwemniveauId);
-        $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
-            'inhoud' => 'zwemlessen/keuze_zwemlessen',
-            'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
-        $this->template->load('main_master', $partials, $data);
 
-    }
-    public function annuleerZwemles($klantId)
+        public function keuze_zwemlessen()
         {
-            $this->beschikbaarheid_model->delete($klantId);
-            $this->zwemfeest_model->updateStatus($klantId, 0);
-        }
-
-        public function bevestigingAnnuleerZwemles()
-        {
-            $data["titel"] = "Zwemlessen";
-            $data["teamleden"] = "";
+            $klantId = $this->session->flashdata('klantId');
+            $zwemniveauId = $this->session->flashdata('zwemniveauId');
+            $data['titel'] = 'Keuze zwemlessen';
+            $data['teamleden'] = '';
+            $data['klant'] = $this->klant_model->getById($klantId);
+            $data["lesgroepen"] = $this->lesgroep_model->getLesgroepByZwemniveaId($zwemniveauId);
             $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
-                'inhoud' => 'zwemlessen/reeds_toegevoegd',
+                'inhoud' => 'zwemlessen/keuze_zwemlessen',
                 'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
             $this->template->load('main_master', $partials, $data);
+
+        }
+
+        public function bevestigAnnuleerZwemles()
+
+        {
+            $data["titel"] = "Inschrijving annuleren";
+            $data["teamleden"] = "Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)";
+            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+                'inhoud' => 'zwemlessen/bevestig_annuleer_zwemles',
+                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+            $this->template->load('main_master', $partials, $data);
+        }
+
+        public function annuleerZwemles($klantId)
+        {
+            $this->beschikbaarheid_model->delete($klantId);
+            $this->zwemles_model->updateStatus($klantId, 0);
+
+            redirect('zwemlessen/bevestigingAnnuleerZwemles');
         }
 
     }
