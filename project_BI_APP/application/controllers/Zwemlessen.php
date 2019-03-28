@@ -109,10 +109,10 @@
 
         }
 
-        public function bevestigAnnuleerZwemles()
-
+        public function bevestigAnnuleerZwemles($klantId)
         {
             $data["titel"] = "Inschrijving annuleren";
+            $data["klantId"] = $klantId;
             $data["teamleden"] = "Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)";
             $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
                 'inhoud' => 'zwemlessen/bevestig_annuleer_zwemles',
@@ -123,9 +123,19 @@
         public function annuleerZwemles($klantId)
         {
             $this->beschikbaarheid_model->delete($klantId);
-            $this->zwemles_model->updateStatus($klantId, 0);
+            $this->klant_model->updateStatus($klantId, 0);
 
             redirect('zwemlessen/bevestigingAnnuleerZwemles');
+        }
+
+        public function bevestigingAnnuleerZwemles()
+        {
+            $data["titel"] = "Inschrijving geannuleerd";
+            $data["teamleden"] = "Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)";
+            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+                'inhoud' => 'zwemlessen/bevestiging_annuleer_zwemles',
+                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+            $this->template->load('main_master', $partials, $data);
         }
 
     }

@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-footer text-muted">
                     <?php
-                        echo anchor('Zwemlessen/annuleerZwemles/' . $klantId, 'Ja', 'class="btn btn-primary"');
+                        echo anchor('Zwemlessen/mailBevestigingAnnuleerZwemles', 'Sluiten', 'class="btn btn-primary"');
                     ?>
                 </div>
             </div>
