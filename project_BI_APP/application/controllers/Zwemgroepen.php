@@ -73,17 +73,7 @@ class Zwemgroepen extends CI_Controller
     {
         $this->lesgroep_model->delete($id);
 
-        $data['zwemgroepen'] = $this->lesgroep_model->getAllById();
-
-        $data['titel'] = 'Overzicht zwemgroepen';
-        $data['gebruiker'] = $this->authex->getGebruikerInfo();
-        $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
-
-        $partials = array('hoofding' => 'main_header',
-            'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroepen',
-            'footer' => 'main_footer');
-
-        $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
+        redirect('Zwemgroepen/zwemgroepenOphalen');
     }
 
     public function zwemgroepToevoegenLaden()

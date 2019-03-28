@@ -26,6 +26,7 @@ class Facturen extends CI_Controller
         parent::__construct();
         $this->load->model('School/School_model', 'school_model');
         $this->load->model('School/Factuur_model', 'factuur_model');
+        $this->load->helper('notation');
     }
 
     public function getScholen()
@@ -49,7 +50,9 @@ class Facturen extends CI_Controller
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
 
-        $data['facturen'] = $this->factuur_model->get($schoolId);
+        $data['school'] = $this->school_model->getById($schoolId);
+
+        $data['facturen'] = $this->factuur_model->getBySchoolIdWithSchool($schoolId);
 
         $partials = array('hoofding' => 'main_header',
             'inhoud' => 'facturen_beheren/overzicht_facturen',
@@ -58,4 +61,10 @@ class Facturen extends CI_Controller
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
 
+    public function updateBetaling($schoolId)
+    {
+        $this->factuur_model->affected_rows();
+
+        redirect('Facturen/getSchool/' . $schoolId);
+    }
 }

@@ -29,7 +29,7 @@ class ZwemfeestMoment_model extends CI_Model
      */
     function getAllByDatumWithZwemfeest()
     {
-        $this->db->order_by('datum', 'asc');
+        $this->db->order_by('datum', 'asc');        // Sorteren op datum is logischer dan sorteren op naam in dit geval
         $query = $this->db->get('zwemfeestMoment');
         $zwemfeestMomenten = $query->result();
 

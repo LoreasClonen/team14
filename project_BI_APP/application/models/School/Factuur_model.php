@@ -63,21 +63,24 @@
         }
 
         /**
-         * @brief geeft 1 specifieke lesgroep met bijhorende inlogger terug in de lesgroep tabel
-         * @pre Er bestaat een Lesgroep model klasse, een Inlogger model klasse, een lesgroep met overeenkomstige id en een inlogger met overeenkomstige id
-         * @post Er is een array met 1 lesgroep teruggegeven
+         * @brief geeft 0 of meerdere facturen die bij een specifieke school horen terug in de factuur tabel
+         * @pre Er bestaat een Factuur model klasse, een Schhol model klasse, een factuur met overeenkomstige schoolId en een school met overeenkomstige id
+         * @post Er is een array met 0 of meerdere facturen teruggegeven
          * @return array
          */
-        function getSchoolIdWithSchool($schoolId)
+        function getBySchoolIdWithSchool($schoolId)
         {
 
             $this->db->where('schoolId', $schoolId);
             $query = $this->db->get('factuur');
-            $school = $query->row();
+            $scholen = $query->result();
 
-            $school->school = $this->school_model->get($school->inloggerId);
+            $this->load->model('school_model');
 
-            return $school;
+            foreach ($scholen as $school) {
+                $school->school = $this->school_model->getById($school->schoolId);
+            }
+            return $scholen;
         }
 
 
