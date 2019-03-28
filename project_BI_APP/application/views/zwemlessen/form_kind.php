@@ -47,20 +47,20 @@
                 echo form_input($dataGeboortedatum);
             echo form_label('straatnaam', 'straatnaam');
             $dataStraatnaam = array('id' => 'straatnaam',
-                'name' => 'email',
+                'name' => 'straatnaam',
                 'class' => 'form-control',
                 'placeholder' => 'Straatnaam',
                 'required' => 'required',
                 'size' => '30');
             echo form_input($dataStraatnaam);
             echo form_label('Huisnummer', 'huisnummer');
-            $dataEmail = array('id' => 'email',
-                'name' => 'email',
+            $dataHuisnummer = array('id' => 'huisnummer',
+                'name' => 'huisnummer',
                 'class' => 'form-control',
-                'placeholder' => 'e-mail',
+                'placeholder' => 'huisnummer',
                 'required' => 'required',
                 'size' => '30');
-            echo form_input($dataEmail);
+            echo form_input($dataHuisnummer);
             echo form_label('postcode', 'postcode');
             $dataPostcode = array('id' => 'postcode',
                 'name' => 'postcode',
