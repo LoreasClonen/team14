@@ -8,6 +8,7 @@
      */
     class Zwemlessen extends CI_Controller
     {
+
         // +----------------------------------------------------------
         // | project app-bi
         // +----------------------------------------------------------
@@ -24,7 +25,8 @@
             $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
             $this->load->helper('form');
             $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
-            $this->load->model('Lessen/Beschikbaarheid_model', 'beschikbaarheid_model');
+            $this->load->model("lessen/klant_model", "klant_model");
+            $this->load->library('session');
         }
 
         public function keuze()
@@ -36,6 +38,7 @@
                 'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
             $this->template->load('main_master', $partials, $data);
         }
+
 
         public function Index($form)
         {
@@ -53,8 +56,6 @@
         {
             $this->load->model("lessen/klant_model", "klant_model");
             $this->load->model("lessen/Zwemniveau_model", "zwemniveau_model");
-
-
             $klant = new stdClass();
             $klant->voornaam = $this->input->post("voornaam");
             $klant->achternaam = $this->input->post("achternaam");
@@ -62,13 +63,16 @@
             $klant->geboortedatum = $this->input->post("geboortedatum");
             $klant->zwemniveauId = $this->input->post("zwemniveau");
             $klant->actief = '1';
-            if ($this->klant_model->addKlant($klant)) {
-                redirect('zwemlessen/succesmail');
-            } else {
-                redirect('zwemlessen/reeds_toegevoegd');
+            if($this->klant_model->addKlant($klant)){
+                $this->session->set_flashdata('klantId', $klant->id);
+                $this->session->set_flashdata('zwemniveauId', $klant->zwemniveauId);
+                redirect('zwemlessen/keuze_zwemlessen');
+               }
+            else
+                {
+                    redirect('Zwemlessen/reeds_toegevoegd');
             }
         }
-
         public function succesmail()
         {
             $data["titel"] = "succesmail";
@@ -78,6 +82,7 @@
                 'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
             $this->template->load('main_master', $partials, $data);
         }
+
 
         public function reeds_toegevoegd()
         {
@@ -89,7 +94,20 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function annuleerZwemles($klantId)
+    public function keuze_zwemlessen(){
+        $klantId = $this->session->flashdata('klantId');
+        $zwemniveauId = $this->session->flashdata('zwemniveauId');
+        $data['titel'] = 'Keuze zwemlessen';
+        $data['teamleden'] = '';
+        $data['klant'] = $this->klant_model->getById($klantId);
+        $data["lesgroepen"] = $this->lesgroep_model->getLesgroepByZwemniveaId($zwemniveauId);
+        $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            'inhoud' => 'zwemlessen/keuze_zwemlessen',
+            'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+        $this->template->load('main_master', $partials, $data);
+
+    }
+    public function annuleerZwemles($klantId)
         {
             $this->beschikbaarheid_model->delete($klantId);
             $this->zwemfeest_model->updateStatus($klantId, 0);
