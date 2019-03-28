@@ -16,10 +16,10 @@ echo '<div class="col-8">'. anchor("Facturen/getScholen", "Terug", "class='btn b
                 <td>" . anchor(base_url() . 'application/invoices/' . $factuur->naam, $factuur->naam) . "</td><td>";
 
             if ($factuur->datumBetaald !== NULL) {
-                echo '<i class="fa fa-check" aria-hidden="true"></i> Betaald op ' . zetOmNaarDDMMYYYY($factuur->datumBetaald);
+                echo anchor('Facturen/deleteDatumBetaling', '<i class="fa fa-check" aria-hidden="true"></i>') . ' Betaald op ' . zetOmNaarDDMMYYYY($factuur->datumBetaald);
             }
             else {
-                echo '<i class="fa fa-times" aria-hidden="true"></i>' . anchor('Facturen/updateBetaling', ' Klik hier om betaling te bevestigen');
+                echo anchor('Facturen/updateDatumBetaling', '<i class="fa fa-times" aria-hidden="true"></i>');
             }
 
         echo "</td></tr>";

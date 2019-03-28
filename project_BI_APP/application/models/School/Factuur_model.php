@@ -83,5 +83,18 @@
             return $scholen;
         }
 
+        function updateDatumBetaald($id, $datumBetaald)
+        {
+            $this->db->where('id', $id);
+            $this->db->set('datumBetaald', $datumBetaald);
+            $this->db->update();
+        }
+
+        function deleteDatumBetaald($id)
+        {
+            $this->db->where('id', $id);
+            $this->db->set('datumBetaald', NULL);
+            $this->db->update();
+        }
 
     }
