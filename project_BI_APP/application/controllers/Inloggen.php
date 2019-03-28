@@ -96,7 +96,7 @@
             $email = $this->input->post('email');
             $data['gebruiker'] = $this->Inlogger_model->getByEmail($email);
 
-            $partials = array('hoofding' => 'inloggen/email_header',
+            $partials = array('hoofding' => 'email_header',
                 'inhoud' => 'inloggen/email_wachtwoord_vergeten',
                 'footer' => 'main_footer');
 
@@ -105,8 +105,6 @@
             } else {
                 redirect('Inloggen/toonFout');
             }
-
-
         }
 
         function inloggerBestaat($email)

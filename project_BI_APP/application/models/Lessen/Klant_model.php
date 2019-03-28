@@ -65,19 +65,26 @@
             $klanten = $query->result();
 
             foreach ($klanten as $klant) {
+                $klant->heeftLesgroep = false;
+
                 $klant->zwemniveau =
                     $this->zwemniveau_model->getById($klant->zwemniveauId);
 
-                $klant->beschikbaarheid =
+                $klant->beschikbaarheden =
                     $this->beschikbaarheid_model->getByKlantId($klant->id);
 
-                $klant->lesgroep =
-                    $this->lesgroep_model->get($klant->beschikbaarheid->lesgroepId);
+                foreach ($klant->beschikbaarheden as $beschikbaarheid) {
+                    if ($beschikbaarheid->statusId == 2) {
+                        $klant->lesgroep = $this->lesgroep_model->get($beschikbaarheid->lesgroepId);
+                        $klant->heeftLesgroep = true;
+                    }
+                }
             }
             return $klanten;
         }
 
-        private function klantbestaatAl($email){
+        private function klantbestaatAl($email)
+        {
             $this->db->where('email', $email);
             $query = $this->db->get('klant');
             if ($query->num_rows() > 0) {
@@ -86,23 +93,30 @@
                 return false;
             }
         }
+
         /** addKlant()
          * @brief voegt een nieuwe klant toe aan de database in de klant tabel
          * @pre Er bestaat een Klant model klasse
          * @post Er is een rij toegevoegd in de klant tabel
          * @return true
          */
-        function addKlant($klant){
-            if(!($this->klantbestaatAl($klant->email)))
-            {
-                $this->db->insert('klant',$klant);
+        function addKlant($klant)
+        {
+            if (!($this->klantbestaatAl($klant->email))) {
+                $this->db->insert('klant', $klant);
                 $this->db->insert_id();
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
 
+        }
+
+        function updateStatus($id, $actief)
+        {
+            $this->db->where('id', $id);
+            $this->db->set('actief', $actief);
+            $this->db->update('klant');
         }
 
     }

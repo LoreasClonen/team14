@@ -70,6 +70,8 @@
                 'size' => '30');
             echo form_input($dataPostcode);
 
+
+
             $options = array();
                 foreach($zwemniveaus as $option){
                     $options[$option->id] = $option->niveauNaam;
