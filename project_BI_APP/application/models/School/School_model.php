@@ -50,7 +50,7 @@
          * @post Er is een array met 1 school teruggegeven
          * @return array
          */
-        function get($id)
+        function getById($id)
         {
             $this->db->where('id', $id);
             $query = $this->db->get('school');
