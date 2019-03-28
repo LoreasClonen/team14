@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <p><?php echo anchor('Zwemlessen/mailBevestigingAnnuleerZwemles', 'Gmail', 'class="btn btn-light"'); ?></p>
+            <p><?php echo anchor('Zwemlessen/emailBevestigingAnnuleerZwemles' . $klantId, 'Gmail', 'class="btn btn-light"'); ?></p>
         </div>
     </div>
 </div>
