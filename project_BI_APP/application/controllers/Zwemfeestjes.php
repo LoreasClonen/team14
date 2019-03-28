@@ -25,6 +25,8 @@ class Zwemfeestjes extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Zwemfeest/ZwemfeestMoment_model', 'zwemfeestMoment_model');
+        $this->load->model('Zwemfeest/Gerecht_model', 'gerecht_model');
+        $this->load->model('Zwemfeest/Zwemfeest_model', 'zwemfeest_model');
         $this->load->helper('form');
         $this->load->helper('notation');
     }
@@ -55,6 +57,21 @@ class Zwemfeestjes extends CI_Controller
 
         $partials = array('hoofding' => 'main_header',
             'inhoud' => 'overzicht_zwemfeestjes/overzicht_zwemfeestje',
+            'footer' => 'main_footer');
+
+        $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+    }
+
+    public function getZwemfeestjeVoorAnnuleren($id)
+    {
+        $data['zwemfeestje'] = $this->zwemfeestMoment_model->getByIdWithEverything($id);
+
+        $data['titel'] = 'Overzicht zwemfeestje';
+        $data['gebruiker'] = $this->authex->getGebruikerInfo();
+        $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
+
+        $partials = array('hoofding' => 'main_header',
+            'inhoud' => 'overzicht_zwemfeestjes/zwemfeestje_annuleren',
             'footer' => 'main_footer');
 
         $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
