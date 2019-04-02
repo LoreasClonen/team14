@@ -17,7 +17,6 @@
         }
 
         /**
-         * functie getAllByID()
          * @brief geeft alle inloggers terug in de inlogger tabel
          * @pre Er bestaat een Inlogger_model klasse
          * @post Er is een array met 0 of meerdere inlogger teruggegeven
@@ -30,6 +29,12 @@
             return $query->result();
         }
 
+        /**
+         * @brief geeft 1 specifieke inlogger terug met als id $id in de inlogger tabel
+         * @pre Er bestaat een Inlogger_model klasse
+         * @post Er is een array met 1 inlogger teruggegeven
+         * @return array
+         */
         function getById($id)
         {
             $this->db->where('id', $id);
@@ -37,6 +42,12 @@
             return $query->row();
         }
 
+        /**
+         * @brief geeft 1 specifieke inlogger terug met als e-mail $email in de inlogger tabel
+         * @pre Er bestaat een Inlogger_model klasse
+         * @post Er is een array met 1 inlogger teruggegeven
+         * @return array
+         */
         function getByEmail($email)
         {
             $this->db->where('email', $email);
