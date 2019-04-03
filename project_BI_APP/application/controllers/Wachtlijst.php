@@ -3,6 +3,7 @@
 /**
  * @class Wachtlijsten
  * @brief Controller-klasse voor wachtlijsten
+ * @property Lesgroep_model $lesgroep_model
  *
  * Controller klasse met alle methodes die gebruikt worden voor alles wat te maken heeft met inloggers, zwemlessen en klanten
  */
@@ -24,7 +25,7 @@ class Wachtlijsten extends CI_Controller
 
         $data['titel'] = 'Overzicht wachtlijst ' . $groep->groepsnaam;
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
-        $data['teamleden'] = 'Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe';
+        $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
 
         $data['groep'] = $groep;
         $data['wachtend'] = $this->beschikbaarheid_model->
