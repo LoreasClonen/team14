@@ -3,10 +3,11 @@
 /**
  * @class Wachtlijsten
  * @brief Controller-klasse voor wachtlijsten
+ * @property Lesgroep_model $lesgroep_model
  *
  * Controller klasse met alle methodes die gebruikt worden voor alles wat te maken heeft met inloggers, zwemlessen en klanten
  */
-class Wachtlijsten extends CI_Controller
+class Wachtlijst extends CI_Controller
 {
     public function __construct()
     {
@@ -18,15 +19,13 @@ class Wachtlijsten extends CI_Controller
         $this->load->helper('form');
     }
 
-    public function index($groepId)
+    public function getWachtlijsten()
     {
-        $groep = $this->lesgroep_model->get($groepId);
-
-        $data['titel'] = 'Overzicht wachtlijst ' . $groep->groepsnaam;
+        $data['titel'] = 'Wachtlijst';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
-        $data['teamleden'] = 'Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe';
+        $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
 
-        $data['groep'] = $groep;
+        $data['zwemgroepen'] = $this->lesgroep_model->getAllById();
         $data['wachtend'] = $this->beschikbaarheid_model->
         $partials = array('hoofding' => 'main_header',
             'inhoud' => 'overzicht_wachtlijst/overzicht_wachtlijst',

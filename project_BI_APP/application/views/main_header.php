@@ -18,7 +18,7 @@
                     echo '<li class="nav-item">' . anchor('Inloggen/meldAf', 'Afmelden', "class = nav-link outline-right") . '</li>';
                     echo '<li class="nav-item">' . anchor("", "Agenda", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("Zwemmer/zwemmersOphalen", "Zwemmers", "class = 'nav-link'") . '</li>';
-                    echo '<li class="nav-item">' . anchor("", "Wachtlijst", "class = 'nav-link'") . '</li>';
+                    echo '<li class="nav-item">' . anchor("Wachtlijst/getWachtlijsten", "Wachtlijst", "class = 'nav-link'") . '</li>';
                     echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class = 'nav-link'") . '</li>';
                     if ($gebruiker->isAdmin == 1) {
                         echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'") . '</li>';

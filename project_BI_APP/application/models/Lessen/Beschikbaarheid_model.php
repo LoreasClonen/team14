@@ -1,6 +1,7 @@
 <?php
     /**
      * @Class Beschikbaarheid_Model
+     * @property Klant_model $klant_model
      */
 
     class Beschikbaarheid_model extends CI_Model
@@ -64,6 +65,17 @@
             return $beschikbaarheden;
         }
 
+        function getByStatusIdLesgroepIdWithKlant($statusId, $lesgroepId) {
+            $this->db->where('lesgroepId', $lesgroepId);
+            $this->db->where('statusId', $statusId);
+            $query = $this->db->get('beschikbaarheid');
+            $personen = $query->result();
+
+            foreach ($personen as $persoon) {
+                $persoon->klant = $this->klant_model->getById($persoon->klantId);
+            }
+            return $personen;
+        }
 
         function delete($klantId)
         {

@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Input $input
  * @property Authex $authex
  * @property Inlogger_model $inlogger_model
+ * @property Lesgroep_model $lesgroep_model
  */
 
 class Gebruiker extends CI_Controller
@@ -25,6 +26,7 @@ class Gebruiker extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Lessen/Inlogger_model', 'inlogger_model');
+        $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
         $this->load->helper('form');
         $this->load->helper('notation');
     }
@@ -66,12 +68,12 @@ class Gebruiker extends CI_Controller
         redirect('Gebruiker/getGebruikers');
     }
 
-    public function deleteGebruiker($zwemfeestMomentId, $zwemfeestId)
+    public function deleteGebruiker($InloggerId, $zwemfeestId)
     {
-        $this->zwemfeestMoment_model->delete($zwemfeestMomentId);
+        $this->lesgroep_model->delete($InloggerId);
         $this->inlogger_model->delete($zwemfeestId);
 
-        redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren' . $zwemfeestId);
+        redirect('Gebruiker/getGebruikers' . $zwemfeestId);
     }
 
     public function updateGebruiker()
@@ -84,12 +86,14 @@ class Gebruiker extends CI_Controller
         $zwemfeestData->achternaam = $this->input->post('achternaam');
         $zwemfeestData->email = $this->input->post('email');
         $zwemfeestData->telefoonnr = $this->input->post('telefoonnr');
-        $zwemfeestData->gerechtId = $this->input->post('gerecht');
-        $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
+        $zwemfeestData->geboortedatum = $this->input->post('gerecht');
+        $zwemfeestData->straatnaam = $this->input->post('opmerkingen');
+        $zwemfeestData->huisnummer = $this->input->post('gerecht');
+        $zwemfeestData->postcode = $this->input->post('opmerkingen');
 
         $this->inlogger_model->update($zwemfeestId, $zwemfeestData);
 
-        redirect('Zwemfeestjes/getZwemfeestMomenten');
+        redirect('Gebruiker/getGebruikers');
     }
 
 }

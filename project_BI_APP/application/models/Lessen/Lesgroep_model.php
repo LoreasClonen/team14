@@ -34,6 +34,20 @@ class Lesgroep_model extends CI_Model
     }
 
     /**
+     * functie getAllByName()
+     * @brief geeft alle lesgroepen terug in de lesgroep tabel
+     * @pre Er bestaat een Lesgroep_model klasse
+     * @post Er is een array met 0 of meerdere lesgroepen teruggegeven
+     * @return array
+     */
+    function getAllByName()
+    {
+        $this->db->order_by('groepsnaam', 'asc');
+        $query = $this->db->get('lesgroep');
+        return $query->result();
+    }
+
+    /**
      * functie get($id)
      * @brief geeft 1 specifieke lesgroep terug in de lesgroep tabel
      * @pre Er bestaat een Lesgroep model klasse en een lesgroep met overeenkomstige id
