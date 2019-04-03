@@ -118,7 +118,7 @@ class Lesgroep_model extends CI_Model
         $this->db->insert_id();
     }
 
-    function getLesgroepByZwemniveaId($zwemniveauId){
+    function getLesgroepByZwemniveauId($zwemniveauId){
         $this->db->where('zwemniveauId', $zwemniveauId);
         $query = $this->db->get('lesgroep');
         return $query->result();

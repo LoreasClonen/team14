@@ -101,7 +101,7 @@
             $data['titel'] = 'Keuze zwemlessen';
             $data['teamleden'] = '';
             $data['klant'] = $this->klant_model->getById($klantId);
-            $data["lesgroepen"] = $this->lesgroep_model->getLesgroepByZwemniveaId($zwemniveauId);
+            $data["lesgroepen"] = $this->lesgroep_model->getLesgroepByZwemniveauId($zwemniveauId);
             $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
                 'inhoud' => 'zwemlessen/keuze_zwemlessen',
                 'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
