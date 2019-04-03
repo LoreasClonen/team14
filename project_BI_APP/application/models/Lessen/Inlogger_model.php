@@ -107,28 +107,43 @@
         }
 
         /**
-         * @brief update datumBetaald in de inlogger tabel naar 1
+         * @brief update actief in de inlogger tabel
          * @pre Er bestaat een Inlogger model klasse en een inlogger met overeenkomstige id
          * @post Er is een array met 1 inlogger geüpdate
-         * @return array
+         * @param $id
+         * @param $gebruikerActief
          */
-        function updateActiefToOne($id)
+        function updateActief($id, $gebruikerActief)
         {
             $this->db->where('id', $id);
-            $this->db->set('actief', '1');
+            $this->db->set('actief', $gebruikerActief);
             $this->db->update('inlogger');
         }
 
         /**
-         * @brief update datumBetaald in de inlogger tabel naar 0
-         * @pre Er bestaat een Inlogger model klasse en een inlogger met overeenkomstige id
-         * @post Er is een array met 1 inlogger geüpdate
-         * @return array
+         * functie delete(id)
+         * @brief verwijdert een bepaalde inlogger
+         * @pre Er bestaat een Inlogger_model klasse
+         * @post Er is een inlogger uit de database verwijdert
+         * @param $id
          */
-        function updateActiefToZero($id)
+        function delete($id)
         {
             $this->db->where('id', $id);
-            $this->db->set('actief', '0');
-            $this->db->update('inlogger');
+            $this->db->delete('inlogger');
+        }
+
+        /**
+         * functie update(id, gebruikerData)
+         * @brief werkt een bepaalde inlogger bij
+         * @pre Er bestaat een Inlogger_model klasse
+         * @post Er is een inlogger uit de database bijgewerkt
+         * @param $id
+         * @param $gebruikerData
+         */
+        function update($id, $gebruikerData)
+        {
+            $this->db->where('id', $id);
+            $this->db->update('inlogger', $gebruikerData);
         }
     }

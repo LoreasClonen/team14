@@ -8,25 +8,25 @@
 
 <?php
 
-echo '<div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>
+echo '<div class="col-4">' . anchor("Gebruiker/getGebruikers", "Terug", "class='btn btn-secondary'") . '</div>
         <div class="col-8 text-right">' . anchor("Gebruiker/", "Mijn profiel", "class='btn btn-info'") . ' ' . anchor("Gebruiker/",'Nieuwe gebruiker', 'class="btn btn-primary"') . '</div><hr>';
 
-foreach ($gebruikers as $gebruiker) {
-    if ($gebruiker->isZwemleraar == 1) {
+foreach ($inloggers as $inlogger) {
+    if ($inlogger->isZwemleraar == 1) {
 
         echo '<tr>
-                <td>' . $gebruiker->achternaam . ' ' . $gebruiker->voornaam . '</td>
-                <td>' . $gebruiker->email . '</td>
+                <td>' . $inlogger->achternaam . ' ' . $inlogger->voornaam . '</td>
+                <td>' . $inlogger->email . '</td>
                 <td class="text-center">';
 
-        if ($gebruiker->actief == 1) {
-            echo anchor('Gebruiker/gebruikerDeactiveren/' . $gebruiker->id, '<i class="far fa-check-circle fa-2x"></i>');
+        if ($inlogger->actief == 1) {
+            echo anchor('Gebruiker/updateGebruikerActiviteit/' . $inlogger->id . '/0', '<i class="far fa-check-circle fa-2x"></i>');
         } else {
-            echo anchor('Gebruiker/gebruikerActiveren/' . $gebruiker->id, '<i class="far fa-circle fa-2x"></i>');
+            echo anchor('Gebruiker/updateGebruikerActiviteit/' . $inlogger->id . '/1', '<i class="far fa-circle fa-2x"></i>');
         }
 
         echo '</td>
-               <td class="text-center">' . anchor('Gebruiker/getGebruiker/' . $gebruiker->id, '<i class="fas fa-edit"></i>') . "</td>
+               <td class="text-center">' . anchor('Gebruiker/getGebruiker/' . $inlogger->id, '<i class="fas fa-edit"></i>') . "</td>
             </tr>";
     }
 }

@@ -31,7 +31,7 @@ class Gebruiker extends CI_Controller
 
     public function getGebruikers()
     {
-        $data['gebruikers'] = $this->inlogger_model->getAllByAchternaam();
+        $data['inloggers'] = $this->inlogger_model->getAllByAchternaam();
 
         $data['titel'] = 'Overzicht gebruikers';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -50,28 +50,46 @@ class Gebruiker extends CI_Controller
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
 
-        $data['gebruiker'] = $this->inlogger_model->getById($id);
+        $data['inlogger'] = $this->inlogger_model->getById($id);
 
         $partials = array('hoofding' => 'main_header',
             'inhoud' => 'gebruikers_beheren/overzicht_gebruiker',
             'footer' => 'main_footer');
 
-        $this->template->load('gebruikers_beheren/overzicht_gebruiker', $partials, $data);
+        $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
     }
 
-    public function gebruikerActiveren($id)
+    public function updateGebruikerActiviteit($id, $gebruikerActief)
     {
-        $this->inlogger_model->updateActiefToOne($id);
+        $this->inlogger_model->updateActief($id, $gebruikerActief);
 
         redirect('Gebruiker/getGebruikers');
     }
 
-    public function gebruikerDeactiveren($id)
+    public function deleteGebruiker($zwemfeestMomentId, $zwemfeestId)
     {
-        $this->inlogger_model->updateActiefToZero($id);
+        $this->zwemfeestMoment_model->delete($zwemfeestMomentId);
+        $this->inlogger_model->delete($zwemfeestId);
 
-        redirect('Gebruiker/getGebruikers');
+        redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren' . $zwemfeestId);
     }
 
+    public function updateGebruiker()
+    {
+        $zwemfeestId = $this->input->post('zwemfeestId');
+
+        $zwemfeestData = new stdClass();
+
+        $zwemfeestData->voornaam = $this->input->post('voornaam');
+        $zwemfeestData->achternaam = $this->input->post('achternaam');
+        $zwemfeestData->email = $this->input->post('email');
+        $zwemfeestData->telefoonnr = $this->input->post('telefoonnr');
+        $zwemfeestData->gerechtId = $this->input->post('gerecht');
+        $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
+
+        $this->inlogger_model->update($zwemfeestId, $zwemfeestData);
+
+        redirect('Zwemfeestjes/getZwemfeestMomenten');
+    }
 
 }
