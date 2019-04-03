@@ -58,9 +58,10 @@
          * @post Er is een array met 0 of meerdere klanten teruggegeven
          * @return array
          */
-        function getAllByAchternaamWithLesgroepWithZwemniveau()
+        function getAllByAchternaamWithLesgroepWithZwemniveauWhereActief()
         {
-            $this->db->order_by('actief desc, achternaam asc');
+            $this->db->where('actief', 1);
+            $this->db->order_by('achternaam', 'asc');
             $query = $this->db->get('klant');
             $klanten = $query->result();
 
