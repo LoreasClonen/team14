@@ -72,6 +72,8 @@
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
 
+            $data[''] = '';
+
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'schoolaanwezigheden_opnemen/schoolaanwezigheden_opnemen',
                 'footer' => 'main_footer');
