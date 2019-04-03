@@ -1,5 +1,4 @@
 <div class="container">
-
     <div class="card">
         <div class="card-body">
             <div class="text-center">
@@ -8,7 +7,7 @@
             </div>
             <?php
                 $attributes = array('name' => 'boeken', 'id' => 'boekingformulier', 'role' => 'form');
-                echo form_open('Zwemfeestje/addZwemfeest', $attributes);
+                echo form_open('Zwemfeestje/addZwemfeestje', $attributes);
             ?>
 
             <div class="row">
@@ -36,25 +35,27 @@
                         echo form_input($dataAchternaam);
                     ?>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-7 mt-3">
                     <?php
-                        echo form_label('Email', 'email');
+                        echo form_label('E-mail', 'email');
                         $dataEmail = array('id' => 'email',
                             'name' => 'email',
                             'class' => 'form-control',
+                            'type' => 'email',
                             'placeholder' => 'e-mail',
                             'required' => 'required',
                             'size' => '30');
                         echo form_input($dataEmail);
                     ?>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-5 mt-3">
                     <?php
-                        echo form_label('Telefoon', 'telefoon');
-                        $dataTelefoon = array('id' => 'telefoon',
-                            'name' => 'telefoon',
+                        echo form_label('Telefoonnummer', 'telefoonnr');
+                        $dataTelefoon = array('id' => 'telefoonnr',
+                            'name' => 'telefoonnr',
                             'class' => 'form-control',
-                            'placeholder' => '0477000000',
+                            'type' => 'tel',
+                            'placeholder' => '0123456789',
                             'required' => 'required',
                             'size' => '30');
                         echo form_input($dataTelefoon);
@@ -76,45 +77,48 @@
                 $dataAantalKinderen = array('id' => 'aantalKinderen',
                     'name' => 'aantalKinderen',
                     'class' => 'form-control',
+                    'type' => 'number',
                     'placeholder' => 'aantal kinderen',
                     'required' => 'required',
                     'size' => '30');
                 echo form_input($dataAantalKinderen);
-                echo form_label('Welke maaltijd wenst u voor de kinderen?', 'maatlijd');
-                $dataMaaltijd = array('id' => 'maaltijd',
-                    'name' => 'maaltijd',
+
+                $attributes = array(
+                    'class' => 'mt-3'
+                );
+
+                echo form_label('Welke maaltijd wenst u voor de kinderen?', 'gerecht', $attributes);
+                $inhoudGerecht = array('' => '-- kies uw gerecht --');
+                foreach ($gerechten as $gerecht) {
+                    $inhoudGerecht[$gerecht->id] = $gerecht->naam;
+                }
+                $dataGerecht = array(
+                    'id' => 'gerecht',
+                    'name' => 'gerecht',
                     'class' => 'form-control',
-                    'placeholder' => 'maaltijd',
-                    'required' => 'required',
-                    'size' => '30');
-                echo form_input($dataMaaltijd);
-                echo form_label('Opmerkingen?', 'opmerking');
-                $dataOpmerking = array('id' => 'opmerking',
-                    'name' => 'opmerking',
+                    'required' => 'required');
+                echo form_dropdown($dataGerecht, $inhoudGerecht, 'required');
+
+                echo form_label('Opmerkingen?', 'opmerkingen', $attributes);
+                $dataOpmerkingen = array(
+                    'id' => 'opmerkingen',
+                    'name' => 'opmerkingen',
                     'class' => 'form-control',
-                    'placeholder' => 'Iemand heeft een allergie voor ...',
-                    'required' => 'required',
-                    'size' => '30');
-                echo form_input($dataOpmerking);
+                    'placeholder' => 'Vul hier uw opmerkingen in ...',
+                    'rows' => '5',
+                    'size' => '255'
+                );
+                echo form_textarea($dataOpmerkingen);
             ?>
         </div>
-        <div class="card-footer text-muted text-center">
+        <div class="card-footer text-center">
             <?php
-                echo anchor('', 'Annuleren', 'class="btn btn-secondary m-1"');
+                echo anchor('Home/index', 'Annuleren', 'class="btn btn-secondary m-1"');
                 echo form_submit(array("value" => "Bevestigen", "class" => "btn btn-primary my-3", "id" => "Zwemfeest"));
 
                 echo form_close();
             ?>
         </div>
-    </div>
-
-
-</div>
-
-
-<div class="container">
-    <div class="col-12 mt-3">
-
     </div>
 </div>
 

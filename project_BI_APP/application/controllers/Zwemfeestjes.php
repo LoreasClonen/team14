@@ -106,8 +106,10 @@
 
         public function zwemfeestBoeken()
         {
+            $data['gerechten'] = $this->gerecht_model->getAllById();
+
             $data['titel'] = 'Zwemfeestje boeken';
-            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+            $data['teamleden'] = 'Loreas Clonen (T - O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe (O)';
 
             $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
                 'inhoud' => 'zwemfeestje_boeken/zwemfeestje_toevoegen',
@@ -118,6 +120,18 @@
 
         public function addZwemfeestje()
         {
-            
+            $zwemfeestData = new stdClass();
+
+            $zwemfeestData->voornaam = $this->input->post('voornaam');
+            $zwemfeestData->achternaam = $this->input->post('achternaam');
+            $zwemfeestData->email = $this->input->post('email');
+            $zwemfeestData->telefoonnr = $this->input->post('telefoonnr');
+            $zwemfeestData->aantalKinderen = $this->input->post('aantalKinderen');
+            $zwemfeestData->gerechtId = $this->input->post('gerecht');
+            $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
+
+            $this->zwemfeest_model->add($zwemfeestData);
+
+            redirect('Home/index');
         }
     }
