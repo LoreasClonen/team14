@@ -1,5 +1,6 @@
 <?php
     /**
+     *
      * @Class Klant_Model
      * @property Zwemniveau_model $zwemniveau_model
      * @property Beschikbaarheid_model $beschikbaarheid_model

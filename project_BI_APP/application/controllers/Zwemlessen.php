@@ -6,6 +6,15 @@
      * @property Template $template
      * @property Authex $authex
      */
+
+
+    /**
+     * @file
+     * @brief php-file voor de zwemlessen klasse
+     * @class
+     * @brief Deze klasse is een controller en bevat alle functies ivm met zwemlessen.
+     * @author Team 14
+     */
     class Zwemlessen extends CI_Controller
     {
 
@@ -87,6 +96,10 @@
             }
         }
 
+        /**
+         * @brief de succesmail functie laad de pagina voor de succesmail te tonen
+         * @post de pagina wordt geladen.
+         */
         public function succesmail()
         {
             $data["titel"] = "succesmail";
@@ -97,6 +110,10 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * @brief de bestaandeKlant functie laad de pagina voor de bestaande_klant.
+         * @post de pagina van de bestaande_klant wordt getoond.
+         */
         public function bestaandeKlant(){
 
             $data["titel"] = "Zwemlessen";
@@ -107,6 +124,10 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * @brief de reeds_toegevoegd_error functie laad de pagina voor de reeds_toegevoegd_error.
+         * @post de pagina van de reeds_toegevoegd_error wordt getoond.
+         */
         public function reeds_toegevoegd_error()
         {
             $data["titel"] = "Zwemlessen";
