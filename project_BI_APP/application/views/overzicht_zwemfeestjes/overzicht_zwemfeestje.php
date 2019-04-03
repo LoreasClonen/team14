@@ -72,6 +72,7 @@
         'name' => 'aantalKinderen',
         'class' => 'form-control',
         'type' => 'number',
+        'value' => $zwemfeestje->zwemfeest->aantalKinderen,
         'required' => 'required',
         'size' => '50'
     );
@@ -95,7 +96,6 @@
         'name' => 'opmerkingen',
         'class' => 'form-control',
         'value' => $zwemfeestje->zwemfeest->opmerkingen,
-        'required' => 'required',
         'rows' => '5',
         'size' => '255'
     );
