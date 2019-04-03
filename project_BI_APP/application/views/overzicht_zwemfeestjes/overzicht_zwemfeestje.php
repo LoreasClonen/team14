@@ -6,7 +6,7 @@
     echo form_open('Zwemfeestjes/updateZwemfeestje', $attributes);
 
     echo '<div class="row">';
-    echo '<div class="col-8">' . anchor("Zwemfeestjes/zwemfeestMomentenOphalen", "Terug", "class='btn btn-primary'") . '</div>';
+    echo '<div class="col-8">' . anchor("Zwemfeestjes/getZwemfeestMomenten", "Terug", "class='btn btn-primary'") . '</div>';
     echo '<div class="col-4">' . anchor("Zwemfeestjes/deleteZwemfeestje/" . $zwemfeestje->id . "/" . $zwemfeestje->zwemfeest->id, "Verwijderen", "class='btn btn-danger'");
     echo form_submit(array("value" => "Opslaan", "class" => "btn btn-warning", "id" => "updateZwemfeestje")) . '</div>';
     echo '</div>';
