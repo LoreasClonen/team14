@@ -8,6 +8,8 @@
 
 <?php
 
+echo anchor("Home/index", "Terug", "class='btn btn-secondary'");
+
     foreach ($zwemfeestMomenten as $zwemfeestMoment)
     {
         echo "<tr>

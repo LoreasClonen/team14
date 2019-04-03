@@ -45,8 +45,7 @@
             $zwemgroepen = $this->beschikbaarheid_model->getByKlantId($id);
             $groepsnamen = array();
 
-            foreach ($zwemgroepen as $zwemgroep)
-            {
+            foreach ($zwemgroepen as $zwemgroep) {
                 array_push($groepsnamen, $this->lesgroep_model->get($zwemgroep->lesgroepId));
             }
             $data['zwemgroep'] = $groepsnamen;
@@ -65,7 +64,7 @@
          */
         public function zwemmersOphalen()
         {
-            $data['zwemmers'] = $this->klant_model->getAllByAchternaamWithLesgroepWithZwemniveau();
+            $data['zwemmers'] = $this->klant_model->getAllByAchternaamWithLesgroepWithZwemniveauWhereActief();
 
             $data['titel'] = 'Overzicht zwemmers';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();

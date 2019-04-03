@@ -30,6 +30,19 @@
         }
 
         /**
+         * @brief geeft alle inloggers terug in de inlogger tabel
+         * @pre Er bestaat een Inlogger_model klasse
+         * @post Er is een array met 0 of meerdere inlogger teruggegeven
+         * @return array
+         */
+        function getAllByAchternaam()
+        {
+            $this->db->order_by('achternaam', 'asc');
+            $query = $this->db->get('inlogger');
+            return $query->result();
+        }
+
+        /**
          * @brief geeft 1 specifieke inlogger terug met als id $id in de inlogger tabel
          * @pre Er bestaat een Inlogger_model klasse
          * @post Er is een array met 1 inlogger teruggegeven
@@ -91,5 +104,46 @@
             } else {
                 return false;
             }
+        }
+
+        /**
+         * @brief update actief in de inlogger tabel
+         * @pre Er bestaat een Inlogger model klasse en een inlogger met overeenkomstige id
+         * @post Er is een array met 1 inlogger geüpdate
+         * @param $id
+         * @param $gebruikerActief
+         */
+        function updateActief($id, $gebruikerActief)
+        {
+            $this->db->where('id', $id);
+            $this->db->set('actief', $gebruikerActief);
+            $this->db->update('inlogger');
+        }
+
+        /**
+         * functie delete(id)
+         * @brief verwijdert een bepaalde inlogger
+         * @pre Er bestaat een Inlogger_model klasse
+         * @post Er is een inlogger uit de database verwijdert
+         * @param $id
+         */
+        function delete($id)
+        {
+            $this->db->where('id', $id);
+            $this->db->delete('inlogger');
+        }
+
+        /**
+         * functie update(id, gebruikerData)
+         * @brief werkt een bepaalde inlogger bij
+         * @pre Er bestaat een Inlogger_model klasse
+         * @post Er is een inlogger uit de database bijgewerkt
+         * @param $id
+         * @param $gebruikerData
+         */
+        function update($id, $gebruikerData)
+        {
+            $this->db->where('id', $id);
+            $this->db->update('inlogger', $gebruikerData);
         }
     }

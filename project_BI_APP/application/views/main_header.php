@@ -24,13 +24,12 @@
                         echo '<li class="nav-item">' . anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Scholen", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("Facturen/getScholen", "Schoolfacturen", "class = 'nav-link'") . '</li>';
-                        echo '<li class="nav-item">' . anchor("Zwemfeestjes/zwemfeestMomentenOphalen", "Zwemfeestjes", "class = 'nav-link'") . '</li>';
+                        echo '<li class="nav-item">' . anchor("Zwemfeestjes/getZwemfeestMomenten", "Zwemfeestjes", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Nieuwsberichten", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Voorraad producten", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Aanwezigheden scholen", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("Gebruiker/getGebruikers", "Gebruikers", "class = 'nav-link'") . '</li>';
                         echo '<li class="nav-item">' . anchor("", "Aanpassingen", "class = 'nav-link'") . '</li>';
-                        echo '<li class="nav-item">' . anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class='nav-link'") . '</li>';
                     }
                 }
             ?>

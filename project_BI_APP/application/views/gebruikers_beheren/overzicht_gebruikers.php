@@ -1,37 +1,34 @@
 <table class="table">
     <tr>
-        <th scope="col">Gebruikersnaam</th>
+        <th scope="col">Zwemleraar</th>
         <th scope="col">E-mailadres</th>
-        <th scope="col">Rol</th>
-        <th scope="col">Actief</th>
-        <th scope="col">Wijzigen</th>
+        <th class="text-center">Actief</th>
+        <th class="text-center">Wijzigen</th>
     </tr>
 
 <?php
 
-foreach ($gebruikers as $gebruiker)
-{
-    echo "<tr>
-                <td>" . $gebruiker->voornaam . ' ' . $gebruiker->achternaam . "</td>
-                <td>" . $gebruiker->email . "</td><td>";
+echo '<div class="col-4">' . anchor("Gebruiker/getGebruikers", "Terug", "class='btn btn-secondary'") . '</div>
+        <div class="col-8 text-right">' . anchor("Gebruiker/", "Mijn profiel", "class='btn btn-info'") . ' ' . anchor("Gebruiker/",'Nieuwe gebruiker', 'class="btn btn-primary"') . '</div><hr>';
 
-    if ($gebruiker->isAdmin == 1) {
-        echo "Admin";
-    }
-    else {
-        echo "Zwemleraar";
-    }
+foreach ($inloggers as $inlogger) {
+    if ($inlogger->isZwemleraar == 1) {
 
-    echo "</td><td>";
+        echo '<tr>
+                <td>' . $inlogger->achternaam . ' ' . $inlogger->voornaam . '</td>
+                <td>' . $inlogger->email . '</td>
+                <td class="text-center">';
 
-    /*if ($gebruiker->actief == 0) {
-        echo anchor('Facturen/deleteDatumBetaling/' . $gebruiker->id . '/' . $gebruiker->schoolId, '<i class="far fa-check-circle fa-2x"></i>') . ' Betaald op '. zetOmNaarDDMMYYYY($gebruiker->datumBetaald);
+        if ($inlogger->actief == 1) {
+            echo anchor('Gebruiker/updateGebruikerActiviteit/' . $inlogger->id . '/0', '<i class="far fa-check-circle fa-2x"></i>');
+        } else {
+            echo anchor('Gebruiker/updateGebruikerActiviteit/' . $inlogger->id . '/1', '<i class="far fa-circle fa-2x"></i>');
+        }
+
+        echo '</td>
+               <td class="text-center">' . anchor('Gebruiker/getGebruiker/' . $inlogger->id, '<i class="fas fa-edit"></i>') . "</td>
+            </tr>";
     }
-    else {
-        echo anchor('Facturen/updateDatumBetaling/' . $gebruiker->id . '/' . $gebruiker->schoolId . '/' . date("Y-m-d", time()), '<i class="far fa-circle fa-2x"></i>');
-    }
-*/
-    echo "</td></tr>";
 }
 
 echo '</table>';

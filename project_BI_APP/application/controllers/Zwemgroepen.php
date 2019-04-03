@@ -51,7 +51,7 @@ class Zwemgroepen extends CI_Controller
 
     public function getZwemgroep($id)
     {
-        $data['titel'] = 'lesgroep';
+        $data['titel'] = '';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
 

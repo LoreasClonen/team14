@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Kempenrust - Zwemgroepen</title>
+    <title>Kempenrust</title>
 
     <!-- Bootstrap CSS -->
     <?php echo pasStylesheetAan("bootstrap.css"); ?>
@@ -58,7 +58,6 @@
             <?php echo "<div class='col-5'>" .  $footer . "</div>" .
                 "<div class='col-7'>" . $teamleden . "</div>"; ?>
         </div>
-    </div>
 </footer>
 
 </body>

@@ -32,34 +32,34 @@
 <body>
 
 
-<!--            header-->
+    <!--            header-->
 
-<?php echo $hoofding; ?>
+    <?php echo $hoofding; ?>
 
-<hr>
+    <hr>
 
-<!--            pagina-inhoud-->
-<div class="row">
-    <div class="col-12 mb-2 text-center">
-        <h2><?php echo $titel; ?></h2>
-    </div>
-</div>
-
-<div class="row">
-    <?php echo $inhoud; ?>
-</div>
-
-<hr>
-
-<!--            footer-->
-<footer>
+    <!--            pagina-inhoud-->
     <div class="row">
-        <div class="col-12 row">
-            <?php echo "<div class='col-5'>" .  $footer . "</div>" .
-                "<div class='col-7'>" . $teamleden . "</div>"; ?>
+        <div class="col-12 mb-2">
+            <h2><?php echo $titel; ?></h2>
         </div>
     </div>
-</footer>
+
+    <div class="row">
+        <?php echo $inhoud; ?>
+    </div>
+
+    <hr>
+
+    <!--            footer-->
+    <footer>
+        <div class="row">
+            <div class="col-12 row">
+                <?php echo "<div class='col-5'>" .  $footer . "</div>" .
+                    "<div class='col-7'>" . $teamleden . "</div>"; ?>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

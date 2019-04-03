@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * @property Template $template
  * @property Authex $authex
+ * @property Nieuwsbericht_model $nieuwsbericht_model
  */
 class Home extends CI_Controller
 {
