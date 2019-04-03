@@ -29,6 +29,11 @@
             $this->load->library('session');
         }
 
+        /**
+        @brief keuze functie dat de pagina met keuze knoppen laad
+        @post de keuze pagina wordt geladen
+        */
+
         public function keuze()
         {
             $data["titel"] = "Zwemlessen";
@@ -39,7 +44,11 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-
+        /**
+         * @brief laad het gekozen formulier in en toont de view met het formulier
+         * @param form
+         * @post de pagina met het gekozen form wordt geladen
+         */
         public function Index($form)
         {
             $data["titel"] = "Zwemlessen";
@@ -51,6 +60,12 @@
             );
             $this->template->load('main_master', $partials, $data);
         }
+
+        /**
+         * @brief de functie voegt een klant toe indien deze nog niet bestaat in de database.
+         * @brief de functie toont een pagina voor de keuze van de zwemlessen of een error pagina indie de klant al bestaat
+         * @post De klant is toegevoegd in de klant-tabel en het systeem toont de bijbehorende pagina
+         */
 
         public function addKlant()
         {
@@ -68,7 +83,7 @@
                 $this->session->set_flashdata('zwemniveauId', $klant->zwemniveauId);
                 redirect('zwemlessen/keuze_zwemlessen');
             } else {
-                redirect('Zwemlessen/reeds_toegevoegd');
+                redirect('Zwemlessen/reeds_toegevoegd_error');
             }
         }
 
@@ -82,8 +97,17 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        public function bestaandeKlant(){
 
-        public function reeds_toegevoegd()
+            $data["titel"] = "Zwemlessen";
+            $data["teamleden"] = "";
+            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+                'inhoud' => 'zwemlessen/bestaande_klant',
+                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+            $this->template->load('main_master', $partials, $data);
+        }
+
+        public function reeds_toegevoegd_error()
         {
             $data["titel"] = "Zwemlessen";
             $data["teamleden"] = "";

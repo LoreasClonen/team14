@@ -83,9 +83,14 @@
             return $klanten;
         }
 
-        private function klantbestaatAl($email)
+        private function klantbestaatAl($email, $voornaam, $achternaam, $actief = 0)
         {
             $this->db->where('email', $email);
+            $this->db->where('voornaam', $voornaam);
+            $this->db->where('achternaam', $achternaam);
+            if($actief != 0){
+                $this->db->where('isActief', 1);
+            }
             $query = $this->db->get('klant');
             if ($query->num_rows() > 0) {
                 return true;
@@ -102,14 +107,20 @@
          */
         function addKlant($klant)
         {
-            if (!($this->klantbestaatAl($klant->email))) {
+            if (!($this->klantbestaatAl($klant->email, $klant->voornaam, $klant->achternaam))) {
                 $this->db->insert('klant', $klant);
                 $this->db->insert_id();
                 return true;
             } else {
                 return false;
             }
+        }
+        function updateKlant($klant){
+            if($this->klantbestaatAl($klant->email, $klant->voornaam, $klant->achternaam, 1)){
+                $this->db->where('id', $klant->id);
+                $this->db->update('klant', $klant);
 
+            }
         }
 
         function updateStatus($id, $actief)
