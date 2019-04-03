@@ -47,4 +47,11 @@
             $query = $this->db->get('klas');
             return $query->result();
         }
+
+        function getByNameWithSchoolId($schoolId)
+        {
+            $this->db->where('schoolId', $schoolId);
+            $query = $this->db->get('klasnaam');
+            return $query->row();
+        }
     }
