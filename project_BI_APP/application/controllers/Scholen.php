@@ -64,7 +64,7 @@
             $this->template->load('', $partials, $data);
         }
 
-        public function getSchoolWithKlasnaam($schoolId)
+        public function getSchoolWithKlasnaam($schoolId, $datumLes)
         {
             $data['school'] = $this->klas_model->getByNameWithSchoolId($schoolId);
 
@@ -72,7 +72,8 @@
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
 
-            $data[''] = '';
+            $data['scholen'] = $this->school_model->getAllBySchoolnaam();
+            $data['datum'] = $this->les_model->addDatum($datumLes);
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'schoolaanwezigheden_opnemen/schoolaanwezigheden_opnemen',
