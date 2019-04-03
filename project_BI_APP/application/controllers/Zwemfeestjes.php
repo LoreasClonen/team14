@@ -95,6 +95,7 @@ class Zwemfeestjes extends CI_Controller
         $zwemfeestData->achternaam = $this->input->post('achternaam');
         $zwemfeestData->email = $this->input->post('email');
         $zwemfeestData->telefoonnr = $this->input->post('telefoonnr');
+        $zwemfeestData->aantalKinderen = $this->input->post('aantalKinderen');
         $zwemfeestData->gerechtId = $this->input->post('gerecht');
         $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
 
