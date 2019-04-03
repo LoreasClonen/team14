@@ -78,20 +78,20 @@ class Gebruiker extends CI_Controller
 
     public function updateGebruiker()
     {
-        $zwemfeestId = $this->input->post('zwemfeestId');
+        $id = $this->input->post('id');
 
-        $zwemfeestData = new stdClass();
+        $gebruikerData = new stdClass();
 
-        $zwemfeestData->voornaam = $this->input->post('voornaam');
-        $zwemfeestData->achternaam = $this->input->post('achternaam');
-        $zwemfeestData->email = $this->input->post('email');
-        $zwemfeestData->telefoonnr = $this->input->post('telefoonnr');
-        $zwemfeestData->geboortedatum = $this->input->post('gerecht');
-        $zwemfeestData->straatnaam = $this->input->post('opmerkingen');
-        $zwemfeestData->huisnummer = $this->input->post('gerecht');
-        $zwemfeestData->postcode = $this->input->post('opmerkingen');
+        $gebruikerData->voornaam = $this->input->post('voornaam');
+        $gebruikerData->achternaam = $this->input->post('achternaam');
+        $gebruikerData->email = $this->input->post('email');
+        $gebruikerData->telefoonnr = $this->input->post('telefoonnr');
+        $gebruikerData->geboortedatum = $this->input->post('geboortedatum');
+        $gebruikerData->straatnaam = $this->input->post('straatnaam');
+        $gebruikerData->huisnummer = $this->input->post('huisnummer');
+        $gebruikerData->postcode = $this->input->post('postcode');
 
-        $this->inlogger_model->update($zwemfeestId, $zwemfeestData);
+        $this->inlogger_model->update($id, $gebruikerData);
 
         redirect('Gebruiker/getGebruikers');
     }
