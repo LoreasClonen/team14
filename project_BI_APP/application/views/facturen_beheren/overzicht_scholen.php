@@ -2,6 +2,8 @@
 
 <?php
 
+echo anchor("Home/index", "Terug", "class='btn btn-secondary'");
+
 foreach ($scholen as $school)
 {
     echo "<tr>

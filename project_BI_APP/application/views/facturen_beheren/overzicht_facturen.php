@@ -1,5 +1,5 @@
 <?php echo '<h3 class="col-12 mb-2 text-center">' . $school->schoolnaam . '</h3>';
-echo '<div class="col-8">'. anchor("Facturen/getScholen", "Terug", "class='btn btn-primary'") . ' </div><div class="col-4 text-right">' . anchor("Wachtlijsten/index",'Factuur toevoegen', 'class="btn btn-success"') . '</div><hr>';
+echo '<div class="col-8">'. anchor("Facturen/getScholen", "Terug", "class='btn btn-secondary'") . ' </div><div class="col-4 text-right">' . anchor("Wachtlijsten/index",'Factuur toevoegen', 'class="btn btn-primary"') . '</div><hr>';
 
 ?>
 <table class="table">

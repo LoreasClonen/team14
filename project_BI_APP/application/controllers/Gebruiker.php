@@ -31,7 +31,7 @@ class Gebruiker extends CI_Controller
 
     public function getGebruikers()
     {
-        $data['gebruikers'] = $this->inlogger_model->getAllById();
+        $data['gebruikers'] = $this->inlogger_model->getAllByAchternaam();
 
         $data['titel'] = 'Overzicht gebruikers';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -57,6 +57,20 @@ class Gebruiker extends CI_Controller
             'footer' => 'main_footer');
 
         $this->template->load('gebruikers_beheren/overzicht_gebruiker', $partials, $data);
+    }
+
+    public function gebruikerActiveren($id)
+    {
+        $this->inlogger_model->updateActiefToOne($id);
+
+        redirect('Gebruiker/getGebruikers');
+    }
+
+    public function gebruikerDeactiveren($id)
+    {
+        $this->inlogger_model->updateActiefToZero($id);
+
+        redirect('Gebruiker/getGebruikers');
     }
 
 

@@ -84,9 +84,9 @@
         }
 
         /**
-         * @brief update datumBetaald in de factuur tabel
+         * @brief update datumBetaald in de factuur tabel naar $datumbetaald
          * @pre Er bestaat een Factuur model klasse en een factuur met overeenkomstige id
-         * @post Er is een array met 1 facturen geüpdate
+         * @post Er is een array met 1 factuur geüpdate
          * @return array
          */
         function updateDatumBetaald($id, $datumBetaald)
@@ -96,6 +96,12 @@
             $this->db->update('factuur');
         }
 
+        /**
+         * @brief update datumBetaald in de factuur tabel naar NULL
+         * @pre Er bestaat een Factuur model klasse en een factuur met overeenkomstige id
+         * @post Er is een array met 1 factuur geüpdate
+         * @return array
+         */
         function deleteDatumBetaald($id)
         {
             $this->db->where('id', $id);
