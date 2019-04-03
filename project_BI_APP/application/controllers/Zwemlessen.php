@@ -93,7 +93,11 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        public function keuze_zwemlessen_bevestigen(){
+            $klantId = $this->input->post("klantId");
+            $gekozengroepenIds = $this->input->post("gekozenGroepen");
 
+        }
         public function keuze_zwemlessen()
         {
             $klantId = $this->session->flashdata('klantId');
