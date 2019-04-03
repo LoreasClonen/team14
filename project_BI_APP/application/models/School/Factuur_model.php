@@ -64,7 +64,7 @@
 
         /**
          * @brief geeft 0 of meerdere facturen die bij een specifieke school horen terug in de factuur tabel
-         * @pre Er bestaat een Factuur model klasse, een Schhol model klasse, een factuur met overeenkomstige schoolId en een school met overeenkomstige id
+         * @pre Er bestaat een Factuur model klasse, een School model klasse, een factuur met overeenkomstige schoolId en een school met overeenkomstige id
          * @post Er is een array met 0 of meerdere facturen teruggegeven
          * @return array
          */
@@ -83,5 +83,24 @@
             return $scholen;
         }
 
+        /**
+         * @brief update datumBetaald in de factuur tabel
+         * @pre Er bestaat een Factuur model klasse en een factuur met overeenkomstige id
+         * @post Er is een array met 1 facturen geüpdate
+         * @return array
+         */
+        function updateDatumBetaald($id, $datumBetaald)
+        {
+            $this->db->where('id', $id);
+            $this->db->set('datumBetaald', $datumBetaald);
+            $this->db->update('factuur');
+        }
+
+        function deleteDatumBetaald($id)
+        {
+            $this->db->where('id', $id);
+            $this->db->set('datumBetaald', null);
+            $this->db->update('factuur');
+        }
 
     }

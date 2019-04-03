@@ -61,10 +61,18 @@ class Facturen extends CI_Controller
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
 
-    public function updateBetaling($schoolId)
+    public function updateDatumBetaling($id, $schoolId, $datumBetaald)
     {
-        $this->factuur_model->affected_rows();
+        $this->factuur_model->updateDatumBetaald($id, $datumBetaald);
 
         redirect('Facturen/getSchool/' . $schoolId);
     }
+
+    public function deleteDatumBetaling($id, $schoolId)
+    {
+        $this->factuur_model->deleteDatumBetaald($id);
+
+        redirect('Facturen/getSchool/' . $schoolId);
+    }
+
 }

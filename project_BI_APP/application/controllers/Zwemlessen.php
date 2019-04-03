@@ -113,10 +113,10 @@
 
         }
 
-        public function bevestigAnnuleerZwemles()
-
+        public function bevestigAnnuleerZwemles($klantId)
         {
             $data["titel"] = "Inschrijving annuleren";
+            $data["klantId"] = $klantId;
             $data["teamleden"] = "Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)";
             $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
                 'inhoud' => 'zwemlessen/bevestig_annuleer_zwemles',
@@ -127,9 +127,33 @@
         public function annuleerZwemles($klantId)
         {
             $this->beschikbaarheid_model->delete($klantId);
-            $this->zwemles_model->updateStatus($klantId, 0);
+            $this->klant_model->updateStatus($klantId, 0);
 
-            redirect('zwemlessen/bevestigingAnnuleerZwemles');
+            redirect('zwemlessen/bevestigingAnnuleerZwemles/' . $klantId);
+        }
+
+        public function bevestigingAnnuleerZwemles($klantId)
+        {
+            $data["titel"] = "Inschrijving geannuleerd";
+            $data["klantId"] = $klantId;
+            $data["teamleden"] = "Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)";
+            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+                'inhoud' => 'zwemlessen/bevestiging_annuleer_zwemles',
+                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+            $this->template->load('main_master', $partials, $data);
+        }
+
+        public function emailBevestigingAnnuleerZwemles($klantId)
+        {
+            $data['titel'] = 'Inbox';
+            $data['gebruiker'] = $this->klant_model->getById($klantId);
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'email_header',
+                'inhoud' => 'zwemlessen/email_bevestiging_annuleer_zwemles',
+                'footer' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
         }
 
     }

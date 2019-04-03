@@ -20,7 +20,6 @@
         }
 
         /**
-         * functie getAllByID()
          * @brief geeft alle beschikbaarheden terug in de beschikbaarheid tabel
          * @pre Er bestaat een Beschikbaarheid_model klasse
          * @post Er is een array met 0 of meerdere beschikbaarheden teruggegeven
@@ -34,7 +33,6 @@
         }
 
         /**
-         * functie getByKlantId($id)
          * @brief geeft alle beschikbaarheden waarvoor klantId gelijk is aan $id
          * @pre Er bestaat een Beschikbaarheid model klasse en een beschikbaarheid met overeenkomstige klantId
          * @post Er is een array met 1 of meerdere beschikbaarheden teruggegeven
@@ -65,6 +63,7 @@
             }
             return $beschikbaarheden;
         }
+
 
         function delete($klantId)
         {
