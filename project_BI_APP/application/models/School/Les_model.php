@@ -38,4 +38,10 @@
             $this->db->insert('datumLes', $datumLes);
             $this->db->insert_id();
         }
+
+        function addAantalZwemmers($aantalZwemmers)
+        {
+            $this->db->insert('leerlingenAantal', $aantalZwemmers);
+            $this->db->insert_id();
+        }
     }

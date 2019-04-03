@@ -64,7 +64,7 @@
             $this->template->load('', $partials, $data);
         }
 
-        public function getSchoolWithKlasnaam($schoolId, $datumLes)
+        public function getSchoolWithKlasnaam($schoolId, $datumLes, $leerlingenAantal)
         {
             $data['school'] = $this->klas_model->getByNameWithSchoolId($schoolId);
 
@@ -74,6 +74,8 @@
 
             $data['scholen'] = $this->school_model->getAllBySchoolnaam();
             $data['datum'] = $this->les_model->addDatum($datumLes);
+            $data['leerlingenAantal'] = $this->les_model->addAantalZwemmers($leerlingenAantal);
+            $data['klasnaam'] = $this->klas_model->getByNameWithSchoolId($schoolId);
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'schoolaanwezigheden_opnemen/schoolaanwezigheden_opnemen',
