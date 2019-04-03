@@ -102,5 +102,6 @@
     echo form_textarea($dataOpmerkingen);
 
     echo form_hidden('zwemfeestId', $zwemfeestje->zwemfeest->id)
+    echo form_close();
     ?>
 </div>
