@@ -73,7 +73,7 @@ class Gebruiker extends CI_Controller
         $this->lesgroep_model->delete($InloggerId);
         $this->inlogger_model->delete($zwemfeestId);
 
-        redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren' . $zwemfeestId);
+        redirect('Gebruiker/getGebruikers' . $zwemfeestId);
     }
 
     public function updateGebruiker()
@@ -86,8 +86,10 @@ class Gebruiker extends CI_Controller
         $zwemfeestData->achternaam = $this->input->post('achternaam');
         $zwemfeestData->email = $this->input->post('email');
         $zwemfeestData->telefoonnr = $this->input->post('telefoonnr');
-        $zwemfeestData->gerechtId = $this->input->post('gerecht');
-        $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
+        $zwemfeestData->geboortedatum = $this->input->post('gerecht');
+        $zwemfeestData->straatnaam = $this->input->post('opmerkingen');
+        $zwemfeestData->huisnummer = $this->input->post('gerecht');
+        $zwemfeestData->postcode = $this->input->post('opmerkingen');
 
         $this->inlogger_model->update($zwemfeestId, $zwemfeestData);
 
