@@ -26,11 +26,10 @@ class Wachtlijst extends CI_Controller
         $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
 
         $data['zwemgroepen'] = $this->lesgroep_model->getAllById();
-        $data['wachtend'] = $this->beschikbaarheid_model->
         $partials = array('hoofding' => 'main_header',
             'inhoud' => 'overzicht_wachtlijst/overzicht_wachtlijst',
             'footer' => 'main_footer');
 
-        $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+        $this->template->load('overzicht_wachtlijst/wachtlijst_master', $partials, $data);
     }
 }
