@@ -21,7 +21,7 @@
                 $options[$option->id] = $option->schoolnaam;
             }
             echo form_label("Schoolnaam");
-            echo form_dropdown('schoolnaam', $options, 'class="form-control dropdown"');
+            echo form_dropdown('schoolnaam', $options, '--kies hier de school--', 'class="form-control dropdown"');
 
             echo form_label("Datum van vandaag");
             $dataDatum = array('id' => 'datumLes',
@@ -31,8 +31,8 @@
             echo form_input($dataDatum);
 
             echo form_label("Aantal zwemmers");
-            $dataAantal = array('id' => 'aantalZwemmers',
-                'name' => 'aantalZwemmers',
+            $dataAantal = array('id' => 'leerlingenAantal',
+                'name' => 'leerlingenAantal',
                 'class' => 'form-control',
                 'placeholder' => 'aantal zwemmers',
                 'required' => 'required',
@@ -45,7 +45,7 @@
 
             }
             echo form_label("Klas");
-            echo form_dropdown('klasnaam', $leerjaren, 'class="form-control dropdown"');
+            echo form_dropdown('klasnaam', $leerjaren, '--kies hier het leerjaar--', 'class="form-control dropdown"');
 
 
 
