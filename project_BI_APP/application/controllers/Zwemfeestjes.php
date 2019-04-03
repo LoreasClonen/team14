@@ -100,6 +100,6 @@ class Zwemfeestjes extends CI_Controller
 
         $this->zwemfeest_model->update($zwemfeestId, $zwemfeestData);
 
-        redirect('Zwemfeestjes/zwemfeestMomentenOphalen');
+        redirect('Zwemfeestjes/getZwemfeestMomenten');
     }
 }
