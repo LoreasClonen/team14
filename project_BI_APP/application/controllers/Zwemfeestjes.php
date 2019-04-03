@@ -132,6 +132,18 @@
 
             $this->zwemfeest_model->add($zwemfeestData);
 
-            redirect('Home/index');
+            redirect('Zwemfeestjes/bevestigingAanvraag');
+        }
+
+        public function bevestigingAanvraag()
+        {
+            $data['titel'] = 'Zwemfeestje boeken';
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+                'inhoud' => 'zwemfeestje_boeken/bevestiging',
+                'footer' => 'main_footer');
+
+            $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
         }
     }
