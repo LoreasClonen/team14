@@ -31,7 +31,7 @@ class Zwemfeestjes extends CI_Controller
         $this->load->helper('notation');
     }
 
-    public function zwemfeestMomentenOphalen()
+    public function getZwemfeestMomenten()
     {
         $data['zwemfeestMomenten'] = $this->zwemfeestMoment_model->getAllByDatumWithZwemfeest();
 
