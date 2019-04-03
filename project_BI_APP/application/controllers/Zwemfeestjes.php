@@ -62,9 +62,9 @@ class Zwemfeestjes extends CI_Controller
         $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
     }
 
-    public function getZwemfeestjeVoorAnnuleren($id)
+    public function getZwemfeestjeVoorAnnuleren($zwemfeestId)
     {
-        $data['zwemfeestje'] = $this->zwemfeestMoment_model->getByIdWithEverything($id);
+        $data['zwemfeestje'] = $this->zwemfeestMoment_model->getByIdWithEverything($zwemfeestId);
 
         $data['titel'] = 'Overzicht zwemfeestje';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -82,7 +82,7 @@ class Zwemfeestjes extends CI_Controller
         $this->zwemfeestMoment_model->delete($zwemfeestMomentId);
         $this->zwemfeest_model->delete($zwemfeestId);
 
-        redirect('Zwemfeestjes/zwemfeestMomentenOphalen');
+        redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren' . $zwemfeestId);
     }
 
     public function updateZwemfeestje()
