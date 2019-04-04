@@ -130,17 +130,19 @@
             $zwemfeestData->aantalKinderen = $this->input->post('aantalKinderen');
             $zwemfeestData->gerechtId = $this->input->post('gerecht');
             $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
+            $zwemfeestData->isBevestigd = 0;
 
-            $this->zwemfeest_model->add($zwemfeestData);
+            $id = $this->zwemfeest_model->add($zwemfeestData);
 
-            redirect('Zwemfeestjes/bevestigingAanvraag');
+            redirect('Zwemfeestjes/bevestigingAanvraag/' . $id);
         }
 
-        public function bevestigingAanvraag()
+        public function bevestigingAanvraag($zwemfeestId)
         {
             $data['titel'] = 'Zwemfeestje boeken';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+            $data['ZwemfeestId'] = $zwemfeestId;
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemfeestje_boeken/bevestiging',

@@ -114,7 +114,7 @@
         function add($zwemfeestdata)
         {
             $this->db->insert('zwemfeest', $zwemfeestdata);
-            $this->db->insert_id();
+            return $this->db->insert_id();
         }
     }
 
