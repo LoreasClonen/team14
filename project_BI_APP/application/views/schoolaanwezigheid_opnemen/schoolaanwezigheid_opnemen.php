@@ -21,8 +21,10 @@
             echo form_dropdown('schoolnaam', $options, 'class="form-control dropdown"');
 
             // Laadt de datum van vandaag in een hidden field
-            $datumVanVandaag = getdate();
-            echo form_label("datumVanVandaag", $datumVanVandaag);
+            $datumVanVandaag = date("Y/m/d");
+            echo form_hidden($datumVanVandaag, 'datumVanVandaag');
+
+
 //
 //            echo form_label("Aantal zwemmers");
 //            $dataAantal = array('id' => 'leerlingenAantal',
