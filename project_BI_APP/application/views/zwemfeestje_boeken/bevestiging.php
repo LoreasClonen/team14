@@ -7,7 +7,7 @@
 </div>
 <div class="card-footer text-muted text-center">
     <?php
-        echo anchor('Home/index', 'Hoofdmenu', 'class="btn btn-primary"');
+        echo anchor('Home/index', 'Hoofdmenu', 'class="btn btn-primary mr-2"');
         echo anchor('Zwemfeestjes/emailBevestigingAanvraag/' . $zwemfeestId, 'Gmail', 'class="btn btn-outline-secondary"');
     ?>
 </div>
