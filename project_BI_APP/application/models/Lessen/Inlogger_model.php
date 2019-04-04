@@ -149,7 +149,7 @@
 
         function insert($inlogger)
         {
-            $this->db->insert('lesgroep', $inlogger);
-            $this->db->insert_id();
+            $this->db->insert('inlogger', $inlogger);
+            return $this->db->insert_id();
         }
     }

@@ -8,8 +8,8 @@
 
 <?php
 
-echo '<div class="col-4">' . anchor("Gebruiker/getGebruikers", "Terug", "class='btn btn-secondary'") . '</div>
-        <div class="col-8 text-right">' . anchor("Gebruiker/", "Mijn profiel", "class='btn btn-info'") . ' ' . anchor("Gebruiker/",'Nieuwe gebruiker', 'class="btn btn-primary"') . '</div><hr>';
+echo '<div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>
+        <div class="col-8 text-right">' . anchor("Gebruiker/", "Mijn profiel", "class='btn btn-info'") . ' ' . anchor("Gebruiker/insertGebruiker",'Nieuwe zwemleraar', 'class="btn btn-primary"') . '</div><hr>';
 
 foreach ($inloggers as $inlogger) {
     if ($inlogger->isZwemleraar == 1) {

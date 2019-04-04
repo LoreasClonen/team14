@@ -69,7 +69,7 @@ class Zwemgroepen extends CI_Controller
         $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
     }
 
-    public function verwijderZwemgroep($id)
+    public function deleteZwemgroep($id)
     {
         $this->lesgroep_model->delete($id);
 

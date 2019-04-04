@@ -3,9 +3,8 @@
 $attributes = array('name' => 'overzicht_inlogger', 'id' => 'gebruikerAanpassenFormulier', 'role' => 'form');
 echo form_open('Gebruiker/updateGebruiker', $attributes);
 
-echo '<div class="row"><div class="col-4">' . anchor("Gebruiker/getGebruikers", "Terug", "class='btn btn-secondary'") . '</div>
-        <div class="col-8 text-right">' . anchor("Gebruiker/", "Verwijderen", "class='btn btn-danger'") . ' ';
-echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateGebruiker")) . '</div></div><hr>';
+echo '<div class="row"><div class="col-4">' . anchor("Gebruiker/deleteGebruiker/" . $inlogger->id, "Verwijderen", "class='btn btn-danger'") . '</div>';
+echo '<div class="col-8 text-right">' . form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateGebruiker")) . '</div></div><hr>';
 
 
 
@@ -83,7 +82,7 @@ $dataHuisnummer = array(
 echo "\n";
 echo '<div class="row">' . "\n\t";
 echo '<div class="col-7">' . "\n\t\t" . form_input($dataStraatnaam) . "\t" . '</div>' . "\n\t";
-echo '<div class="col-1">' . "\n\t\t" . form_input($dataHuisnummer) . "\t" . '</div>' . "\n";
+echo '<div class="col-2">' . "\n\t\t" . form_input($dataHuisnummer) . "\t" . '</div>' . "\n";
 echo '</div>';
 
 echo form_label('geboortedatum:', 'geboortedatum');
