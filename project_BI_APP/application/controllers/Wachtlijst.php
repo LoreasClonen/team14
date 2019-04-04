@@ -40,7 +40,17 @@ class Wachtlijst extends CI_Controller
         $zwemgroepId = $this->input->get('zwemgroepId');
         $statusId = $this->input->get('statusId');
 
+        $data['wachtlijstId'] = $zwemgroepId.$statusId;
+
         $data['personenlijst'] = $this->beschikbaarheid_model->getByStatusIdLesgroepIdWithKlant($statusId, $zwemgroepId);
+        switch ($statusId) {
+            case 1:
+                $data['wachtlijstTitel'] = "Geschikte kandidaten";
+                break;
+            case 2:
+                $data['wachtlijstTitel'] = "Huidige zwemmers";
+                break;
+        }
 
         $this->load->view('overzicht_wachtlijst/ajax_wachtlijst', $data);
     }
