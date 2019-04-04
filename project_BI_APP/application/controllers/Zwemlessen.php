@@ -133,7 +133,7 @@
             $data["titel"] = "Zwemlessen";
             $data["teamleden"] = "";
             $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
-                'inhoud' => 'zwemlessen/reeds_toegevoegd',
+                'inhoud' => 'zwemlessen/reeds_toegevoegd_error',
                 'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
             $this->template->load('main_master', $partials, $data);
         }

@@ -14,6 +14,7 @@
 
         <!-- Custom CSS -->
         <?php echo pasStylesheetAan("buttons.css"); ?>
+        <?php echo pasStylesheetAan("footer.css"); ?>
 
         <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
         <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
@@ -52,13 +53,15 @@
             <hr>
 
             <!--            footer-->
-            <footer>
-                <div class="row">
-                    <div class="col-12 row">
+
+                <footer class="footer">
+                    <div class="container">
+                        <div class="row">
                         <?php echo "<div class='col-5'>" .  $footer . "</div>" .
-                            "<div class='col-7'>" . $teamleden . "</div>"; ?>
-                </div>
-            </footer>
+                                                    "<div class='col-7'>" . $teamleden . "</div>"; ?>
+                        </div>
+                    </div>
+                </footer>
 
     </body>
 
