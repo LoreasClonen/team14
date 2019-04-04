@@ -82,5 +82,13 @@
             $this->db->where('klantId', $klantId);
             $this->db->delete('beschikbaarheid');
         }
+
+        function updateStatusId($zwemgroepId, $klantId, $statusId) {
+            $this->db->where('lesgroepId', $zwemgroepId);
+            $this->db->where('klantId', $klantId);
+
+            $this->db->set('statusId', $statusId);
+            $this->db->update('beschikbaarheid');
+        }
     }
 
