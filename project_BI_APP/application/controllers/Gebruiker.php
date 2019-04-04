@@ -84,6 +84,7 @@ class Gebruiker extends CI_Controller
         $gebruikerData->voornaam = $this->input->post('voornaam');
         $gebruikerData->achternaam = $this->input->post('achternaam');
         $gebruikerData->email = $this->input->post('email');
+        $gebruikerData->wachtwoord = $this->input->post('wachtwoord');
         $gebruikerData->telefoonnr = $this->input->post('telefoonnr');
         $gebruikerData->geboortedatum = $this->input->post('geboortedatum');
         $gebruikerData->straatnaam = $this->input->post('straatnaam');
