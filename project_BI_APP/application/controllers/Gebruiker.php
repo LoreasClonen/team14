@@ -50,7 +50,7 @@ class Gebruiker extends CI_Controller
     {
         $data['titel'] = 'Gebruiker';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
-        $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
+        $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe';
 
         $data['inlogger'] = $this->inlogger_model->getById($id);
 
@@ -68,12 +68,11 @@ class Gebruiker extends CI_Controller
         redirect('Gebruiker/getGebruikers');
     }
 
-    public function deleteGebruiker($InloggerId, $zwemfeestId)
+    public function deleteGebruiker($id)
     {
-        $this->lesgroep_model->delete($InloggerId);
-        $this->inlogger_model->delete($zwemfeestId);
+        $this->inlogger_model->delete($id);
 
-        redirect('Gebruiker/getGebruikers' . $zwemfeestId);
+        redirect('Gebruiker/getGebruikers');
     }
 
     public function updateGebruiker()
@@ -85,6 +84,7 @@ class Gebruiker extends CI_Controller
         $gebruikerData->voornaam = $this->input->post('voornaam');
         $gebruikerData->achternaam = $this->input->post('achternaam');
         $gebruikerData->email = $this->input->post('email');
+        $gebruikerData->wachtwoord = $this->input->post('wachtwoord');
         $gebruikerData->telefoonnr = $this->input->post('telefoonnr');
         $gebruikerData->geboortedatum = $this->input->post('geboortedatum');
         $gebruikerData->straatnaam = $this->input->post('straatnaam');
@@ -98,22 +98,15 @@ class Gebruiker extends CI_Controller
 
     public function insertGebruiker()
     {
-        $id = $this->input->post('id');
-
         $gebruikerData = new stdClass();
 
-        $gebruikerData->voornaam = $this->input->post('voornaam');
-        $gebruikerData->achternaam = $this->input->post('achternaam');
-        $gebruikerData->email = $this->input->post('email');
-        $gebruikerData->telefoonnr = $this->input->post('telefoonnr');
-        $gebruikerData->geboortedatum = $this->input->post('geboortedatum');
-        $gebruikerData->straatnaam = $this->input->post('straatnaam');
-        $gebruikerData->huisnummer = $this->input->post('huisnummer');
-        $gebruikerData->postcode = $this->input->post('postcode');
+        $gebruikerData->actief = '0';
+        $gebruikerData->isAdmin = '0';
+        $gebruikerData->isZwemleraar = '1';
 
-        $this->inlogger_model->insert($id, $gebruikerData);
+        $id = $this->inlogger_model->insert($gebruikerData);
 
-        redirect('Gebruiker/getGebruikers');
+        redirect('Gebruiker/getGebruiker/' . $id);
     }
 
 }
