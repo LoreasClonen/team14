@@ -48,10 +48,10 @@
             return $query->result();
         }
 
-        function getByNameWithSchoolId($schoolId)
+        function getAllByNameWhereSchoolId($schoolId)
         {
             $this->db->where('schoolId', $schoolId);
-            $query = $this->db->get('klasnaam');
-            return $query->row();
+            $query = $this->db->get('klas');
+            return $query->result();
         }
     }
