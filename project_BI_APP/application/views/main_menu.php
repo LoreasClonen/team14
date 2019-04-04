@@ -18,19 +18,35 @@ for ($i=0; $i < count($arrayBerichten); $i++){
 
 
 ?>
+<div class="row">
+    <div class="container-fluid">
 
-<div class="col-8 offset-2 col-lg-3 offset-lg-0 py-5 px-3 text-center">
+        <header class="jumbotron">
+            <h1>Kempenrust</h1>
+            <p>Welkom bij zwembad Kempenrust. Hier kan u terecht om makkelijk een zwemles te reserveren of om een
+                zwemfeestje te boeken.</p>
 
-    <?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
-    <?php echo smallDivAnchor('les1/toonTabs', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?>
-    <?php echo smallDivAnchor('les1/valideer', 'Webshop', 'class="btn btn-primary"'); ?>
+        </header>
+    </div>
 </div>
+<div class="row">
+    <div class="col">
+        <div class="container-fluid">
 
-<div class="col-8 offset-2 col-lg-9 offset-lg-0 py-5 px-3 text-center">
+            <?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
+            <?php echo smallDivAnchor('les1/toonTabs', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?>
+            <?php echo smallDivAnchor('les1/valideer', 'Webshop', 'class="btn btn-primary"'); ?>
+
+        </div>
+    </div>
+<div class="col">
+<div class="container-fluid text-center">
     <h3 id="jquery" class="mt-4">Nieuwsberichten:</h3>
     <div><?php
 
     echo $lijstBerichten;
     ?>
     </div>
+</div>
+</div>
 </div>

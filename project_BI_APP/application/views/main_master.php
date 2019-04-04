@@ -15,9 +15,11 @@
         <!-- Custom CSS -->
         <?php echo pasStylesheetAan("buttons.css"); ?>
         <?php echo pasStylesheetAan("footer.css"); ?>
+        <?php echo pasStylesheetAan("content.css"); ?>
 
         <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
         <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
+        <?php echo haalJavascriptOp("menu_toggle.js") ?>
 
         <!--        font awesome (CDN) -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -31,37 +33,46 @@
     </head>
 
     <body>
+    <div class="d-flex" id="wrapper">
 
-
-            <!--            header-->
-
-            <?php echo $hoofding; ?>
-
-            <hr>
-
+            <!--            sidebar-menu-->
+            <div class="border-right" id="sidebar-wrapper">
+                <?php echo $hoofding; ?>
+            </div>
             <!--            pagina-inhoud-->
-            <div class="row">
-                <div class="col-12 mb-2 text-center">
-                    <h2><?php echo $titel; ?></h2>
+
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <button class="btn btn-primary" id="menu-toggle">Menu</button>
+                </nav>
+                <div class="container">
+                    <div class="text-center">
+                        <h2><?php echo $titel; ?></h2>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <?php echo $inhoud; ?>
-            </div>
 
-            <hr>
+                <div class="container">
+                    <?php echo $inhoud; ?>
+                </div>
+
+                <hr>
 
             <!--            footer-->
 
-                <footer class="footer">
-                    <div class="container">
-                        <div class="row">
-                        <?php echo "<div class='col-5'>" .  $footer . "</div>" .
-                                                    "<div class='col-7'>" . $teamleden . "</div>"; ?>
+                <footer class="container-fluid footer">
+                    <div class="container-fluid text-muted">
+                        <div class='row  align-left'>
+                            <?php echo $footer ?>
+                        </div>
+                        <div class="row"
+                            <?php echo "<small class='team-text float-right'> " . $teamleden . "</small"?>
                         </div>
                     </div>
+
                 </footer>
+            </div>
+    </div>
 
     </body>
 
