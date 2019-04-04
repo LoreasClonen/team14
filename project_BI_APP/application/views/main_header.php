@@ -27,7 +27,7 @@
                         echo anchor("Zwemfeestjes/getZwemfeestMomenten", "Zwemfeestjes", "class = 'list-group-item list-group-item-action'");
                         echo anchor("", "Nieuwsberichten", "class = 'list-group-item list-group-item-action'");
                         echo anchor("", "Voorraad producten", "class = 'list-group-item list-group-item-action'");
-                        echo anchor("Scholen/getSchoolWithKlasnaam", "Aanwezigheden scholen", "class = 'list-group-item list-group-item-action'");
+                        echo anchor("Scholen/aanwezighedenIngeven", "Aanwezigheden scholen", "class = 'list-group-item list-group-item-action'");
                         echo anchor("Gebruiker/getGebruikers", "Gebruikers", "class = 'list-group-item list-group-item-action'");
                         echo anchor("", "Aanpassingen", "class = 'list-group-item list-group-item-action'");
                     }
