@@ -48,6 +48,10 @@
     }
 
     $(document).ready(function () {
-        
+        $(".card-header button").click(function () {
+            zwemgroepId = $(this).parent().parent().id;
+            zwemgroepId = zwemgroepId.substr(7);
+            haalWachtlijstOp(zwemgroepId);
+        })
     })
 </script>
