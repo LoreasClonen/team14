@@ -12,6 +12,7 @@
         function __construct()
         {
             parent::__construct();
+            $this->load->model('/Zwemfeest/Gerecht_model', 'gerecht_model');
         }
 
         /**
@@ -115,6 +116,25 @@
         {
             $this->db->insert('zwemfeest', $zwemfeestdata);
             return $this->db->insert_id();
+        }
+
+        /**
+         * functie getByIdWithGerecht($id)
+         * @brief geeft 1 specifiek zwemfeest terug in de zwemfeest tabel samen met het gekozen gerecht
+         * @pre Er bestaat een zwemfeest model klasse, een gerecht model klasse en een klant met overeenkomstige id
+         * @post Er is een array met 1 klant teruggegeven
+         * @return array
+         */
+        function getByIdWithGerecht($id)
+        {
+            $this->db->where('id', $id);
+            $query = $this->db->get('zwemfeest');
+            $zwemfeest = $query->row();
+
+            $zwemfeest->gerecht =
+                $this->gerecht_model->getById($zwemfeest->gerechtId)->naam;
+
+            return $zwemfeest;
         }
     }
 

@@ -40,7 +40,8 @@
 
     <!--            pagina-inhoud-->
     <div class="row">
-        <div class="col-12">
+        <div class="col"></div>
+        <div class="col-8">
             <div class="card">
                 <div class="card-header text-center">
                     <h2><?php echo $titel; ?></h2>
@@ -48,6 +49,7 @@
                 <?php echo $inhoud; ?>
             </div>
         </div>
+        <div class="col"></div>
     </div>
 
     <hr>

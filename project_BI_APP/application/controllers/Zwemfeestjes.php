@@ -142,12 +142,25 @@
             $data['titel'] = 'Zwemfeestje boeken';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
-            $data['ZwemfeestId'] = $zwemfeestId;
+            $data['zwemfeestId'] = $zwemfeestId;
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemfeestje_boeken/bevestiging',
                 'footer' => 'main_footer');
 
             $this->template->load('zwemfeestje_boeken/zwemfeestje_boeken_master', $partials, $data);
+        }
+
+        public function emailBevestigingAanvraag($zwemfeestId)
+        {
+            $data['titel'] = 'Inbox';
+            $data['zwemfeest'] = $this->zwemfeest_model->getByIdWithGerecht($zwemfeestId);
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'email_header',
+                'inhoud' => 'zwemfeestje_boeken/email_bevestiging',
+                'footer' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
         }
     }
