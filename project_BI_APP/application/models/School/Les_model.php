@@ -17,6 +17,9 @@
         function __construct()
         {
             parent::__construct();
+            $this->load->model('/School/Factuur_model', 'factuur_model');
+            $this->load->model('/School/Klas_model', 'klas_model');
+            $this->load->model('/School/School_model', 'school_model');
         }
 
         /**

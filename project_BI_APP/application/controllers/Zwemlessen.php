@@ -6,6 +6,15 @@
      * @property Template $template
      * @property Authex $authex
      */
+
+
+    /**
+     * @file
+     * @brief php-file voor de zwemlessen klasse
+     * @class
+     * @brief Deze klasse is een controller en bevat alle functies ivm met zwemlessen.
+     * @author Team 14
+     */
     class Zwemlessen extends CI_Controller
     {
 
@@ -29,6 +38,11 @@
             $this->load->library('session');
         }
 
+        /**
+        @brief keuze functie dat de pagina met keuze knoppen laad
+        @post de keuze pagina wordt geladen
+        */
+
         public function keuze()
         {
             $data["titel"] = "Zwemlessen";
@@ -39,7 +53,11 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-
+        /**
+         * @brief laad het gekozen formulier in en toont de view met het formulier
+         * @param form
+         * @post de pagina met het gekozen form wordt geladen
+         */
         public function Index($form)
         {
             $data["titel"] = "Zwemlessen";
@@ -51,6 +69,12 @@
             );
             $this->template->load('main_master', $partials, $data);
         }
+
+        /**
+         * @brief de functie voegt een klant toe indien deze nog niet bestaat in de database.
+         * @brief de functie toont een pagina voor de keuze van de zwemlessen of een error pagina indie de klant al bestaat
+         * @post De klant is toegevoegd in de klant-tabel en het systeem toont de bijbehorende pagina
+         */
 
         public function addKlant()
         {
@@ -68,10 +92,14 @@
                 $this->session->set_flashdata('zwemniveauId', $klant->zwemniveauId);
                 redirect('zwemlessen/keuze_zwemlessen');
             } else {
-                redirect('Zwemlessen/reeds_toegevoegd');
+                redirect('Zwemlessen/reeds_toegevoegd_error');
             }
         }
 
+        /**
+         * @brief de succesmail functie laad de pagina voor de succesmail te tonen
+         * @post de pagina wordt geladen.
+         */
         public function succesmail()
         {
             $data["titel"] = "succesmail";
@@ -82,18 +110,39 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * @brief de bestaandeKlant functie laad de pagina voor de bestaande_klant.
+         * @post de pagina van de bestaande_klant wordt getoond.
+         */
+        public function bestaandeKlant(){
 
-        public function reeds_toegevoegd()
-        {
             $data["titel"] = "Zwemlessen";
             $data["teamleden"] = "";
             $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
-                'inhoud' => 'zwemlessen/reeds_toegevoegd',
+                'inhoud' => 'zwemlessen/bestaande_klant',
                 'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * @brief de reeds_toegevoegd_error functie laad de pagina voor de reeds_toegevoegd_error.
+         * @post de pagina van de reeds_toegevoegd_error wordt getoond.
+         */
+        public function reeds_toegevoegd_error()
+        {
+            $data["titel"] = "Zwemlessen";
+            $data["teamleden"] = "";
+            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+                'inhoud' => 'zwemlessen/reeds_toegevoegd_error',
+                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+            $this->template->load('main_master', $partials, $data);
+        }
 
+        public function keuze_zwemlessen_bevestigen(){
+            $klantId = $this->input->post("klantId");
+            $gekozengroepenIds = $this->input->post("gekozenGroepen");
+
+        }
         public function keuze_zwemlessen()
         {
             $klantId = $this->session->flashdata('klantId');
