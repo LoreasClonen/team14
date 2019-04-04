@@ -4,6 +4,8 @@
  * @class Wachtlijsten
  * @brief Controller-klasse voor wachtlijsten
  * @property Lesgroep_model $lesgroep_model
+ * @property Beschikbaarheid_model $beschikbaarheid_model
+ * @property CI_Input $input
  *
  * Controller klasse met alle methodes die gebruikt worden voor alles wat te maken heeft met inloggers, zwemlessen en klanten
  */
@@ -26,11 +28,20 @@ class Wachtlijst extends CI_Controller
         $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
 
         $data['zwemgroepen'] = $this->lesgroep_model->getAllById();
-        $data['wachtend'] = $this->beschikbaarheid_model->
         $partials = array('hoofding' => 'main_header',
             'inhoud' => 'overzicht_wachtlijst/overzicht_wachtlijst',
             'footer' => 'main_footer');
 
-        $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+        $this->template->load('overzicht_wachtlijst/wachtlijst_master', $partials, $data);
+    }
+
+    public function haalAjaxOp_Wachtlijst()
+    {
+        $zwemgroepId = $this->input->get('zwemgroepId');
+        $statusId = $this->input->get('statusId');
+
+        $data['personenlijst'] = $this->beschikbaarheid_model->getByStatusIdLesgroepIdWithKlant($statusId, $zwemgroepId);
+
+        $this->load->view('overzicht_wachtlijst/ajax_wachtlijst', $data);
     }
 }
