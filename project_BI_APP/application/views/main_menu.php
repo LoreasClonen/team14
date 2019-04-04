@@ -1,20 +1,17 @@
 <?php
-$lijstBerichten = "";
+    $lijstBerichten = "";
 
-foreach ($nieuwsberichten as $bericht) {
-    $arrayBerichten[] = $bericht->bericht;
-}
+    foreach ($nieuwsberichten as $bericht) {
+        $arrayBerichten[] = $bericht->bericht;
+    }
 
-foreach ($nieuwsberichten as $foto) {
-    $arrayFotos[] = $foto->foto;
-}
+    foreach ($nieuwsberichten as $foto) {
+        $arrayFotos[] = $foto->foto;
+    }
 
-for ($i=0; $i < count($arrayBerichten); $i++){
-    $lijstBerichten .= "<div>" . $arrayBerichten[$i] . toonAfbeelding("images/nieuwsberichten/$arrayFotos[$i]") . "</div>";
-}
-
-
-
+    for ($i = 0; $i < count($arrayBerichten); $i++) {
+        $lijstBerichten .= "<div>" . $arrayBerichten[$i] . toonAfbeelding("images/nieuwsberichten/$arrayFotos[$i]") . "</div>";
+    }
 
 
 ?>
@@ -26,8 +23,14 @@ for ($i=0; $i < count($arrayBerichten); $i++){
             <p>Welkom bij zwembad Kempenrust. Hier kan u terecht om makkelijk een zwemles te reserveren of om een
                 zwemfeestje te boeken.</p>
 
+<<<<<<< HEAD
         </header>
     </div>
+=======
+    <?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
+    <?php echo smallDivAnchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?>
+    <?php echo smallDivAnchor('les1/valideer', 'Webshop', 'class="btn btn-primary"'); ?>
+>>>>>>> aanmelden zwemfeestje bevestigingspagina en master
 </div>
 <div class="row">
     <div class="col">
@@ -44,8 +47,8 @@ for ($i=0; $i < count($arrayBerichten); $i++){
     <h3 id="jquery" class="mt-4">Nieuwsberichten:</h3>
     <div><?php
 
-    echo $lijstBerichten;
-    ?>
+            echo $lijstBerichten;
+        ?>
     </div>
 </div>
 </div>

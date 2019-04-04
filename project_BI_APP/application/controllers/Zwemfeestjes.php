@@ -104,18 +104,19 @@
             redirect('Zwemfeestjes/getZwemfeestMomenten');
         }
 
-        public function zwemfeestBoeken()
+        public function zwemfeestjeBoeken()
         {
             $data['gerechten'] = $this->gerecht_model->getAllById();
 
             $data['titel'] = 'Zwemfeestje boeken';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T - O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe (O)';
 
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemfeestje_boeken/zwemfeestje_toevoegen',
                 'footer' => 'main_footer');
 
-            $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+            $this->template->load('zwemfeestje_boeken/zwemfeestje_boeken_master', $partials, $data);
         }
 
         public function addZwemfeestje()
@@ -138,12 +139,13 @@
         public function bevestigingAanvraag()
         {
             $data['titel'] = 'Zwemfeestje boeken';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
 
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemfeestje_boeken/bevestiging',
                 'footer' => 'main_footer');
 
-            $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+            $this->template->load('zwemfeestje_boeken/zwemfeestje_boeken_master', $partials, $data);
         }
     }
