@@ -32,4 +32,16 @@
             $query = $this->db->get('les');
             return $query->result();
         }
+
+        function addDatum($datumLes)
+        {
+            $this->db->insert('datumLes', $datumLes);
+            $this->db->insert_id();
+        }
+
+        function addAantalZwemmers($aantalZwemmers)
+        {
+            $this->db->insert('leerlingenAantal', $aantalZwemmers);
+            $this->db->insert_id();
+        }
     }

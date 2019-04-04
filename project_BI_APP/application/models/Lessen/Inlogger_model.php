@@ -146,4 +146,10 @@
             $this->db->where('id', $id);
             $this->db->update('inlogger', $gebruikerData);
         }
+
+        function insert($inlogger)
+        {
+            $this->db->insert('lesgroep', $inlogger);
+            $this->db->insert_id();
+        }
     }
