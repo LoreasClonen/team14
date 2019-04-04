@@ -96,4 +96,24 @@ class Gebruiker extends CI_Controller
         redirect('Gebruiker/getGebruikers');
     }
 
+    public function insertGebruiker()
+    {
+        $id = $this->input->post('id');
+
+        $gebruikerData = new stdClass();
+
+        $gebruikerData->voornaam = $this->input->post('voornaam');
+        $gebruikerData->achternaam = $this->input->post('achternaam');
+        $gebruikerData->email = $this->input->post('email');
+        $gebruikerData->telefoonnr = $this->input->post('telefoonnr');
+        $gebruikerData->geboortedatum = $this->input->post('geboortedatum');
+        $gebruikerData->straatnaam = $this->input->post('straatnaam');
+        $gebruikerData->huisnummer = $this->input->post('huisnummer');
+        $gebruikerData->postcode = $this->input->post('postcode');
+
+        $this->inlogger_model->insert($id, $gebruikerData);
+
+        redirect('Gebruiker/getGebruikers');
+    }
+
 }
