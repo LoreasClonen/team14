@@ -153,9 +153,13 @@
 
         public function emailBevestigingAanvraag($zwemfeestId)
         {
+            $zwemfeest = $this->zwemfeest_model->getByIdWithGerecht($zwemfeestId);
+
             $data['titel'] = 'Inbox';
-            $data['zwemfeest'] = $this->zwemfeest_model->getByIdWithGerecht($zwemfeestId);
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $data['zwemfeest'] = $zwemfeest;
+            $data['kostprijs'] = $zwemfeest->gerecht->prijs * $zwemfeest->aantalKinderen;
 
             $partials = array('hoofding' => 'email_header',
                 'inhoud' => 'zwemfeestje_boeken/email_bevestiging',

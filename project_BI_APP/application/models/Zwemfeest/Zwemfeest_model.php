@@ -132,7 +132,7 @@
             $zwemfeest = $query->row();
 
             $zwemfeest->gerecht =
-                $this->gerecht_model->getById($zwemfeest->gerechtId)->naam;
+                $this->gerecht_model->getById($zwemfeest->gerechtId);
 
             return $zwemfeest;
         }

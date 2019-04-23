@@ -42,8 +42,9 @@
                             <li>Datum van zwemfeest: [DATUM]</li>
                             <li>Tijdstip: van [BEGINUUR] tot [EINDUUR]</li>
                             <li>Aantal kinderen: <?php echo $zwemfeest->aantalKinderen ?></li>
-                            <li>Gerecht: <?php echo $zwemfeest->gerecht ?></li>
+                            <li>Gerecht: <?php echo $zwemfeest->gerecht->naam ?></li>
                             <li>Opmerking: <?php echo $zwemfeest->opmerkingen ?></li>
+                            <li>Berekende prijs: <?php echo $kostprijs ?> Euro</li>
                         </ul>
                         <p>Indien de gegevens incorrect zijn gelieve dan een e-mail te sturen naar
                             <a href="mailto:bestuur@kempenrust.be">bestuur@kempenrust.be</a></p>
