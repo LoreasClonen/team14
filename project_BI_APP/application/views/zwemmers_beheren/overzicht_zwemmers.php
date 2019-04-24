@@ -1,5 +1,5 @@
 <div class="container">
-    <p><?php echo anchor("Zwemmer/zwemmerToevoegen()", "Zwemmer toevoegen", "class='btn btn-primary'"); ?></p>
+    <p><?php echo anchor("Zwemlessen/keuze", "Zwemmer toevoegen", "class='btn btn-primary'"); ?></p>
     <table class="table">
         <thead>
         <tr>
@@ -37,7 +37,7 @@
                         } else {
                             echo 'Geen lesgroep';
                         }
-                        ?>
+                    ?>
                 </td>
                 <td class="text-center"><?php
                         echo anchor('Zwemmer/zwemmerOphalen/' . $zwemmer->id, "<i class='fas fa-edit'></i>") . " ";

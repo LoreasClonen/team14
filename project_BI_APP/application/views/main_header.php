@@ -7,7 +7,7 @@
 <!--    </button>-->
 
     <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading"> Welkom </div>
+        <div class="sidebar-heading"> <a href=<?php echo site_url()?>> Welkom!</a> </div>
         <div class="list-group list-group-flush">
             <?php
 

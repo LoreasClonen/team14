@@ -40,8 +40,35 @@ class Wachtlijst extends CI_Controller
         $zwemgroepId = $this->input->get('zwemgroepId');
         $statusId = $this->input->get('statusId');
 
+        $data['wachtlijstId'] = $zwemgroepId.$statusId;
+
         $data['personenlijst'] = $this->beschikbaarheid_model->getByStatusIdLesgroepIdWithKlant($statusId, $zwemgroepId);
+        switch ($statusId) {
+            case 1:
+                $data['wachtlijstTitel'] = "Geschikte kandidaten";
+                break;
+            case 2:
+                $data['wachtlijstTitel'] = "Huidige zwemmers";
+                break;
+        }
 
         $this->load->view('overzicht_wachtlijst/ajax_wachtlijst', $data);
+    }
+
+    public function haalAjaxOp_Plaatsen() {
+        $zwemgroepId = $this->input->get('zwemgroepId');
+
+        $data['zwemgroep'] = $this->lesgroep_model->get($zwemgroepId);
+        $data['zwemmers'] = $this->beschikbaarheid_model->getAllByLesgroepIdWhereActief($zwemgroepId);
+
+        $this->load->view('overzicht_wachtlijst/ajax_wachtlijstPlaatsen', $data);
+    }
+
+    public function updateAjax_Wachtlijst() {
+        $zwemgroepId = $this->input->get('zwemgroepId');
+        $klantId = $this->input->get('klantId');
+        $statusId = $this->input->get('statusId');
+
+        $this->beschikbaarheid_model->updateStatusId($zwemgroepId, $klantId, $statusId);
     }
 }
