@@ -23,7 +23,7 @@
     | a PHP script and you can easily do that on your own.
     |
     */
-    $config['base_url'] = 'http://www.r0672905.sinners.be/team14/';
+    $config['base_url'] = 'http://localhost/zwembad/team14/project_BI_APP/';
 
     /*
     |--------------------------------------------------------------------------
