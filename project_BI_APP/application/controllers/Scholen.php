@@ -33,7 +33,7 @@
             $this->load->helper('notation');
         }
 
-        public function getScholen()
+        public function toonScholen()
         {
             $data['scholen'] = $this->school_model->getAllBySchoolnaam();
 
@@ -48,7 +48,7 @@
             $this->template->load('', $partials, $data);
         }
 
-        public function getSchool($id)
+        public function toonSchool($id)
         {
             $data['school'] = $this->school_model->getById($id);
 
@@ -79,7 +79,7 @@
             $this->template->load('schoolaanwezigheid_opnemen/scholen_master', $partials, $data);
         }
 
-        public function toonKlassen($schoolId)
+        public function klassenOphalen($schoolId)
         {
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
 
@@ -88,10 +88,10 @@
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'scholen_beheren/klassenoverzicht',
+                'inhoud' => 'scholen_beheren/overzicht_klassen',
                 'footer' => 'main_footer');
 
-            $this->template->load('schoolaanwezigheid_opnemen/scholen_master', $partials, $data);
+            $this->template->load('main_master', $partials, $data);
         }
     }
 
