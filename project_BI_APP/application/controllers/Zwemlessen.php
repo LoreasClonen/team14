@@ -34,7 +34,7 @@
             $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
             $this->load->helper('form');
             $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
-            $this->load->model("lessen/klant_model", "klant_model");
+            $this->load->model("lessen/Klant_model", "klant_model");
             $this->load->library('session');
         }
 
