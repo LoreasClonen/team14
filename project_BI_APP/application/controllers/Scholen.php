@@ -33,7 +33,7 @@
             $this->load->helper('notation');
         }
 
-        public function getScholen()
+        public function toonScholen()
         {
             $data['scholen'] = $this->school_model->getAllBySchoolnaam();
 
@@ -48,7 +48,7 @@
             $this->template->load('', $partials, $data);
         }
 
-        public function getSchool($id)
+        public function toonSchool($id)
         {
             $data['school'] = $this->school_model->getById($id);
 
