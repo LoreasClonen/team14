@@ -10,7 +10,6 @@
      * @property Les_model $les_model
      * @property School_model $school_model
      */
-
     class Scholen extends CI_Controller
     {
         // +----------------------------------------------------------
@@ -80,6 +79,20 @@
             $this->template->load('schoolaanwezigheid_opnemen/scholen_master', $partials, $data);
         }
 
+        public function toonKlassen($schoolId)
+        {
+            $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
+
+            $data['titel'] = 'Overzicht klassen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'scholen_beheren/klassenoverzicht',
+                'footer' => 'main_footer');
+
+            $this->template->load('schoolaanwezigheid_opnemen/scholen_master', $partials, $data);
+        }
     }
 
 
