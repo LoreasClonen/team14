@@ -77,6 +77,22 @@
             return $personen;
         }
 
+        /**
+         * functie getAllByLesgroepID($lesgroepId)
+         * @brief geeft alle actiev klanten van een bepaalde lesgroep terug in de klant tabel
+         * @pre Er bestaat een Klant model klasse
+         * @post Er is een array met 0 of meer zwemmers teruggegeven
+         * @param $lesgroepId
+         * @return array
+         */
+        function getAllByLesgroepIdWhereActief($lesgroepId)
+        {
+            $this->db->where('lesgroepId', $lesgroepId);
+            $this->db->where('statusId', 2);
+            $query = $this->db->get('beschikbaarheid');
+            return $query->result();
+        }
+
         function delete($klantId)
         {
             $this->db->where('klantId', $klantId);

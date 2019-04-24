@@ -55,6 +55,15 @@ class Wachtlijst extends CI_Controller
         $this->load->view('overzicht_wachtlijst/ajax_wachtlijst', $data);
     }
 
+    public function haalAjaxOp_Plaatsen() {
+        $zwemgroepId = $this->input->get('zwemgroepId');
+
+        $data['zwemgroep'] = $this->lesgroep_model->get($zwemgroepId);
+        $data['zwemmers'] = $this->beschikbaarheid_model->getAllByLesgroepIdWhereActief($zwemgroepId);
+
+        $this->load->view('overzicht_wachtlijst/ajax_wachtlijstPlaatsen', $data);
+    }
+
     public function updateAjax_Wachtlijst() {
         $zwemgroepId = $this->input->get('zwemgroepId');
         $klantId = $this->input->get('klantId');

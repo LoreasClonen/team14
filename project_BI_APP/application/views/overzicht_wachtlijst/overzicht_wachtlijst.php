@@ -6,8 +6,9 @@
             $i=$zwemgroep->id ?>
             <div class="card zwemgroep" id="<?php echo "zwemgroep".$i ?>">
                 <div class="card-header" id="<?php echo "heading".$i ?>">
-                    <div data-toggle="collapse" data-target="<?php echo "#collapse".$i ?>" aria-expanded="true" aria-controls="<?php echo "collapse".$i ?>">
-                        <h4 class="mb-0"><?php echo $zwemgroep->groepsnaam ?></h4>
+                    <div class="row" data-toggle="collapse" data-target="<?php echo "#collapse".$i ?>" aria-expanded="true" aria-controls="<?php echo "collapse".$i ?>">
+                        <div class="col-8"><h4 class="mb-0"><?php echo $zwemgroep->groepsnaam ?></h4></div>
+                        <div class="col-4" id="<?php echo "plaatsen".$i ?>"></div>
                     </div>
                 </div>
                 <div id="<?php echo "collapse".$i ?>" class="collapse" aria-labelledby="<?php echo "heading".$i ?>" data-parent="#accordion">
@@ -46,6 +47,15 @@
                 $(id).html(result);
             }
         });
+        $.ajax({
+            type: "GET",
+            url: site_url + "/Wachtlijst/haalAjaxOp_Plaatsen",
+            data: {zwemgroepId: zwemgroepId},
+            success: function (result) {
+                var id = "#plaatsen"+zwemgroepId;
+                $(id).html(result);
+            }
+        })
     }
 
     function wisselPersoon(zwemgroepId, klantId, statusId) {
