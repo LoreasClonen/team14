@@ -46,7 +46,7 @@ $dataEmail = array(
     'size' => '50'
 );
 echo form_input($dataEmail);
-/*
+
 echo form_label('Nieuw wachtwoord:', 'wachtwoord');
 $dataWachtwoord = array(
     'id' => 'wachtwoord',
@@ -68,7 +68,7 @@ $dataBevestigingWachtwoord = array(
     'size' => '50'
 );
 echo form_input($dataBevestigingWachtwoord);
-*/
+
 echo form_label('Tel:', 'telefoonnr');
 $dataTel = array(
     'id' => 'telefoonnr',

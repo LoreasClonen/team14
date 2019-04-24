@@ -24,6 +24,7 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
         $this->load->helper('form');
+        $this->load->helper('html');
         $this->load->model('Extras/Nieuwsbericht_model', 'nieuwsbericht_model');
         }
 
