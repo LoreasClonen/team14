@@ -29,36 +29,57 @@
 </head>
 
 <body>
+<!--            sidebar-menu-->
+<div class="wrapper" >
+    <?php echo $hoofding; ?>
 
+    <!--            pagina-inhoud-->
 
-<!--            header-->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
 
-<?php echo $hoofding; ?>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
 
-<hr>
+            </div>
+        </nav>
 
-<!--            pagina-inhoud-->
-<div class="row">
-    <div class="col-12 mb-2 text-center">
-        <h2><?php echo $titel; ?></h2>
-    </div>
-</div>
-
-<div class="row">
-    <?php echo $inhoud; ?>
-</div>
-
-<hr>
-
-<!--            footer-->
-<footer>
-    <div class="row">
-        <div class="col-12 row">
-            <?php echo "<div class='col-5'>" .  $footer . "</div>" .
-                "<div class='col-7'>" . $teamleden . "</div>"; ?>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <h2><?php echo $titel; ?></h2>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <?php echo $inhoud; ?>
+                </div>
+            </div>
         </div>
-</footer>
+    </div>
 
+
+
+
+
+    <!--            footer-->
+
+    <div class="footer">
+        <div class="container row"
+        <div class='col'>
+            <?php echo $footer?>
+        </div>
+        <div class="col"
+        <?php echo "<small> " . $teamleden . "</small>" ?>
+    </div>
+
+</div>
 </body>
 
 </html>
