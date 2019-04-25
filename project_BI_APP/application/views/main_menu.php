@@ -21,7 +21,9 @@
     <div id="layover"><p id="text">Welkom op Kempenrust, we helpen je even op weg.</p>
         <div><?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?><p class="layover_text"><i class="fas fa-arrow-right"></i> Om makkelijk een zwemles aan te vragen kan je de knop "Zwemles aanvragen" gebruiken.</p></div>
 
-        <div><?php echo smallDivAnchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?><p class="layover_text"><i class="fas fa-arrow-right"></i> Om makkelijk een zwemfeestje te boeken kan je de knop "Zwemfeestje boeken" gebruiken.</p></div>
+        <div><?php echo smallDivAnchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?><p class="layover_text"><i class="fas fa-arrow-right"></i> Om makkelijk een zwemfeestje te boeken kan je de knop "Zwemfeestje boeken" gebruiken.</p></div><hr><hr>
+
+        <div><p>De nieuwsberichten houden u op de hoogte van eventuele aflastingen en andere mededelingen.</p></div>
     </div>
 
 </div>
