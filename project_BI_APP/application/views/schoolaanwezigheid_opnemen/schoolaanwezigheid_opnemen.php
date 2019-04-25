@@ -11,7 +11,7 @@
             echo "<hr />";
 
             // Toont de scholen in een dropdown
-            echo form_label("Schoolnaam");
+            echo form_label("Schoolnaam", 'schoolnaam');
             $options = array();
             $options[0] = "--Selecteer een school--";
             foreach($scholen as $option){
@@ -25,7 +25,7 @@
 
             // Laadt de datum van vandaag in een hidden field
             $datumLes = date("Y/m/d");
-            echo form_hidden($datumLes, 'datumLes');
+            echo form_hidden('datumLes', $datumLes);
 
 
             echo '<div id="klassen"></div>';

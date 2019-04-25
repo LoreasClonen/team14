@@ -36,21 +36,10 @@
             return $query->result();
         }
 
-        function addDatum($datumLes)
+        function addLes($lesData)
         {
-            $this->db->insert('datumLes', $datumLes);
-            $this->db->insert_id();
+            $this->db->insert('les', $lesData);
+            return $this->db->insert_id();
         }
 
-        function addAantalZwemmers($aantalZwemmers)
-        {
-            $this->db->insert('leerlingenAantal', $aantalZwemmers);
-            $this->db->insert_id();
-        }
-
-        function addKlas($klasId)
-        {
-            $this->db->insert('klasId', $klasId);
-
-        }
     }

@@ -124,11 +124,15 @@
 
         public function aanwezighedenBevestigen()
         {
-            $les = new stdClass();
-            $les->klasId = $this->input->post("klasId");
-            $les->leerlingenAantal = $this->input->post("leerlingenAantal");
-            $les->datumLes = $this->input->post("datumLes");
-            redirect('schoolaanwezigheid_opnemen/schoolaanwezigheid_opnemen');
+            $lesData = new stdClass();
+            $lesData->klasId = $this->input->post("klasId");
+            $lesData->leerlingenAantal = $this->input->post("leerlingenAantal");
+            $lesData->datumLes = $this->input->post("datumLes");
+            $lesData->prijsPerKind = 5;
+
+            $this->les_model->addLes($lesData);
+
+            redirect('Scholen/getScholen');
         }
     }
 
