@@ -48,6 +48,7 @@
          * @brief geeft 1 specifieke school terug in de school tabel
          * @pre Er bestaat een School model klasse en een school met overeenkomstige id
          * @post Er is een array met 1 school teruggegeven
+         * @param $id
          * @return array
          */
         function getById($id)
