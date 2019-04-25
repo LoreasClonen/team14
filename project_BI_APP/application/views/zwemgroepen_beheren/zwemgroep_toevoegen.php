@@ -35,7 +35,7 @@
             'required' => 'required',
             'data-toggle' => 'tooltip',
             'data-placement' => 'left',
-            'title' => 'Geef hier de naam op die u wilt geven aan de zwemgroep.');
+            'title' => 'Kies uit dit lijstje de dag waarop de leerlingen van deze groep komen zwemmen.');
         echo form_dropdown($dataWeekdag, $inhoudWeekdag);
 
         echo form_label('Zwemniveau', 'zwemniveau');
@@ -48,7 +48,10 @@
             'id' => 'zwemniveau',
             'name' => 'zwemniveau',
             'class' => 'form-control',
-            'required' => 'required');
+            'required' => 'required',
+            'data-toggle' => 'tooltip',
+            'data-placement' => 'left',
+            'title' => 'Kies uit dit lijstje het zwemniveau dat de leerlingen uit deze groep zullen hebben.');
         echo form_dropdown($dataZwemniveau, $inhoudZwemniveau);
 
         echo form_label('Max. Grootte', 'maxGrootte');
@@ -58,7 +61,10 @@
             'class' => 'form-control',
             'type' => 'number',
             'placeholder' => 'grootte',
-            'required' => 'required');
+            'required' => 'required',
+            'data-toggle' => 'tooltip',
+            'data-placement' => 'left',
+            'title' => 'Geef hier op hoeveel leerlingen er maximum in deze zwemgroep mogen zitten.');
         echo form_input($dataGrootte);
 
         echo form_label('Beginuur', 'beginuur');
@@ -67,7 +73,10 @@
             'name' => 'beginuur',
             'class' => 'form-control',
             'required' => 'required',
-            'type' => 'time');
+            'type' => 'time',
+            'data-toggle' => 'tooltip',
+            'data-placement' => 'left',
+            'title' => 'Geef hier het uur op wanneer de zwemles zal beginnen.');
         echo form_input($dataBeginuur);
 
         echo form_label('Einduur', 'einduur');
@@ -76,12 +85,15 @@
             'name' => 'einduur',
             'class' => 'form-control',
             'required' => 'required',
-            'type' => 'time');
+            'type' => 'time',
+            'data-toggle' => 'tooltip',
+            'data-placement' => 'left',
+            'title' => 'Geef hier het uur op wanneer de zwemles gedaan zal zijn.');
         echo form_input($dataEinduur);
 
         echo form_hidden('gebruiker', $gebruiker->id);
 
-        echo form_submit(array("value" => "Toevoegen", "class" => "btn btn-primary my-3", "id" => "voegZwemgroepToe"));
+        echo form_submit(array("value" => "Toevoegen", "class" => "btn btn-primary my-3", "id" => "voegZwemgroepToe", 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'Klik hier als u de zwemgroep wilt toevoegen met bovenstaande gegevens.'));
         echo form_close();
 
     ?>
