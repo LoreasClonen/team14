@@ -8,8 +8,11 @@
             <?php $form_kind = 'form_kind'; ?>
             <?php echo smallDivAnchor('zwemlessen/index/' . $form_kind, 'Kind', 'class="btn btn-lg btn-block btn-primary"'); ?>
         </div>
-        <div class="col-8 text-center">
+        <div class="col-6 text-center">
             <?php echo smallDivAnchor('zwemlessen/bestaandeKlant','Al klant?', 'class ="btn btn-lg btn-block btn-primary"'); ?>
+        </div>
+        <div class="col-2 text-center">
+            <?php echo smallDivAnchor('Zwemlessen/gaNaarHelp', 'Help', 'class="btn btn-lg btn-block btn-primary" target="_blank"'); ?>
         </div>
     </div>
 </div>
