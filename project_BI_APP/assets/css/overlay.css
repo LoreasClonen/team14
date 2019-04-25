@@ -1,4 +1,6 @@
+h2 {
 
+}
 
 #overlay {
     position: fixed;
@@ -9,7 +11,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.95);
+    background-color: rgba(0, 0, 0, 0.95);
     z-index: 2;
     cursor: pointer;
 }
@@ -18,7 +20,7 @@
     font-size: 50px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
     #text {
         font-size: 30px;
     }
@@ -29,10 +31,10 @@
     top: 300px;
     left: 50%;
     color: white;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
-#layover_text{
+#layover_text {
     font-size: 12px;
 }
