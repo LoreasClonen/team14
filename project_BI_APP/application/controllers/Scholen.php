@@ -51,6 +51,7 @@
         public function toonSchool($id)
         {
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($id);
+            $data['school'] = $this->school_model->getById($id);
 
             $data['titel'] = 'Overzicht school';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -118,7 +119,6 @@
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
 
             $this->load->view('schoolaanwezigheid_opnemen/ajax_klassenLijst', $data);
-
 
         }
 
