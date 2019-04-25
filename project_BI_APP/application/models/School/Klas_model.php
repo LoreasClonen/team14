@@ -48,6 +48,15 @@
             return $query->result();
         }
 
+        /**
+         * functie getAllByNameWhereSchoolId(schoolId)
+         * @brief geeft alle klassen terug die bij een bepaalde school horen
+         * @pre Er bestaat een Klas_model klasse
+         * @post Er is een array met 0 of meerdere klassen teruggegeven voor die bepaalde school
+         * @param $schoolId
+         * @return array
+         */
+
         function getAllByNameWhereSchoolId($schoolId)
         {
             $this->db->where('schoolId', $schoolId);

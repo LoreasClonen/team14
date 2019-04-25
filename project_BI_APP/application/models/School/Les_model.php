@@ -17,9 +17,7 @@
         function __construct()
         {
             parent::__construct();
-            $this->load->model('/School/Factuur_model', 'factuur_model');
-            $this->load->model('/School/Klas_model', 'klas_model');
-            $this->load->model('/School/School_model', 'school_model');
+
         }
 
         /**
@@ -35,6 +33,14 @@
             $query = $this->db->get('les');
             return $query->result();
         }
+
+        /**
+         * functie addLes()
+         * @brief zet een nieuwe les in de database
+         * @pre Er bestaat een table Les in de database
+         * @param $lesData
+         * @return mixed
+         */
 
         function addLes($lesData)
         {
