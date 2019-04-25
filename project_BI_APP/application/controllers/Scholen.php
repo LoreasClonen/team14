@@ -110,6 +110,18 @@
             $this->template->load('scholen_beheren/klas_master', $partials, $data);
         }
 
+        public function klasToevoegen($schoolId)
+        {
+
+            $klas = new stdClass();
+            $klas->klasnaam = $this->input->post("klasnaam");
+            $klas->isGesubsidieerd = $this->input->post("isGesubsidieerd");
+            $klas->schoolId = $schoolId;
+
+            $this->klas_model->addKlas($klas);
+            redirect('scholen/toonSchool/' . $schoolId);
+        }
+
         public function haalAjaxOp_Klassen()
 
         {
