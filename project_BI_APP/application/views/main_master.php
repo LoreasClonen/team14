@@ -16,10 +16,13 @@
     <?php echo pasStylesheetAan("buttons.css"); ?>
     <?php echo pasStylesheetAan("footer.css"); ?>
     <?php echo pasStylesheetAan("content.css"); ?>
+    <?php echo pasStylesheetAan("overlay.css"); ?>
 
     <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
     <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
-    <?php echo haalJavascriptOp("menu_toggle.js") ?>
+    <?php echo haalJavascriptOp("menu_toggle.js"); ?>
+    <?php echo haalJavascriptOp("overlay.js"); ?>
+
 
     <!--        font awesome (CDN) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
