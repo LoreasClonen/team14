@@ -1,5 +1,5 @@
 <div class="container">
-    <p><?php echo anchor("Scholen/klasToevoegen", "Klas toevoegen", "class='btn btn-primary'"); ?></p>
+    <p><?php echo anchor("Scholen/klasToevoegenPagina/" . $school->id, "Klas toevoegen", "class='btn btn-primary'"); ?></p>
     <table class="table">
         <thead>
         <tr>
