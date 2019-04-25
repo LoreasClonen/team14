@@ -17,8 +17,8 @@
 ?>
 
 
-<div id="overlay" onclick="off()">
-    <div id="text">Omdat dit de eerste keer is dat je onze site bezoekt, helpen we je even op weg.</div>
+<div id="overlay">
+    <div id="text">Welkom op Kempenrust, we helpen je even op weg.</div>
 </div>
 
 
