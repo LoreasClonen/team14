@@ -51,7 +51,7 @@
 
     $(document).ready(function () {
         $("#schoolnaam").change(function () {
-            console.log("CHANGE");
+
             var schoolId = $(this).val();
             haalKlassenOp(schoolId);
         });
