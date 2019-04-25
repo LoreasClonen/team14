@@ -52,12 +52,18 @@
                     'size' => '30',
                     'type' => 'date');
                 echo form_input($dataGeboortedatum);
-                $options = array();
-                foreach($zwemniveaus as $option){
-                    array_push($options, $option->niveauNaam);
-                }
+
                 echo form_label("zwemniveau");
-                echo form_dropdown('zwemniveau', $options, '1', 'class="form-control dropdown"');
+                $inhoudZwemniveau = array();
+                foreach($zwemniveaus as $zwemniveau){
+                    $inhoudZwemniveau[$zwemniveau->id] = $zwemniveau->niveauNaam;
+                }
+                $dataZwemniveau = array(
+                    'id' => 'zwemniveau',
+                    'name' => 'zwemniveau',
+                    'class' => 'form-control',
+                    'required' => 'required');
+                echo form_dropdown($dataZwemniveau, $inhoudZwemniveau, '1');
 
 
                 echo form_submit(array("value" => "Inschrijven", "class" => "btn btn-primary my-3", "id" => "schrijfIn"));
