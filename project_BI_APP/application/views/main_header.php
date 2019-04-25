@@ -19,7 +19,7 @@
                             <li>  <?php    echo anchor("Zwemgroepen/zwemgroepenOphalen", "Zwemgroepen", "class = 'list-group-item list-group-item-action'");?> </li>
                     <?php    if ($gebruiker->isAdmin == 1) { ?>
                             <li>  <?php echo anchor("Inloggen/nieuwPaswoord", "Nieuw Wachtwoord", "class='list-group-item list-group-item-action'");?> </li>
-                            <li>  <?php echo anchor("", "Scholen", "class = 'list-group-item list-group-item-action'");?> </li>
+                            <li>  <?php echo anchor("Scholen/toonScholen", "Scholen", "class = 'list-group-item list-group-item-action'");?> </li>
                             <li>  <?php echo anchor("Facturen/getScholen", "Schoolfacturen", "class = 'list-group-item list-group-item-action'");?> </li>
                             <li>  <?php echo anchor("Zwemfeestjes/getZwemfeestMomenten", "Zwemfeestjes", "class = 'list-group-item list-group-item-action'");?> </li>
                             <li>  <?php echo anchor("", "Nieuwsberichten", "class = 'list-group-item list-group-item-action'");?> </li>

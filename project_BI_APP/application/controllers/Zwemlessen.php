@@ -35,6 +35,7 @@
             $this->load->helper('form');
             $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
             $this->load->model("Lessen/Klant_model", "klant_model");
+            $this->load->model("lessen/Beschikbaarheid_model", "klant_model");
             $this->load->library('session');
         }
 
@@ -90,8 +91,9 @@
             $klant->zwemniveauId = $this->input->post("zwemniveau");
             $klant->actief = '1';
             if ($this->klant_model->addKlant($klant)) {
-                $this->session->set_flashdata('klantId', $klant->id);
                 $this->session->set_flashdata('zwemniveauId', $klant->zwemniveauId);
+                $this->session->set_flashdata('klant', $klant);
+                $this->klant_model->addKlant($klant);
                 redirect('zwemlessen/keuze_zwemlessen');
             } else {
                 redirect('Zwemlessen/reeds_toegevoegd_error');
@@ -143,30 +145,36 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function keuze_zwemlessen_bevestigen(){
-            $klantId = $this->input->post("klantId");
+        public function keuze_zwemlessen_bevestigen($klantId){
+
             $gekozengroepenIds = $this->input->post("gekozenGroepen");
+            //update de beschikbaarheidstabel
+
+            $this->beschikbaarheid_model->nieuweKlantToevoegen($klantId, $gekozengroepenIds);
 
         }
         public function keuze_zwemlessen()
         {
-            $klantId = $this->session->flashdata('klantId');
+            $klant = $this->session->flashdata('klant');
             $zwemniveauId = $this->session->flashdata('zwemniveauId');
             $data['titel'] = 'Keuze zwemlessen';
             $data['teamleden'] = '';
-            $data['klant'] = $this->klant_model->getById($klantId);
+            $data['klant'] = $this->klant_model->getKlantId($klant->voornaam, $klant->achternaam, $klant->email);
             $data["lesgroepen"] = $this->lesgroep_model->getLesgroepByZwemniveauId($zwemniveauId);
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/keuze_zwemlessen',
                 'footer' => 'main_footer');
+
+
             $this->template->load('main_master', $partials, $data);
 
         }
 
-        public function bevestigAnnuleerZwemles($klantId)
+        public function bevestigAnnuleerZwemles()
         {
+            $klantId = $this->session->flashdata('klantId');
             $data["titel"] = "Inschrijving annuleren";
             $data["klantId"] = $klantId;
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -174,12 +182,14 @@
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/bevestig_annuleer_zwemles',
                 'footer' => 'main_footer');
+            $this->session->set_flashdata('klantId', $klantId);
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function annuleerZwemles($klantId)
+        public function annuleerZwemles()
         {
-            $this->beschikbaarheid_model->delete($klantId);
+            $klantId = $this->session->flashdata('klantId');
+            $this->beschikbaarheid_model->delete();
             $this->klant_model->updateStatus($klantId, 0);
 
             redirect('zwemlessen/bevestigingAnnuleerZwemles/' . $klantId);
@@ -197,8 +207,9 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function emailBevestigingAnnuleerZwemles($klantId)
+        public function emailBevestigingAnnuleerZwemles()
         {
+            $klantId = $this->session->flashdata('klantId');
             $data['titel'] = 'Inbox';
             $data['gebruiker'] = $this->klant_model->getById($klantId);
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
@@ -211,3 +222,4 @@
         }
 
     }
+

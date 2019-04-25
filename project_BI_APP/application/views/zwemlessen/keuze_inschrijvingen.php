@@ -9,7 +9,7 @@
             <?php echo smallDivAnchor('zwemlessen/index/' . $form_kind, 'Kind', 'class="btn btn-lg btn-block btn-primary"'); ?>
         </div>
         <div class="col-8 text-center">
-            <?php echo smallDivAnchor('zwemlessen/bestaatAl','Al klant?', 'class ="btn btn-lg btn-block btn-primary"'); ?>
+            <?php echo smallDivAnchor('zwemlessen/bestaandeKlant','Al klant?', 'class ="btn btn-lg btn-block btn-primary"'); ?>
         </div>
     </div>
 </div>
