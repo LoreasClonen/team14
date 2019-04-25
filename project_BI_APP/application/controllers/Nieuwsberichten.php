@@ -5,10 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Template $template
  * @property CI_Input $input
  * @property Authex $authex
- * @property Inlogger_model $nieuwsbericht_model
+ * @property Nieuwsbericht_model $nieuwsbericht_model
  */
 
-class Gebruiker extends CI_Controller
+class Nieuwsberichten extends CI_Controller
 {
 
     // +----------------------------------------------------------
@@ -31,32 +31,32 @@ class Gebruiker extends CI_Controller
 
     public function nieuwsberichtenOphalen()
     {
-        $data['inloggers'] = $this->inlogger_model->getAllByAchternaam();
+        $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
 
-        $data['titel'] = 'Overzicht gebruikers';
+        $data['titel'] = 'Overzicht nieuwsberichten';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
-        $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe';
+        $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe';
 
         $partials = array('hoofding' => 'main_header',
-            'inhoud' => 'gebruikers_beheren/overzicht_gebruikers',
+            'inhoud' => 'nieuwsberichten_beheren/overzicht_nieuwsberichten',
             'footer' => 'main_footer');
 
-        $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
+        $this->template->load('main_master', $partials, $data);
     }
 
     public function nieuwsberichtOphalen($id)
     {
-        $data['titel'] = 'Gebruiker';
+        $data['titel'] = 'Nieuwsbericht';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
-        $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe';
+        $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe';
 
-        $data['inlogger'] = $this->inlogger_model->getById($id);
+        $data['inlogger'] = $this->nieuwsbericht_model->getById($id);
 
         $partials = array('hoofding' => 'main_header',
-            'inhoud' => 'gebruikers_beheren/overzicht_gebruiker',
+            'inhoud' => 'nieuwsberichten_beheren/overzicht_nieuwsbericht',
             'footer' => 'main_footer');
 
-        $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
+        $this->template->load('main_master', $partials, $data);
     }
 
     public function deleteNieuwsbericht($id)

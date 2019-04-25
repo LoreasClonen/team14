@@ -232,5 +232,17 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        public function gaNaarHelp() {
+            $data['titel'] = 'Help';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (T), Sebastiaan Reggers (O), Steven Van Gansberghe';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'zwemlessen/help_aanmelden_zwemlessen',
+                'footer' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
+        }
+
     }
 

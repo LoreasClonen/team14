@@ -1,16 +1,18 @@
 <div>
     <p>
         Via dit formulier kan u voor uzelf of uw kinderen zwemlessen aanvragen.
+    </p>
+    <p>
         Dit document overloopt stap voor stap deze procedure met bij elke stap wat extra uitleg.
     </p>
     <h4 id="header1">1: Selecteer een van de drie opties</h4>
     <dl>
         <dt>Voogd</dt>
-        <dd>Kies deze optie als u uw kind wilt inschrijven voor zwemlessen. Ga naar <a href="#header2.1">2.1</a>.</dd>
+        <dd>--> Kies deze optie als u uw kind wilt inschrijven voor zwemlessen. Ga naar <a href="#header2.1">2.1</a>.</dd>
         <dt>Mezelf</dt>
-        <dd>Kies deze optie als u uzelf wilt inschrijven voor zwemlessen. Ga naar <a href="#header2.2">2.2</a>.</dd>
+        <dd>--> Kies deze optie als u uzelf wilt inschrijven voor zwemlessen. Ga naar <a href="#header2.2">2.2</a>.</dd>
         <dt>Al klant?</dt>
-        <dd>Kies deze optie als u uw bestaande inschrijving wilt annuleren. Ga naar <a href="#header2.3">2.3</a>.</dd>
+        <dd>--> Kies deze optie als u uw bestaande inschrijving wilt annuleren. Ga naar <a href="#header2.3">2.3</a>.</dd>
     </dl>
     <h4 id="header2.1">2.1: Voogd – Invulvelden</h4>
     <p>
@@ -40,4 +42,5 @@
     <p>
         Hier kan u uw inschrijving definitief annuleren door op de “Bevestigen” knop te drukken, of terug naar uw inschrijving te gaan door op “Annuleren” te drukken.
     </p>
+    <?php echo smallDivAnchor('Zwemlessen/Keuze', 'Terug', 'class="btn btn-lg btn-block btn-primary"'); ?>
 </div>

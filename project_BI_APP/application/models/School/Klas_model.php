@@ -64,4 +64,10 @@
             $query = $this->db->get('klas');
             return $query->result();
         }
+
+        function addKlas($klas)
+        {
+            $this->db->insert('klas', $klas);
+            $this->db->insert_id();
+        }
     }
