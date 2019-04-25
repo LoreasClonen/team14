@@ -70,14 +70,17 @@
                 'size' => '30');
             echo form_input($dataPostcode);
 
-
-
-            $options = array();
-                foreach($zwemniveaus as $option){
-                    $options[$option->id] = $option->niveauNaam;
-                }
-                echo form_label("zwemniveau");
-                echo form_dropdown('zwemniveau', $options, 'kinderen beginner', 'class="form-control dropdown"');
+            echo form_label("zwemniveau");
+            $inhoudZwemniveau = array();
+            foreach($zwemniveaus as $zwemniveau){
+                $inhoudZwemniveau[$zwemniveau->id] = $zwemniveau->niveauNaam;
+            }
+            $dataZwemniveau = array(
+                'id' => 'zwemniveau',
+                'name' => 'zwemniveau',
+                'class' => 'form-control',
+                'required' => 'required');
+            echo form_dropdown($dataZwemniveau, $inhoudZwemniveau, '1');
 
 
                 echo form_submit(array("value" => "Inschrijven", "class" => "btn btn-primary my-3", "id" => "schrijfIn"));

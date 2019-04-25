@@ -46,10 +46,11 @@
         public function keuze()
         {
             $data["titel"] = "Zwemlessen";
-            $data["teamleden"] = "";
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/keuze_inschrijvingen',
-                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+                'footer' => 'main_footer');
             $this->template->load('main_master', $partials, $data);
         }
 
@@ -61,11 +62,12 @@
         public function Index($form)
         {
             $data["titel"] = "Zwemlessen";
-            $data["teamleden"] = "";
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
             $data["zwemniveaus"] = $this->zwemniveau_model->getAllById();
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/' . $form,
-                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer'
+                'footer' => 'main_footer'
             );
             $this->template->load('main_master', $partials, $data);
         }
@@ -103,10 +105,11 @@
         public function succesmail()
         {
             $data["titel"] = "succesmail";
-            $data["teamleden"] = "";
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
             $partials = array(
                 'inhoud' => 'zwemlessen/succesmail',
-                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+                'footer' => 'main_footer');
             $this->template->load('main_master', $partials, $data);
         }
 
@@ -117,10 +120,11 @@
         public function bestaandeKlant(){
 
             $data["titel"] = "Zwemlessen";
-            $data["teamleden"] = "";
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/bestaande_klant',
-                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+                'footer' => 'main_footer');
             $this->template->load('main_master', $partials, $data);
         }
 
@@ -131,10 +135,11 @@
         public function reeds_toegevoegd_error()
         {
             $data["titel"] = "Zwemlessen";
-            $data["teamleden"] = "";
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/reeds_toegevoegd_error',
-                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+                'footer' => 'main_footer');
             $this->template->load('main_master', $partials, $data);
         }
 
@@ -151,9 +156,11 @@
             $data['teamleden'] = '';
             $data['klant'] = $this->klant_model->getById($klantId);
             $data["lesgroepen"] = $this->lesgroep_model->getLesgroepByZwemniveauId($zwemniveauId);
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/keuze_zwemlessen',
-                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+                'footer' => 'main_footer');
             $this->template->load('main_master', $partials, $data);
 
         }
@@ -162,10 +169,11 @@
         {
             $data["titel"] = "Inschrijving annuleren";
             $data["klantId"] = $klantId;
-            $data["teamleden"] = "Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)";
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/bevestig_annuleer_zwemles',
-                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+                'footer' => 'main_footer');
             $this->template->load('main_master', $partials, $data);
         }
 
@@ -181,10 +189,11 @@
         {
             $data["titel"] = "Inschrijving geannuleerd";
             $data["klantId"] = $klantId;
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data["teamleden"] = "Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)";
-            $partials = array('hoofding' => 'zwemlessen/aanmelden_zwemlessen_header',
+            $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/bevestiging_annuleer_zwemles',
-                'footer' => 'zwemlessen/aanmelden_zwemlessen_footer');
+                'footer' => 'main_footer');
             $this->template->load('main_master', $partials, $data);
         }
 
