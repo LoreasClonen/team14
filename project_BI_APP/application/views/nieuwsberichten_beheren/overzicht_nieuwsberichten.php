@@ -1,7 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mats
- * Date: 25/04/2019
- * Time: 14:47
- */
+
+echo '<table class="table">
+                <tr>
+                    <th scope="col">Nieuwsbericht</th>
+                    <th scope="col">Wijzigen</th> 
+                </tr>';
+
+foreach ($nieuwsberichten as $nieuwsbericht) {
+    echo '<tr>
+                    <td>' . $nieuwsbericht->bericht . '</td>
+                    <td>' . anchor('Nieuwsberichten/nieuwsberichtOphalen/' . $nieuwsbericht->id, '<i class="fas fa-edit"></i>') . '</td>
+                   </tr>';
+}
+
+echo '</table>';
+
+echo smallDivAnchor('Zwemgroepen/zwemgroepToevoegenLaden', 'Nieuwsbericht toevoegen', 'class = "btn btn-primary"');
+
+
+?>
