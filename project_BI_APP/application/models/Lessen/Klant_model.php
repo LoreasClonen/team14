@@ -132,5 +132,14 @@
             $this->db->update('klant');
         }
 
+        function getKlantId($voornaam,$achternaam,$email){
+
+            $this->db->where('email', $email);
+            $this->db->where('voornaam', $voornaam);
+            $this->db->where('achternaam', $achternaam);
+            $query = $this->db->get('klant');
+            return $query->row();
+        }
+
     }
 

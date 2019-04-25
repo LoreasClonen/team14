@@ -106,5 +106,16 @@
             $this->db->set('statusId', $statusId);
             $this->db->update('beschikbaarheid');
         }
+
+        function nieuweKlantToevoegen($klantId, $gekozengroepIds){
+            $data['statusId'] = 1;
+            $data['klantId'] = $klantId;
+            foreach($gekozengroepIds as $groepId){
+                $data['lesgroepId'] = $groepId;
+                $this->db->insert('beschikbaarheid', $data);
+            }
+
+            return true;
+        }
     }
 

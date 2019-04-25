@@ -3,13 +3,14 @@ echo '<div class="container">';
 
 //alle groepen tonen met bepaalde zwemniveau id
 $attributes = array('name' => 'keuzeKlant', 'id' => 'keuzeKlant', 'role' => 'form');
-echo form_open('Zwemlessen/keuzeKlant', $attributes);
+echo form_open('Zwemlessen/keuze_zwemlessen_bevestigen/' . $klant->id, $attributes);
+
 
 //lesgroepId als effectief id dat doorgegeven wordt;
 foreach($lesgroepen as $lesgroep) {
     echo "<div class=\"form-check\">";
         $data = array("value" => $lesgroep->id,
-            "name" => "gekozenGroepen");
+            "name" => "gekozenGroepen[]");
 
         echo form_checkbox($data);
 
