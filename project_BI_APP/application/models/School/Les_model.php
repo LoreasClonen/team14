@@ -47,4 +47,10 @@
             $this->db->insert('leerlingenAantal', $aantalZwemmers);
             $this->db->insert_id();
         }
+
+        function addKlas($klasId)
+        {
+            $this->db->insert('klasId', $klasId);
+
+        }
     }

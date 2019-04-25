@@ -94,6 +94,21 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        public function klasToevoegenPagina($schoolId)
+        {
+            $data['school'] = $this->school_model->getById($schoolId);
+
+            $data['titel'] = 'Klas toevoegen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'scholen_beheren/klas_toevoegen_pagina',
+                'footer' => 'main_footer');
+
+            $this->template->load('scholen_beheren/klas_master', $partials, $data);
+        }
+
         public function haalAjaxOp_Klassen()
 
         {
@@ -104,6 +119,16 @@
 
             $this->load->view('schoolaanwezigheid_opnemen/ajax_klassenLijst', $data);
 
+
+        }
+
+        public function aanwezighedenBevestigen()
+        {
+            $les = new stdClass();
+            $les->klasId = $this->input->post("klasId");
+            $les->leerlingenAantal = $this->input->post("leerlingenAantal");
+            $les->datumLes = $this->input->post("datumLes");
+            redirect('schoolaanwezigheid_opnemen/schoolaanwezigheid_opnemen');
         }
     }
 
