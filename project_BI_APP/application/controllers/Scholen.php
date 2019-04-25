@@ -121,6 +121,15 @@
 
 
         }
+
+        public function aanwezighedenBevestigen()
+        {
+            $les = new stdClass();
+            $les->klasId = $this->input->post("klasId");
+            $les->leerlingenAantal = $this->input->post("leerlingenAantal");
+            $les->datumLes = $this->input->post("datumLes");
+            redirect('schoolaanwezigheid_opnemen/schoolaanwezigheid_opnemen');
+        }
     }
 
 
