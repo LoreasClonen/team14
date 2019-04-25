@@ -13,9 +13,11 @@
 
     <!-- Custom CSS -->
     <?php echo pasStylesheetAan("buttons.css"); ?>
+    <?php echo pasStylesheetAan("content.css"); ?>
 
     <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
     <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
+    <?php echo haalJavascriptOp("menu_toggle.js") ?>
 
     <!--        font awesome (CDN) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -29,10 +31,8 @@
 </head>
 
 <body>
-
-
 <!--            sidebar-menu-->
-<div class="wrapper" >
+<div class="wrapper">
     <?php echo $hoofding; ?>
 
     <!--            pagina-inhoud-->
@@ -64,23 +64,21 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
+        <!--            footer-->
+        <div class="container row" id="footer">
+            <div class='col'>
+                <?php echo $footer ?>
+            </div>
+            <div class="col">
+                <?php echo "<small> " . $teamleden . "</small>" ?>
+            </div>
 
-
-
-    <!--            footer-->
-
-    <div class="footer">
-        <div class="container row"
-        <div class='col'>
-            <?php echo $footer?>
         </div>
-        <div class="col"
-        <?php echo "<small> " . $teamleden . "</small>" ?>
-    </div>
 
+
+    </div>
 </div>
 </body>
 

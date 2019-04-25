@@ -33,9 +33,9 @@
 </head>
 
 <body>
-    <!--            sidebar-menu-->
-    <div class="wrapper" >
-        <?php echo $hoofding; ?>
+<!--            sidebar-menu-->
+<div class="wrapper">
+    <?php echo $hoofding; ?>
 
     <!--            pagina-inhoud-->
 
@@ -52,38 +52,35 @@
         </nav>
 
         <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="text-center">
-                    <h2><?php echo $titel; ?></h2>
-                    <hr>
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <h2><?php echo $titel; ?></h2>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <?php echo $inhoud; ?>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <?php echo $inhoud; ?>
-            </div>
-        </div>
-        </div>
-    </div>
-
-
-
 
 
         <!--            footer-->
-
-            <div class="footer">
-                <div class="container row"
+        <div class="container" id="footer">
+            <div class="row">
                 <div class='col'>
-                    <?php echo $footer?>
+                    <?php echo $footer ?>
                 </div>
-                <div class="col"
-                <?php echo "<small> " . $teamleden . "</small>" ?>
+                <div class="col">
+                    <?php echo "<small> " . $teamleden . "</small>" ?>
+                </div>
             </div>
-
+        </div>
     </div>
+</div>
 </body>
 
 </html>
