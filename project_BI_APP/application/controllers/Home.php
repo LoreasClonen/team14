@@ -29,6 +29,9 @@ class Home extends CI_Controller
         $this->load->model('Extras/Nieuwsbericht_model', 'nieuwsbericht_model');
         }
 
+        /**
+        * @brief Geeft de homepagina weer met alle opgelijste
+        */
         public function index()
         {
             $data['titel'] = 'Zwembad informatie';
