@@ -51,6 +51,7 @@
         function getAllByNameWhereSchoolId($schoolId)
         {
             $this->db->where('schoolId', $schoolId);
+            $this->db->order_by('klasnaam', 'DESC');
             $query = $this->db->get('klas');
             return $query->result();
         }

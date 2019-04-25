@@ -10,7 +10,6 @@
      * @property Les_model $les_model
      * @property School_model $school_model
      */
-
     class Scholen extends CI_Controller
     {
         // +----------------------------------------------------------
@@ -34,7 +33,7 @@
             $this->load->helper('notation');
         }
 
-        public function getScholen()
+        public function toonScholen()
         {
             $data['scholen'] = $this->school_model->getAllBySchoolnaam();
 
@@ -49,7 +48,7 @@
             $this->template->load('', $partials, $data);
         }
 
-        public function getSchool($id)
+        public function toonSchool($id)
         {
             $data['school'] = $this->school_model->getById($id);
 
@@ -80,6 +79,18 @@
             $this->template->load('schoolaanwezigheid_opnemen/scholen_master', $partials, $data);
         }
 
+
+        public function haalAjaxOp_Klassen()
+
+        {
+            $schoolId = $this->input->get('schoolId');
+
+
+            $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
+
+            $this->load->view('schoolaanwezigheid_opnemen/ajax_klassenLijst', $data);
+
+        }
     }
 
 

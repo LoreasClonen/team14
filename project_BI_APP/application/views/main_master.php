@@ -14,7 +14,7 @@
 
     <!-- Custom CSS -->
     <?php echo pasStylesheetAan("buttons.css"); ?>
-    <?php echo pasStylesheetAan("footer.css"); ?>
+
     <?php echo pasStylesheetAan("content.css"); ?>
     <?php echo pasStylesheetAan("overlay.css"); ?>
 
@@ -36,45 +36,51 @@
 </head>
 
 <body>
-<div class="d-flex" id="wrapper">
+<!--            sidebar-menu-->
+<div class="wrapper">
+    <?php echo $hoofding; ?>
 
-    <!--            sidebar-menu-->
-    <div class="border-right" id="sidebar-wrapper">
-        <?php echo $hoofding; ?>
-    </div>
     <!--            pagina-inhoud-->
 
-    <div id="page-content-wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <button class="btn btn-primary" id="menu-toggle">Menu</button>
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+
+            </div>
         </nav>
-        <div class="row">
-            <div class="container">
-                <div class="text-center">
-                    <h2><?php echo $titel; ?></h2>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <h2><?php echo $titel; ?></h2>
+                        <hr>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="container">
-                <?php echo $inhoud; ?>
+            <div class="row">
+                <div class="col">
+                    <?php echo $inhoud; ?>
+                </div>
             </div>
         </div>
 
 
         <!--            footer-->
-        <div class="row">
-            <div class="container">
-                <footer class="footer">
-                    <div class="container-fluid text-muted team-text">
-                        <div class='col'>
-                            <?php echo $footer ?>
-                        </div>
-                        <div class="col"
-                        <?php echo "<small> " . $teamleden . "</small>" ?>
-                    </div>
+        <div class="container" id="footer">
+            <div class="row">
+                <div class='col'>
+                    <?php echo $footer ?>
+                </div>
+                <div class="col">
+                    <?php echo "<small> " . $teamleden . "</small>" ?>
+                </div>
             </div>
-            </footer>
         </div>
     </div>
 </div>

@@ -1,6 +1,8 @@
 .DS_Store
 .vs/*
 
+project_BI_APP/application/config/config.php
+
 application/cache/*
 !application/cache/index.html
 
