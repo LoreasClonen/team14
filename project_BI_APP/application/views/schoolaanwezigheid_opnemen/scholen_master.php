@@ -13,9 +13,11 @@
 
     <!-- Custom CSS -->
     <?php echo pasStylesheetAan("buttons.css"); ?>
+    <?php echo pasStylesheetAan("content.css"); ?>
 
     <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
     <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
+    <?php echo haalJavascriptOp("menu_toggle.js") ?>
 
     <!--        font awesome (CDN) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -29,37 +31,60 @@
 </head>
 
 <body>
-
-
-    <!--            header-->
-
+<!--            sidebar-menu-->
+<div class="wrapper" >
     <?php echo $hoofding; ?>
 
-    <hr>
-
     <!--            pagina-inhoud-->
-    <div class="row">
-        <div class="col-12 mb-2">
-            <h2><?php echo $titel; ?></h2>
-        </div>
-    </div>
 
-    <div class="row">
-        <?php echo $inhoud; ?>
-    </div>
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
 
-    <hr>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
 
-    <!--            footer-->
-    <footer>
-        <div class="row">
-            <div class="col-12 row">
-                <?php echo "<div class='col-5'>" .  $footer . "</div>" .
-                    "<div class='col-7'>" . $teamleden . "</div>"; ?>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <h2><?php echo $titel; ?></h2>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <?php echo $inhoud; ?>
+                </div>
             </div>
         </div>
-    </footer>
 
+
+
+
+
+
+    <!--            footer-->
+    <div class="container" id="footer">
+
+            <div class="row">
+                <div class='col'>
+                    <?php echo $footer?>
+                </div>
+                <div class="col">
+                    <?php echo "<small> " . $teamleden . "</small>" ?>
+                </div>
+            </div>
+
+    </div>
+</div>
+</div>
 </body>
 
 </html>

@@ -1,6 +1,4 @@
-<script>
 
-</script>
 <div class="container">
     <div class="col-12 mt-3">
         <?php
@@ -13,17 +11,24 @@
             echo "<hr />";
 
             // Toont de scholen in een dropdown
+            echo form_label("Schoolnaam");
             $options = array();
+            $options[0] = "--Selecteer een school--";
             foreach($scholen as $option){
                 $options[$option->id] = $option->schoolnaam;
             }
-            echo form_label("Schoolnaam");
-            echo form_dropdown('schoolnaam', $options, 'class="form-control dropdown"');
+            $dataScholen = array(
+                    'id' => 'schoolnaam',
+                    'name' => 'schoolnaam',
+                    'class' => 'form-control');
+            echo form_dropdown($dataScholen, $options);
 
             // Laadt de datum van vandaag in een hidden field
             $datumVanVandaag = date("Y/m/d");
             echo form_hidden($datumVanVandaag, 'datumVanVandaag');
 
+
+            echo '<div id="klassen"></div>';
 
 //
 //            echo form_label("Aantal zwemmers");
@@ -52,4 +57,25 @@
     </div>
 </div>
 
+<script>
+    function haalKlassenOp(schoolId) {
+        $.ajax({
+            type: "GET",
+            url: site_url + "/Scholen/haalAjaxOp_Klassen",
+            data: {schoolId: schoolId},
+            success: function (result) {
+                $("#klassen").html(result);
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        $("#schoolnaam").change(function () {
+            console.log("CHANGE");
+            var schoolId = $(this).val();
+            haalKlassenOp(schoolId);
+        });
+
+    });
+</script>
 
