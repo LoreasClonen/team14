@@ -67,11 +67,11 @@
 
 
         <!--            footer-->
-        <div class="container row" id="footer">
-            <div class='col'>
+        <div class="container" id="footer">
+            <div class='container'>
                 <?php echo $footer ?>
             </div>
-            <div class="col">
+            <div class="container">
                 <?php echo "<small> " . $teamleden . "</small>" ?>
             </div>
 
