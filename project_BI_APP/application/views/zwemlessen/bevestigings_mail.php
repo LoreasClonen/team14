@@ -1,4 +1,4 @@
-<div class="modal" tabindex="-1" role="dialog" id ="error">
+<div class="modal" tabindex="-1" role="dialog" id ="bevestiging">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -21,6 +21,6 @@
 </div>
 <script type="text/javascript">
     $(window).on('load',function(){
-        $('#error').modal('show');
+        $('#bevestiging').modal('show');
     });
 </script>

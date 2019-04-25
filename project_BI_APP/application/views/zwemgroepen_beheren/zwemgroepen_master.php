@@ -32,13 +32,14 @@
 </head>
 
 <body>
-    <!--            sidebar-menu-->
-    <div class="wrapper">
-        <?php echo $hoofding; ?>
+<!--            sidebar-menu-->
+<div class="wrapper">
+    <?php echo $hoofding; ?>
 
-        <!--            pagina-inhoud-->
+    <!--            pagina-inhoud-->
 
-        <div id="content">
+    <div id="content">
+        <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
@@ -68,19 +69,20 @@
 
 
             <!--            footer-->
-            <div class="container" id="footer">
-                <div class='container'>
-                    <?php echo $footer ?>
-                </div>
+            <div class = 'row' id="footer">
                 <div class="container">
-                    <?php echo "<small> " . $teamleden . "</small>" ?>
+                    <div class='row'>
+                        <?php echo $footer ?>
+                    </div>
+                    <div class="row">
+                        <?php echo "<small> " . $teamleden . "</small>" ?>
+                    </div>
                 </div>
 
             </div>
-
-
         </div>
     </div>
+</div>
 </body>
 
 </html>
