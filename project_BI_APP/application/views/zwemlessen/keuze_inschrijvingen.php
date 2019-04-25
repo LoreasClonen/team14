@@ -12,7 +12,7 @@
             <?php echo smallDivAnchor('zwemlessen/bestaandeKlant','Al klant?', 'class ="btn btn-lg btn-block btn-primary"'); ?>
         </div>
         <div class="col-2 text-center">
-            <?php echo smallDivAnchor('Zwemlessen/gaNaarHelp', 'Help', 'class="btn btn-lg btn-block btn-primary"'); ?>
+            <?php echo smallDivAnchor('Zwemlessen/gaNaarHelp', 'Help', 'class="btn btn-lg btn-block btn-primary" target="_blank"'); ?>
         </div>
     </div>
 </div>

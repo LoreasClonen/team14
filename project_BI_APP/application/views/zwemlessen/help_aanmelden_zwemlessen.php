@@ -42,4 +42,5 @@
     <p>
         Hier kan u uw inschrijving definitief annuleren door op de “Bevestigen” knop te drukken, of terug naar uw inschrijving te gaan door op “Annuleren” te drukken.
     </p>
+    <?php echo smallDivAnchor('Zwemlessen/Keuze', 'Terug', 'class="btn btn-lg btn-block btn-primary"'); ?>
 </div>
