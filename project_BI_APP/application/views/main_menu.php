@@ -18,7 +18,12 @@
 
 
 <div id="overlay">
-    <div id="text">Welkom op Kempenrust, we helpen je even op weg.</div>
+    <div id="layover"><p id="text">Welkom op Kempenrust, we helpen je even op weg.</p>
+        <div><?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?><p class="layover_text"><i class="fas fa-arrow-right"></i> Om makkelijk een zwemles aan te vragen kan je de knop "Zwemles aanvragen" gebruiken.</p></div>
+
+        <div><?php echo smallDivAnchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?><p class="layover_text"><i class="fas fa-arrow-right"></i> Om makkelijk een zwemfeestje te boeken kan je de knop "Zwemfeestje boeken" gebruiken.</p></div>
+    </div>
+
 </div>
 
 
@@ -38,7 +43,6 @@
 
                 <?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
                 <?php echo smallDivAnchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?>
-                <?php echo smallDivAnchor('les1/valideer', 'Webshop', 'class="btn btn-primary"'); ?>
 
             </div>
         </div>

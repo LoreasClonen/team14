@@ -1,4 +1,4 @@
-h2 {color: hotpink;}
+
 
 #overlay {
     position: fixed;
@@ -9,17 +9,30 @@ h2 {color: hotpink;}
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.95);
     z-index: 2;
     cursor: pointer;
 }
 
-#text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
+#text {
     font-size: 50px;
+}
+
+@media screen and (max-width: 768px){
+    #text {
+        font-size: 30px;
+    }
+}
+
+#layover {
+    position: absolute;
+    top: 300px;
+    left: 50%;
     color: white;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
+}
+
+#layover_text{
+    font-size: 12px;
 }
