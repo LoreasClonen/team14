@@ -121,6 +121,19 @@
 
 
         }
+
+        public function aanwezighedenBevestigen()
+        {
+            $lesData = new stdClass();
+            $lesData->klasId = $this->input->post("klasId");
+            $lesData->leerlingenAantal = $this->input->post("leerlingenAantal");
+            $lesData->datumLes = $this->input->post("datumLes");
+            $lesData->prijsPerKind = 5;
+
+            $this->les_model->addLes($lesData);
+
+            redirect('Scholen/getScholen');
+        }
     }
 
 

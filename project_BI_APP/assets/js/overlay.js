@@ -1,4 +1,3 @@
-
 /* on load open*/
 $(document).ready(function () {
     $("#overlay").css("display", "block");

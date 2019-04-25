@@ -59,7 +59,7 @@
 
         /**
          * @brief Geeft een pagina weer die zwemmers oplijst in een tabel
-         * @pre er bestaat een Zwemmer controller
+         * @pre er bestaat een Zwemmer controller, een Klant model klasse met functie getAllByAchternaamWithLesgroepWithZwemniveauWhereActief
          * @post Er word een pagina weergegeven die alle zwemmers in een tabel weergeeft
          */
         public function zwemmersOphalen()

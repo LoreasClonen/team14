@@ -11,7 +11,7 @@
             echo "<hr />";
 
             // Toont de scholen in een dropdown
-            echo form_label("Schoolnaam");
+            echo form_label("Schoolnaam", 'schoolnaam');
             $options = array();
             $options[0] = "--Selecteer een school--";
             foreach($scholen as $option){
@@ -24,8 +24,8 @@
             echo form_dropdown($dataScholen, $options);
 
             // Laadt de datum van vandaag in een hidden field
-            $datumVanVandaag = date("Y/m/d");
-            echo form_hidden($datumVanVandaag, 'datumVanVandaag');
+            $datumLes = date("Y/m/d");
+            echo form_hidden('datumLes', $datumLes);
 
 
             echo '<div id="klassen"></div>';
@@ -51,7 +51,7 @@
 
     $(document).ready(function () {
         $("#schoolnaam").change(function () {
-            console.log("CHANGE");
+
             var schoolId = $(this).val();
             haalKlassenOp(schoolId);
         });

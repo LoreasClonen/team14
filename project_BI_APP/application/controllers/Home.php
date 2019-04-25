@@ -25,9 +25,13 @@ class Home extends CI_Controller
         $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
         $this->load->helper('form');
         $this->load->helper('html');
+        $this->load->helper('cookie');
         $this->load->model('Extras/Nieuwsbericht_model', 'nieuwsbericht_model');
         }
 
+        /**
+        * @brief Geeft de homepagina weer met alle opgelijste
+        */
         public function index()
         {
             $data['titel'] = 'Zwembad informatie';
@@ -35,6 +39,16 @@ class Home extends CI_Controller
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe';
 
             $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
+
+            if(!get_cookie('tutorial', TRUE)){
+                $data['overlay'] = 1;
+
+            }
+            else
+                $data['overlay'] = 0;
+
+            $cookieTutorial = array('name' => 'tutorial', 'value' => TRUE, 'expire' => '157784630'); //cookie vervaltijd = 5 jaar
+            set_cookie($cookieTutorial);
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'main_menu',

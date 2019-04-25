@@ -17,9 +17,7 @@
         function __construct()
         {
             parent::__construct();
-            $this->load->model('/School/Factuur_model', 'factuur_model');
-            $this->load->model('/School/Klas_model', 'klas_model');
-            $this->load->model('/School/School_model', 'school_model');
+
         }
 
         /**
@@ -36,15 +34,18 @@
             return $query->result();
         }
 
-        function addDatum($datumLes)
+        /**
+         * functie addLes()
+         * @brief zet een nieuwe les in de database
+         * @pre Er bestaat een table Les in de database
+         * @param $lesData
+         * @return mixed
+         */
+
+        function addLes($lesData)
         {
-            $this->db->insert('datumLes', $datumLes);
-            $this->db->insert_id();
+            $this->db->insert('les', $lesData);
+            return $this->db->insert_id();
         }
 
-        function addAantalZwemmers($aantalZwemmers)
-        {
-            $this->db->insert('leerlingenAantal', $aantalZwemmers);
-            $this->db->insert_id();
-        }
     }
