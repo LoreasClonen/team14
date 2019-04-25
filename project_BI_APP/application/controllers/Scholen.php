@@ -37,30 +37,30 @@
         {
             $data['scholen'] = $this->school_model->getAllBySchoolnaam();
 
-            $data['titel'] = '';
+            $data['titel'] = 'Overzicht Scholen';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = '';
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => '',
+                'inhoud' => 'scholen_beheren/overzicht_scholen',
                 'footer' => 'main_footer');
 
-            $this->template->load('', $partials, $data);
+            $this->template->load('main_master', $partials, $data);
         }
 
         public function toonSchool($id)
         {
-            $data['school'] = $this->school_model->getById($id);
+            $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($id);
 
-            $data['titel'] = '';
+            $data['titel'] = 'Overzicht school';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = '';
 
             $partials = array('hoofding' => 'main_header',
-                'inhoud' => '',
+                'inhoud' => 'scholen_beheren/overzicht_klassen',
                 'footer' => 'main_footer');
 
-            $this->template->load('', $partials, $data);
+            $this->template->load('main_master', $partials, $data);
         }
 
         public function aanwezighedenIngeven()
