@@ -27,7 +27,7 @@
 
         public function meldAan()
         {
-            $data['titel'] = 'Aanmelden';
+            $data['titel'] = 'Inloggen';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
             $data['teamleden'] = 'Loreas Clonen (O), Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe';

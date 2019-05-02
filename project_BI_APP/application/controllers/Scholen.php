@@ -107,7 +107,7 @@
                 'inhoud' => 'scholen_beheren/klas_toevoegen_pagina',
                 'footer' => 'main_footer');
 
-            $this->template->load('scholen_beheren/klas_master', $partials, $data);
+            $this->template->load('card_master', $partials, $data);
         }
 
         public function klasToevoegen($schoolId)
@@ -146,6 +146,23 @@
 
             redirect('Scholen/getScholen');
         }
+
+//        public function klassenOpslaan($schoolId)
+//        {
+//            $klassen = $this->post->klassen;
+//            foreach ($klassen as $klas) {
+//                $klasData = new stdClass();
+//
+//                $klasData->klasnaam = $this->input->post('klasnaam');
+//                $klasData->isGesubsidieerd = $this->input->post('isGesubsidieerd');
+//                $klasData->schoolId = $schoolId;
+//
+//                $this->zwemfeest_model->update($klas->id, $klasData);
+//            }
+//
+//            redirect('Scholen/toonScholen');
+//        }
+
     }
 
 

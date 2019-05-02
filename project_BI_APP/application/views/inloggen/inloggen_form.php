@@ -6,7 +6,7 @@
 
         echo "<hr />";
 
-        echo form_label('email', 'email');
+        echo form_label('E-mail', 'email');
         $dataNaam = array('id' => 'email',
             'name' => 'email',
             'class' => 'form-control',
@@ -21,13 +21,13 @@
             'placeholder' => 'wachtwoord',
             'required' => 'required',
             'size' => '30');
-        echo form_label('wachtwoord', 'wachtwoord');
+        echo form_label('Wachtwoord', 'wachtwoord');
         echo form_password($dataWachtwoord);
 
 
-    echo form_submit(array("value" => "Inloggen", "class" => "btn btn-primary my-3", "id" => "logIn"));
-    echo smallDivAnchor('Inloggen/wachtwoordVergeten', 'Wachtwoord vergeten', 'class="btn btn-primary"');
-    echo form_close();
+        echo form_submit(array("value" => "Inloggen", "class" => "btn btn-primary my-3", "id" => "logIn"));
+        echo smallDivAnchor('Inloggen/wachtwoordVergeten', 'Wachtwoord vergeten', 'class="btn btn-primary"');
+        echo form_close();
 
     ?>
 </div>
