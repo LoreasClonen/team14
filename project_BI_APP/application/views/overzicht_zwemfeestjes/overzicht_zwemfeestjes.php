@@ -8,7 +8,7 @@
 
 <?php
 
-echo anchor("Home/index", "Terug", "class='btn btn-secondary'");
+echo anchor("Home/index", "Terug", "class='btn btn-primary'");
 
     foreach ($zwemfeestMomenten as $zwemfeestMoment)
     {

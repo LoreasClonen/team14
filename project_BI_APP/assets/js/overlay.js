@@ -1,6 +1,8 @@
-/* on load open*/
+/* on click open*/
 $(document).ready(function () {
-    $("#overlay").css("display", "block");
+    $("#overlayknop").click(function () {
+        $("#overlay").css("display", "block");
+    });
 
     /* on click close */
     $("#overlay").click(function () {

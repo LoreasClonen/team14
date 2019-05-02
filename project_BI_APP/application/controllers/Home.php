@@ -40,16 +40,6 @@ class Home extends CI_Controller
 
             $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
 
-            if(!get_cookie('tutorial', TRUE)){
-                $data['overlay'] = 1;
-
-            }
-            else
-                $data['overlay'] = 0;
-
-            $cookieTutorial = array('name' => 'tutorial', 'value' => TRUE, 'expire' => '157784630'); //cookie vervaltijd = 5 jaar
-            set_cookie($cookieTutorial);
-
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'main_menu',
                 'footer' => 'main_footer');
