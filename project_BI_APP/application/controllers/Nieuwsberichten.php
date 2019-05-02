@@ -61,9 +61,9 @@ class Nieuwsberichten extends CI_Controller
 
     public function deleteNieuwsbericht($id)
     {
-        $this->inlogger_model->delete($id);
+        $this->nieuwsbericht_model->delete($id);
 
-        redirect('Gebruiker/getGebruikers');
+        redirect('Nieuwsberichten/nieuwsberichtenOphalen');
     }
 
     public function updateNieuwsbericht()

@@ -9,7 +9,7 @@ echo '<table class="table">
 foreach ($nieuwsberichten as $nieuwsbericht) {
     echo '<tr>
                     <td>' . $nieuwsbericht->bericht . '</td>
-                    <td>' . anchor('Nieuwsberichten/nieuwsberichtOphalen/' . $nieuwsbericht->id, '<i class="fas fa-edit"></i>') . '</td>
+                    <td>' . anchor('Nieuwsberichten/nieuwsberichtOphalen/' . $nieuwsbericht->id, '<i class="fas fa-edit"></i>') . anchor('Nieuwsberichten/deleteNieuwsbericht/' . $nieuwsbericht->id, '<i class="fa fa-trash" aria-hidden="true"></i>') . '</td>
                    </tr>';
 }
 
