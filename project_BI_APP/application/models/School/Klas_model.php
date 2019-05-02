@@ -70,4 +70,12 @@
             $this->db->insert('klas', $klas);
             $this->db->insert_id();
         }
+
+//        function updateKlas($id, $klas)
+//        {
+//            $this->db->where('id', $id);
+//            $this->update('posts', $klas);
+//        }
+
+
     }
