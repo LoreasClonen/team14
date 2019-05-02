@@ -27,7 +27,7 @@
 ?>
 
 
-<div class="row">
+<div class="container">
     <div class="container-fluid">
 
         <header class="jumbotron">
@@ -38,16 +38,17 @@
 
     </div>
     <div class="row">
-        <div class="col">
-            <div class="container-fluid">
-
-                <?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
-                <?php echo smallDivAnchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?>
-
+        <div class="col-6 text-center">
+            <div class="container-fluid text-left">
+                <h3 class="mt-4">Menu:</h3>
+                <div>
+                    <?php echo smallDivAnchor('zwemlessen/keuze', 'Zwemles aanvragen', 'class="btn btn-primary"'); ?>
+                    <?php echo smallDivAnchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje boeken', 'class="btn btn-primary"'); ?>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="container-fluid text-center">
+        <div class="col-6 text-center">
+            <div class="container-fluid text-left">
                 <h3 id="jquery" class="mt-4">Nieuwsberichten:</h3>
                 <div><?php
 

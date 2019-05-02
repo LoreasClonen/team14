@@ -29,40 +29,57 @@
 </head>
 
 <body>
-
-
-    <!--            header-->
-
+<!--            sidebar-menu-->
+<div class="wrapper">
     <?php echo $hoofding; ?>
 
-    <hr>
-
     <!--            pagina-inhoud-->
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-8">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h2><?php echo $titel; ?></h2>
+
+    <div id="content">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+
                 </div>
-                <?php echo $inhoud; ?>
+            </nav>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="text-center">
+                            <h2><?php echo $titel; ?></h2>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <?php echo $inhoud; ?>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--            footer-->
+            <div class = 'row' id="footer">
+                <div class="container">
+                    <div class='row'>
+                        <?php echo $footer ?>
+                    </div>
+                    <div class="row">
+                        <?php echo "<small> " . $teamleden . "</small>" ?>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="col"></div>
     </div>
-
-    <hr>
-
-    <!--            footer-->
-    <footer>
-        <div class="row">
-            <div class="col-12 row">
-                <?php echo "<div class='col-5'>" . $footer . "</div>" .
-                    "<div class='col-7'>" . $teamleden . "</div>"; ?>
-            </div>
-        </div>
-    </footer>
-
+</div>
 </body>
 
 </html>

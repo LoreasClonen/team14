@@ -151,6 +151,17 @@
             //update de beschikbaarheidstabel
 
             $this->beschikbaarheid_model->nieuweKlantToevoegen($klantId, $gekozengroepenIds);
+            $data['titel'] = 'Mailbox';
+            $data['teamleden'] = '';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'zwemlessen/bevestigings_mail',
+                'footer' => 'main_footer');
+
+
+            $this->template->load('main_master', $partials, $data);
+
 
         }
         public function keuze_zwemlessen()

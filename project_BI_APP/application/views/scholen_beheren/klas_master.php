@@ -14,12 +14,15 @@
 
     <!-- Custom CSS -->
     <?php echo pasStylesheetAan("buttons.css"); ?>
-    <?php echo pasStylesheetAan("footer.css"); ?>
+
     <?php echo pasStylesheetAan("content.css"); ?>
+    <?php echo pasStylesheetAan("overlay.css"); ?>
 
     <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
     <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
-    <?php echo haalJavascriptOp("menu_toggle.js") ?>
+    <?php echo haalJavascriptOp("menu_toggle.js"); ?>
+    <?php echo haalJavascriptOp("overlay.js"); ?>
+
 
     <!--        font awesome (CDN) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -32,47 +35,90 @@
     </script>
 </head>
 
-<body>
-    <div class="d-flex" id="wrapper">
 
-        <!--            sidebar-menu-->
-        <div class="border-right" id="sidebar-wrapper">
-            <?php echo $hoofding; ?>
-        </div>
+<body>
+    <!--            sidebar-menu-->
+    <div class="wrapper">
+        <?php echo $hoofding; ?>
+
         <!--            pagina-inhoud-->
-        <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="btn btn-primary" id="menu-toggle">Menu</button>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+
+                </div>
             </nav>
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-6">
-                    <div class="card mt-5">
-                        <div class="card-header text-center">
+
+<<<<<<< HEAD
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="text-center">
                             <h2><?php echo $titel; ?></h2>
+                            <hr>
                         </div>
-                        <?php echo $inhoud; ?>
                     </div>
                 </div>
-                <div class="col"></div>
+                <div class="row">
+                    <div class="col">
+                        <?php echo $inhoud; ?>
+=======
+            <div class="container mb-5 mt-5">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <h2><?php echo $titel; ?></h2>
+                            </div>
+                            <?php echo $inhoud; ?>
+                        </div>
+>>>>>>> f80a990b227e7e315c3ad8d6900dbd8df82bc9a4
+                    </div>
+                    <div class="col"></div>
+                </div>
             </div>
 
-            <hr>
+<<<<<<< HEAD
 
-            <div class="row">
+            <!--            footer-->
+            <div class = 'row' id="footer">
                 <div class="container">
-                    <footer class="footer">
-                        <div class="container-fluid text-muted team-text">
-                            <div class='col'>
-                                <?php echo $footer ?>
-                            </div>
-                            <div class="col"
-                            <?php echo "<small> " . $teamleden . "</small>" ?>
-                        </div>
+                    <div class='row'>
+                        <?php echo $footer ?>
+                    </div>
+                    <div class="row">
+                        <?php echo "<small> " . $teamleden . "</small>" ?>
+                    </div>
                 </div>
-                </footer>
+
             </div>
         </div>
     </div>
+</div>
+=======
+            <!--            footer-->
+            <div class="container" id="footer">
+                <div class="row">
+                    <div class='col'>
+                        <?php echo $footer ?>
+                    </div>
+                    <div class="col">
+                        <?php echo "<small> " . $teamleden . "</small>" ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> f80a990b227e7e315c3ad8d6900dbd8df82bc9a4
+</body>
 
+</html>
 </html>
