@@ -56,20 +56,7 @@
                 </div>
             </nav>
 
-<<<<<<< HEAD
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="text-center">
-                            <h2><?php echo $titel; ?></h2>
-                            <hr>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <?php echo $inhoud; ?>
-=======
+
             <div class="container mb-5 mt-5">
                 <div class="row">
                     <div class="col"></div>
@@ -80,30 +67,12 @@
                             </div>
                             <?php echo $inhoud; ?>
                         </div>
->>>>>>> f80a990b227e7e315c3ad8d6900dbd8df82bc9a4
+
                     </div>
                     <div class="col"></div>
                 </div>
             </div>
 
-<<<<<<< HEAD
-
-            <!--            footer-->
-            <div class = 'row' id="footer">
-                <div class="container">
-                    <div class='row'>
-                        <?php echo $footer ?>
-                    </div>
-                    <div class="row">
-                        <?php echo "<small> " . $teamleden . "</small>" ?>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-=======
             <!--            footer-->
             <div class="container" id="footer">
                 <div class="row">
@@ -117,7 +86,6 @@
             </div>
         </div>
     </div>
->>>>>>> f80a990b227e7e315c3ad8d6900dbd8df82bc9a4
 </body>
 
 </html>
