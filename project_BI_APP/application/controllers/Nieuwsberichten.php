@@ -50,7 +50,7 @@ class Nieuwsberichten extends CI_Controller
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe';
 
-        $data['inlogger'] = $this->nieuwsbericht_model->getById($id);
+        $data['nieuwsbericht'] = $this->nieuwsbericht_model->getById($id);
 
         $partials = array('hoofding' => 'main_header',
             'inhoud' => 'nieuwsberichten_beheren/overzicht_nieuwsbericht',
@@ -72,32 +72,21 @@ class Nieuwsberichten extends CI_Controller
 
         $gebruikerData = new stdClass();
 
-        $gebruikerData->voornaam = $this->input->post('voornaam');
-        $gebruikerData->achternaam = $this->input->post('achternaam');
-        $gebruikerData->email = $this->input->post('email');
-        $gebruikerData->wachtwoord = $this->input->post('wachtwoord');
-        $gebruikerData->telefoonnr = $this->input->post('telefoonnr');
-        $gebruikerData->geboortedatum = $this->input->post('geboortedatum');
-        $gebruikerData->straatnaam = $this->input->post('straatnaam');
-        $gebruikerData->huisnummer = $this->input->post('huisnummer');
-        $gebruikerData->postcode = $this->input->post('postcode');
+        $gebruikerData->bericht = $this->input->post('bericht');
+        $gebruikerData->foto = $this->input->post('foto');
 
-        $this->inlogger_model->update($id, $gebruikerData);
+        $this->nieuwsbericht_model->update($id, $gebruikerData);
 
-        redirect('Gebruiker/getGebruikers');
+        redirect('Nieuwsberichten/nieuwsberichtenOphalen');
     }
 
     public function insertNieuwsbericht()
     {
         $gebruikerData = new stdClass();
 
-        $gebruikerData->actief = '0';
-        $gebruikerData->isAdmin = '0';
-        $gebruikerData->isZwemleraar = '1';
+        $id = $this->nieuwsbericht_model->insert($gebruikerData);
 
-        $id = $this->inlogger_model->insert($gebruikerData);
-
-        redirect('Gebruiker/getGebruiker/' . $id);
+        redirect('Nieuwsberichten/nieuwsberichtOphalen/' . $id);
     }
 
 }

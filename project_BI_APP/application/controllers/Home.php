@@ -25,7 +25,6 @@ class Home extends CI_Controller
         $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
         $this->load->helper('form');
         $this->load->helper('html');
-        $this->load->helper('cookie');
         $this->load->model('Extras/Nieuwsbericht_model', 'nieuwsbericht_model');
         }
 

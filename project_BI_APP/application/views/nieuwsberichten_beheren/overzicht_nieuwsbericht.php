@@ -6,40 +6,30 @@ echo form_open('Gebruiker/updateGebruiker', $attributes);
 
 
 
-echo form_label('E-mail:', 'email');
+echo form_label('Bericht:', 'bericht');
 $dataEmail = array(
-'id' => 'email',
-'name' => 'email',
+'id' => 'bericht',
+'name' => 'bericht',
 'class' => 'form-control',
-'type' => 'email',
-'value' => $inlogger->email,
+'type' => 'text',
+'value' => $nieuwsbericht->bericht,
 'required' => 'required',
 'size' => '50'
 );
-echo form_input($dataEmail);
+echo form_textarea($dataEmail);
 
-echo form_label('Nieuw wachtwoord:', 'wachtwoord');
+echo form_label('Foto url:', 'foto');
 $dataWachtwoord = array(
-'id' => 'wachtwoord',
-'name' => 'wachtwoord',
+'id' => 'foto',
+'name' => 'foto',
 'class' => 'form-control',
-'type' => 'password',
+'type' => 'text',
 'required' => 'required',
 'size' => '50'
 );
 echo form_input($dataWachtwoord);
 
-echo form_label('Herhaal wachtwoord:', 'bevestigingWachtwoord');
-$dataBevestigingWachtwoord = array(
-'id' => 'bevestigingWachtwoord',
-'name' => 'bevestigingWachtwoord',
-'class' => 'form-control',
-'type' => 'password',
-'required' => 'required',
-'size' => '50'
-);
-echo form_input($dataBevestigingWachtwoord);
 
-echo form_hidden('id', $inlogger->id);
+echo form_hidden('id', $nieuwsbericht->id);
 echo form_close();
 ?>

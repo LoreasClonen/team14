@@ -17,7 +17,7 @@ foreach ($nieuwsberichten as $nieuwsbericht) {
 
 echo '</table>';
 
-echo smallDivAnchor('Nieuwsberichten/nieuwsberichtToevoegenLaden', 'Nieuwsbericht toevoegen', 'class = "btn btn-primary"');
+echo smallDivAnchor('Nieuwsberichten/insertNieuwsbericht', 'Nieuwsbericht toevoegen', 'class = "btn btn-primary"');
 
 
 ?>
