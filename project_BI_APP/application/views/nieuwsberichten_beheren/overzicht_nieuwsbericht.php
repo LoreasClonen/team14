@@ -24,6 +24,7 @@ $dataWachtwoord = array(
 'name' => 'foto',
 'class' => 'form-control',
 'type' => 'text',
+'value' => $nieuwsbericht->foto,
 'required' => 'required',
 'size' => '50'
 );
