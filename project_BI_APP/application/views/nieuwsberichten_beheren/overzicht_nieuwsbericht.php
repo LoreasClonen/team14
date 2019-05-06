@@ -4,8 +4,6 @@
 $attributes = array('name' => 'overzicht_inlogger', 'id' => 'gebruikerAanpassenFormulier', 'role' => 'form');
 echo form_open('Gebruiker/updateGebruiker', $attributes);
 
-
-
 echo form_label('Bericht:', 'bericht');
 $dataEmail = array(
 'id' => 'bericht',
@@ -33,4 +31,8 @@ echo form_input($dataWachtwoord);
 
 echo form_hidden('id', $nieuwsbericht->id);
 echo form_close();
+
+echo '<br><div>' . form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateNieuwsbericht")) . '</div></div><hr>';
+
 ?>
+
