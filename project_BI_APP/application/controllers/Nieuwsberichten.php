@@ -70,21 +70,21 @@ class Nieuwsberichten extends CI_Controller
     {
         $id = $this->input->post('id');
 
-        $gebruikerData = new stdClass();
+        $nieuwsberichtData = new stdClass();
 
-        $gebruikerData->bericht = $this->input->post('bericht');
-        $gebruikerData->foto = $this->input->post('foto');
+        $nieuwsberichtData->bericht = $this->input->post('bericht');
+        $nieuwsberichtData->foto = $this->input->post('foto');
 
-        $this->nieuwsbericht_model->update($id, $gebruikerData);
+        $this->nieuwsbericht_model->update($id, $nieuwsberichtData);
 
         redirect('Nieuwsberichten/nieuwsberichtenOphalen');
     }
 
     public function insertNieuwsbericht()
     {
-        $gebruikerData = new stdClass();
+        $nieuwsberichtData = new stdClass();
 
-        $id = $this->nieuwsbericht_model->insert($gebruikerData);
+        $id = $this->nieuwsbericht_model->insert($nieuwsberichtData);
 
         redirect('Nieuwsberichten/nieuwsberichtOphalen/' . $id);
     }

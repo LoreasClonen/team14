@@ -46,7 +46,6 @@ class Nieuwsbericht_model extends CI_Model
     }
 
     /**
-     * functie delete(id)
      * @brief verwijdert een bepaald nieuwsbericht
      * @pre Er bestaat een Nieuwsbericht_model klasse
      * @post Er is een nieuwsbericht uit de database verwijdert
@@ -56,5 +55,31 @@ class Nieuwsbericht_model extends CI_Model
     {
         $this->db->where('id', $id);
         $this->db->delete('nieuwsbericht');
+    }
+
+    /**
+     * @brief werkt een bepaald nieuwsbericht bij
+     * @pre Er bestaat een Nieuwsbericht_model klasse
+     * @post Er is een nieuwsbericht uit de database bijgewerkt
+     * @param $id
+     * @param $nieuwsberichtData
+     */
+    function update($id, $nieuwsberichtData)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('nieuwsbericht', $nieuwsberichtData);
+    }
+
+    /**
+     * @brief maakt een nieuw nieuwsbericht aan
+     * @pre Er bestaat een Nieuwsbericht_model klasse
+     * @post Er is een nieuwsbericht in de database toegevoegd
+     * @param $nieuwsbericht
+     * @return id van het nieuwe nieuwsbericht
+     */
+    function insert($nieuwsbericht)
+    {
+        $this->db->insert('nieuwsbericht', $nieuwsbericht);
+        return $this->db->insert_id();
     }
 }

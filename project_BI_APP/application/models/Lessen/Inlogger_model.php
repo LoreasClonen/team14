@@ -147,6 +147,13 @@
             $this->db->update('inlogger', $gebruikerData);
         }
 
+        /**
+         * @brief maakt een nieuwe inlogger aan
+         * @pre Er bestaat een Inlogger_model klasse
+         * @post Er is een inlogger in de database toegevoegd
+         * @param $inlogger
+         * @return id van de nieuwe inlogger
+         */
         function insert($inlogger)
         {
             $this->db->insert('inlogger', $inlogger);
