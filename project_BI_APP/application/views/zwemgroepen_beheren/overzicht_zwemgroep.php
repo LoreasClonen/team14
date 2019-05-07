@@ -18,7 +18,7 @@
 
         echo "<div>Zwemleraar: " . $inlogger->inlogger->voornaam . ' ' . $inlogger->inlogger->achternaam . "</div>\n<hr>";
 
-        echo '<h5>Leerlingen:</h5><hr>';
+        echo '<h5>Leerlingen:</h5>';
 
         echo '<table class="table">
                 <tr>

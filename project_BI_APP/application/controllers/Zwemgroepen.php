@@ -59,7 +59,7 @@ class Zwemgroepen extends CI_Controller
         $data['inlogger'] = $this->lesgroep_model->getIdWithInlogger($id);
         $data['zwemniveau'] = $this->lesgroep_model->getIdWithZwemniveau($id);
 
-        $data['beschikbaarheden'] = $this->beschikbaarheid_model->getByLesgroepIdWithKlant($id);
+        $data['beschikbaarheden'] = $this->beschikbaarheid_model->getByLesgroepIdStatusIdWithKlant($id);
 
 
         $partials = array('hoofding' => 'main_header',

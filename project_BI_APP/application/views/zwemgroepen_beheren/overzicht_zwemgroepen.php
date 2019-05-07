@@ -1,5 +1,8 @@
 <?php
 
+echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>';
+echo '<div class="col-8 text-right">' . anchor('Zwemgroepen/zwemgroepToevoegenLaden', 'Zwemgroep toevoegen', array('class' => 'btn btn-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Klik hier als u een nieuwe zwemgroep wilt toevoegen')) . '</div></div><br>';
+
     echo '<table class="table">
                 <tr>
                     <th scope="col">Groepsnaam</th>
@@ -19,8 +22,5 @@
     }
 
     echo '</table>';
-
-    echo smallDivAnchor('Zwemgroepen/zwemgroepToevoegenLaden', 'Zwemgroep toevoegen', array('class' => 'btn btn-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Klik hier als u een nieuwe zwemgroep wilt toevoegen'));
-
 
 ?>

@@ -47,15 +47,15 @@
         }
 
         /**
-         * functie getByLesgroepIdWithKlant($id)
-         * @brief geeft alle beschikbaarheden waarvoor lesgroepId = $id met bijhorende klant terug in de lesgroep tabel
-         * @pre Er bestaat een Beschikbaarheid model klasse, een Klant model klasse, een beschikbaarheid met overeenkomstige lesgroepId en een klant met overeenkomstige id
+         * @brief geeft alle beschikbaarheden waarvoor lesgroepId = $id met bijhorende klant en status terug in de beschikbaarheid tabel
+         * @pre Er bestaat een Beschikbaarheid model klasse, een Klant model klasse, een Status model klasse en een Status model klasse. Er bestaat een beschikbaarheid met overeenkomstige lesgroepId, statusId en een klant met overeenkomstige id
          * @post Er is een array met 1 of meerdere beschikbaarheden teruggegeven
          * @return array
          */
-        function getByLesgroepIdWithKlant($id)
+        function getByLesgroepIdStatusIdWithKlant($id)
         {
             $this->db->where('lesgroepId', $id);
+            $this->db->where('statusId', '2');
             $query = $this->db->get('beschikbaarheid');
             $beschikbaarheden = $query->result();
 

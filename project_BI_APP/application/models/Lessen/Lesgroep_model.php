@@ -16,6 +16,7 @@ class Lesgroep_model extends CI_Model
         parent::__construct();
         $this->load->model('/Lessen/Inlogger_model', 'inlogger_model');
         $this->load->model('/Lessen/Zwemniveau_model', 'zwemniveau_model');
+        $this->load->model('/Lessen/Status_model', 'status_model');
 
     }
 
