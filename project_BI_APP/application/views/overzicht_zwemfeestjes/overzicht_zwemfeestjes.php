@@ -8,7 +8,7 @@
 
 <?php
 
-echo anchor("Home/index", "Terug", "class='btn btn-primary'");
+echo smallDivAnchor("Home/index", "Terug", "class='btn btn-secondary'") . "<br>";
 
     foreach ($zwemfeestMomenten as $zwemfeestMoment)
     {

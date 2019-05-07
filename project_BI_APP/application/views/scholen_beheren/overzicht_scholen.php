@@ -2,7 +2,7 @@
 
 <?php
 
-echo anchor("Home/index", "Terug", "class='btn btn-secondary'");
+echo smallDivAnchor("Home/index", "Terug", "class='btn btn-secondary'") . "<br>";
 
 foreach ($scholen as $school)
 {

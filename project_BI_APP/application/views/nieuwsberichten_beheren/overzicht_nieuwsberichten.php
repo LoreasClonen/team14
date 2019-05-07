@@ -1,6 +1,8 @@
 <?php
 
-echo anchor("Home/index", "Terug", "class='btn btn-secondary'");
+echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>';
+echo '<div class="col-8 text-right">' . anchor('Nieuwsberichten/insertNieuwsbericht', 'Nieuwsbericht toevoegen', 'class = "btn btn-primary"') . '</div></div><br>';
+
 
 echo '<table class="table">
                 <tr>
@@ -16,8 +18,5 @@ foreach ($nieuwsberichten as $nieuwsbericht) {
 }
 
 echo '</table>';
-
-echo smallDivAnchor('Nieuwsberichten/insertNieuwsbericht', 'Nieuwsbericht toevoegen', 'class = "btn btn-primary"');
-
 
 ?>

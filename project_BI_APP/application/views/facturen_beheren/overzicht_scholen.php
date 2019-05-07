@@ -1,8 +1,8 @@
-<table class="table">
-
 <?php
 
-echo anchor("Home/index", "Terug", "class='btn btn-secondary'");
+echo smallDivAnchor("Home/index", "Terug", "class='btn btn-secondary'") . "<br>";
+
+echo '<table class="table">';
 
 foreach ($scholen as $school)
 {
