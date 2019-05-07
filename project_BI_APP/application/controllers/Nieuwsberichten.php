@@ -84,6 +84,8 @@ class Nieuwsberichten extends CI_Controller
     {
         $nieuwsberichtData = new stdClass();
 
+        $nieuwsberichtData->bericht = 'Vervang deze tekst door je bericht.';
+
         $id = $this->nieuwsbericht_model->insert($nieuwsberichtData);
 
         redirect('Nieuwsberichten/nieuwsberichtOphalen/' . $id);
