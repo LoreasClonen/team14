@@ -92,8 +92,7 @@
         function updateDatumBetaald($id, $datumBetaald)
         {
             $this->db->where('id', $id);
-            $this->db->set('datumBetaald', $datumBetaald);
-            $this->db->update('factuur');
+            $this->db->update('factuur', $datumBetaald);
         }
 
         /**

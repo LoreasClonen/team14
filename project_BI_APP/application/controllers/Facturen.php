@@ -27,6 +27,7 @@ class Facturen extends CI_Controller
         $this->load->model('School/School_model', 'school_model');
         $this->load->model('School/Factuur_model', 'factuur_model');
         $this->load->helper('notation');
+        $this->load->helper('form');
     }
 
     public function getScholen()
@@ -61,8 +62,14 @@ class Facturen extends CI_Controller
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
 
-    public function updateDatumBetaling($id, $schoolId, $datumBetaald)
+    public function updateDatumBetaling($schoolId)
     {
+        $id = $this->input->post('id');
+
+        $datumBetaald = new stdClass();
+
+        $datumBetaald->datumBetaald = $this->input->post('datumBetaald');
+
         $this->factuur_model->updateDatumBetaald($id, $datumBetaald);
 
         redirect('Facturen/getSchool/' . $schoolId);

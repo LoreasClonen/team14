@@ -10,7 +10,7 @@ echo '<div class="col-8 text-right">' . anchor("Wachtlijsten/index",'Factuur toe
 <table class="table">
     <tr>
         <th style="width: 50%">Factuur</th>
-        <th style="width: 50%">Betaald</th>
+        <th style="width: 50%">Betaald op</th>
     </tr>
 
 <?php
@@ -24,7 +24,28 @@ echo '<div class="col-8 text-right">' . anchor("Wachtlijsten/index",'Factuur toe
                 echo anchor('Facturen/deleteDatumBetaling/' . $factuur->id . '/' . $factuur->schoolId, '<i class="far fa-check-circle fa-2x"></i>') . ' Betaald op '. zetOmNaarDDMMYYYY($factuur->datumBetaald);
             }
             else {
-                echo anchor('Facturen/updateDatumBetaling/' . $factuur->id . '/' . $factuur->schoolId . '/' . date("Y-m-d", time()), '<i class="far fa-circle fa-2x"></i>');
+
+                echo '<i class="far fa-circle fa-2x" id="unchecked"></i>';
+
+                echo '<div class="formDate">';
+                $attributes = array('name' => 'factuurBetaling', 'id' => 'factuurBetaling', 'role' => 'form');
+                echo form_open('Facturen/updateDatumBetaling/'. $factuur->schoolId, $attributes);
+
+                $datumBetaald = array(
+                    'id' => 'geboortedatum',
+                    'name' => 'geboortedatum',
+                    'class' => 'form-control',
+                    'type' => 'date',
+                    'value' => date("Y-m-d", time()),
+                    'required' => 'required',
+                    'size' => '10'
+                );
+                echo form_input($datumBetaald);
+
+                echo form_hidden('id', $factuur->id);
+                echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateDatumBetaling"));
+                echo form_close();
+                echo '</div>';
             }
 
         echo "</td></tr>";

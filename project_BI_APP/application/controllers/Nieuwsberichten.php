@@ -91,4 +91,6 @@ class Nieuwsberichten extends CI_Controller
         redirect('Nieuwsberichten/nieuwsberichtOphalen/' . $id);
     }
 
+
+
 }
