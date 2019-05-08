@@ -60,10 +60,50 @@
             ?>
         </div>
     </div>
-    <?php
 
+    <div class="text-center mt-4">
+        <h5>Datum en tijdsstip</h5>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <?php
+                echo form_label('Datum', 'datum');
+                $dataDatum = array('id' => 'datum',
+                    'name' => 'datum',
+                    'class' => 'form-control',
+                    'type' => 'date',
+                    'required' => 'required',
+                    'size' => '30');
+                echo form_input($dataDatum);
+            ?>
+        </div>
+        <div class="col-sm-3">
+            <?php
+                echo form_label('Beginuur', 'beginuur');
+                $dataBeginuur = array('id' => 'beginuur',
+                    'name' => 'beginuur',
+                    'class' => 'form-control',
+                    'type' => 'time',
+                    'required' => 'required',
+                    'size' => '30');
+                echo form_input($dataBeginuur);
+            ?>
+        </div>
+        <div class="col-sm-3">
+            <?php
+                echo form_label('Einduur', 'einduur');
+                $dataEinduur = array('id' => 'einduur',
+                    'name' => 'einduur',
+                    'class' => 'form-control',
+                    'type' => 'time',
+                    'required' => 'required',
+                    'size' => '30');
+                echo form_input($dataEinduur);
+            ?>
+        </div>
+    </div>
 
-    ?>
 
     <div class="text-center mt-4">
         <h5>Aanvullende gegevens</h5>

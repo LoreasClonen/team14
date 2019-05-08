@@ -123,6 +123,7 @@
         public function aanvragenZwemfeestje()
         {
             $zwemfeestData = new stdClass();
+            $zwemfeestMomentData = new stdClass();
 
             $zwemfeestData->voornaam = $this->input->post('voornaam');
             $zwemfeestData->achternaam = $this->input->post('achternaam');
@@ -133,7 +134,12 @@
             $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
             $zwemfeestData->isBevestigd = 0;
 
+            $zwemfeestMomentData->datum = $this->input->post('datum');
+            $zwemfeestMomentData->beginuur = $this->input->post('beginuur');
+            $zwemfeestMomentData->einduur = $this->input->post('einduur');
+
             $this->session->set_flashdata('zwemfeestData', $zwemfeestData);
+            $this->session->set_flashdata('zwemfeestMomentData', $zwemfeestMomentData);
 
             redirect('Zwemfeestjes/bevestigAanvraag');
         }
@@ -145,10 +151,13 @@
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
 
             $zwemfeestData = $this->session->flashdata('zwemfeestData');
+            $zwemfeestMomentData = $this->session->flashdata('zwemfeestMomentData');
             $gerecht = $this->gerecht_model->getById($zwemfeestData->gerechtId);
             $this->session->set_flashdata('zwemfeestData', $zwemfeestData);
+            $this->session->set_flashdata('zwemfeestMomentData', $zwemfeestMomentData);
 
             $data['zwemfeest'] = $zwemfeestData;
+            $data['zwemfeestMoment'] = $zwemfeestMomentData;
             $data['gerecht'] = $gerecht;
             $data['kostprijs'] = $gerecht->prijs * $zwemfeestData->aantalKinderen;
 
@@ -162,18 +171,22 @@
         public function zwemfeestjeAangevraagd()
         {
             $zwemfeestData = $this->session->flashdata('zwemfeestData');
+            $zwemfeestMomentData = $this->session->flashdata('zwemfeestMomentData');
             $zwemfeestId = $this->zwemfeest_model->add($zwemfeestData);
+            $this->zwemfeestMoment_model->add($zwemfeestMomentData, $zwemfeestId);
             redirect('zwemfeestjes/emailBevestigingAanvraag/' . $zwemfeestId);
         }
 
         public function emailBevestigingAanvraag($zwemfeestId)
         {
             $zwemfeest = $this->zwemfeest_model->getByIdWithGerecht($zwemfeestId);
+            $zwemfeestMoment = $this->zwemfeestMoment_model->getByZwemfeestId($zwemfeestId);
 
             $data['titel'] = 'Inbox';
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
 
             $data['zwemfeest'] = $zwemfeest;
+            $data['zwemfeestMoment'] = $zwemfeestMoment;
             $data['kostprijs'] = $zwemfeest->gerecht->prijs * $zwemfeest->aantalKinderen;
 
             $partials = array('hoofding' => 'email_header',
