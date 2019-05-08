@@ -90,7 +90,7 @@
             $this->db->where('email', $email);
             $this->db->where('voornaam', $voornaam);
             $this->db->where('achternaam', $achternaam);
-            if($actief != 0){
+            if ($actief != 0) {
                 $this->db->where('isActief', 1);
             }
             $query = $this->db->get('klant');
@@ -117,8 +117,10 @@
                 return false;
             }
         }
-        function updateKlant($klant){
-            if($this->klantbestaatAl($klant->email, $klant->voornaam, $klant->achternaam, 1)){
+
+        function updateKlant($klant)
+        {
+            if ($this->klantbestaatAl($klant->email, $klant->voornaam, $klant->achternaam, 1)) {
                 $this->db->where('id', $klant->id);
                 $this->db->update('klant', $klant);
 
@@ -132,7 +134,8 @@
             $this->db->update('klant');
         }
 
-        function getKlantId($voornaam,$achternaam,$email){
+        function getKlantId($voornaam, $achternaam, $email)
+        {
 
             $this->db->where('email', $email);
             $this->db->where('voornaam', $voornaam);
