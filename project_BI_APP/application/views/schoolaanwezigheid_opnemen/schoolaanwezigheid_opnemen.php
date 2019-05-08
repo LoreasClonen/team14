@@ -23,9 +23,7 @@
                     'class' => 'form-control');
             echo form_dropdown($dataScholen, $options);
 
-            // Laadt de datum van vandaag in een hidden field
-            $datumLes = date("Y/m/d");
-            echo form_hidden('datumLes', $datumLes);
+
 
 
             echo '<div id="klassen"></div>';

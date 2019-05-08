@@ -123,10 +123,8 @@
         }
 
         public function haalAjaxOp_Klassen()
-
         {
             $schoolId = $this->input->get('schoolId');
-
 
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
 
@@ -144,7 +142,7 @@
 
             $this->les_model->addLes($lesData);
 
-            redirect('Scholen/getScholen');
+            redirect('Scholen/aanwezighedenIngeven');
         }
 
 //        public function klassenOpslaan($schoolId)
