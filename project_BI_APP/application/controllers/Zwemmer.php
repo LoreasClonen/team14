@@ -77,5 +77,20 @@
             $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
         }
 
+        public function haalAjaxOp_ZwemmerVerwijderen()
+        {
+            $id = $this->input->get('id');
+
+            $data["zwemmer"] = $this->klant_model->getById($id);
+
+            $this->load->view("zwemmers_beheren/ajax_zwemmer_verwijderen", $data);
+        }
+
+        public function zwemmerVerwijderen($id)
+        {
+            $this->klant_model->delete($id);
+
+            redirect('zwemmer/zwemmersOphalen');
+        }
 
     }

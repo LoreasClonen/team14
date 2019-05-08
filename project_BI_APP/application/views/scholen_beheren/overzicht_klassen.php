@@ -4,7 +4,7 @@
 
         $.ajax({
             type: "get",
-            url: site_url + '/scholen/haalAjaxOp_klas/' + id,
+            url: site_url + '/scholen/haalAjaxOp_klas',
             data: {id: id},
             success: function (result) {
                 $('#resultaat').html(result);
