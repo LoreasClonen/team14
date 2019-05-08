@@ -78,4 +78,19 @@
 //        }
 
 
+        /**
+         * functie GetById(id)
+         * @brief geeft klas terug met een bepaalde id
+         * @pre Er bestaat een Klas_model klasse
+         * @post Er is een array met 0 of meerdere klassen teruggegeven
+         * @param $id
+         * @return array
+         */
+        function getById($id)
+        {
+            $this->db->where('id', $id);
+            $query = $this->db->get('klas');
+            return $query->row();
+        }
     }
+

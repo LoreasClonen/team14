@@ -1,6 +1,36 @@
+<script>
+    function haalklasOp(id) {
+        console.log('startajax');
+
+        $.ajax({
+            type: "get",
+            url: site_url + '/scholen/haalAjaxOp_klas/' + id,
+            data: {id: id},
+            success: function (result) {
+                $('#resultaat').html(result);
+                $('#mijnDialoogscherm').modal('show')
+            },
+            error: function (xhr, status, error) {
+                alert("Fout in AJAX-request \n\n" + xhr.responseText)
+            }
+        })
+    }
+
+    $(document).ready(function () {
+
+        $(".verwijderen").click(function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            haalklasOp(id);
+            console.log(id);
+        });
+
+    });
+
+</script>
+
 <div class="container">
-    <p><?php echo anchor("Scholen/klasToevoegenPagina/" . $school->id, "Klas toevoegen", "class='btn btn-primary'"); ?>
-        <?php echo anchor("Scholen/klassenOpslaan/" . $school->id, "Wijzigingen opslaan", "class='btn btn-primary'"); ?></p>
+    <p><?php echo anchor("Scholen/klasToevoegenPagina", "Klas toevoegen", "class='btn btn-primary'"); ?></p>
     <table class="table">
         <thead>
         <tr>
@@ -12,25 +42,45 @@
         <tbody>
         <?php foreach ($klassen as $klas) { ?>
             <tr>
-                <td contenteditable="true">
+                <td>
                     <?php echo $klas->klasnaam; ?>
                 </td>
-                <td>
-                    <?php
-                        $inhoudGesubsidieerd = array('1' => 'Ja', '0' => 'Neen');
-                        $dataGesubsidieerd = array(
-                            'id' => 'isGesubsidieerd',
-                            'name' => 'isGesubsidieerd',
-                            'class' => 'form-control',
-                            'required' => 'required');
-                        echo form_dropdown($dataGesubsidieerd, $inhoudGesubsidieerd, $klas->isGesubsidieerd); ?>
+                <td><?php
+                        if ($klas->isGesubsidieerd == 0) {
+                            echo "Neen";
+                        } else {
+                            echo "Ja";
+                        } ?>
                 </td>
                 <td class="text-center"><?php
-                        echo anchor('Scholen/klasVerwijderen/' . $klas->id, "<i class='fas fa-trash-alt'></i>"); ?>
+                        echo "<button class='btn btn-danger verwijderen' data-id='$klas->id'><i class='fas fa-trash-alt'></i> Verwijderen</button>"; ?>
                 </td>
             </tr>
         <?php } ?>
         </tbody>
     </table>
 </div>
+
+
+<!-- Dialoogvenster -->
+<div class="modal fade" id="mijnDialoogscherm" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Inhoud dialoogvenster-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Biertje</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="resultaat"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Sluit</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 

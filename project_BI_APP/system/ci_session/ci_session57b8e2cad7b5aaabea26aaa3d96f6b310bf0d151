@@ -1,0 +1,3 @@
+__ci_last_regenerate|i:1557316011;inlogger_id|s:2:"15";__ci_vars|a:4:{s:12:"zwemniveauId";s:3:"old";s:5:"klant";s:3:"old";s:5:"error";s:3:"old";s:4:"form";s:3:"new";}zwemniveauId|s:1:"1";klant|O:8:"stdClass":6:{s:8:"voornaam";s:25:"lfkdsfjkdsjfkdsjfkdsjfdsk";s:10:"achternaam";s:20:"fdsqfdsfdsfdsfdsfqds";s:5:"email";s:20:"455646@fkdlsfkds/com";s:13:"geboortedatum";s:10:"1197-08-21";s:12:"zwemniveauId";s:1:"1";s:6:"actief";s:1:"1";}error|s:94:"<p>The Naam field is required.</p>
+<p>The Email field must contain a valid email address.</p>
+";form|s:9:"form_kind";

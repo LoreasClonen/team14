@@ -31,6 +31,8 @@
             $this->load->model('School/School_model', 'school_model');
             $this->load->helper('form');
             $this->load->helper('notation');
+
+            $this->load->library('session');
         }
 
         public function toonScholen()
@@ -50,6 +52,7 @@
 
         public function toonSchool($id)
         {
+            $this->session->set_flashdata('schoolId', $id);
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($id);
             $data['school'] = $this->school_model->getById($id);
 
@@ -95,8 +98,11 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function klasToevoegenPagina($schoolId)
+        public function klasToevoegenPagina()
         {
+            $schoolId = $this->session->flashdata('schoolId');
+            $this->session->set_flashdata('schoolId', $schoolId);
+
             $data['school'] = $this->school_model->getById($schoolId);
 
             $data['titel'] = 'Klas toevoegen';
@@ -110,8 +116,9 @@
             $this->template->load('card_master', $partials, $data);
         }
 
-        public function klasToevoegen($schoolId)
+        public function klasToevoegen()
         {
+            $schoolId = $this->session->flashdata('schoolId');
 
             $klas = new stdClass();
             $klas->klasnaam = $this->input->post("klasnaam");
@@ -123,10 +130,8 @@
         }
 
         public function haalAjaxOp_Klassen()
-
         {
             $schoolId = $this->input->get('schoolId');
-
 
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
 
@@ -144,7 +149,15 @@
 
             $this->les_model->addLes($lesData);
 
-            redirect('Scholen/getScholen');
+            redirect('Scholen/aanwezighedenIngeven');
+        }
+
+        public function klasVerwijderen($id)
+        {
+            $schoolId = $this->session->flashdata('schoolId');
+            $this->klas_model->delete();
+
+            redirect('scholen/toonschool/' . $schoolId);
         }
 
 //        public function klassenOpslaan($schoolId)
@@ -163,7 +176,14 @@
 //            redirect('Scholen/toonScholen');
 //        }
 
+        public function haalAjaxOp_Klas()
+        {
+            $id = $this->input->get('id');
+
+            $data["klas"] = $this->klas_model->getById($id);
+
+            $this->load->view("scholen_beheren/ajax_klas", $data);
+        }
+
     }
-
-
 
