@@ -49,7 +49,7 @@
                 echo form_input($dataGeboortedatum);
             //in 1 rij zetten
             ?> <div class="row">
-                <div class="col-8">
+                <div class="col-9">
             <?php
             echo form_label('straatnaam', 'straatnaam');
             $dataStraatnaam = array('id' => 'straatnaam',
@@ -60,7 +60,7 @@
                 'size' => '30');
             echo form_input($dataStraatnaam);
             ?> </div>
-                <div class="col-2">
+                <div class="col-3">
                     <?php
             echo form_label('Huisnummer', 'huisnummer');
             $dataHuisnummer = array('id' => 'huisnummer',
@@ -71,15 +71,7 @@
                 'size' => '30');
             echo form_input($dataHuisnummer);
                     ?> </div>
-                <div class="col-2"> <?php
-            echo form_label('bus', 'bus');
-            $dataBus = array('id' => 'bus',
-                'name' => 'bus',
-                'class' => 'form-control',
-                'placeholder' => 'bus',
-                'size' => '30');
-            echo form_input($dataBus);
-                    ?> </div> </div> <?php
+                </div> <?php
             echo form_label('postcode', 'postcode');
             $dataPostcode = array('id' => 'postcode',
                 'name' => 'postcode',
