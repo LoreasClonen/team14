@@ -88,7 +88,7 @@
 
         public function zwemmerVerwijderen($id)
         {
-            $this->klant_model->delete($id);
+            $this->klant_model->deleteKlant($id);
 
             redirect('zwemmer/zwemmersOphalen');
         }

@@ -91,7 +91,7 @@
          * functie delete(id)
          * @brief verwijdert een bepaalde klas en bijhorende lessen
          * @pre Er bestaat een klas_model klasse
-         * @post Er is een klas en een aantal lessen uit de database verwijdert
+         * @post Er is een klas en een aantal lessen uit de database verwijderd
          * @param $id
          */
         function delete($id)
@@ -100,7 +100,6 @@
             $this->db->delete('les');
             $this->db->where('id', $id);
             $this->db->delete('klas');
-
         }
     }
 

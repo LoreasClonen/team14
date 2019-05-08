@@ -37,7 +37,7 @@
                         <p>Beste <?php echo $gebruiker->voornaam ?></p>
                         <p>Je hebt zonet een aanvraag gedaan om je wachtwoord te veranden. Klik op onderstaande link om
                             een nieuw wachtwoord in te stellen.</p>
-                        <p><?php echo anchor('Inloggen/nieuwPaswoord', 'Stel hier uw nieuw wachtwoord in') ?></p>
+                        <p><?php echo anchor('Inloggen/nieuwPaswoord/' . $gebruiker->id, 'Stel hier uw nieuw wachtwoord in') ?></p>
                         <p>Met vriendelijke groeten</p>
                         <p>Zwembad Kempenrust</p>
                     </div>

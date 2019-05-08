@@ -29,6 +29,7 @@
             $this->load->model('Zwemfeest/Zwemfeest_model', 'zwemfeest_model');
             $this->load->helper('form');
             $this->load->helper('notation');
+            $this->load->library('session');
         }
 
         public function getZwemfeestMomenten()
@@ -116,10 +117,10 @@
                 'inhoud' => 'zwemfeestje_boeken/zwemfeestje_toevoegen',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemfeestje_boeken/zwemfeestje_boeken_master', $partials, $data);
+            $this->template->load('card_master', $partials, $data);
         }
 
-        public function addZwemfeestje()
+        public function aanvragenZwemfeestje()
         {
             $zwemfeestData = new stdClass();
 
@@ -132,23 +133,37 @@
             $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
             $zwemfeestData->isBevestigd = 0;
 
-            $id = $this->zwemfeest_model->add($zwemfeestData);
+            $this->session->set_flashdata('zwemfeestData', $zwemfeestData);
 
-            redirect('Zwemfeestjes/bevestigingAanvraag/' . $id);
+            redirect('Zwemfeestjes/bevestigAanvraag');
         }
 
-        public function bevestigingAanvraag($zwemfeestId)
+        public function bevestigAanvraag()
         {
             $data['titel'] = 'Zwemfeestje boeken';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
-            $data['zwemfeestId'] = $zwemfeestId;
+
+            $zwemfeestData = $this->session->flashdata('zwemfeestData');
+            $gerecht = $this->gerecht_model->getById($zwemfeestData->gerechtId);
+            $this->session->set_flashdata('zwemfeestData', $zwemfeestData);
+
+            $data['zwemfeest'] = $zwemfeestData;
+            $data['gerecht'] = $gerecht;
+            $data['kostprijs'] = $gerecht->prijs * $zwemfeestData->aantalKinderen;
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemfeestje_boeken/bevestiging',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemfeestje_boeken/zwemfeestje_boeken_master', $partials, $data);
+            $this->template->load('card_master', $partials, $data);
+        }
+
+        public function zwemfeestjeAangevraagd()
+        {
+            $zwemfeestData = $this->session->flashdata('zwemfeestData');
+            $zwemfeestId = $this->zwemfeest_model->add($zwemfeestData);
+            redirect('zwemfeestjes/emailBevestigingAanvraag/' . $zwemfeestId);
         }
 
         public function emailBevestigingAanvraag($zwemfeestId)

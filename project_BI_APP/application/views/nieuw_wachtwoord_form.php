@@ -1,8 +1,9 @@
 <div class="col-12 mt-3">
     <?php
         $attributes = array('name' => 'nieuwWachtwoord', 'id' => 'nieuwWachtwoordFormulier', 'role' => 'form');
-        echo form_open('Home/nieuwWachtwoord', $attributes);
+        echo form_open('Inloggen/nieuwWachtwoordControleren', $attributes);
 
+        echo $melding;
 
         echo "<hr />";
 

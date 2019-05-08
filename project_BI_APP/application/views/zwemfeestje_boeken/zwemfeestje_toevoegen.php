@@ -5,7 +5,7 @@
     </div>
     <?php
         $attributes = array('name' => 'boeken', 'id' => 'boekingformulier', 'role' => 'form');
-        echo form_open('Zwemfeestjes/addZwemfeestje', $attributes);
+        echo form_open('Zwemfeestjes/aanvragenZwemfeestje', $attributes);
     ?>
 
     <div class="row">
