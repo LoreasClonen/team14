@@ -71,12 +71,6 @@
             $this->db->insert_id();
         }
 
-//        function updateKlas($id, $klas)
-//        {
-//            $this->db->where('id', $id);
-//            $this->update('posts', $klas);
-//        }
-
 
         /**
          * functie GetById(id)
@@ -91,6 +85,22 @@
             $this->db->where('id', $id);
             $query = $this->db->get('klas');
             return $query->row();
+        }
+
+        /**
+         * functie delete(id)
+         * @brief verwijdert een bepaalde klas en bijhorende lessen
+         * @pre Er bestaat een klas_model klasse
+         * @post Er is een klas en een aantal lessen uit de database verwijdert
+         * @param $id
+         */
+        function delete($id)
+        {
+            $this->db->where('klasId', $id);
+            $this->db->delete('les');
+            $this->db->where('id', $id);
+            $this->db->delete('klas');
+
         }
     }
 

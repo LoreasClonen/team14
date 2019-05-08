@@ -67,17 +67,8 @@
     <div class="modal-dialog">
 
         <!-- Inhoud dialoogvenster-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Biertje</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="resultaat"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal">Sluit</button>
-            </div>
+        <div class="modal-content" id="resultaat">
+
         </div>
 
     </div>

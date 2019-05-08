@@ -131,7 +131,7 @@
 
         public function haalAjaxOp_Klassen()
         {
-            $schoolId = $this->input->get('schoolId');
+            $schoolId = $this->session->flashdata('schoolId');
 
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
 
@@ -152,37 +152,24 @@
             redirect('Scholen/aanwezighedenIngeven');
         }
 
-        public function klasVerwijderen($id)
-        {
-            $schoolId = $this->session->flashdata('schoolId');
-            $this->klas_model->delete();
-
-            redirect('scholen/toonschool/' . $schoolId);
-        }
-
-//        public function klassenOpslaan($schoolId)
-//        {
-//            $klassen = $this->post->klassen;
-//            foreach ($klassen as $klas) {
-//                $klasData = new stdClass();
-//
-//                $klasData->klasnaam = $this->input->post('klasnaam');
-//                $klasData->isGesubsidieerd = $this->input->post('isGesubsidieerd');
-//                $klasData->schoolId = $schoolId;
-//
-//                $this->zwemfeest_model->update($klas->id, $klasData);
-//            }
-//
-//            redirect('Scholen/toonScholen');
-//        }
-
         public function haalAjaxOp_Klas()
         {
+            $schoolId = $this->session->flashdata('schoolId');
+            $this->session->set_flashdata('schoolId', $schoolId);
+
             $id = $this->input->get('id');
 
             $data["klas"] = $this->klas_model->getById($id);
 
             $this->load->view("scholen_beheren/ajax_klas", $data);
+        }
+
+        public function klasVerwijderen($id)
+        {
+            $schoolId = $this->session->flashdata('schoolId');
+            $this->klas_model->delete($id);
+
+            redirect('scholen/toonSchool/' . $schoolId);
         }
 
     }
