@@ -1,6 +1,8 @@
 
 <div class="container">
         <div class="col-12 mt-3">
+            <?php echo $error?>
+
             <?php
                 $attributes = array('name' => 'inschrijven', 'id' => 'inschrijfformulier', 'role' => 'form');
                 echo form_open('Zwemlessen/addKlant', $attributes);
@@ -45,6 +47,10 @@
                     'size' => '30',
                     'type' => 'date');
                 echo form_input($dataGeboortedatum);
+            //in 1 rij zetten
+            ?> <div class="row">
+                <div class="col-8">
+            <?php
             echo form_label('straatnaam', 'straatnaam');
             $dataStraatnaam = array('id' => 'straatnaam',
                 'name' => 'straatnaam',
@@ -53,6 +59,9 @@
                 'required' => 'required',
                 'size' => '30');
             echo form_input($dataStraatnaam);
+            ?> </div>
+                <div class="col-2">
+                    <?php
             echo form_label('Huisnummer', 'huisnummer');
             $dataHuisnummer = array('id' => 'huisnummer',
                 'name' => 'huisnummer',
@@ -61,6 +70,16 @@
                 'required' => 'required',
                 'size' => '30');
             echo form_input($dataHuisnummer);
+                    ?> </div>
+                <div class="col-2"> <?php
+            echo form_label('bus', 'bus');
+            $dataBus = array('id' => 'bus',
+                'name' => 'bus',
+                'class' => 'form-control',
+                'placeholder' => 'bus',
+                'size' => '30');
+            echo form_input($dataBus);
+                    ?> </div> </div> <?php
             echo form_label('postcode', 'postcode');
             $dataPostcode = array('id' => 'postcode',
                 'name' => 'postcode',

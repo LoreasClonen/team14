@@ -37,6 +37,7 @@
             $this->load->model("Lessen/Klant_model", "klant_model");
             $this->load->model("lessen/Beschikbaarheid_model", "klant_model");
             $this->load->library('session');
+            $this->load->library('form_validation');
         }
 
         /**
@@ -66,10 +67,13 @@
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data["teamleden"] = "Loreas Clonen (O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe";
             $data["zwemniveaus"] = $this->zwemniveau_model->getAllById();
+            $data["form"] = $form;
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/' . $form,
                 'footer' => 'main_footer'
             );
+            $this->session->set_flashdata('form',$form);
+            $data['error']=$this->session->flashdata('error');
             $this->template->load('main_master', $partials, $data);
         }
 
@@ -81,6 +85,7 @@
 
         public function addKlant()
         {
+            $form = $this->session->flashdata('form');
             $this->load->model("lessen/klant_model", "klant_model");
             $this->load->model("lessen/Zwemniveau_model", "zwemniveau_model");
             $klant = new stdClass();
@@ -90,11 +95,29 @@
             $klant->geboortedatum = $this->input->post("geboortedatum");
             $klant->zwemniveauId = $this->input->post("zwemniveau");
             $klant->actief = '1';
+
+            $this->form_validation->set_rules('voornaam', 'Voornaam', 'trim|required|min_length[2]|max_length[20]');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+            $this->form_validation->set_rules('achternaam', 'Achternaam', 'trim|required|min_length[2]|max_length[20]');
+            $this->form_validation->set_rules('geboortedatum', 'Geboortedatum', 'required');
+            $this->form_validation->set_rules('straatnaam', 'Straatnaam', 'trim|required');
+            $this->form_validation->set_rules('huisnummer', 'Huisnummer', 'trim|required|numeric|min_length[1]|max_length[4]');
+            $this->form_validation->set_rules('postcode', 'Postcode', 'trim|required|numeric|min_length[4]|max_length[4]');
+            $this->form_validation->set_rules('bus', 'Bus', 'trim|required|alpha|max_length[1]');
+
+
             if ($this->klant_model->addKlant($klant)) {
                 $this->session->set_flashdata('zwemniveauId', $klant->zwemniveauId);
                 $this->session->set_flashdata('klant', $klant);
                 $this->klant_model->addKlant($klant);
-                redirect('zwemlessen/keuze_zwemlessen');
+                if($this->form_validation->run()==true) {
+                    $data['error'] = Null;
+                    redirect('zwemlessen/keuze_zwemlessen');
+                }
+                else{
+                    $this->session->set_flashdata('error', validation_errors());
+                    redirect('zwemlessen/index/'. $form);
+                }
             } else {
                 redirect('Zwemlessen/reeds_toegevoegd_error');
             }
