@@ -11,7 +11,7 @@
         echo form_input($dataAantal);
 
         // Geeft een invulveld voor de correcte datum
-        echo form_label('datumLes', 'datumLes');
+        echo form_label('Datum les', 'datumLes');
         $dataDatumLes = array('id' => 'datumLes',
             'name' => 'datumLes',
             'class' => 'form-control',
