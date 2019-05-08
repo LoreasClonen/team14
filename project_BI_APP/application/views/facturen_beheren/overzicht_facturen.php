@@ -25,15 +25,13 @@ echo '<div class="col-8 text-right">' . anchor("Wachtlijsten/index",'Factuur toe
             }
             else {
 
-                echo '<i class="far fa-circle fa-2x" id="unchecked"></i>';
-
                 echo '<div class="formDate">';
                 $attributes = array('name' => 'factuurBetaling', 'id' => 'factuurBetaling', 'role' => 'form');
                 echo form_open('Facturen/updateDatumBetaling/'. $factuur->schoolId, $attributes);
 
                 $datumBetaald = array(
-                    'id' => 'geboortedatum',
-                    'name' => 'geboortedatum',
+                    'id' => 'datum',
+                    'name' => 'datum',
                     'class' => 'form-control',
                     'type' => 'date',
                     'value' => date("Y-m-d", time()),
@@ -42,8 +40,9 @@ echo '<div class="col-8 text-right">' . anchor("Wachtlijsten/index",'Factuur toe
                 );
                 echo form_input($datumBetaald);
 
-                echo form_hidden('id', $factuur->id);
                 echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateDatumBetaling"));
+
+                echo form_hidden('id', $factuur->id);
                 echo form_close();
                 echo '</div>';
             }

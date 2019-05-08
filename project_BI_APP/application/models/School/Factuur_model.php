@@ -89,10 +89,11 @@
          * @post Er is een array met 1 factuur geüpdate
          * @return array
          */
-        function updateDatumBetaald($id, $datumBetaald)
+        function updateDatumBetaald($data)
         {
-            $this->db->where('id', $id);
-            $this->db->update('factuur', $datumBetaald);
+            $this->db->where('id', $data['id']);
+            $this->db->set('datumBetaald', $data['datumBetaald']);
+            $this->db->update('factuur');
         }
 
         /**

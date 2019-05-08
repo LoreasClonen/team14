@@ -9,16 +9,3 @@ $(document).ready(function () {
         $("#overlay").css("display", "none");
     });
 });
-
-
-/*on click show form*/
-$(document).ready(function () {
-    $("#unchekced").click(function () {
-        $("#formDate").css("display", "block");
-    });
-
-    /* on click close */
-    $("#unchekced").click(function () {
-        $("#formDate").css("display", "none");
-    });
-});

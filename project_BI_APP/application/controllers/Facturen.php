@@ -64,13 +64,10 @@ class Facturen extends CI_Controller
 
     public function updateDatumBetaling($schoolId)
     {
-        $id = $this->input->post('id');
+        $data['id'] = $this->input->post('id');
+        $data['datumBetaald']= $this->input->post('datum');
 
-        $datumBetaald = new stdClass();
-
-        $datumBetaald->datumBetaald = $this->input->post('datumBetaald');
-
-        $this->factuur_model->updateDatumBetaald($id, $datumBetaald);
+        $this->factuur_model->updateDatumBetaald($data);
 
         redirect('Facturen/getSchool/' . $schoolId);
     }
