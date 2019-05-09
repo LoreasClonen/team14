@@ -75,7 +75,6 @@
                     'size' => '30');
                 echo form_input($dataHuisnummer);
             ?> </div>
-<<<<<<< HEAD
                 <div class="col-3">
                     <?php
             echo form_label('Huisnummer', 'huisnummer');
@@ -99,18 +98,4 @@
             echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary my-3", "id" => "slaOp"));
             echo form_close();
                 ?>
-=======
-    </div> <?php
-        echo form_label('postcode', 'postcode');
-        $dataPostcode = array('id' => 'postcode',
-            'name' => 'postcode',
-            'class' => 'form-control',
-            'value' => $zwemmer->postcode,
-            'required' => 'required',
-            'size' => '30');
-        echo form_input($dataPostcode);
-        echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary my-3", "id" => "Opslaan"));
-        echo form_close();
-    ?>
->>>>>>> 4781f9076a4e2677611eab8242770d2eca2c92d9
 </div>
