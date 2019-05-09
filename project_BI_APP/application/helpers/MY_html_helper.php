@@ -20,3 +20,8 @@
     {
         return "<link rel=\"stylesheet\" href=\"" . base_url("assets/css/" . $css) . "\" />";
     }
+
+    function toonAfbeelding($afbeelding, $attributen = '')
+    {
+        return "<img src=\"" . geefVolledigeNaam($afbeelding) . "\"" . _stringify_attributes($attributen) . " />";
+    }
