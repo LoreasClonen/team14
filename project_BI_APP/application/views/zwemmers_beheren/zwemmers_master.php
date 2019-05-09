@@ -14,10 +14,12 @@
     <!-- Custom CSS -->
     <?php echo pasStylesheetAan("buttons.css"); ?>
     <?php echo pasStylesheetAan("content.css"); ?>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
 
     <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
     <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
     <?php echo haalJavascriptOp("menu_toggle.js") ?>
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
 
     <!--        font awesome (CDN) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
