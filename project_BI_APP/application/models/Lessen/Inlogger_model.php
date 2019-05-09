@@ -95,6 +95,13 @@
             }
         }
 
+        /**
+         * @brief controleert of er een inlogger bestaat met email = $email
+         * @pre Er bestaat een Inlogger model klasse
+         * @post Er is gecontroleert om of een email bestaat
+         * @param $email
+         * @return Boolean
+         */
         function emailBestaat($email)
         {
             $this->db->where('email', $email);
