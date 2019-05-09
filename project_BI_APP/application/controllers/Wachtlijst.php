@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @class Wachtlijsten
+ * @class Wachtlijst
  * @brief Controller-klasse voor wachtlijsten
  * @property Lesgroep_model $lesgroep_model
  * @property Beschikbaarheid_model $beschikbaarheid_model
