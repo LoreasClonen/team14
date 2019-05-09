@@ -4,13 +4,7 @@
                 $attributes = array('name' => 'opslaan', 'id' => 'AanpasFormulier', 'role' => 'form');
                 echo form_open('zwemmer/updateZwemmer/' . $zwemmer->id, $attributes); ?>
     <hr />
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Leeftijd</th>
-            <th scope="col">Niveau</th>
-            <th scope="col">Zwemgroep</th>
+
 <?php
 
 
