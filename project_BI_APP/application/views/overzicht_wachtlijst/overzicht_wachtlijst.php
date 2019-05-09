@@ -8,8 +8,9 @@
             <div class="card zwemgroep" id="<?php echo "zwemgroep".$i ?>">
                 <div class="card-header" id="<?php echo "heading".$i ?>">
                     <div class="row" data-toggle="collapse" data-target="<?php echo "#collapse".$i ?>" aria-expanded="true" aria-controls="<?php echo "collapse".$i ?>">
-                        <div class="col-8"><h4 class="mb-0"><?php echo $zwemgroep->groepsnaam ?></h4></div>
-                        <div class="col-4" id="<?php echo "plaatsen".$i ?>"></div>
+                        <div class="col-md-2 col-4"><h4 class="mb-0"><?php echo $zwemgroep->groepsnaam ?></h4></div>
+                        <div class="col-md-8 col-4"><?php echo $zwemgroep->weekdag ?></div>
+                        <div class="col-md-2 col-4 text-right" id="<?php echo "plaatsen".$i ?>"></div>
                     </div>
                 </div>
                 <div id="<?php echo "collapse".$i ?>" class="collapse" aria-labelledby="<?php echo "heading".$i ?>" data-parent="#accordion">
