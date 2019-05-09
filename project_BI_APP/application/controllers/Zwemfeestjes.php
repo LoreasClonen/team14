@@ -30,6 +30,7 @@
             $this->load->helper('form');
             $this->load->helper('notation');
             $this->load->library('session');
+            $this->load->library('form_validation');
         }
 
         /**
@@ -156,6 +157,7 @@
 
             $data['foutUur'] = $this->session->flashdata('foutUur');
             $data['fouteDatum'] = $this->session->flashdata('fouteDatum');
+            $data['error'] = $this->session->flashdata('error');
             $data['zwemfeest'] = $this->session->flashdata('zwemfeestData');
             $data['zwemfeestMoment'] = $this->session->flashdata('zwemfeestMomentData');
 
@@ -190,21 +192,36 @@
             $zwemfeestMomentData->beginuur = $this->input->post('beginuur');
             $zwemfeestMomentData->einduur = $this->input->post('einduur');
 
-            $this->session->set_flashdata('zwemfeestData', $zwemfeestData);
-            $this->session->set_flashdata('zwemfeestMomentData', $zwemfeestMomentData);
+            $this->form_validation->set_rules('voornaam', 'Voornaam', 'trim|required|min_length[2]|max_length[20]');
+            $this->form_validation->set_rules('achternaam', 'Achternaam', 'trim|required|min_length[2]|max_length[50]');
+            $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
+            $this->form_validation->set_rules('telefoonnr', 'Telefoonnummer', 'trim|required|min_length[8]|max_length[15]');
+            $this->form_validation->set_rules('aantalKinderen', 'Hoeveel kinderen komen er?', 'trim|required|numeric');
+            $this->form_validation->set_rules('opmerkingen', 'Opmerkingen?', 'trim|max_length[200]');
+            $this->form_validation->set_rules('datum', 'Datum', 'trim|required');
+            $this->form_validation->set_rules('beginuur', 'Beginuur', 'trim|required');
+            $this->form_validation->set_rules('einduur', 'Einduur', 'trim|required');
 
-            if ($zwemfeestMomentData->beginuur > $zwemfeestMomentData->einduur || date('d/m/Y', $zwemfeestMomentData->datum) < date('d/m/Y')) {
-                if ($zwemfeestMomentData->beginuur > $zwemfeestMomentData->einduur) {
-                    $foutUur = "<div class='alert alert-danger' role = 'alert' >Het einduur mag niet later zijn dan het beginuur .</div >";
+            if ($this->form_validation->run() == true) {
+                $data['error'] = Null;
+                if ($zwemfeestMomentData->beginuur > $zwemfeestMomentData->einduur || date('d/m/Y', $zwemfeestMomentData->datum) < date('d/m/Y')) {
+                    if ($zwemfeestMomentData->beginuur > $zwemfeestMomentData->einduur) {
+                        $foutUur = "<div class='alert alert-danger' role = 'alert' >Het einduur mag niet later zijn dan het beginuur .</div >";
+                    }
+                    if (date('d/m/Y', $zwemfeestMomentData->datum) < date('d/m/Y')) {
+                        $fouteDatum = "<div class='alert alert-danger' role = 'alert' >De datum mag niet eerder zijn dan vandaag. Kies een datum later dan vandaag.</div >";
+                    }
+                    $this->session->set_flashdata('foutUur', $foutUur);
+                    $this->session->set_flashdata('fouteDatum', $fouteDatum);
+                    redirect('Zwemfeestjes/zwemfeestjeBoeken');
+                } else {
+                    redirect('Zwemfeestjes/bevestigAanvraag');
                 }
-                if (date('d/m/Y', $zwemfeestMomentData->datum) < date('d/m/Y')) {
-                    $fouteDatum = "<div class='alert alert-danger' role = 'alert' >De datum mag niet eerder zijn dan vandaag. Kies een datum later dan vandaag.</div >";
-                }
-                $this->session->set_flashdata('foutUur', $foutUur);
-                $this->session->set_flashdata('fouteDatum', $fouteDatum);
-                redirect('Zwemfeestjes/zwemfeestjeBoeken');
+
             } else {
-                redirect('Zwemfeestjes/bevestigAanvraag');
+                $error = "<div class='alert alert-danger' role = 'alert' >" . validation_errors() . "</div>";
+                $this->session->set_flashdata('error', $error);
+                redirect('Zwemfeestjes/zwemfeestjeBoeken');
             }
         }
 
