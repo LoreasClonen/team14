@@ -64,4 +64,11 @@
             return $query->result();
         }
 
+        function getLes($id)
+        {
+            $this->db->where('id', $id);
+            $query = $this->db->get('les');
+            return $query->row();
+        }
+
     }
