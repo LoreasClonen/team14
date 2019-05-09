@@ -128,17 +128,14 @@
             }
         }
 
-<<<<<<< HEAD
+
         /**
          * @brief werkt een bepaalde klant bij
          * @pre Er bestaat een Klant_model klasse
          * @post Er is een klant uit de database bijgewerkt
          * @param $klant
          */
-        function updateKlant($klant)
-=======
         function updateKlant($klant, $klantId = -1)
->>>>>>> 84d5841f926e0effdf21e543a6ea6fe8f5fd90f8
         {
             if($klantId != -1){
                 $klant->id = $klantId;
