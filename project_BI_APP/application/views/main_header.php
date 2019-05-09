@@ -37,7 +37,7 @@
                     <hr>
                     <li>  <?php echo anchor("Nieuwsberichten/nieuwsberichtenOphalen", "Nieuwsberichten", "class = 'list-group-item list-group-item-action'"); ?> </li>
                     <li>  <?php echo anchor("Gebruiker/getGebruikers", "Gebruikers", "class = 'list-group-item list-group-item-action'"); ?> </li>
-                    <li>  <?php echo anchor("", "Aanpassingen", "class = 'list-group-item list-group-item-action'"); ?> </li>
+                    <li>  <?php echo anchor("Zwemfeestjes/toonMaaltijden", "Aanpassingen maaltijden", "class = 'list-group-item list-group-item-action'"); ?> </li>
                 <?php }
             }
         ?>

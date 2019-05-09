@@ -53,7 +53,7 @@
                         <p>Indien de gegevens incorrect zijn gelieve dan een e-mail te sturen naar
                             <a href="mailto:bestuur@kempenrust.be">bestuur@kempenrust.be</a></p>
                         <p>Indien u het zwemfeest wenst te annuleren klik dan op volgende
-                            link: <?php echo anchor('Zwemfeestjes/annuleerZwemles/' . $zwemfeest->id, 'zwemles annuleren'); ?></p>
+                            link: <?php echo anchor('Zwemfeestjes/deleteZwemfeestje/' . $zwemfeestMoment->id . '/' . $zwemfeest->id, 'zwemfeest annuleren'); ?></p>
                         <p>Met vriendelijke groeten</p>
                         <p>Zwembad Kempenrust</p>
                     </div>

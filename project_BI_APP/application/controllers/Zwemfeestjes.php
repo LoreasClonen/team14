@@ -83,7 +83,7 @@
             $this->zwemfeestMoment_model->delete($zwemfeestMomentId);
             $this->zwemfeest_model->delete($zwemfeestId);
 
-            redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren' . $zwemfeestId);
+            redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren/' . $zwemfeestId);
         }
 
         public function updateZwemfeestje()
@@ -194,5 +194,59 @@
                 'footer' => 'main_footer');
 
             $this->template->load('main_master', $partials, $data);
+        }
+
+        public function toonMaaltijden()
+        {
+            $data['maaltijden'] = $this->gerecht_model->getAllById();
+
+            $data['titel'] = 'Instellingen zwemfeestjes';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'instellingen_beheren/instellingen_zwemfeestjes',
+                'footer' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
+        }
+
+        public function haalAjaxOp_Maaltijd()
+        {
+            $id = $this->input->get('id');
+
+            $data["maaltijd"] = $this->gerecht_model->getById($id);
+
+            $this->load->view("instellingen_beheren/ajax_maaltijd", $data);
+        }
+
+        public function maaltijdVerwijderen($id)
+        {
+            $this->gerecht_model->delete($id);
+
+            redirect('Zwemfeestjes/toonMaaltijden');
+        }
+
+        public function maaltijdToevoegenPagina()
+        {
+            $data['titel'] = 'Maaltijd toevoegen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'instellingen_beheren/maaltijd_toevoegen_pagina',
+                'footer' => 'main_footer');
+
+            $this->template->load('card_master', $partials, $data);
+        }
+
+        public function maaltijdToevoegen()
+        {
+            $maaltijd = new stdClass();
+            $maaltijd->naam = $this->input->post("naam");
+            $maaltijd->prijs = $this->input->post("prijs");
+
+            $this->gerecht_model->addGerecht($maaltijd);
+            redirect('Zwemfeestjes/toonMaaltijden');
         }
     }
