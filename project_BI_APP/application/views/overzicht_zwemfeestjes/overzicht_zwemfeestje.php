@@ -88,7 +88,7 @@
         'name' => 'gerecht',
         'class' => 'form-control',
         'required' => 'required');
-    echo form_dropdown($dataGerecht, $inhoudGerecht, $zwemfeestje->gerecht->id);
+    echo form_dropdown($dataGerecht, $inhoudGerecht, $zwemfeestje->zwemfeest->gerechtId);
 
     echo form_label('Opmerkingen:', 'opmerkingen');
     $dataOpmerkingen = array(
