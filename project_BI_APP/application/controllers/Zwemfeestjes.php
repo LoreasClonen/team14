@@ -113,6 +113,11 @@
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T - O), Mats Mertens, Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe (O)';
 
+            $data['foutUur'] = $this->session->flashdata('foutUur');
+            $data['fouteDatum'] = $this->session->flashdata('fouteDatum');
+            $data['zwemfeest'] = $this->session->flashdata('zwemfeestData');
+            $data['zwemfeestMoment'] = $this->session->flashdata('zwemfeestMomentData');
+
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemfeestje_boeken/zwemfeestje_toevoegen',
                 'footer' => 'main_footer');
@@ -141,7 +146,19 @@
             $this->session->set_flashdata('zwemfeestData', $zwemfeestData);
             $this->session->set_flashdata('zwemfeestMomentData', $zwemfeestMomentData);
 
-            redirect('Zwemfeestjes/bevestigAanvraag');
+            if ($zwemfeestMomentData->beginuur > $zwemfeestMomentData->einduur || date('d/m/Y', $zwemfeestMomentData->datum) < date('d/m/Y')) {
+                if ($zwemfeestMomentData->beginuur > $zwemfeestMomentData->einduur) {
+                    $foutUur = "<div class='alert alert-danger' role = 'alert' >Het einduur mag niet later zijn dan het beginuur .</div >";
+                }
+                if (date('d/m/Y', $zwemfeestMomentData->datum) < date('d/m/Y')) {
+                    $fouteDatum = "<div class='alert alert-danger' role = 'alert' >De datum mag niet eerder zijn dan vandaag. Kies een datum later dan vandaag.</div >";
+                }
+                $this->session->set_flashdata('foutUur', $foutUur);
+                $this->session->set_flashdata('fouteDatum', $fouteDatum);
+                redirect('Zwemfeestjes/zwemfeestjeBoeken');
+            } else {
+                redirect('Zwemfeestjes/bevestigAanvraag');
+            }
         }
 
         public function bevestigAanvraag()
@@ -217,7 +234,7 @@
 
             $data["maaltijd"] = $this->gerecht_model->getById($id);
 
-            $this->load->view("instellingen_beheren/ajax_maaltijd", $data);
+            $this->load->view("instellingen_beheren / ajax_maaltijd", $data);
         }
 
         public function maaltijdVerwijderen($id)

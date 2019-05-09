@@ -59,8 +59,8 @@
 
             <div class="container mb-5 mt-5">
                 <div class="row">
-                    <div class="col"></div>
-                    <div class="col-6">
+                    <div class="col-md"></div>
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="card-header text-center">
                                 <h2><?php echo $titel; ?></h2>
@@ -69,7 +69,7 @@
                         </div>
 
                     </div>
-                    <div class="col"></div>
+                    <div class="col-md"></div>
                 </div>
             </div>
 
