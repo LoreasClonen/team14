@@ -7,11 +7,14 @@ echo '<div class="col-8 text-right">' . anchor("Facturen/haalOngefactureerdeLess
 
 
 ?>
-<table class="table">
-    <tr>
-        <th style="width: 50%">Factuur</th>
-        <th style="width: 50%">Betaald op</th>
-    </tr>
+<table data-toggle="table" data-pagination="true">
+    <thead>
+        <tr>
+            <th data-sortable="true" data-field="factuur" style="width: 50%">Factuur</th>
+            <th data-sortable="true" data-field="datum" style="width: 50%">Betaald op</th>
+        </tr>
+    </thead>
+    <tbody>
 
 <?php
 
@@ -53,5 +56,6 @@ echo '<div class="col-8 text-right">' . anchor("Facturen/haalOngefactureerdeLess
 
 ?>
 
+    </tbody>
 </table>
 

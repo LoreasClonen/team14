@@ -25,6 +25,8 @@
         echo form_label("Klassen", "klasId");
         $options = array();
         $options[0] = "--Selecteer een klas--";
+
+
         foreach ($klassen as $klas) {
             $options[$klas->id] = $klas->klasnaam;
         }
@@ -34,6 +36,8 @@
             'class' => 'form-control');
 
         echo form_dropdown($dataKlassen, $options);
+
+
 
 
 

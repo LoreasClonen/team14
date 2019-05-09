@@ -29,7 +29,9 @@ class Home extends CI_Controller
         }
 
         /**
-        * @brief Geeft de homepagina weer met alle opgelijste
+        * @brief Geeft de homepagina weer met alle opgelijste nieuwsberichten
+        * @post De homepagina met alle nieuwsberichten wordt geladen
+
         */
         public function index()
         {

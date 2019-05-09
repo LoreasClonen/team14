@@ -25,7 +25,11 @@
             $this->load->helper('form');
             $this->load->library('session');
         }
-
+        /**
+         * @brief Laad de hoofdpagina na het aanmelden
+         *
+         * @post de hoofdpagina wordt geladen
+         */
         public function meldAan()
         {
             $data['titel'] = 'Inloggen';
@@ -42,6 +46,11 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * @brief Controleert het aanmelden voordat er effectief wordt doorverwezen naar de hoofdpagina
+         * @post de user wordt ofwel ingelogd ofwel wordt er een foutpagina geladen.
+         */
+
         public function controleerAanmelden()
         {
             $email = $this->input->post('email');
@@ -53,7 +62,11 @@
                 redirect('Inloggen/toonFout');
             }
         }
-
+        /**
+         * @brief Toont een foutpagina
+         *
+         * @post de pagina met een foutmelding wordt geladen
+         */
         public function toonFout()
         {
             $data['titel'] = 'Fout';
@@ -67,13 +80,21 @@
 
             $this->template->load('main_master', $partials, $data);
         }
-
+        /**
+         * @brief De huidige aangemelde persoon wordt afgemeld
+         *
+         * @post de hoofdpagina wordt geladen en de gebruiker is afgemeld
+         */
         public function meldAf()
         {
             $this->authex->meldAf();
             redirect('Home/index');
         }
-
+        /**
+         * @brief Er wordt de 'wachtwoord_vergeten' pagina geladen
+         *
+         * @post de wachtwoord_vergetn pagina wordt geladen
+         */
         public function wachtwoordVergeten()
         {
             $data['titel'] = 'Uw wachtwoord herstellen';

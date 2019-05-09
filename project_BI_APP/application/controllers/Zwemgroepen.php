@@ -57,7 +57,7 @@
          * @brief De getZwemgroep functie laad een pagina die de gegevens weergeeft van een bepaalde zwemgroep die de gebruiker heeft aangeklikt in het overzicht van de zwemgroepen.
          * @param $id
          * @pre Er bestaat een lesgroep_model klasse, een beschikbaarheid_model klasse
-         * @post De pagina overzicht_zwemgroep wordt weergeven met gegevens over de zwemgroep, inlogger, beschikbaarheden en het zwemniveau.
+         * @post De pagina overzicht_zwemgroep is weergegeven met gegevens over de zwemgroep, inlogger, beschikbaarheden en het zwemniveau.
          */
         public function getZwemgroep($id)
         {
@@ -83,6 +83,7 @@
          * @brief De functie deleteZwemgroep verwijderd een bepaalde zwemgroep
          * @param $id
          * @pre Er bestaat een lesgroep_model klasse en een zwemgroepenOphalen functie
+         * @post De zwemgroep met id = $id is verwijderd en gebruiker wordt doorverwezen naar zwemgroepenOphalen
          */
         public function deleteZwemgroep($id)
         {
@@ -91,6 +92,11 @@
             redirect('Zwemgroepen/zwemgroepenOphalen');
         }
 
+        /**
+         * @brief de functie zwemgroepToevoegenLaden laad de pagina waar zwemgroepen kunnen toegevoegd worden
+         * @pre Er bestaat een zwemniveau_model klasse
+         * @post De pagina zwemgroep_toevoege is weergegeven.
+         */
         public function zwemgroepToevoegenLaden()
         {
             $data['titel'] = 'Zwemgroep Toevoegen';
@@ -105,6 +111,11 @@
             $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
         }
 
+        /**
+         * @brief De functie addZwemgroep voegt een zwemgroep toe met behulp van de lesgroep_model klasse.
+         * @pre Er bestaat een lesgroep_model klassen en een zwemgroepenOphalen functie.
+         * @post Er is een zwemgroep toegevoegd aan de database en de gebruiker wordt doorverwezen naar zwemgroepenOphalen
+         */
         public function addZwemgroep()
         {
             $zwemgroep = new stdClass();

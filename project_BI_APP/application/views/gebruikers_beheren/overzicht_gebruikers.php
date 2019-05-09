@@ -1,10 +1,13 @@
-<table class="table">
+<table data-toggle="table">
+    <thead>
     <tr>
-        <th scope="col">Zwemleraar</th>
-        <th scope="col">E-mailadres</th>
-        <th class="text-center">Actief</th>
-        <th class="text-center">Wijzigen</th>
+        <th data-sortable="true" scope="col">Zwemleraar</th>
+        <th data-sortable="true" scope="col">E-mailadres</th>
+        <th data-sortable="true" class="text-center">Actief</th>
+        <th data-sortable="true" class="text-center">Wijzigen</th>
     </tr>
+    </thead>
+    <tbody>
 
 <?php
 
@@ -31,6 +34,6 @@ foreach ($inloggers as $inlogger) {
     }
 }
 
-echo '</table>';
+echo '</tbody></table>';
 
 ?>

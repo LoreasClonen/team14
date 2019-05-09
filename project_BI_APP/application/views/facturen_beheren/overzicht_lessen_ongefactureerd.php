@@ -12,12 +12,12 @@ echo form_open('Facturen/toonFactuurOverzicht', $attributes);
 foreach ($klassen as $klas) {?>
     <h4><?php echo $klas->klasnaam;?></h4>
     <div class="klas form-group" data-klasId="<?php echo $klas->id;?>">
-        <table class="table">
+        <table data-toggle="table">
             <thead>
             <tr>
-                <th>Datum</th>
-                <th>Aantal Leerlingen</th>
-                <th>Factuur</th>
+                <th data-sortable="true">Datum</th>
+                <th data-sortable="true">Aantal Leerlingen</th>
+                <th data-sortable="true">Factuur</th>
             </tr>
             </thead>
             <tbody>
