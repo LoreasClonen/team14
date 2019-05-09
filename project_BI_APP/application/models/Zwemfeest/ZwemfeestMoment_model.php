@@ -77,6 +77,15 @@
             $this->db->delete('zwemfeestMoment');
         }
 
+        /**
+         * @brief voegt een zwemfeestMoment toe
+         * @pre Er bestaat een zwemfeestMoment_model klasse
+         * @post Er is een zwemfeestMoment aan de database toegevoegd
+         * @param $zwemfeestMomentdata
+         * @param $zwemfeestId
+         * @return int id
+        }
+         */
         function add($zwemfeestMomentdata, $zwemfeestId)
         {
             $this->db->set('zwemfeestId', $zwemfeestId);

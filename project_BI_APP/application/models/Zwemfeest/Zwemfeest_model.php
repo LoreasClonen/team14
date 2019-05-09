@@ -112,6 +112,12 @@
             $this->db->update('zwemfeest', $zwemfeestData);
         }
 
+        /**
+         * @brief voegt een zwemfeest toe
+         * @pre Er bestaat een zwemfeest_model klasse
+         * @post Er is een zwemfeest aan de database toegevoegd
+         * @param $zwemfeestdata
+         */
         function add($zwemfeestdata)
         {
             $this->db->insert('zwemfeest', $zwemfeestdata);

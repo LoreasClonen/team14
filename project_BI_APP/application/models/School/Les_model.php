@@ -48,6 +48,13 @@
             return $this->db->insert_id();
         }
 
+        /**
+         * @brief geeft alle lessen terug in de les tabel waavoor factuurId NULL is per klas
+         * @pre Er bestaat een Les_model klasse, Klas_model klasse en een Factuur_model klasse.
+         * @post Er is een array met 0 of meerdere lessen teruggegeven
+         * @param $klasId
+         * @return array
+         */
         function getAllWhereFactuurIdIsNullPerKlas($klasId)
         {
             $this->db->where('klasId', $klasId);

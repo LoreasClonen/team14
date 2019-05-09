@@ -32,6 +32,13 @@
             $this->load->library('session');
         }
 
+        /**
+         * functie getZwemfeestMomenten
+         * @brief haalt alle zwemfeestmomenten op
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post de pagina zwemfeestjes_master wordt geladen
+         * @param
+         */
         public function getZwemfeestMomenten()
         {
             $data['zwemfeestMomenten'] = $this->zwemfeestMoment_model->getAllByDatumWithZwemfeest();
@@ -47,6 +54,13 @@
             $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
         }
 
+        /**
+         * functie getZwemfeestje
+         * @brief haalt een bepaald zwemfeestje
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post de pagina zwemfeestjes_master wordt geladen
+         * @param $id
+         */
         public function getZwemfeestje($id)
         {
             $data['zwemfeestje'] = $this->zwemfeestMoment_model->getByIdWithEverything($id);
@@ -63,6 +77,13 @@
             $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
         }
 
+        /**
+         * functie getZwemfeestjeVoorAnnuleren
+         * @brief haalt een zwemfeestmoment van een zwemfeestje dat geannuleerd wordt op
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post de pagina zwemfeestjes_master wordt geladen
+         * @param $zwemfeestId
+         */
         public function getZwemfeestjeVoorAnnuleren($zwemfeestId)
         {
             $data['zwemfeestje'] = $this->zwemfeestMoment_model->getByIdWithEverything($zwemfeestId);
@@ -78,6 +99,14 @@
             $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
         }
 
+        /**
+         * functie deleteZwemfeestje
+         * @brief verwijdert een bepaald zwemfeestje en het bijhorende zwemfeestmoment
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post een zwemfeest en een zwemfeestmoment worden verwijderd
+         * @param $zwemfeestMomentId
+         * @param $zwemfeestId
+         */
         public function deleteZwemfeestje($zwemfeestMomentId, $zwemfeestId)
         {
             $this->zwemfeestMoment_model->delete($zwemfeestMomentId);
@@ -86,6 +115,12 @@
             redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren/' . $zwemfeestId);
         }
 
+        /**
+         * functie updateZwemfeestje
+         * @brief update een bepaald zwemfeestje
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post een zwemfeest wordt geüpdated
+         */
         public function updateZwemfeestje()
         {
             $zwemfeestId = $this->input->post('zwemfeestId');
@@ -105,6 +140,12 @@
             redirect('Zwemfeestjes/getZwemfeestMomenten');
         }
 
+        /**
+         * functie zwemfeestjeBoeken
+         * @brief haalt alle info voor het boeken van een zwemfeestje op
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post de pagina zwemfeestjes_master wordt geladen
+         */
         public function zwemfeestjeBoeken()
         {
             $data['gerechten'] = $this->gerecht_model->getAllById();
@@ -125,6 +166,12 @@
             $this->template->load('card_master', $partials, $data);
         }
 
+        /**
+         * functie aanvragenZwemfeestje
+         * @brief boekt een zwemfeestje
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post boekt het zwemfeestje
+         */
         public function aanvragenZwemfeestje()
         {
             $zwemfeestData = new stdClass();
@@ -161,6 +208,12 @@
             }
         }
 
+        /**
+         * functie bevestigAanvraag
+         * @brief haalt alle info van de boeking op en toont een bevestigingspagina
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post toont de bevestigingspagina
+         */
         public function bevestigAanvraag()
         {
             $data['titel'] = 'Zwemfeestje boeken';
@@ -185,6 +238,12 @@
             $this->template->load('card_master', $partials, $data);
         }
 
+        /**
+         * functie zwemfeestjeAangevraagd
+         * @brief maakt een bevestigingsmail van de boeking
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post stuurt de bevestigingsmail door naar emailBevestigingAanvraag
+         */
         public function zwemfeestjeAangevraagd()
         {
             $zwemfeestData = $this->session->flashdata('zwemfeestData');
@@ -194,6 +253,13 @@
             redirect('zwemfeestjes/emailBevestigingAanvraag/' . $zwemfeestId);
         }
 
+        /**
+         * functie emailBevestigingAanvraag
+         * @brief toont een bevestigingsmail van de boeking
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post toont de bevestigingsmail
+         * @param $zwemfeestId
+         */
         public function emailBevestigingAanvraag($zwemfeestId)
         {
             $zwemfeest = $this->zwemfeest_model->getByIdWithGerecht($zwemfeestId);
@@ -213,6 +279,12 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * functie toonMaaltijden
+         * @brief toont een overzicht van de maaltijden
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post toont de pagina instellingen zwemfeestjes
+         */
         public function toonMaaltijden()
         {
             $data['maaltijden'] = $this->gerecht_model->getAllById();
@@ -228,6 +300,12 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * functie haalAjaxOp_Maaltijd
+         * @brief toont een bepaalde Maaltijd
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post toont de maaltijd op de pagina
+         */
         public function haalAjaxOp_Maaltijd()
         {
             $id = $this->input->get('id');
@@ -237,6 +315,13 @@
             $this->load->view("instellingen_beheren / ajax_maaltijd", $data);
         }
 
+        /**
+         * functie maaltijdVerwijderen
+         * @brief verwijdert een bepaalde Maaltijd
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post verwijdert het gerecht
+         * @param $id
+         */
         public function maaltijdVerwijderen($id)
         {
             $this->gerecht_model->delete($id);
@@ -244,6 +329,12 @@
             redirect('Zwemfeestjes/toonMaaltijden');
         }
 
+        /**
+         * functie maaltijdToevoegenPagina
+         * @brief toont de maaltijd toevoegen pagina
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post toont de card_master
+         */
         public function maaltijdToevoegenPagina()
         {
             $data['titel'] = 'Maaltijd toevoegen';
@@ -257,6 +348,12 @@
             $this->template->load('card_master', $partials, $data);
         }
 
+        /**
+         * functie maaltijdToevoegen
+         * @brief voegt een maaltijd toe
+         * @pre er bestaat een Zwemfeestjes klasse
+         * @post toont de maaltijden
+         */
         public function maaltijdToevoegen()
         {
             $maaltijd = new stdClass();
