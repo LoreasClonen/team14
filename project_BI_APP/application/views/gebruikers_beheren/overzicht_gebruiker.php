@@ -7,6 +7,7 @@ echo '<div class="row"><div class="col-4">' . anchor("Gebruiker/deleteGebruiker/
 echo '<div class="col-8 text-right">' . form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateGebruiker")) . '</div></div><hr>';
 
 echo $melding;
+echo $error;
 
 echo form_label('Naam', 'naam');
 echo "\n";

@@ -6,6 +6,7 @@ echo form_open('Gebruiker/updateGebruiker', $attributes);
 echo '<div class="row"><div class="col-12 text-right">' . form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateGebruiker")) . '</div></div><hr>';
 
 echo $melding;
+echo $error;
 
 echo form_label('Naam', 'naam');
 echo "\n";
@@ -129,5 +130,6 @@ $dataPostcode = array(
 echo form_input($dataPostcode);
 
 echo form_hidden('id', $inlogger->id);
+echo form_hidden('huidigeGebruikersId', $gebruiker->id);
 echo form_close();
 ?>

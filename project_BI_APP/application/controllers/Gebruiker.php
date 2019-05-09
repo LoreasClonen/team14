@@ -30,6 +30,7 @@ class Gebruiker extends CI_Controller
         $this->load->helper('form');
         $this->load->helper('notation');
         $this->load->library('session');
+        $this->load->library('form_validation');
 
     }
 
@@ -58,6 +59,7 @@ class Gebruiker extends CI_Controller
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe';
         $data['melding'] = $this->session->flashdata('melding');
+        $data['error'] = $this->session->flashdata('error');
 
         $data['inlogger'] = $this->inlogger_model->getById($id);
 
@@ -112,6 +114,8 @@ class Gebruiker extends CI_Controller
         $gebruikerData->straatnaam = $this->input->post('straatnaam');
         $gebruikerData->huisnummer = $this->input->post('huisnummer');
         $gebruikerData->postcode = $this->input->post('postcode');
+        $gebruikerData->id = $this->input->post('id');
+        $gebruikerData->huidigeGebruikersId = $this->input->post('huidigeGebruikersId');
 
         $this->form_validation->set_rules('voornaam', 'Voornaam', 'trim|required|min_length[2]|max_length[20]');
         $this->form_validation->set_rules('achternaam', 'Achternaam', 'trim|required|min_length[2]|max_length[20]');
@@ -125,31 +129,47 @@ class Gebruiker extends CI_Controller
         $poging1 = $this->input->post('poging1');
         $poging2 = $this->input->post('poging2');
 
-        if ($poging1 == $poging2 && $poging1 != NULL) {
+        if ($this->form_validation->run() == true) {
+            $data['error'] = Null;
 
-            $wachtwoord = password_hash($poging1, PASSWORD_DEFAULT);
+            if ($poging1 == $poging2 && $poging1 != NULL) {
 
-            $gebruikerData->wachtwoord = $wachtwoord;
+                $wachtwoord = password_hash($poging1, PASSWORD_DEFAULT);
 
-            $this->inlogger_model->update($id, $gebruikerData);
+                $gebruikerData->wachtwoord = $wachtwoord;
 
-            redirect('Gebruiker/getGebruikers');
+                $this->inlogger_model->update($id, $gebruikerData);
 
-        }
+                redirect('Gebruiker/getGebruikers');
 
-        else {
+            }
+
+            else {
+
                 $fout = "<div class='alert alert-danger' role='alert'>Uw wachtwoorden komen niet overeen of zijn nog leeg. Probeer het opnieuw.</div>";
                 $this->session->set_flashdata('melding', $fout);
 
-                if ($gebruikerData->isAdmin = '0') {
+                if (!$gebruikerData->id == $gebruikerData->huidigeGebruikersId) {
                     redirect('Gebruiker/getGebruiker/' . $id);
                 }
                 else {
                     redirect('Gebruiker/toonMijnProfiel');
                 }
+            }
+
         }
+        else {
+            $validation = "<div class='alert alert-danger' role='alert'>Je vulde ongeldige gegevens in. Probeer het opnieuw.</div>";
+            $this->session->set_flashdata('error', $validation);
 
+            if (!$gebruikerData->id == $gebruikerData->huidigeGebruikersId) {
+                redirect('Gebruiker/getGebruiker/' . $id);
+            }
+            else {
+                redirect('Gebruiker/toonMijnProfiel');
+            }
 
+        }
     }
 
     /**
@@ -180,6 +200,8 @@ class Gebruiker extends CI_Controller
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
         $data['melding'] = $this->session->flashdata('melding');
+        $data['error'] = $this->session->flashdata('error');
+
 
         $inlogger = $this->authex->getGebruikerInfo();
         $inloggerId = $inlogger->id;
