@@ -14,7 +14,7 @@
             <?php echo anchor("Home/index", "Terug", "class='btn btn-secondary'") ?>
         </div>
         <div class="col-6 text-right">
-            <?php echo anchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje Toevoegen', 'class="btn btn-primary"') ?>
+            <?php echo anchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje toevoegen', 'class="btn btn-primary"') ?>
         </div>
     </div>
     <br>
