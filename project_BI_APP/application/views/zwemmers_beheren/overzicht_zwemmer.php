@@ -1,4 +1,4 @@
-<?php echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>'; ?>
+<?php echo '<div class="row"><div class="col-4">' . anchor("Zwemmer/zwemmersOphalen", "Terug", "class='btn btn-secondary'") . '</div>'; ?>
 
     <div class="col-12 mt-3">
     <table class="table">
