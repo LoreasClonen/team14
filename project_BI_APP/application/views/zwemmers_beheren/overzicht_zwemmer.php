@@ -1,8 +1,17 @@
+
 <div class="col-12 mt-3">
     <?php
                 $attributes = array('name' => 'opslaan', 'id' => 'inschrijfformulier', 'role' => 'form');
                 form_open('zwemmer/updateZwemmer', $attributes);
-                echo "<hr />";
+                echo "<hr />"; ?>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Leeftijd</th>
+            <th scope="col">Niveau</th>
+            <th scope="col">Zwemgroep</th>
+<?php
 
 
                 echo form_label('voornaam', 'voornaam');

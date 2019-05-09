@@ -1,3 +1,4 @@
+<?php echo '<div class="row"><div class="col-12">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '<hr></div>'; ?>
 <div style="width: 100%">
     <div id="accordion">
         <?php

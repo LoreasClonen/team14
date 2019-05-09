@@ -40,7 +40,7 @@
                     'name' => 'email',
                     'class' => 'form-control',
                     'type' => 'email',
-                    'placeholder' => 'e-mail',
+                    'placeholder' => 'iemand@voorbeeld.be',
                     'required' => 'required',
                     'size' => '30');
                 echo form_input($dataEmail);
@@ -66,6 +66,8 @@
         <hr>
     </div>
     <div class="row">
+        <div class="col-sm-12"><?php echo $foutUur; ?></div>
+        <div class="col-sm-12"><?php echo $fouteDatum; ?></div>
         <div class="col-sm-6">
             <?php
                 echo form_label('Datum', 'datum');

@@ -30,7 +30,10 @@
 </script>
 
 <div class="container">
-    <p><?php echo anchor("Scholen/klasToevoegenPagina", "Klas toevoegen", "class='btn btn-primary'"); ?></p>
+    <?php
+        echo '<div class="row"><div class="col-4">' . anchor("Scholen/toonScholen", "Terug", "class='btn btn-secondary'") . '</div>';
+        echo '<div class="col-8 text-right">' . anchor("Scholen/klasToevoegenPagina", "Klas toevoegen", "class='btn btn-primary'") . '</div></div><br>';
+        ?>
     <table class="table">
         <thead>
         <tr>

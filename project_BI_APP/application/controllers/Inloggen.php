@@ -24,7 +24,6 @@
             $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
             $this->load->helper('form');
             $this->load->library('session');
-            $this->load->library('encryption');
         }
 
         public function meldAan()
@@ -113,6 +112,12 @@
             $this->Inlogger_model->emailBestaat($email);
         }
 
+        /**
+         * @brief de functie nieuwPaswoord zorgt ervoor dat de gebruiker een nieuw wachtwoord kan instellen
+         * @param $id
+         * @post toont het nieuw_wachtwoord formulier
+         */
+
         public function nieuwPaswoord($id)
         {
             $data['titel'] = 'Nieuw wachtwoord ingeven';
@@ -128,6 +133,11 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * @brief de functie nieuwWachtwoordControleren gaat nakijken of de beide invulvelden exact dezelfde data bevatten
+         * @post geeft een succesmelding als het wachtwoord aanpassen gelukt is en een foutmelding als de invulvelden niet overeen komen
+         */
+
         public function nieuwWachtwoordControleren()
         {
             $poging1 = $this->input->post('poging1');
@@ -136,9 +146,9 @@
             $this->session->set_flashdata('id', $id);
 
             if ($poging1 == $poging2) {
-                $wachtwoord = $this->encryption->encrypt($poging1);
+                $wachtwoord = password_hash($poging1, PASSWORD_DEFAULT);
 
-                $gebruikerData = array('wachtwoord' => $poging1);
+                $gebruikerData = array('wachtwoord' => $wachtwoord);
                 $this->Inlogger_model->update($id, $gebruikerData);
 
                 $gelukt = "<div class='alert alert-success' role='alert'>Uw wachtwoord is opnieuw ingesteld!</div>";

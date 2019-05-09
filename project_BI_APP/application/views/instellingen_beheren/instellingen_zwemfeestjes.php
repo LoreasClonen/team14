@@ -30,7 +30,10 @@
 </script>
 
 <div class="container">
-    <p><?php echo anchor("Zwemfeestjes/maaltijdToevoegenPagina", "Maaltijd toevoegen", "class='btn btn-primary'"); ?></p>
+    <?php
+    echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>';
+    echo '<div class="col-8 text-right">' . anchor("Zwemfeestjes/maaltijdToevoegenPagina", "Maaltijd toevoegen", "class='btn btn-primary'") . '</div></div><br>';
+    ?>
     <table class="table">
         <thead>
         <tr>
@@ -40,7 +43,9 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($maaltijden as $maaltijd) { ?>
+        <?php foreach ($maaltijden
+
+                       as $maaltijd) { ?>
             <tr>
                 <td>
                     <?php echo $maaltijd->naam; ?>
@@ -48,7 +53,7 @@
                 <td><?php echo "€" . number_format($maaltijd->prijs, 2); ?>
                 </td>
                 <td class="text-center"><?php
-                        echo "<button class='btn btn-danger verwijderen' data-id='$maaltijd->id'><i class='fas fa-trash-alt'></i> Verwijderen</button>"; ?>
+                        echo anchor('', "<i class='fas fa-trash-alt'></i>", array('class' => 'verwijderen', 'data-id' => $maaltijd->id)); ?>
                 </td>
             </tr>
         <?php } ?>
