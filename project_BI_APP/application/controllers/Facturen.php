@@ -33,7 +33,11 @@ class Facturen extends CI_Controller
         $this->load->helper('notation');
         $this->load->helper('form');
     }
-
+    /**
+     * @brief toont alle scholen met een link naar hun facturen
+     * @pre Er bestaat een Factuur klasse
+     * @post de pagina wordt geladen
+     */
     public function getScholen()
     {
         $data['scholen'] = $this->school_model->getAllBySchoolnaam();
@@ -48,7 +52,11 @@ class Facturen extends CI_Controller
 
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
-
+    /**
+     * @brief Laad een pagina met een bepaalde school en zijn overzicht
+     * @param schoolId
+     * @post de pagina met de gekozen school wordt geladen
+     */
     public function getSchool($schoolId)
     {
         $data['titel'] = 'Facturen';

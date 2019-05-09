@@ -1,9 +1,9 @@
 
 <div class="col-12 mt-3">
     <?php
-                $attributes = array('name' => 'opslaan', 'id' => 'inschrijfformulier', 'role' => 'form');
-                form_open('zwemmer/updateZwemmer', $attributes);
-                echo "<hr />"; ?>
+                $attributes = array('name' => 'opslaan', 'id' => 'AanpasFormulier', 'role' => 'form');
+                echo form_open('zwemmer/updateZwemmer/' . $zwemmer->id, $attributes); ?>
+    <hr />
     <table class="table">
         <thead>
         <tr>
@@ -83,7 +83,7 @@
                 'required' => 'required',
                 'size' => '30');
             echo form_input($dataPostcode);
-            echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary my-3", "id" => "Opslaan"));
+            echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary my-3", "id" => "slaOp"));
             echo form_close();
                 ?>
 </div>
