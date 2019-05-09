@@ -93,7 +93,7 @@ class Gebruiker extends CI_Controller
         redirect('Gebruiker/getGebruikers');
     }
     /**
-     * @brief Herlaad het overzicht met allle gebruikers na te updaten
+     * @brief Herlaad het overzicht met alle gebruikers na te updaten
      *
      * @post de pagina met het overzicht van alle gebruikers wordt geladen
      */
@@ -113,22 +113,35 @@ class Gebruiker extends CI_Controller
         $gebruikerData->huisnummer = $this->input->post('huisnummer');
         $gebruikerData->postcode = $this->input->post('postcode');
 
+        $this->form_validation->set_rules('voornaam', 'Voornaam', 'trim|required|min_length[2]|max_length[20]');
+        $this->form_validation->set_rules('achternaam', 'Achternaam', 'trim|required|min_length[2]|max_length[20]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('telefoonnr', 'Telefoonnr', 'trim|required|numeric|min_length[8]|max_length[15]');
+        $this->form_validation->set_rules('geboortedatum', 'Geboortedatum', 'required');
+        $this->form_validation->set_rules('straatnaam', 'Straatnaam', 'trim|required');
+        $this->form_validation->set_rules('huisnummer', 'Huisnummer', 'trim|required|numeric|min_length[1]|max_length[4]');
+        $this->form_validation->set_rules('postcode', 'Postcode', 'trim|required|numeric|min_length[4]|max_length[4]');
+
         $poging1 = $this->input->post('poging1');
         $poging2 = $this->input->post('poging2');
 
-        if ($poging1 == $poging2 && $poging1 != NULL) {
+        if($this->form_validation->run()==true) {
+            $data['error'] = Null;
 
-            $wachtwoord = password_hash($poging1, PASSWORD_DEFAULT);
 
-            $gebruikerData->wachtwoord = $wachtwoord;
+            if ($poging1 == $poging2 && $poging1 != NULL) {
+
+                $wachtwoord = password_hash($poging1, PASSWORD_DEFAULT);
+
+             $gebruikerData->wachtwoord = $wachtwoord;
 
             $this->inlogger_model->update($id, $gebruikerData);
 
-            redirect('Gebruiker/getGebruikers');
+             redirect('Gebruiker/getGebruikers');
 
-        }
+            }
 
-        else {
+            else {
                 $fout = "<div class='alert alert-danger' role='alert'>Uw wachtwoorden komen niet overeen of zijn nog leeg. Probeer het opnieuw.</div>";
                 $this->session->set_flashdata('melding', $fout);
 
@@ -139,7 +152,18 @@ class Gebruiker extends CI_Controller
                     redirect('Gebruiker/toonMijnProfiel');
                 }
         }
+        }
+        else{
+            $this->session->set_flashdata('error', validation_errors());
 
+            if ($gebruikerData->isAdmin = '0') {
+                redirect('Gebruiker/getGebruiker/' . $id);
+            }
+            else {
+                redirect('Gebruiker/toonMijnProfiel');
+            }
+
+        }
 
     }
 
