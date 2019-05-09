@@ -127,7 +127,7 @@
 
         public function haalAjaxOp_Klassen()
         {
-            $schoolId = $this->session->flashdata('schoolId');
+            $schoolId = $this->input->get('schoolId');
 
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
 
