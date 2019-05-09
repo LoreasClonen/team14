@@ -76,7 +76,7 @@
                 'inhoud' => 'zwemgroepen_beheren/overzicht_zwemgroep',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
+            $this->template->load('inlogger_master', $partials, $data);
         }
 
         /**
@@ -108,7 +108,7 @@
                 'inhoud' => 'zwemgroepen_beheren/zwemgroep_toevoegen',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemgroepen_beheren/zwemgroepen_master', $partials, $data);
+            $this->template->load('inlogger_master', $partials, $data);
         }
 
         /**
