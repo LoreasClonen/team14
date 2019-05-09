@@ -1,3 +1,34 @@
+<script>
+    function haalZwemmerOp(id) {
+        console.log('startajax');
+
+        $.ajax({
+            type: "get",
+            url: site_url + '/zwemmer/haalAjaxOp_zwemmerVerwijderen',
+            data: {id: id},
+            success: function (result) {
+                $('#resultaat').html(result);
+                $('#mijnDialoogscherm').modal('show')
+            },
+            error: function (xhr, status, error) {
+                alert("Fout in AJAX-request \n\n" + xhr.responseText)
+            }
+        })
+    }
+
+    $(document).ready(function () {
+
+        $(".verwijderen").click(function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            haalZwemmerOp(id);
+            console.log(id);
+        });
+
+    });
+
+</script>
+
 <div class="container">
     <p><?php echo anchor("Zwemlessen/keuze", "Zwemmer toevoegen", "class='btn btn-primary'"); ?></p>
     <table class="table">
@@ -41,11 +72,24 @@
                 </td>
                 <td class="text-center"><?php
                         echo anchor('Zwemmer/zwemmerOphalen/' . $zwemmer->id, "<i class='fas fa-edit'></i>") . " ";
-                        echo anchor('Zwemmer/zwemmerOphalen/' . $zwemmer->id, "<i class='fas fa-trash-alt'></i>"); ?>
+                        echo anchor('', "<i class='fas fa-trash-alt'></i>", array('class' => 'verwijderen', 'data-id' => $zwemmer->id));
+                    ?>
                 </td>
             </tr>
         <?php } ?>
         </tbody>
     </table>
+</div>
+
+<!-- Dialoogvenster -->
+<div class="modal fade" id="mijnDialoogscherm" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Inhoud dialoogvenster-->
+        <div class="modal-content" id="resultaat">
+
+        </div>
+
+    </div>
 </div>
 

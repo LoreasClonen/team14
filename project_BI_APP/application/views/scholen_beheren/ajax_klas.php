@@ -1,8 +1,3 @@
-<!-- hier vervolledigen (oef 3a) -->
-<?php
-
-?>
-
 <div class="modal-header">
     <h4 class="modal-title">Klas verwijderen</h4>
     <button type="button" class="close" data-dismiss="modal">&times;</button>

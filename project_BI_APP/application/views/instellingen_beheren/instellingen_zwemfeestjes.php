@@ -1,10 +1,10 @@
 <script>
-    function haalklasOp(id) {
+    function haalmaaltijdOp(id) {
         console.log('startajax');
 
         $.ajax({
             type: "get",
-            url: site_url + '/scholen/haalAjaxOp_klas',
+            url: site_url + '/zwemfeestjes/haalAjaxOp_maaltijd',
             data: {id: id},
             success: function (result) {
                 $('#resultaat').html(result);
@@ -21,7 +21,7 @@
         $(".verwijderen").click(function (e) {
             e.preventDefault();
             var id = $(this).data('id');
-            haalklasOp(id);
+            haalmaaltijdOp(id);
             console.log(id);
         });
 
@@ -30,30 +30,25 @@
 </script>
 
 <div class="container">
-    <p><?php echo anchor("Scholen/klasToevoegenPagina", "Klas toevoegen", "class='btn btn-primary'"); ?></p>
+    <p><?php echo anchor("Zwemfeestjes/maaltijdToevoegenPagina", "Maaltijd toevoegen", "class='btn btn-primary'"); ?></p>
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Gesubsidieerd</th>
+            <th scope="col">Maaltijd</th>
+            <th scope="col">Prijs</th>
             <th scope="col" class="text-center">Verwijderen</th>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($klassen as $klas) { ?>
+        <?php foreach ($maaltijden as $maaltijd) { ?>
             <tr>
                 <td>
-                    <?php echo $klas->klasnaam; ?>
+                    <?php echo $maaltijd->naam; ?>
                 </td>
-                <td><?php
-                        if ($klas->isGesubsidieerd == 0) {
-                            echo "Neen";
-                        } else {
-                            echo "Ja";
-                        } ?>
+                <td><?php echo "€" . number_format($maaltijd->prijs, 2); ?>
                 </td>
                 <td class="text-center"><?php
-                        echo "<button class='btn btn-danger verwijderen' data-id='$klas->id'><i class='fas fa-trash-alt'></i> Verwijderen</button>"; ?>
+                        echo "<button class='btn btn-danger verwijderen' data-id='$maaltijd->id'><i class='fas fa-trash-alt'></i> Verwijderen</button>"; ?>
                 </td>
             </tr>
         <?php } ?>

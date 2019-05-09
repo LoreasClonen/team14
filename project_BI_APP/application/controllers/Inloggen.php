@@ -23,6 +23,8 @@
             parent::__construct();
             $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
             $this->load->helper('form');
+            $this->load->library('session');
+            $this->load->library('encryption');
         }
 
         public function meldAan()
@@ -90,7 +92,6 @@
         public function mailWachtwoordVergeten()
         {
             $data['titel'] = 'Inbox';
-            $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
 
             $email = $this->input->post('email');
@@ -112,12 +113,13 @@
             $this->Inlogger_model->emailBestaat($email);
         }
 
-        public function nieuwPaswoord()
+        public function nieuwPaswoord($id)
         {
             $data['titel'] = 'Nieuw wachtwoord ingeven';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
-
+            $data['melding'] = $this->session->flashdata('melding');
+            $this->session->set_flashdata('id', $id);
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'nieuw_wachtwoord_form',
@@ -126,13 +128,26 @@
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function nieuwWachtwoord()
+        public function nieuwWachtwoordControleren()
         {
             $poging1 = $this->input->post('poging1');
             $poging2 = $this->input->post('poging2');
+            $id = $this->session->flashdata('id');
+            $this->session->set_flashdata('id', $id);
 
-            if ($this->authex->nieuwPaswoord($poging1, $poging2)) {
-                redirect('home/nieuwWachtwoord');
+            if ($poging1 == $poging2) {
+                $wachtwoord = $this->encryption->encrypt($poging1);
+
+                $gebruikerData = array('wachtwoord' => $poging1);
+                $this->Inlogger_model->update($id, $gebruikerData);
+
+                $gelukt = "<div class='alert alert-success' role='alert'>Uw wachtwoord is opnieuw ingesteld!</div>";
+                $this->session->set_flashdata('melding', $gelukt);
+                redirect('inloggen/nieuwPaswoord/' . $id);
+            } else {
+                $fout = "<div class='alert alert-danger' role='alert'>Uw wachtwoorden komen niet overeen. Probeer het opnieuw.</div>";
+                $this->session->set_flashdata('melding', $fout);
+                redirect('inloggen/nieuwPaswoord/' . $id);
             }
         }
     }

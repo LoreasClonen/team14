@@ -29,6 +29,7 @@
             $this->load->model('Zwemfeest/Zwemfeest_model', 'zwemfeest_model');
             $this->load->helper('form');
             $this->load->helper('notation');
+            $this->load->library('session');
         }
 
         public function getZwemfeestMomenten()
@@ -82,7 +83,7 @@
             $this->zwemfeestMoment_model->delete($zwemfeestMomentId);
             $this->zwemfeest_model->delete($zwemfeestId);
 
-            redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren' . $zwemfeestId);
+            redirect('Zwemfeestjes/getZwemfeestjeVoorAnnuleren/' . $zwemfeestId);
         }
 
         public function updateZwemfeestje()
@@ -116,12 +117,13 @@
                 'inhoud' => 'zwemfeestje_boeken/zwemfeestje_toevoegen',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemfeestje_boeken/zwemfeestje_boeken_master', $partials, $data);
+            $this->template->load('card_master', $partials, $data);
         }
 
-        public function addZwemfeestje()
+        public function aanvragenZwemfeestje()
         {
             $zwemfeestData = new stdClass();
+            $zwemfeestMomentData = new stdClass();
 
             $zwemfeestData->voornaam = $this->input->post('voornaam');
             $zwemfeestData->achternaam = $this->input->post('achternaam');
@@ -132,33 +134,59 @@
             $zwemfeestData->opmerkingen = $this->input->post('opmerkingen');
             $zwemfeestData->isBevestigd = 0;
 
-            $id = $this->zwemfeest_model->add($zwemfeestData);
+            $zwemfeestMomentData->datum = $this->input->post('datum');
+            $zwemfeestMomentData->beginuur = $this->input->post('beginuur');
+            $zwemfeestMomentData->einduur = $this->input->post('einduur');
 
-            redirect('Zwemfeestjes/bevestigingAanvraag/' . $id);
+            $this->session->set_flashdata('zwemfeestData', $zwemfeestData);
+            $this->session->set_flashdata('zwemfeestMomentData', $zwemfeestMomentData);
+
+            redirect('Zwemfeestjes/bevestigAanvraag');
         }
 
-        public function bevestigingAanvraag($zwemfeestId)
+        public function bevestigAanvraag()
         {
             $data['titel'] = 'Zwemfeestje boeken';
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
-            $data['zwemfeestId'] = $zwemfeestId;
+
+            $zwemfeestData = $this->session->flashdata('zwemfeestData');
+            $zwemfeestMomentData = $this->session->flashdata('zwemfeestMomentData');
+            $gerecht = $this->gerecht_model->getById($zwemfeestData->gerechtId);
+            $this->session->set_flashdata('zwemfeestData', $zwemfeestData);
+            $this->session->set_flashdata('zwemfeestMomentData', $zwemfeestMomentData);
+
+            $data['zwemfeest'] = $zwemfeestData;
+            $data['zwemfeestMoment'] = $zwemfeestMomentData;
+            $data['gerecht'] = $gerecht;
+            $data['kostprijs'] = $gerecht->prijs * $zwemfeestData->aantalKinderen;
 
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemfeestje_boeken/bevestiging',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemfeestje_boeken/zwemfeestje_boeken_master', $partials, $data);
+            $this->template->load('card_master', $partials, $data);
+        }
+
+        public function zwemfeestjeAangevraagd()
+        {
+            $zwemfeestData = $this->session->flashdata('zwemfeestData');
+            $zwemfeestMomentData = $this->session->flashdata('zwemfeestMomentData');
+            $zwemfeestId = $this->zwemfeest_model->add($zwemfeestData);
+            $this->zwemfeestMoment_model->add($zwemfeestMomentData, $zwemfeestId);
+            redirect('zwemfeestjes/emailBevestigingAanvraag/' . $zwemfeestId);
         }
 
         public function emailBevestigingAanvraag($zwemfeestId)
         {
             $zwemfeest = $this->zwemfeest_model->getByIdWithGerecht($zwemfeestId);
+            $zwemfeestMoment = $this->zwemfeestMoment_model->getByZwemfeestId($zwemfeestId);
 
             $data['titel'] = 'Inbox';
             $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
 
             $data['zwemfeest'] = $zwemfeest;
+            $data['zwemfeestMoment'] = $zwemfeestMoment;
             $data['kostprijs'] = $zwemfeest->gerecht->prijs * $zwemfeest->aantalKinderen;
 
             $partials = array('hoofding' => 'email_header',
@@ -166,5 +194,59 @@
                 'footer' => 'main_footer');
 
             $this->template->load('main_master', $partials, $data);
+        }
+
+        public function toonMaaltijden()
+        {
+            $data['maaltijden'] = $this->gerecht_model->getAllById();
+
+            $data['titel'] = 'Instellingen zwemfeestjes';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'instellingen_beheren/instellingen_zwemfeestjes',
+                'footer' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
+        }
+
+        public function haalAjaxOp_Maaltijd()
+        {
+            $id = $this->input->get('id');
+
+            $data["maaltijd"] = $this->gerecht_model->getById($id);
+
+            $this->load->view("instellingen_beheren/ajax_maaltijd", $data);
+        }
+
+        public function maaltijdVerwijderen($id)
+        {
+            $this->gerecht_model->delete($id);
+
+            redirect('Zwemfeestjes/toonMaaltijden');
+        }
+
+        public function maaltijdToevoegenPagina()
+        {
+            $data['titel'] = 'Maaltijd toevoegen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen (T), Mats Mertens, Shari Nuyts, Sebastiaan Reggers, Steven Van Gansberghe (O)';
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'instellingen_beheren/maaltijd_toevoegen_pagina',
+                'footer' => 'main_footer');
+
+            $this->template->load('card_master', $partials, $data);
+        }
+
+        public function maaltijdToevoegen()
+        {
+            $maaltijd = new stdClass();
+            $maaltijd->naam = $this->input->post("naam");
+            $maaltijd->prijs = $this->input->post("prijs");
+
+            $this->gerecht_model->addGerecht($maaltijd);
+            redirect('Zwemfeestjes/toonMaaltijden');
         }
     }

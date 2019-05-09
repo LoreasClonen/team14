@@ -9,7 +9,7 @@
 <?php
 
 echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>
-        <div class="col-8 text-right">' . anchor("Gebruiker/", "Mijn profiel", "class='btn btn-info'") . ' ' . anchor("Gebruiker/insertGebruiker",'Nieuwe zwemleraar', 'class="btn btn-primary"') . '</div></div><br>';
+        <div class="col-8 text-right">' . anchor("Gebruiker/toonMijnProfiel", "Mijn profiel", "class='btn btn-info'") . ' ' . anchor("Gebruiker/insertGebruiker",'Nieuwe zwemleraar', 'class="btn btn-primary"') . '</div></div><br>';
 
 foreach ($inloggers as $inlogger) {
     if ($inlogger->isZwemleraar == 1) {

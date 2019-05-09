@@ -159,4 +159,6 @@
             $this->db->insert('inlogger', $inlogger);
             return $this->db->insert_id();
         }
+
+
     }

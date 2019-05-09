@@ -144,5 +144,19 @@
             return $query->row();
         }
 
+        /**
+         * functie deleteKlant(id)
+         * @brief verwijdert een bepaalde klant en bijhorende beschikbaarheid
+         * @pre Er bestaat een klant_model klasse
+         * @post Er is een klant en een beschikbaarheid uit de database verwijderd
+         * @param $id
+         */
+        function deleteKlant($id)
+        {
+            $this->db->where('klantId', $id);
+            $this->db->delete('beschikbaarheid');
+            $this->db->where('id', $id);
+            $this->db->delete('klant');
+        }
     }
 

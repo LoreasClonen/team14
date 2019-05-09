@@ -109,4 +109,21 @@ class Gebruiker extends CI_Controller
         redirect('Gebruiker/getGebruiker/' . $id);
     }
 
+    public function toonMijnProfiel()
+    {
+        $data['titel'] = 'Gebruiker';
+        $data['gebruiker'] = $this->authex->getGebruikerInfo();
+        $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
+
+        $inlogger = $this->authex->getGebruikerInfo();
+        $inloggerId = $inlogger->id;
+
+        $data['inlogger'] = $this->inlogger_model->getById($inloggerId);
+
+        $partials = array('hoofding' => 'main_header',
+            'inhoud' => 'gebruikers_beheren/overzicht_mijnProfiel',
+            'footer' => 'main_footer');
+
+        $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
+    }
 }

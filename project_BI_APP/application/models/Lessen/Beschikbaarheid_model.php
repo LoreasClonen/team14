@@ -68,6 +68,7 @@
         function getByStatusIdLesgroepIdWithKlant($statusId, $lesgroepId) {
             $this->db->where('lesgroepId', $lesgroepId);
             $this->db->where('statusId', $statusId);
+            $this->db->order_by('id');
             $query = $this->db->get('beschikbaarheid');
             $personen = $query->result();
 
@@ -104,6 +105,20 @@
             $this->db->where('klantId', $klantId);
 
             $this->db->set('statusId', $statusId);
+            $this->db->update('beschikbaarheid');
+        }
+
+        function updateAllStatusId($klantId, $statusId) {
+            $this->db->where('klantId', $klantId);
+
+            if ($statusId == 1) {
+                $this->db->where('statusId', 3);
+                $this->db->set('statusId', 1);
+            }
+            if ($statusId == 2) {
+                $this->db->where('statusId', 1);
+                $this->db->set('statusId', 3);
+            }
             $this->db->update('beschikbaarheid');
         }
 

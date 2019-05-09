@@ -14,12 +14,18 @@
                 <div id="<?php echo "collapse".$i ?>" class="collapse" aria-labelledby="<?php echo "heading".$i ?>" data-parent="#accordion">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-5 p-2" id="<?php echo "wachtenden".$i ?>"></div>
+                            <div class="col-5">
+                                <div class="p-2" id="<?php echo "wachtenden".$i ?>"></div>
+                                <button type="button" class="btn btn-primary btnDetail" data-zwemgroepId="<?php echo $i ?>" data-lijst="#wachtenden"> Details </button>
+                            </div>
                             <div class="col-2 text-center align-self-center">
                                 <button type="button" class="btn btn-primary btnHaalWeg" data-zwemgroepId="<?php echo $i ?>"> < </button>
                                 <button type="button" class="btn btn-primary btnVoegToe" data-zwemgroepId="<?php echo $i ?>"> > </button>
                             </div>
-                            <div class="col-5 p-2" id="<?php echo "leden".$i ?>"></div>
+                            <div class="col-5">
+                                <div class="p-2" id="<?php echo "leden".$i ?>"></div>
+                                <button type="button" class="btn btn-primary btnDetail" data-zwemgroepId="<?php echo $i ?>" data-lijst="#leden"> Details </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,7 +70,11 @@
             url: site_url + "/Wachtlijst/updateAjax_Wachtlijst",
             data: {zwemgroepId: zwemgroepId, klantId: klantId, statusId: statusId},
             success: function () {
-                haalWachtlijstOp(zwemgroepId);
+                $(".zwemgroep").each(function () {
+                    var zwemgroepId = $(this).attr('id');
+                    zwemgroepId = zwemgroepId.substr(9);
+                    haalWachtlijstOp(zwemgroepId);
+                });
             },
             error: function (xhr, status, error) {
                 alert("fout: " + xhr.responseText);
@@ -94,5 +104,14 @@
             var klantId = $(klantLocatie).val();
             wisselPersoon(zwemgroepId, klantId, 1);
         });
+
+        $(".btnDetail").click(function (e) {
+            e.preventDefault();
+            var zwemgroepId = $(this).attr('data-zwemgroepId');
+            var lijst = $(this).attr('data-lijst');
+            var klantLocatie = lijst + zwemgroepId + " option:selected";
+            var klantId = $(klantLocatie).val();
+            window.open(site_url + "/Zwemmer/zwemmerOphalen/" + klantId);
+        })
     })
 </script>
