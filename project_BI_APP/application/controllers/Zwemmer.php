@@ -29,6 +29,7 @@
             $this->load->model('Lessen/Beschikbaarheid_model', 'beschikbaarheid_model');
             $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
             $this->load->helper('form');
+            $this->load->library('form_validation');
         }
 
         /**
@@ -125,9 +126,39 @@
             $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
         }
 
-        public function updateZwemmer()
-        {
 
+        public function updateZwemmer($klantId)
+        {
+            $this->load->model("lessen/klant_model", "klant_model");
+
+            $klant = new stdClass();
+            $klant->voornaam = $this->input->post("voornaam");
+            $klant->achternaam = $this->input->post("achternaam");
+            $klant->email = $this->input->post("email");
+            $klant->geboortedatum = $this->input->post("geboortedatum");
+            $klant->straatnaam = $this->input->post("straatnaam");
+            $klant->huisnummer = $this->input->post("huisnummer");
+            $klant->postcode = $this->input->post('postcode');
+            $klant->actief = '1';
+
+            $this->form_validation->set_rules('voornaam', 'Voornaam', 'trim|required|min_length[2]|max_length[20]');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+            $this->form_validation->set_rules('achternaam', 'Achternaam', 'trim|required|min_length[2]|max_length[20]');
+            $this->form_validation->set_rules('geboortedatum', 'Geboortedatum', 'required');
+            $this->form_validation->set_rules('straatnaam', 'Straatnaam', 'trim|required');
+            $this->form_validation->set_rules('huisnummer', 'Huisnummer', 'trim|required|numeric|min_length[1]|max_length[4]');
+            $this->form_validation->set_rules('postcode', 'Postcode', 'trim|required|numeric|min_length[4]|max_length[4]');
+
+
+            if ($this->form_validation->run() == true) {
+                $data['error'] = Null;
+                $this->klant_model->updateKlant($klant, $klantId);
+                redirect('Zwemmer/zwemmersOphalen/' . $klantId);
+            } else {
+                $this->session->set_flashdata('error', validation_errors());
+                redirect('zwemmer/zwemmerBewerken/' . $klantId);
+
+            }
         }
 
     }

@@ -47,7 +47,11 @@ class Gebruiker extends CI_Controller
 
         $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
     }
-
+    /**
+     * @brief Laad een pagina de gekozen gebruiker zijn gegeven
+     * @param id  van de gebruiker
+     * @post de pagina met de gekozen gebruiker wordt geladen
+     */
     public function getGebruiker($id)
     {
         $data['titel'] = 'Gebruiker';
@@ -63,6 +67,12 @@ class Gebruiker extends CI_Controller
 
         $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
     }
+    /**
+     * @brief herlaad de pagina na de gebruikers activiteit aan te passen
+     * @param id
+     * @param gebruikersactief
+     * @post de pagina met de gekozen school wordt geladen
+     */
 
     public function updateGebruikerActiviteit($id, $gebruikerActief)
     {
@@ -71,12 +81,22 @@ class Gebruiker extends CI_Controller
         redirect('Gebruiker/getGebruikers');
     }
 
+    /**
+     * @brief herlaad de pagina met een overzicht van alle gebruikers na eentje te verwijderen
+     * @param id
+     * @post de pagina met alle gebruikers wordt geladen
+     */
     public function deleteGebruiker($id)
     {
         $this->inlogger_model->delete($id);
 
         redirect('Gebruiker/getGebruikers');
     }
+    /**
+     * @brief Herlaad het overzicht met allle gebruikers na te updaten
+     *
+     * @post de pagina met het overzicht van alle gebruikers wordt geladen
+     */
 
     public function updateGebruiker()
     {
@@ -123,6 +143,11 @@ class Gebruiker extends CI_Controller
 
     }
 
+    /**
+     * @brief Laad een pagina met het overzicht van de bepaalde gebruiker die net is toegevoegd
+     *
+     * @post de pagina met de gebruiker zijn overzicht wordt geladen
+     */
     public function insertGebruiker()
     {
         $gebruikerData = new stdClass();
@@ -135,7 +160,11 @@ class Gebruiker extends CI_Controller
 
         redirect('Gebruiker/getGebruiker/' . $id);
     }
-
+    /**
+     * @brief Laad een pagina met het profiel van de huidige aangemelde persoon
+     *
+     * @post de pagina met de aangemelde persoon zijn overzicht wordt geladen
+     */
     public function toonMijnProfiel()
     {
         $data['titel'] = 'Gebruiker';

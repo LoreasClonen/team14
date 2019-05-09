@@ -1,10 +1,13 @@
-<table class="table">
+<table data-toggle="table" data-search="true">
+    <thead>
     <tr>
-        <th scope="col">Datum</th>
-        <th scope="col">Naam organisator</th>
-        <th scope="col">Tijd</th>
-        <th scope="col">Goedgekeurd</th>
+        <th data-sortable="true" scope="col">Datum</th>
+        <th data-sortable="true" scope="col">Naam organisator</th>
+        <th data-sortable="true" scope="col">Tijd</th>
+        <th data-sortable="true" scope="col">Goedgekeurd</th>
     </tr>
+    </thead>
+    <tbody>
 
 <?php
 
@@ -26,6 +29,6 @@ echo smallDivAnchor("Home/index", "Terug", "class='btn btn-secondary'") . "<br>"
         echo "</td></tr>";
     }
 
-    echo '</table>';
+    echo '</tbody></table>';
 
 ?>

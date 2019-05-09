@@ -113,12 +113,25 @@ class Lesgroep_model extends CI_Model
         return $zwemniveau;
     }
 
+    /**
+     * @brief maakt een nieuwe lesgroep aan
+     * @pre Er bestaat een Lesgroep_model klasse
+     * @post Er is een lesgroep in de database toegevoegd
+     * @param $zwemniveauId
+     */
     function insert($zwemgroep)
     {
         $this->db->insert('lesgroep', $zwemgroep);
         $this->db->insert_id();
     }
 
+    /**
+     * @brief geeft alle lesgroepen met zwemniveau = $zwemniveau terug in de lesgroep tabel
+     * @pre Er bestaat een Lesgroep_model klasse en een Zwemniveau_model klasse
+     * @post Er is een array met 0 of meerdere lesgroepen teruggegeven
+     * @param $zwemniveauId
+     * @return array
+     */
     function getLesgroepByZwemniveauId($zwemniveauId){
         $this->db->where('zwemniveauId', $zwemniveauId);
         $query = $this->db->get('lesgroep');

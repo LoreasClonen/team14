@@ -32,7 +32,6 @@
         }
 
         /**
-         * functie getById($id)
          * @brief geeft een zwemniveau terug aan de hand van een Id
          * @pre Er bestaat een Zwemniveau model klasse en een zwemniveau met overeenkomstige id
          * @post Er is een array van 1 zwemniveau teruggegeven
@@ -45,6 +44,12 @@
             return $query->row();
         }
 
+        /**
+         * @brief geeft een zwemniveau terug aan de hand van een niveauNaam
+         * @pre Er bestaat een Zwemniveau model klasse en een zwemniveau met overeenkomstige niveauNaam
+         * @post Er is een array van 1 zwemniveau teruggegeven
+         * @return array
+         */
         function getByName($name){
             $this->db->where('niveauNaam', $name);
             $query = $this->db->get('zwemniveau');

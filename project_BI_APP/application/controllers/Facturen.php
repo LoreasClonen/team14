@@ -33,7 +33,11 @@ class Facturen extends CI_Controller
         $this->load->helper('notation');
         $this->load->helper('form');
     }
-
+    /**
+     * @brief toont alle scholen met een link naar hun facturen
+     * @pre Er bestaat een Factuur klasse
+     * @post de pagina wordt geladen
+     */
     public function getScholen()
     {
         $data['scholen'] = $this->school_model->getAllBySchoolnaam();
@@ -48,7 +52,11 @@ class Facturen extends CI_Controller
 
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
-
+    /**
+     * @brief Laad een pagina met een bepaalde school en zijn overzicht
+     * @param schoolId
+     * @post de pagina met de gekozen school wordt geladen
+     */
     public function getSchool($schoolId)
     {
         $data['titel'] = 'Facturen';
@@ -65,7 +73,11 @@ class Facturen extends CI_Controller
 
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
-
+    /**
+     * @brief herlaad de pagina na het updaten van de datum
+     * @param schoolId
+     * @post de pagina met de gekozen school wordt geladen
+     */
     public function updateDatumBetaling($schoolId)
     {
         $data['id'] = $this->input->post('id');
@@ -76,13 +88,23 @@ class Facturen extends CI_Controller
         redirect('Facturen/getSchool/' . $schoolId);
     }
 
+    /**
+     * @brief Verwijdert de datum van de betaling en herlaad de pagina
+     * @param schoolId
+     * @param id
+     * @post de pagina met de gekozen school wordt geladen
+     */
     public function deleteDatumBetaling($id, $schoolId)
     {
         $this->factuur_model->deleteDatumBetaald($id);
 
         redirect('Facturen/getSchool/' . $schoolId);
     }
-
+    /**
+     * @brief Laad een pagina met een bepaalde school en zijn facturen die nog niet gegenereerd zijn
+     * @param schoolId
+     * @post de pagina met de gekozen school wordt geladen
+     */
     public function haalOngefactureerdeLessenOp($schoolId)
     {
         $data['titel'] = 'Lessen';
@@ -97,6 +119,11 @@ class Facturen extends CI_Controller
 
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
+    /**
+     * @brief Laad een pagina met de facturen van een school
+     *
+     * @post de pagina met de gekozen factuur wordt geladen
+     */
 
     public function toonFactuurOverzicht()
     {

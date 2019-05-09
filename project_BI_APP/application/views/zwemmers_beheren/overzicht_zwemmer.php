@@ -1,8 +1,18 @@
 <div class="col-12 mt-3">
     <?php
-        $attributes = array('name' => 'opslaan', 'id' => 'inschrijfformulier', 'role' => 'form');
-        form_open('zwemmer/updateZwemmer', $attributes);
-        echo "<hr />";
+
+                $attributes = array('name' => 'opslaan', 'id' => 'AanpasFormulier', 'role' => 'form');
+                echo form_open('zwemmer/updateZwemmer/' . $zwemmer->id, $attributes); ?>
+    <hr />
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Leeftijd</th>
+            <th scope="col">Niveau</th>
+            <th scope="col">Zwemgroep</th>
+<?php
+
 
         echo form_label('voornaam', 'voornaam');
         $dataVoornaam = array('id' => 'voornaam',
@@ -65,6 +75,31 @@
                     'size' => '30');
                 echo form_input($dataHuisnummer);
             ?> </div>
+<<<<<<< HEAD
+                <div class="col-3">
+                    <?php
+            echo form_label('Huisnummer', 'huisnummer');
+            $dataHuisnummer = array('id' => 'huisnummer',
+                'name' => 'huisnummer',
+                'class' => 'form-control',
+                'value' => $zwemmer->huisnummer,
+                'required' => 'required',
+                'size' => '30');
+            echo form_input($dataHuisnummer);
+                    ?> </div>
+                </div> <?php
+            echo form_label('postcode', 'postcode');
+            $dataPostcode = array('id' => 'postcode',
+                'name' => 'postcode',
+                'class' => 'form-control',
+                'value' => $zwemmer->postcode,
+                'required' => 'required',
+                'size' => '30');
+            echo form_input($dataPostcode);
+            echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary my-3", "id" => "slaOp"));
+            echo form_close();
+                ?>
+=======
     </div> <?php
         echo form_label('postcode', 'postcode');
         $dataPostcode = array('id' => 'postcode',
@@ -77,4 +112,5 @@
         echo form_submit(array("value" => "Opslaan", "class" => "btn btn-primary my-3", "id" => "Opslaan"));
         echo form_close();
     ?>
+>>>>>>> 4781f9076a4e2677611eab8242770d2eca2c92d9
 </div>

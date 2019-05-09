@@ -35,7 +35,11 @@
             $this->load->library('session');
         }
 
-
+        /**
+         * @brief Laad een pagina met de gekozen school zijn gegevens
+         * @param id van de school
+         * @post de pagina met de gekozen school wordt geladen
+         */
         public function toonSchool($id)
         {
             $this->session->set_flashdata('schoolId', $id);
@@ -54,8 +58,23 @@
         }
 
         /**
-         * @brief de functie aanwezighedenIngeven toont het formulier om het aantal leerlingen in te geven voor een bepaalde klas               van een bepaalde school
-         * @post de schoolaanwezigheid_opnemen pagina wordt geladen
+         * @brief Laad een pagina met een overzicht van alle scholen
+         * @post de pagina toont alle scholen
+         */
+        public function toonScholen()
+        {
+            $data['scholen'] = $this->school_model->getAllBySchoolnaam();
+            $data['titel'] = 'Overzicht Scholen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = '';
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'scholen_beheren/overzicht_scholen',
+                'footer' => 'main_footer');
+            $this->template->load('main_master', $partials, $data);
+        }
+        /**
+         * @brief de functie aanwezighedenIngeven toont het formulier om het aantal leerlingen in te geven voor een bepaalde klas
+         * @post de schoolaanwezigheid_opnemen pagina wordt geladen van een bepaalde school
          */
 
         public function aanwezighedenIngeven()
@@ -74,21 +93,10 @@
             $this->template->load('schoolaanwezigheid_opnemen/scholen_master', $partials, $data);
         }
 
-        public function getScholen()
-        {
-            $data['scholen'] = $this->school_model->getAllBySchoolnaam();
-
-            $data['titel'] = 'Overzicht scholen';
-            $data['gebruiker'] = $this->authex->getGebruikerInfo();
-            $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts (T), Sebastiaan Reggers, Steven Van Gansberghe';
-
-            $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'scholen_beheren/overzicht_School',
-                'footer' => 'main_footer');
-
-            $this->template->load('main_master', $partials, $data);
-        }
-
+        /**
+         * @brief de functie klasToevoegenPagina geeft gegevens naar de volgende pagina mee om een klas toe te voegen
+         * @post de card_master pagina wordt geladen
+         */
         public function klasToevoegenPagina()
         {
             $schoolId = $this->session->flashdata('schoolId');
@@ -107,6 +115,10 @@
             $this->template->load('card_master', $partials, $data);
         }
 
+        /**
+         * @brief de functie klasToevoegen geeft een formulier mee om een klas toe te voegen
+         * @post de overzicht_scholen pagina wordt geladen en de klas is toegevoegd
+         */
         public function klasToevoegen()
         {
             $schoolId = $this->session->flashdata('schoolId');
@@ -127,7 +139,7 @@
 
         public function haalAjaxOp_Klassen()
         {
-            $schoolId = $this->session->flashdata('schoolId');
+            $schoolId = $this->input->get('schoolId');
 
             $data['klassen'] = $this->klas_model->getAllByNameWhereSchoolId($schoolId);
 
@@ -153,6 +165,10 @@
             redirect('Scholen/aanwezighedenIngeven');
         }
 
+        /**
+         * @brief functie haalAjaxOp_Klas roept een modaaltje op
+         * @post de pagina geeft een modaaltje weer die bevestiging vraagt voor een verwijdering
+         */
         public function haalAjaxOp_Klas()
         {
             $schoolId = $this->session->flashdata('schoolId');
@@ -165,6 +181,10 @@
             $this->load->view("scholen_beheren/ajax_klas", $data);
         }
 
+        /**
+         * @brief functie klasVerwijderen verwijdert een klas
+         * @post de klas is verwijdert
+         */
         public function klasVerwijderen($id)
         {
             $schoolId = $this->session->flashdata('schoolId');

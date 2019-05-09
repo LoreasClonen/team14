@@ -32,13 +32,13 @@
 <div class="container">
     <?php echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>';
         echo '<div class="col-8 text-right">' . anchor("Zwemlessen/keuze", "Zwemmer toevoegen", "class='btn btn-primary'") . '</div></div><br>';?>
-    <table class="table">
+    <table data-toggle="table" data-search="true">
         <thead>
         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Leeftijd</th>
-            <th scope="col">Niveau</th>
-            <th scope="col">Zwemgroep</th>
+            <th data-sortable="true" scope="col">Naam</th>
+            <th data-sortable="true" scope="col">Leeftijd</th>
+            <th data-sortable="true" scope="col">Niveau</th>
+            <th data-sortable="true" scope="col">Zwemgroep</th>
             <th scope="col" class="text-center">[Acties]</th>
         </tr>
         </thead>
@@ -56,7 +56,7 @@
                         if ($leeftijd == date("Y")) {
                             echo " / ";
                         } else {
-                            echo $leeftijd . " jaar";
+                            echo $leeftijd;
                         }
                     ?>
                 </td>
