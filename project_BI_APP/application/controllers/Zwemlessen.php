@@ -94,6 +94,9 @@
             $klant->email = $this->input->post("email");
             $klant->geboortedatum = $this->input->post("geboortedatum");
             $klant->zwemniveauId = $this->input->post("zwemniveau");
+            $klant->straatnaam = $this->input->post("straatnaam");
+            $klant->huisnummer = $this->input->post("huisnummer");
+            $klant->postcode = $this->input->post('postcode');
             $klant->actief = '1';
 
             $this->form_validation->set_rules('voornaam', 'Voornaam', 'trim|required|min_length[2]|max_length[20]');

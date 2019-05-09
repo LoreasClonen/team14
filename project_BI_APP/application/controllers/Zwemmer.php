@@ -119,4 +119,8 @@
             $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
         }
 
+        public function updateZwemmer(){
+
+        }
+
     }
