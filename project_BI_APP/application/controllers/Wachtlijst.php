@@ -21,8 +21,9 @@ class Wachtlijst extends CI_Controller
         $this->load->helper('form');
     }
     /**
+     * functie getWachtlijsten
      * @brief laad een pagina met het overzicht van de wachtlijsten voor elke groep
-     *
+     * @pre er bestaat een Wachtlijst klasse
      * @post de pagina met de wachtlijsten wordt geladen
      */
     public function getWachtlijsten()
@@ -39,7 +40,12 @@ class Wachtlijst extends CI_Controller
         $this->template->load('inlogger_master', $partials, $data);
     }
 
-
+    /**
+     * functie haalAjaxOp_Wachtlijst
+     * @brief haalt een specifieke lijst van zwemmers op
+     * @pre er bestaat een Wachtlijst klasse
+     * @post toont de wachtlijst op de pagina
+     */
     public function haalAjaxOp_Wachtlijst()
     {
         $zwemgroepId = $this->input->get('zwemgroepId');
@@ -60,6 +66,12 @@ class Wachtlijst extends CI_Controller
         $this->load->view('overzicht_wachtlijst/ajax_wachtlijst', $data);
     }
 
+    /**
+     * functie haalAjaxOp_Plaatsen
+     * @brief haalt de in beslag genomen plaatsen in de groep op
+     * @pre er bestaat een Wachtlijst klasse
+     * @post toont de in beslag genomen plaatsen op de pagina
+     */
     public function haalAjaxOp_Plaatsen() {
         $zwemgroepId = $this->input->get('zwemgroepId');
 
@@ -69,6 +81,12 @@ class Wachtlijst extends CI_Controller
         $this->load->view('overzicht_wachtlijst/ajax_wachtlijstPlaatsen', $data);
     }
 
+    /**
+     * functie updateAjax_Wachtlijst
+     * @brief update de wachtlijst
+     * @pre er bestaat een Wachtlijst klasse
+     * @post update de wachtlijsten op de pagina
+     */
     public function updateAjax_Wachtlijst() {
         $zwemgroepId = $this->input->get('zwemgroepId');
         $klantId = $this->input->get('klantId');
