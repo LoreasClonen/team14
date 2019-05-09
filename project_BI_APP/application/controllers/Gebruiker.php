@@ -67,7 +67,7 @@ class Gebruiker extends CI_Controller
             'inhoud' => 'gebruikers_beheren/overzicht_gebruiker',
             'footer' => 'main_footer');
 
-        $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
     /**
      * @brief herlaad de pagina na de gebruikers activiteit aan te passen
@@ -114,8 +114,10 @@ class Gebruiker extends CI_Controller
         $gebruikerData->straatnaam = $this->input->post('straatnaam');
         $gebruikerData->huisnummer = $this->input->post('huisnummer');
         $gebruikerData->postcode = $this->input->post('postcode');
-        $gebruikerData->id = $this->input->post('id');
-        $gebruikerData->huidigeGebruikersId = $this->input->post('huidigeGebruikersId');
+
+        $gebruiker = new stdClass();
+        $gebruiker->id = $this->input->post('id');
+        $gebruiker->huidigeGebruikersId = $this->input->post('huidigeGebruikersId');
 
         $this->form_validation->set_rules('voornaam', 'Voornaam', 'trim|required|min_length[2]|max_length[20]');
         $this->form_validation->set_rules('achternaam', 'Achternaam', 'trim|required|min_length[2]|max_length[20]');
@@ -149,7 +151,7 @@ class Gebruiker extends CI_Controller
                 $fout = "<div class='alert alert-danger' role='alert'>Uw wachtwoorden komen niet overeen of zijn nog leeg. Probeer het opnieuw.</div>";
                 $this->session->set_flashdata('melding', $fout);
 
-                if (!$gebruikerData->id == $gebruikerData->huidigeGebruikersId) {
+                if (!$gebruiker->id == $gebruiker->huidigeGebruikersId) {
                     redirect('Gebruiker/getGebruiker/' . $id);
                 }
                 else {
@@ -162,7 +164,7 @@ class Gebruiker extends CI_Controller
             $validation = "<div class='alert alert-danger' role='alert'>Je vulde ongeldige gegevens in. Probeer het opnieuw.</div>";
             $this->session->set_flashdata('error', $validation);
 
-            if (!$gebruikerData->id == $gebruikerData->huidigeGebruikersId) {
+            if (!$gebruiker->id == $gebruiker->huidigeGebruikersId) {
                 redirect('Gebruiker/getGebruiker/' . $id);
             }
             else {
