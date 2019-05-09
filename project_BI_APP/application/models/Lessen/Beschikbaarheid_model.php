@@ -133,8 +133,8 @@
 
         /**
          * @brief werkt alle beschikbaarheden bij met een bepaalde klantId en statusId
-         * @pre Er bestaat een Beschikbaarheid_model klasse
-         * @post Er is een inlogger uit de database bijgewerkt
+         * @pre Er bestaat een Beschikbaarheid_model klasse, een Klant_model klasse en een Status_model klasse
+         * @post Er zijn beschikbaarheden uit de database bijgewerkt
          * @param $klantId
          * @param $statusId
          */
@@ -152,6 +152,14 @@
             $this->db->update('beschikbaarheid');
         }
 
+        /**
+         * @brief voegt een nieuwe klant toe
+         * @pre Er bestaat een Beschikbaarheid_model klasse, een Klant_model klasse en een Zwemniveau_model klasse
+         * @post Er is een beschikbaarheid in de database toegevoegd
+         * @param $klantId
+         * @param $gekozengroepIds
+         * @return Boolean
+         */
         function nieuweKlantToevoegen($klantId, $gekozengroepIds){
             $data['statusId'] = 1;
             $data['klantId'] = $klantId;
