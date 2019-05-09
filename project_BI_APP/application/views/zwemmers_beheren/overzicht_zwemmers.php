@@ -30,7 +30,8 @@
 </script>
 
 <div class="container">
-    <p><?php echo anchor("Zwemlessen/keuze", "Zwemmer toevoegen", "class='btn btn-primary'"); ?></p>
+    <?php echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>';
+        echo '<div class="col-8 text-right">' . anchor("Zwemlessen/keuze", "Zwemmer toevoegen", "class='btn btn-primary'") . '</div></div><br>';?>
     <table class="table">
         <thead>
         <tr>
