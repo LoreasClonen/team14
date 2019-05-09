@@ -18,6 +18,7 @@
         $dataPrijs = array('id' => 'prijs',
             'name' => 'prijs',
             'class' => 'form-control',
+            'placeholder' => 'prijs',
             'type' => 'number',
             'required' => 'required',
             'size' => '30',
