@@ -31,8 +31,6 @@ $dataFoto = array(
 );
 echo form_input($dataFoto);
 
-echo smallDivAnchor("Upload/index", "Bladeren", "class='btn btn-secondary'");
-
 echo form_hidden('id', $nieuwsbericht->id);
 echo form_close();
 
