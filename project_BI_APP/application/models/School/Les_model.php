@@ -48,8 +48,9 @@
             return $this->db->insert_id();
         }
 
-        function getAllWhereFactuurIdIsNull($klasId)
+        function getAllWhereFactuurIdIsNullPerKlas($klasId)
         {
+            $this->db->where('klasId', $klasId);
             $this->db->where('factuurId', null);
             $this->db->order_by('datumLes', 'asc');
             $query = $this->db->get('les');
