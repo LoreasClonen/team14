@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
+<?php
+/** \file Facturen master
+* Een master view file voor alles wat met de facturen te maken heeft
+*/
+?>
 
 <head>
     <meta charset="utf-8">

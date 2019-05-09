@@ -20,7 +20,11 @@ class Wachtlijst extends CI_Controller
         $this->load->model('Lessen/Status_model', 'status_model');
         $this->load->helper('form');
     }
-
+    /**
+     * @brief laad een pagina met het overzicht van de wachtlijsten voor elke groep
+     *
+     * @post de pagina met de wachtlijsten wordt geladen
+     */
     public function getWachtlijsten()
     {
         $data['titel'] = 'Wachtlijst';
@@ -34,6 +38,7 @@ class Wachtlijst extends CI_Controller
 
         $this->template->load('overzicht_wachtlijst/wachtlijst_master', $partials, $data);
     }
+
 
     public function haalAjaxOp_Wachtlijst()
     {
