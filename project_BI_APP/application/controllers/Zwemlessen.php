@@ -108,21 +108,23 @@
             $this->form_validation->set_rules('postcode', 'Postcode', 'trim|required|numeric|min_length[4]|max_length[4]');
 
 
+            if($this->form_validation->run()==true) {
+                $data['error'] = Null;
 
-            if ($this->klant_model->addKlant($klant)) {
-                $this->session->set_flashdata('zwemniveauId', $klant->zwemniveauId);
-                $this->session->set_flashdata('klant', $klant);
-                $this->klant_model->addKlant($klant);
-                if($this->form_validation->run()==true) {
-                    $data['error'] = Null;
+
+                if ($this->klant_model->addKlant($klant)) {
+                    $this->session->set_flashdata('zwemniveauId', $klant->zwemniveauId);
+                    $this->session->set_flashdata('klant', $klant);
+                    $this->klant_model->addKlant($klant);
                     redirect('zwemlessen/keuze_zwemlessen');
+                } else {
+                    redirect('Zwemlessen/reeds_toegevoegd_error');
                 }
-                else{
+            }
+            else {
+
                     $this->session->set_flashdata('error', validation_errors());
-                    redirect('zwemlessen/index/'. $form);
-                }
-            } else {
-                redirect('Zwemlessen/reeds_toegevoegd_error');
+                    redirect('zwemlessen/index/' . $form);
             }
         }
 

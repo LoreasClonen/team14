@@ -53,6 +53,17 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        public function toonScholen()
+        {
+            $data['scholen'] = $this->school_model->getAllBySchoolnaam();
+            $data['titel'] = 'Overzicht Scholen';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = '';
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'scholen_beheren/overzicht_scholen',
+                'footer' => 'main_footer');
+            $this->template->load('main_master', $partials, $data);
+        }
         /**
          * @brief de functie aanwezighedenIngeven toont het formulier om het aantal leerlingen in te geven voor een bepaalde klas               van een bepaalde school
          * @post de schoolaanwezigheid_opnemen pagina wordt geladen

@@ -2,6 +2,7 @@
 <div class="container">
         <div class="col-12 mt-3">
             <?php
+                echo $error;
                 $attributes = array('name' => 'inschrijven', 'id' => 'inschrijfformulier', 'role' => 'form');
                 echo form_open('Zwemlessen/addKlant', $attributes);
 
