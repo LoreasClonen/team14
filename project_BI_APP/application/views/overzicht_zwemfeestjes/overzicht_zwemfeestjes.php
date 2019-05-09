@@ -9,21 +9,25 @@
     </thead>
     <tbody>
 
+    <div class="row">
+        <div class="col-6 text-left">
+            <?php echo anchor("Home/index", "Terug", "class='btn btn-secondary'") ?>
+        </div>
+        <div class="col-6 text-right">
+            <?php echo anchor('zwemfeestjes/zwemfeestjeBoeken', 'Zwemfeestje Toevoegen', 'class="btn btn-primary"') ?>
+        </div>
+    </div>
+    <br>
 <?php
-
-echo smallDivAnchor("Home/index", "Terug", "class='btn btn-secondary'") . "<br>";
-
-    foreach ($zwemfeestMomenten as $zwemfeestMoment)
-    {
+    foreach ($zwemfeestMomenten as $zwemfeestMoment) {
         echo "<tr>
                 <td>" . anchor('Zwemfeestjes/getZwemfeestje/' . $zwemfeestMoment->id, zetOmNaarDDMMYYYY($zwemfeestMoment->datum)) . "</td>
                 <td>" . $zwemfeestMoment->zwemfeest->voornaam . ' ' . $zwemfeestMoment->zwemfeest->achternaam . "</td>
-                <td>" . date("H:i", strtotime($zwemfeestMoment->beginuur)) . ' - ' .  date("H:i", strtotime($zwemfeestMoment->einduur)) . "</td>
+                <td>" . date("H:i", strtotime($zwemfeestMoment->beginuur)) . ' - ' . date("H:i", strtotime($zwemfeestMoment->einduur)) . "</td>
                 <td>";
         if ($zwemfeestMoment->zwemfeest->isBevestigd == 1) {
             echo "Ja";
-        }
-        else {
+        } else {
             echo "Nee";
         }
         echo "</td></tr>";
