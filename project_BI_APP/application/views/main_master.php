@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="nl">
-
+<?php
+/*! \mainpage Project zwembad Kempenrust
+*
+* \section Introduction
+ * Het project voor zwembad Kempenrust is een applicatie die het inschrijven van zwwemmers, het bijhouden van schoolaanwezigen en vele andere functies vergemakelijkt.
+ * De website wordt momenteel gehost op de onderstaande link:
+ * http://www.r0672905.sinners.be/team14/
+ * Voor versie controle hebben we gebruikt gemaakt van github op onderstaande link:
+ * https://github.com/LoreasClonen/team14
+ * Deze repository staat op private, maar we zijn van plan om ze public te maken om open sourcing te blijven verdedigen.
+*
+* \subsection Medewerkers
+ * - Loreas Clonen
+ * - Mats Mertens
+ * - Shari Nuyts (documentbeheerder)
+ * - Sebastiaan Reggers (projectleider)
+ * - Steven Van Gansberghe
+*
+*
+*/
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

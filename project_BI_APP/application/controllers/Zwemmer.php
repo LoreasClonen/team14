@@ -93,4 +93,30 @@
             redirect('zwemmer/zwemmersOphalen');
         }
 
+        public function zwemmerBewerken($id)
+        {
+            $zwemmer = $this->klant_model->getById($id);
+            $data['zwemmer'] = $zwemmer;
+
+            $data['titel'] = 'Overzicht zwemmer';
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['teamleden'] = 'Loreas Clonen, Mats Mertens, Shari Nuyts (O), Sebastiaan Reggers, Steven Van Gansberghe (T)';
+
+            $data['zwemniveau'] = $this->zwemniveau_model->getById($zwemmer->zwemniveauId);
+
+            $zwemgroepen = $this->beschikbaarheid_model->getByKlantId($id);
+            $groepsnamen = array();
+
+            foreach ($zwemgroepen as $zwemgroep) {
+                array_push($groepsnamen, $this->lesgroep_model->get($zwemgroep->lesgroepId));
+            }
+            $data['zwemgroep'] = $groepsnamen;
+
+            $partials = array('hoofding' => 'main_header',
+                'inhoud' => 'zwemmers_beheren/bewerken_zwemmer',
+                'footer' => 'main_footer');
+
+            $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
+        }
+
     }

@@ -61,7 +61,7 @@
          * @param form
          * @post de pagina met het gekozen form wordt geladen
          */
-        public function Index($form)
+        public function index($form)
         {
             $data["titel"] = "Zwemlessen";
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -103,7 +103,7 @@
             $this->form_validation->set_rules('straatnaam', 'Straatnaam', 'trim|required');
             $this->form_validation->set_rules('huisnummer', 'Huisnummer', 'trim|required|numeric|min_length[1]|max_length[4]');
             $this->form_validation->set_rules('postcode', 'Postcode', 'trim|required|numeric|min_length[4]|max_length[4]');
-            $this->form_validation->set_rules('bus', 'Bus', 'trim|required|alpha|max_length[1]');
+
 
 
             if ($this->klant_model->addKlant($klant)) {
@@ -172,7 +172,7 @@
 
             $gekozengroepenIds = $this->input->post("gekozenGroepen");
             //update de beschikbaarheidstabel
-
+            $data['klantId'] = $klantId;
             $this->beschikbaarheid_model->nieuweKlantToevoegen($klantId, $gekozengroepenIds);
             $data['titel'] = 'Mailbox';
             $data['teamleden'] = '';
@@ -206,9 +206,11 @@
 
         }
 
-        public function bevestigAnnuleerZwemles()
+        public function bevestigAnnuleerZwemles($klantId = -1)
         {
-            $klantId = $this->session->flashdata('klantId');
+            if($klantId == -1) {
+                $klantId = $this->session->flashdata('klantId');
+            }
             $data["titel"] = "Inschrijving annuleren";
             $data["klantId"] = $klantId;
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
@@ -216,14 +218,13 @@
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'zwemlessen/bevestig_annuleer_zwemles',
                 'footer' => 'main_footer');
-            $this->session->set_flashdata('klantId', $klantId);
             $this->template->load('main_master', $partials, $data);
         }
 
-        public function annuleerZwemles()
+        public function annuleerZwemles($klantId)
         {
-            $klantId = $this->session->flashdata('klantId');
-            $this->beschikbaarheid_model->delete();
+
+            $this->beschikbaarheid_model->delete($klantId);
             $this->klant_model->updateStatus($klantId, 0);
 
             redirect('zwemlessen/bevestigingAnnuleerZwemles/' . $klantId);

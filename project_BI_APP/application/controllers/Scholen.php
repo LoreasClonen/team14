@@ -35,20 +35,6 @@
             $this->load->library('session');
         }
 
-        public function toonScholen()
-        {
-            $data['scholen'] = $this->school_model->getAllBySchoolnaam();
-
-            $data['titel'] = 'Overzicht Scholen';
-            $data['gebruiker'] = $this->authex->getGebruikerInfo();
-            $data['teamleden'] = '';
-
-            $partials = array('hoofding' => 'main_header',
-                'inhoud' => 'scholen_beheren/overzicht_scholen',
-                'footer' => 'main_footer');
-
-            $this->template->load('main_master', $partials, $data);
-        }
 
         public function toonSchool($id)
         {
@@ -66,6 +52,11 @@
 
             $this->template->load('main_master', $partials, $data);
         }
+
+        /**
+         * @brief de functie aanwezighedenIngeven toont het formulier om het aantal leerlingen in te geven voor een bepaalde klas               van een bepaalde school
+         * @post de schoolaanwezigheid_opnemen pagina wordt geladen
+         */
 
         public function aanwezighedenIngeven()
         {
@@ -129,6 +120,11 @@
             redirect('scholen/toonSchool/' . $schoolId);
         }
 
+        /**
+         * @brief functie haalAjaxOp_Klassen zorgt ervoor dat, na het kiezen van een school, de velden Aantal leerlingen, datum en              klassen van die bepaalde school geladen en ingevuld kunnen worden
+         * @post de velden Aantal leerlingen, datum en klassen worden geladen en kunnen ingevuld worden
+         */
+
         public function haalAjaxOp_Klassen()
         {
             $schoolId = $this->session->flashdata('schoolId');
@@ -138,6 +134,11 @@
             $this->load->view('schoolaanwezigheid_opnemen/ajax_klassenLijst', $data);
 
         }
+
+        /**
+         * @brief de functie aanwezighedenBevestigen gaat de ingevulde data opslaan en doorsturen naar de database
+         * @post de pagina wordt herladen en men kan opnieuw aanwezigheden ingeven voor een bepaalde school
+         */
 
         public function aanwezighedenBevestigen()
         {

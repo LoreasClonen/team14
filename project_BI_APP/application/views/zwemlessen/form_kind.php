@@ -40,12 +40,12 @@
 
                 echo form_label('geboortedatum', 'geboortedatum');
                     $dataGeboortedatum = array('id' => 'geboortedatum',
-                    'name' => 'geboortedatum',
-                    'class' => 'form-control',
-                    'placeholder' => 'dag/maand/jaar',
-                    'required' => 'required',
-                    'size' => '30',
-                    'type' => 'date');
+                        'name' => 'geboortedatum',
+                        'class' => 'form-control',
+                        'placeholder' => 'dag/maand/jaar',
+                        'required' => 'required',
+                        'size' => '30',
+                        'type' => 'date');
                 echo form_input($dataGeboortedatum);
             //in 1 rij zetten
             ?> <div class="row">

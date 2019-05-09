@@ -11,6 +11,7 @@
                 <p>Beste</p>
                 <p>Bedankt voor de inschrijving!</p>
                 <p>Dit is enkel een bevestigingsmail</p>
+                <p>Met onderstaande link kan je je inschrijving annuleren. <?php echo smallDivAnchor("zwemlessen/bevestigannuleerzwemles/" . $klantId, 'Klik hier om te annuleren', "class='btn btn-primary'") ?></p>
             </div>
             <div class="modal-footer">
                 <a class="btn btn-secondary" href=<?php echo site_url()?>> Home!</a>
