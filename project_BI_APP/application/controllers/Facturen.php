@@ -50,7 +50,7 @@ class Facturen extends CI_Controller
             'inhoud' => 'facturen_beheren/overzicht_scholen',
             'footer' => 'main_footer');
 
-        $this->template->load('facturen_beheren/facturen_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
     /**
      * @brief Laad een pagina met een bepaalde school en zijn overzicht
@@ -71,7 +71,7 @@ class Facturen extends CI_Controller
             'inhoud' => 'facturen_beheren/overzicht_facturen',
             'footer' => 'main_footer');
 
-        $this->template->load('facturen_beheren/facturen_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
     /**
      * @brief herlaad de pagina na het updaten van de datum
@@ -117,7 +117,7 @@ class Facturen extends CI_Controller
             'inhoud' => 'facturen_beheren/overzicht_lessen_ongefactureerd',
             'footer' => 'main_footer');
 
-        $this->template->load('facturen_beheren/facturen_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
     /**
      * @brief Laad een pagina met de facturen van een school
@@ -151,6 +151,6 @@ class Facturen extends CI_Controller
             'inhoud' => 'facturen_beheren/bevestig_factuur',
             'footer' => 'main_footer');
 
-        $this->template->load('facturen_beheren/facturen_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
 }

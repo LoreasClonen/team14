@@ -54,7 +54,7 @@
                 'inhoud' => 'scholen_beheren/overzicht_klassen',
                 'footer' => 'main_footer');
 
-            $this->template->load('main_master', $partials, $data);
+            $this->template->load('admin_master', $partials, $data);
         }
 
         /**
@@ -70,7 +70,7 @@
             $partials = array('hoofding' => 'main_header',
                 'inhoud' => 'scholen_beheren/overzicht_scholen',
                 'footer' => 'main_footer');
-            $this->template->load('main_master', $partials, $data);
+            $this->template->load('admin_master', $partials, $data);
         }
         /**
          * @brief de functie aanwezighedenIngeven toont het formulier om het aantal leerlingen in te geven voor een bepaalde klas
@@ -90,7 +90,7 @@
                 'inhoud' => 'schoolaanwezigheid_opnemen/schoolaanwezigheid_opnemen',
                 'footer' => 'main_footer');
 
-            $this->template->load('schoolaanwezigheid_opnemen/scholen_master', $partials, $data);
+            $this->template->load('Inlogger_master', $partials, $data);
         }
 
         /**

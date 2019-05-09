@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="nl">
 
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Kempenrust - Wachtlijst</title>
+    <title>Kempenrust</title>
 
     <!-- Bootstrap CSS -->
     <?php echo pasStylesheetAan("bootstrap.css"); ?>
+    <?php echo pasStylesheetAan("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css"); ?>
 
     <!-- Custom CSS -->
     <?php echo pasStylesheetAan("buttons.css"); ?>
+
     <?php echo pasStylesheetAan("content.css"); ?>
+    <?php echo pasStylesheetAan("overlay.css"); ?>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
 
     <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
     <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
-    <?php echo haalJavascriptOp("menu_toggle.js") ?>
+    <?php echo haalJavascriptOp("menu_toggle.js"); ?>
+    <?php echo haalJavascriptOp("overlay.js"); ?>
     <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
 
     <!--        font awesome (CDN) -->
@@ -63,7 +69,16 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <?php echo $inhoud; ?>
+                        <?php if ($gebruiker == null) {
+                            echo "<h1> U hebt geen toegang tot deze pagina! Meld u nu aan.</h1>";
+
+                            echo smallDivAnchor("Inloggen/meldAan", "Inloggen", "class='btn btn-primary'");
+
+                        }
+                        else{
+
+                        echo $inhoud;
+                        } ?>
                     </div>
                 </div>
             </div>
@@ -83,7 +98,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 </body>

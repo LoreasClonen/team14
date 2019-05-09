@@ -45,7 +45,7 @@ class Nieuwsberichten extends CI_Controller
             'inhoud' => 'nieuwsberichten_beheren/overzicht_nieuwsberichten',
             'footer' => 'main_footer');
 
-        $this->template->load('main_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
     /**
      * @brief Haalt een bepaald nieuwsbericht op en toont dit in een overzicht
@@ -65,7 +65,7 @@ class Nieuwsberichten extends CI_Controller
             'inhoud' => 'nieuwsberichten_beheren/overzicht_nieuwsbericht',
             'footer' => 'main_footer');
 
-        $this->template->load('main_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
     /**
      * @brief Verwijdert het gekozen nieuwsbericht en herleid naar de functie nieuwsberichtenOphalen

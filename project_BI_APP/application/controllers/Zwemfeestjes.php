@@ -51,7 +51,7 @@
                 'inhoud' => 'overzicht_zwemfeestjes/overzicht_zwemfeestjes',
                 'footer' => 'main_footer');
 
-            $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+            $this->template->load('admin_master', $partials, $data);
         }
 
         /**
@@ -74,7 +74,7 @@
                 'inhoud' => 'overzicht_zwemfeestjes/overzicht_zwemfeestje',
                 'footer' => 'main_footer');
 
-            $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+            $this->template->load('admin_master', $partials, $data);
         }
 
         /**
@@ -96,7 +96,7 @@
                 'inhoud' => 'overzicht_zwemfeestjes/zwemfeestje_annuleren',
                 'footer' => 'main_footer');
 
-            $this->template->load('overzicht_zwemfeestjes/zwemfeestjes_master', $partials, $data);
+            $this->template->load('main_master', $partials, $data);
         }
 
         /**

@@ -61,7 +61,7 @@
                 'inhoud' => 'zwemmers_beheren/overzicht_zwemmer',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
+            $this->template->load('inlogger_master', $partials, $data);
         }
 
         /**
@@ -81,7 +81,7 @@
                 'inhoud' => 'zwemmers_beheren/overzicht_zwemmers',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
+            $this->template->load('inlogger_master', $partials, $data);
         }
 
         public function haalAjaxOp_ZwemmerVerwijderen()
@@ -123,7 +123,7 @@
                 'inhoud' => 'zwemmers_beheren/bewerken_zwemmer',
                 'footer' => 'main_footer');
 
-            $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
+            $this->template->load('Inlogger_master', $partials, $data);
         }
 
 
