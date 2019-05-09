@@ -87,7 +87,12 @@
             $this->db->delete('gerecht');
         }
 
-
+        /**
+         * @brief voegt een maaltijd toe
+         * @pre Er bestaat een gerecht_model klasse
+         * @post Er is een maaltijd aan de database toegevoegd
+         * @param $gerecht
+         */
         function addGerecht($gerecht)
         {
             $this->db->insert('gerecht', $gerecht);

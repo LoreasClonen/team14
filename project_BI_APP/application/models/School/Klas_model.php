@@ -65,6 +65,12 @@
             return $query->result();
         }
 
+        /**
+         * @brief voegt een klas toe
+         * @pre Er bestaat een Klas_model klasse
+         * @post Er is een klas toegevoegd aan het Klas_model
+         * @param $klas
+         */
         function addKlas($klas)
         {
             $this->db->insert('klas', $klas);
@@ -102,6 +108,13 @@
             $this->db->delete('klas');
         }
 
+        /**
+         * @brief geeft alle klassen terug met alle bijhorende lessen wanneer factuurId NULL is
+         * @pre Er bestaat een Klas_model klasse, een Les_model klasse en een Factuur_model klasse
+         * @post Er is een array met 0 of meerdere klassen teruggegeven met bijhorende lessen
+         * @param $schoolId
+         * @return array
+         */
         function getAllWithLessenWhereFactuurIdIsNull($schoolId)
         {
             $this->db->where('schoolId', $schoolId);

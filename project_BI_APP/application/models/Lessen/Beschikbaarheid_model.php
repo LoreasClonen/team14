@@ -50,6 +50,7 @@
          * @brief geeft alle beschikbaarheden waarvoor lesgroepId = $id met bijhorende klant en status terug in de beschikbaarheid tabel
          * @pre Er bestaat een Beschikbaarheid model klasse, een Klant model klasse, een Status model klasse en een Status model klasse. Er bestaat een beschikbaarheid met overeenkomstige lesgroepId, statusId en een klant met overeenkomstige id
          * @post Er is een array met 1 of meerdere beschikbaarheden teruggegeven
+         * @param $id
          * @return array
          */
         function getByLesgroepIdStatusIdWithKlant($id)
@@ -65,6 +66,14 @@
             return $beschikbaarheden;
         }
 
+        /**
+         * @brief geeft alle beschikbaarheden waarvoor lesgroepId = $lesgroepId en statusId = $statusId met bijhorende klant terug in de beschikbaarheid tabel
+         * @pre Er bestaat een Beschikbaarheid model klasse, een Klant model klasse, een Lesgroep model klasse en een Status model klasse. Er bestaat een beschikbaarheid met overeenkomstige lesgroepId, statusId en een klant met overeenkomstige id
+         * @post Er is een array met 1 of meerdere beschikbaarheden teruggegeven
+         * @param $statusId
+         * @param $lesgroepId
+         * @return array
+         */
         function getByStatusIdLesgroepIdWithKlant($statusId, $lesgroepId) {
             $this->db->where('lesgroepId', $lesgroepId);
             $this->db->where('statusId', $statusId);
@@ -94,12 +103,26 @@
             return $query->result();
         }
 
+        /**
+         * @brief verwijdert een bepaalde beschikbaarheid
+         * @pre Er bestaat een Beschikbaarheid_model klasse
+         * @post Er is een beschikbaarheid uit de database verwijdert
+         * @param $klantId
+         */
         function delete($klantId)
         {
             $this->db->where('klantId', $klantId);
             $this->db->delete('beschikbaarheid');
         }
 
+        /**
+         * @brief werkt een bepaalde beschikbaarheid bij
+         * @pre Er bestaat een Beschikbaarheid_model klasse, een Zwemgroep_model klasse, een Klant_model klasse en een Status_model klasse
+         * @post Er is een inlogger uit de database bijgewerkt
+         * @param $zwemgroepId
+         * @param $klantId
+         * @param $statusId
+         */
         function updateStatusId($zwemgroepId, $klantId, $statusId) {
             $this->db->where('lesgroepId', $zwemgroepId);
             $this->db->where('klantId', $klantId);
@@ -108,6 +131,13 @@
             $this->db->update('beschikbaarheid');
         }
 
+        /**
+         * @brief werkt alle beschikbaarheden bij met een bepaalde klantId en statusId
+         * @pre Er bestaat een Beschikbaarheid_model klasse
+         * @post Er is een inlogger uit de database bijgewerkt
+         * @param $klantId
+         * @param $statusId
+         */
         function updateAllStatusId($klantId, $statusId) {
             $this->db->where('klantId', $klantId);
 
