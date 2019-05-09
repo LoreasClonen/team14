@@ -29,8 +29,9 @@ foreach ($klassen as $klas) {?>
                         <?php
                         $dataLes = array(
                             'id' => 'les' . $les->id,
-                            'name' => 'les' . $les->id,
-                            'value' => 'les' . $les->id
+                            'name' => 'lessen[]' . $les->id,
+                            'data-lesId' => $les->id,
+                            'value' => $les->id
                         );
                         echo form_checkbox($dataLes);
                         ?>

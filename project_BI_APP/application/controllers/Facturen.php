@@ -104,10 +104,24 @@ class Facturen extends CI_Controller
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
-        $data['klassen'] = $this->klas_model->getAllWithLessenWhereFactuurIdIsNull($schoolId);
+        $lesIds = $this->input->post('lessen[]');
+
+        $lessen = array();
+        foreach ($lesIds as $lesId)
+        {
+            array_push($lessen, $this->les_model->getLes($lesId));
+        }
+
+        $totaalprijs = 0;
+        foreach ($lessen as $les) {
+            $totaalprijs += $les->prijsPerKind * $les->leerlingenAantal;
+        }
+
+        $data['totaalprijs'] = $totaalprijs;
+        $data['lessen'] = $lessen;
 
         $partials = array('hoofding' => 'main_header',
-            'inhoud' => 'facturen_beheren/overzicht_lessen_ongefactureerd',
+            'inhoud' => 'facturen_beheren/bevestig_factuur',
             'footer' => 'main_footer');
 
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);

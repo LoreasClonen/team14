@@ -112,7 +112,12 @@ class Gebruiker extends CI_Controller
                 $fout = "<div class='alert alert-danger' role='alert'>Uw wachtwoorden komen niet overeen of zijn nog leeg. Probeer het opnieuw.</div>";
                 $this->session->set_flashdata('melding', $fout);
 
-                redirect('Gebruiker/getGebruiker/' . $id);
+                if ($gebruikerData->isAdmin = '0') {
+                    redirect('Gebruiker/getGebruiker/' . $id);
+                }
+                else {
+                    redirect('Gebruiker/toonMijnProfiel');
+                }
         }
 
 
@@ -136,6 +141,7 @@ class Gebruiker extends CI_Controller
         $data['titel'] = 'Gebruiker';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
+        $data['melding'] = $this->session->flashdata('melding');
 
         $inlogger = $this->authex->getGebruikerInfo();
         $inloggerId = $inlogger->id;

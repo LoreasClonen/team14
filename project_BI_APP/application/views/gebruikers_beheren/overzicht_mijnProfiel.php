@@ -3,10 +3,9 @@
 $attributes = array('name' => 'overzicht_inlogger', 'id' => 'gebruikerAanpassenFormulier', 'role' => 'form');
 echo form_open('Gebruiker/updateGebruiker', $attributes);
 
-echo '<div class="row">';
-echo '<div class="col-12 text-right">' . form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateGebruiker")) . '</div></div><hr>';
+echo '<div class="row"><div class="col-12 text-right">' . form_submit(array("value" => "Opslaan", "class" => "btn btn-primary", "id" => "updateGebruiker")) . '</div></div><hr>';
 
-
+echo $melding;
 
 echo form_label('Naam', 'naam');
 echo "\n";
@@ -47,17 +46,25 @@ $dataEmail = array(
 );
 echo form_input($dataEmail);
 
-echo form_label('Wachtwoord:', 'wachtwoord');
-$dataWachtwoord = array(
-    'id' => 'wachtwoord',
-    'name' => 'wachtwoord',
+echo form_label('Wachtwoord:', 'poging1');
+$dataPoging1 = array(
+    'id' => 'poging1',
+    'name' => 'poging1',
     'class' => 'form-control',
     'type' => 'password',
-    'value' => $inlogger->wachtwoord,
-    'required' => 'required',
     'size' => '50'
 );
-echo form_input($dataWachtwoord);
+echo form_password($dataPoging1);
+
+echo form_label('Herhaling wachtwoord:', 'poging2');
+$dataPoging2 = array(
+    'id' => 'poging2',
+    'name' => 'poging2',
+    'class' => 'form-control',
+    'type' => 'password',
+    'size' => '50'
+);
+echo form_password($dataPoging2);
 
 echo form_label('Tel:', 'telefoonnr');
 $dataTel = array(
