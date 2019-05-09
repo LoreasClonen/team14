@@ -91,7 +91,7 @@
             $this->db->where('voornaam', $voornaam);
             $this->db->where('achternaam', $achternaam);
             if ($actief != 0) {
-                $this->db->where('isActief', 1);
+                $this->db->where('actief', 1);
             }
             $query = $this->db->get('klant');
             if ($query->num_rows() > 0) {
@@ -118,8 +118,11 @@
             }
         }
 
-        function updateKlant($klant)
+        function updateKlant($klant, $klantId = -1)
         {
+            if($klantId != -1){
+                $klant->id = $klantId;
+            }
             if ($this->klantbestaatAl($klant->email, $klant->voornaam, $klant->achternaam, 1)) {
                 $this->db->where('id', $klant->id);
                 $this->db->update('klant', $klant);

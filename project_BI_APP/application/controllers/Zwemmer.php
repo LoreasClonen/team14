@@ -29,7 +29,7 @@
             $this->load->model('Lessen/Beschikbaarheid_model', 'beschikbaarheid_model');
             $this->load->model('Lessen/Zwemniveau_model', 'zwemniveau_model');
             $this->load->helper('form');
-            $this->load->library()
+            $this->load->library('form_validation');
         }
 
         public function zwemmerOphalen($id)
@@ -128,7 +128,6 @@
             $klant->achternaam = $this->input->post("achternaam");
             $klant->email = $this->input->post("email");
             $klant->geboortedatum = $this->input->post("geboortedatum");
-            $klant->zwemniveauId = $this->input->post("zwemniveau");
             $klant->straatnaam = $this->input->post("straatnaam");
             $klant->huisnummer = $this->input->post("huisnummer");
             $klant->postcode = $this->input->post('postcode');
@@ -146,7 +145,7 @@
             if($this->form_validation->run()==true) {
                 $data['error'] = Null;
                 $this->klant_model->updateKlant($klant, $klantId);
-                redirect('zwemmers/zwemmersOphalen');
+                redirect('Zwemmer/zwemmersOphalen/' . $klantId);
             }
             else{
                 $this->session->set_flashdata('error', validation_errors());
