@@ -25,6 +25,7 @@
             $this->load->helper('form');
             $this->load->library('session');
         }
+
         /**
          * @brief Laad de hoofdpagina na het aanmelden
          *
@@ -62,6 +63,7 @@
                 redirect('Inloggen/toonFout');
             }
         }
+
         /**
          * @brief Toont een foutpagina
          *
@@ -80,6 +82,7 @@
 
             $this->template->load('main_master', $partials, $data);
         }
+
         /**
          * @brief De huidige aangemelde persoon wordt afgemeld
          *
@@ -90,6 +93,7 @@
             $this->authex->meldAf();
             redirect('Home/index');
         }
+
         /**
          * @brief Er wordt de 'wachtwoord_vergeten' pagina geladen
          *
@@ -109,6 +113,10 @@
             $this->template->load('main_master', $partials, $data);
         }
 
+        /**
+         * @brief Er wordt een E-mail weergeven die een link geeft naar de plaats om een nieuw wachtwoord in te stellen.
+         * @post De email_wachtwoord_vergeten pagina wordt geladen.
+         */
         public function mailWachtwoordVergeten()
         {
             $data['titel'] = 'Inbox';
@@ -128,6 +136,11 @@
             }
         }
 
+        /**
+         * @brief Deze functie bekijkt of een inlogger al bestaat via zijn emailadres
+         * @param $email
+         * @post Er wordt een true of false waarde teruggegeven
+         */
         function inloggerBestaat($email)
         {
             $this->Inlogger_model->emailBestaat($email);
