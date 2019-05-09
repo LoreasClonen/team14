@@ -18,6 +18,14 @@
         } else {
             $leeftijd = $leeftijd . " jaar";
         }
+        $datazwemmer['leeftijd'] = $leeftijd;
+        $datazwemmer['naam'] = $zwemmer->voornaam . " " . $zwemmer->achternaam;
+        $datazwemmer['niveau'] = $zwemniveau->niveauNaam;
+
+        foreach($zwemgroep as $zwemgroepNaam) {
+            $datazwemmer['groep'] .= $zwemgroepNaam->groepsnaam . ' ';
+        }
+
         ?>
         <tr>
 <!--            naam -->
@@ -35,9 +43,7 @@
 <!--            zwemgroep-->
             <td>
                 <?php
-                foreach($zwemgroep as $zwemgroepNaam) {
-                    echo $zwemgroepNaam->groepsnaam . ' ';
-                }
+
 
 
                 ?>
