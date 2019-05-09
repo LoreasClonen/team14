@@ -4,11 +4,14 @@ echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "cla
 echo '<div class="col-8 text-right">' . anchor('Nieuwsberichten/insertNieuwsbericht', 'Nieuwsbericht toevoegen', 'class = "btn btn-primary"') . '</div></div><br>';
 
 
-echo '<table class="table">
+echo '<table data-toggle="table">
+                <thead>
                 <tr>
-                    <th scope="col">Nieuwsbericht</th>
-                    <th scope="col">Wijzigen</th> 
-                </tr>';
+                    <th data-sortable="true" scope="col">Nieuwsbericht</th>
+                    <th data-sortable="true" scope="col">Wijzigen</th> 
+                </tr>
+                </thead>
+                <tbody>';
 
 foreach ($nieuwsberichten as $nieuwsbericht) {
     echo '<tr>
@@ -17,6 +20,6 @@ foreach ($nieuwsberichten as $nieuwsbericht) {
                    </tr>';
 }
 
-echo '</table>';
+echo '</tbody></table>';
 
 ?>

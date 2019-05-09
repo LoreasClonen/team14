@@ -37,11 +37,13 @@
 
     <?php echo pasStylesheetAan("content.css"); ?>
     <?php echo pasStylesheetAan("overlay.css"); ?>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
 
     <?php echo haalJavascriptOp("jquery-3.3.1.js"); ?>
     <?php echo haalJavascriptOp("bootstrap.bundle.js"); ?>
     <?php echo haalJavascriptOp("menu_toggle.js"); ?>
     <?php echo haalJavascriptOp("overlay.js"); ?>
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
 
 
     <!--        font awesome (CDN) -->

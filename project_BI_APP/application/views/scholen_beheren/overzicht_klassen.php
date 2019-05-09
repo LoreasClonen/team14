@@ -34,11 +34,11 @@
         echo '<div class="row"><div class="col-4">' . anchor("Scholen/toonScholen", "Terug", "class='btn btn-secondary'") . '</div>';
         echo '<div class="col-8 text-right">' . anchor("Scholen/klasToevoegenPagina", "Klas toevoegen", "class='btn btn-primary'") . '</div></div><br>';
         ?>
-    <table class="table">
+    <table data-toggle="table">
         <thead>
         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Gesubsidieerd</th>
+            <th data-sortable="true" scope="col">Naam</th>
+            <th data-sortable="true" scope="col">Gesubsidieerd</th>
             <th scope="col" class="text-center">Verwijderen</th>
         </tr>
         </thead>
