@@ -24,7 +24,6 @@
             $this->load->model('Lessen/Inlogger_model', 'Inlogger_model');
             $this->load->helper('form');
             $this->load->library('session');
-            $this->load->library('encryption');
         }
 
         public function meldAan()
@@ -136,9 +135,9 @@
             $this->session->set_flashdata('id', $id);
 
             if ($poging1 == $poging2) {
-                $wachtwoord = $this->encryption->encrypt($poging1);
+                $wachtwoord = password_hash($poging1, PASSWORD_DEFAULT);
 
-                $gebruikerData = array('wachtwoord' => $poging1);
+                $gebruikerData = array('wachtwoord' => $wachtwoord);
                 $this->Inlogger_model->update($id, $gebruikerData);
 
                 $gelukt = "<div class='alert alert-success' role='alert'>Uw wachtwoord is opnieuw ingesteld!</div>";
