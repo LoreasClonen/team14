@@ -28,7 +28,11 @@ class Nieuwsberichten extends CI_Controller
         $this->load->helper('form');
         $this->load->helper('notation');
     }
-
+    /**
+     * @brief Haalt alle nieuwsberichten  op en toont dit in een overzicht
+     *
+     * @post de pagina met het overzicht van de nieuwsberichten wordt geladen
+     */
     public function nieuwsberichtenOphalen()
     {
         $data['nieuwsberichten'] = $this->nieuwsbericht_model->getAllById();
@@ -43,6 +47,11 @@ class Nieuwsberichten extends CI_Controller
 
         $this->template->load('main_master', $partials, $data);
     }
+    /**
+     * @brief Haalt een bepaald nieuwsbericht op en toont dit in een overzicht
+     * @param id
+     * @post de pagina met het bepaald nieuwsbericht wordt geladen
+     */
 
     public function nieuwsberichtOphalen($id)
     {
@@ -58,14 +67,22 @@ class Nieuwsberichten extends CI_Controller
 
         $this->template->load('main_master', $partials, $data);
     }
-
+    /**
+     * @brief Verwijdert het gekozen nieuwsbericht en herleid naar de functie nieuwsberichtenOphalen
+     * @param id
+     * @post Het nieuwsbericht is verwijdert
+     */
     public function deleteNieuwsbericht($id)
     {
         $this->nieuwsbericht_model->delete($id);
 
         redirect('Nieuwsberichten/nieuwsberichtenOphalen');
     }
-
+    /**
+     * @brief Update de nieuwsberichten en laad een overzicht van alle nieuwsberichten
+     *
+     * @post de pagina met het overzicht van de nieuwsberichten wordt geladen
+     */
     public function updateNieuwsbericht()
     {
         $id = $this->input->post('id');
@@ -79,7 +96,11 @@ class Nieuwsberichten extends CI_Controller
 
         redirect('Nieuwsberichten/nieuwsberichtenOphalen');
     }
-
+    /**
+     * @brief Laad het overzicht van de nieuwsberichten na het toevoegen van een nieuwsbericht
+     *
+     * @post de pagina met het overzicht van nieuwsberichten wordt geladen
+     */
     public function insertNieuwsbericht()
     {
         $nieuwsberichtData = new stdClass();
