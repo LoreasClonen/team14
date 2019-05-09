@@ -9,6 +9,8 @@
 $attributes = array('name' => 'overzicht_lessen_ongefactureerd', 'id' => 'factuurOpstellenFormulier', 'role' => 'form');
 echo form_open('Facturen/toonFactuurOverzicht', $attributes);
 
+echo smallDivAnchor("Facturen/getScholen", "Terug", "class='btn btn-secondary'") . "<br>";
+
 foreach ($klassen as $klas) {?>
     <h4><?php echo $klas->klasnaam;?></h4>
     <div class="klas form-group" data-klasId="<?php echo $klas->id;?>">

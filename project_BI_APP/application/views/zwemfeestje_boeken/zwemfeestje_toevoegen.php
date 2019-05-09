@@ -9,6 +9,7 @@
     ?>
 
     <div class="row">
+        <div class="col-sm-12"><?php echo $error ?></div>
         <div class="col-sm-5">
             <?php
                 echo form_label('Voornaam', 'voornaam');
