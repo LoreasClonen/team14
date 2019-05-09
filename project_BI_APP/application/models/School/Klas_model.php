@@ -101,5 +101,19 @@
             $this->db->where('id', $id);
             $this->db->delete('klas');
         }
+
+        function getAllWithLessenWhereFactuurIdIsNull($schoolId)
+        {
+            $this->db->where('schoolId', $schoolId);
+            $query = $this->db->get('klas');
+            $klassen = $query->result();
+
+            $this->load->model('les_model');
+            foreach ($klassen as $klas) {
+                $klas->lessen = $this->les_model->getAllWhereFactuurIdIsNullPerKlas($klas->id);
+            }
+
+            return $klassen;
+        }
     }
 

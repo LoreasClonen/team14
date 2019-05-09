@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Authex $authex
  * @property School_model $school_model
  * @property Les_model $les_model
+ * @property Klas_model $klas_model
  * @property Factuur_model factuur_model
  */
 class Facturen extends CI_Controller
@@ -28,6 +29,7 @@ class Facturen extends CI_Controller
         $this->load->model('School/School_model', 'school_model');
         $this->load->model('School/Factuur_model', 'factuur_model');
         $this->load->model('School/Les_model', 'les_model');
+        $this->load->model('School/Klas_model', 'klas_model');
         $this->load->helper('notation');
         $this->load->helper('form');
     }
@@ -81,13 +83,13 @@ class Facturen extends CI_Controller
         redirect('Facturen/getSchool/' . $schoolId);
     }
 
-    public function haalOngefactureerdeLessenOp($klasId)
+    public function haalOngefactureerdeLessenOp($schoolId)
     {
         $data['titel'] = 'Lessen';
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
-        $data['lessen'] = $this->les_model->getAllWhereFactuurIdIsNull($klasId);
+        $data['klassen'] = $this->klas_model->getAllWithLessenWhereFactuurIdIsNull($schoolId);
 
         $partials = array('hoofding' => 'main_header',
             'inhoud' => 'facturen_beheren/overzicht_lessen_ongefactureerd',
@@ -96,4 +98,18 @@ class Facturen extends CI_Controller
         $this->template->load('facturen_beheren/facturen_master', $partials, $data);
     }
 
+    public function toonFactuurOverzicht()
+    {
+        $data['titel'] = 'Factuur Overzicht';
+        $data['teamleden'] = 'Loreas Clonen, Mats Mertens (T), Shari Nuyts, Sebastiaan Reggers (O), Steven Van Gansberghe';
+        $data['gebruiker'] = $this->authex->getGebruikerInfo();
+
+        $data['klassen'] = $this->klas_model->getAllWithLessenWhereFactuurIdIsNull($schoolId);
+
+        $partials = array('hoofding' => 'main_header',
+            'inhoud' => 'facturen_beheren/overzicht_lessen_ongefactureerd',
+            'footer' => 'main_footer');
+
+        $this->template->load('facturen_beheren/facturen_master', $partials, $data);
+    }
 }

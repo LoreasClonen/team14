@@ -3,7 +3,7 @@
 echo '<h3 class="col-12 mb-2 text-center">' . $school->schoolnaam . '</h3><br>';
 
 echo '<div class="row"><div class="col-4">' . anchor("Facturen/getScholen", "Terug", "class='btn btn-secondary'") . '</div>';
-echo '<div class="col-8 text-right">' . anchor("Wachtlijsten/index",'Factuur toevoegen', 'class="btn btn-primary"') . '</div></div><br>';
+echo '<div class="col-8 text-right">' . anchor("Facturen/haalOngefactureerdeLessenOp/" . $school->id,'Factuur toevoegen', 'class="btn btn-primary"') . '</div></div><br>';
 
 
 ?>

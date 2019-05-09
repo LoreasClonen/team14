@@ -29,6 +29,8 @@ class Gebruiker extends CI_Controller
         $this->load->model('Lessen/Lesgroep_model', 'lesgroep_model');
         $this->load->helper('form');
         $this->load->helper('notation');
+        $this->load->library('session');
+
     }
 
     public function getGebruikers()
@@ -51,6 +53,7 @@ class Gebruiker extends CI_Controller
         $data['titel'] = 'Gebruiker';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['teamleden'] = 'Loreas Clonen, Mats Mertens (O), Shari Nuyts, Sebastiaan Reggers (T), Steven Van Gansberghe';
+        $data['melding'] = $this->session->flashdata('melding');
 
         $data['inlogger'] = $this->inlogger_model->getById($id);
 
@@ -84,16 +87,35 @@ class Gebruiker extends CI_Controller
         $gebruikerData->voornaam = $this->input->post('voornaam');
         $gebruikerData->achternaam = $this->input->post('achternaam');
         $gebruikerData->email = $this->input->post('email');
-        $gebruikerData->wachtwoord = $this->input->post('wachtwoord');
         $gebruikerData->telefoonnr = $this->input->post('telefoonnr');
         $gebruikerData->geboortedatum = $this->input->post('geboortedatum');
         $gebruikerData->straatnaam = $this->input->post('straatnaam');
         $gebruikerData->huisnummer = $this->input->post('huisnummer');
         $gebruikerData->postcode = $this->input->post('postcode');
 
-        $this->inlogger_model->update($id, $gebruikerData);
+        $poging1 = $this->input->post('poging1');
+        $poging2 = $this->input->post('poging2');
 
-        redirect('Gebruiker/getGebruikers');
+        if ($poging1 == $poging2 && $poging1 != NULL) {
+
+            $wachtwoord = password_hash($poging1, PASSWORD_DEFAULT);
+
+            $gebruikerData->wachtwoord = $wachtwoord;
+
+            $this->inlogger_model->update($id, $gebruikerData);
+
+            redirect('Gebruiker/getGebruikers');
+
+        }
+
+        else {
+                $fout = "<div class='alert alert-danger' role='alert'>Uw wachtwoorden komen niet overeen of zijn nog leeg. Probeer het opnieuw.</div>";
+                $this->session->set_flashdata('melding', $fout);
+
+                redirect('Gebruiker/getGebruiker/' . $id);
+        }
+
+
     }
 
     public function insertGebruiker()
