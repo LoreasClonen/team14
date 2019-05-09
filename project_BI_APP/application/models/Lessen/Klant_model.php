@@ -95,7 +95,7 @@
          * @param $actief (optioneel)
          * @return Boolean
          */
-        private function klantbestaatAl($email, $voornaam, $achternaam, $actief = 0)
+        private function klantBestaatAl($email, $voornaam, $achternaam, $actief = 0)
         {
             $this->db->where('email', $email);
             $this->db->where('voornaam', $voornaam);
@@ -119,7 +119,7 @@
          */
         function addKlant($klant)
         {
-            if (!($this->klantbestaatAl($klant->email, $klant->voornaam, $klant->achternaam))) {
+            if (!($this->klantBestaatAl($klant->email, $klant->voornaam, $klant->achternaam))) {
                 $this->db->insert('klant', $klant);
                 $this->db->insert_id();
                 return true;
@@ -140,7 +140,7 @@
             if($klantId != -1){
                 $klant->id = $klantId;
             }
-            if ($this->klantbestaatAl($klant->email, $klant->voornaam, $klant->achternaam, 1)) {
+            if ($this->klantBestaatAl($klant->email, $klant->voornaam, $klant->achternaam, 1)) {
                 $this->db->where('id', $klant->id);
                 $this->db->update('klant', $klant);
 
