@@ -3,11 +3,14 @@
 echo '<div class="row"><div class="col-4">' . anchor("Home/index", "Terug", "class='btn btn-secondary'") . '</div>';
 echo '<div class="col-8 text-right">' . anchor('Zwemgroepen/zwemgroepToevoegenLaden', 'Zwemgroep toevoegen', array('class' => 'btn btn-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Klik hier als u een nieuwe zwemgroep wilt toevoegen')) . '</div></div><br>';
 
-    echo '<table class="table">
+    echo '<table data-toggle="table">
+                <thead>
                 <tr>
-                    <th scope="col">Groepsnaam</th>
+                    <th data-sortable="true" scope="col">Groepsnaam</th>
                     <th scope="col">Maximum aantal leden</th> 
-                </tr>';
+                </tr>
+                </thead>
+                <tbody>';
 
     foreach ($zwemgroepen as $zwemgroep) {
         $attributes = array(
@@ -21,6 +24,6 @@ echo '<div class="col-8 text-right">' . anchor('Zwemgroepen/zwemgroepToevoegenLa
                    </tr>';
     }
 
-    echo '</table>';
+    echo '</tbody></table>';
 
 ?>

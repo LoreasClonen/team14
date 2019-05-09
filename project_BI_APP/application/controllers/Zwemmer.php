@@ -32,6 +32,12 @@
             $this->load->library('form_validation');
         }
 
+        /**
+         * @brief De functie zwemmerOphalen geeft een overzicht van een zwemmer weer waar je de gegevens kan aanpassen. De functie haalt de gegevens uit de tabellen beschikbaarheid, zwemniveau, klant en lesgroep.
+         * @param $id
+         * @pre Er bestaat een klant_model klasse, zwemniveau_model klasse, een beschikbaarheid_model klasse en een lesgroep_model klasse
+         * @post De pagina overzicht_zwemmer wordt weergeven
+         */
         public function zwemmerOphalen($id)
         {
             $zwemmer = $this->klant_model->getById($id);
@@ -120,7 +126,9 @@
             $this->template->load('zwemmers_beheren/zwemmers_master', $partials, $data);
         }
 
-        public function updateZwemmer($klantId){
+
+        public function updateZwemmer($klantId)
+        {
             $this->load->model("lessen/klant_model", "klant_model");
 
             $klant = new stdClass();
@@ -142,12 +150,11 @@
             $this->form_validation->set_rules('postcode', 'Postcode', 'trim|required|numeric|min_length[4]|max_length[4]');
 
 
-            if($this->form_validation->run()==true) {
+            if ($this->form_validation->run() == true) {
                 $data['error'] = Null;
                 $this->klant_model->updateKlant($klant, $klantId);
                 redirect('Zwemmer/zwemmersOphalen/' . $klantId);
-            }
-            else{
+            } else {
                 $this->session->set_flashdata('error', validation_errors());
                 redirect('zwemmer/zwemmerBewerken/' . $klantId);
 
