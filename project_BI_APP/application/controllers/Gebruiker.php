@@ -46,7 +46,7 @@ class Gebruiker extends CI_Controller
             'inhoud' => 'gebruikers_beheren/overzicht_gebruikers',
             'footer' => 'main_footer');
 
-        $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
     /**
      * @brief Laad een pagina de gekozen gebruiker zijn gegeven
@@ -212,6 +212,6 @@ class Gebruiker extends CI_Controller
             'inhoud' => 'gebruikers_beheren/overzicht_mijnProfiel',
             'footer' => 'main_footer');
 
-        $this->template->load('gebruikers_beheren/gebruikers_master', $partials, $data);
+        $this->template->load('admin_master', $partials, $data);
     }
 }

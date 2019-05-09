@@ -36,7 +36,7 @@ class Wachtlijst extends CI_Controller
             'inhoud' => 'overzicht_wachtlijst/overzicht_wachtlijst',
             'footer' => 'main_footer');
 
-        $this->template->load('overzicht_wachtlijst/wachtlijst_master', $partials, $data);
+        $this->template->load('inlogger_master', $partials, $data);
     }
 
 
