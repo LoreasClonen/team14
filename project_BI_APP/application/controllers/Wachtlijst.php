@@ -69,6 +69,7 @@ class Wachtlijst extends CI_Controller
         $klantId = $this->input->get('klantId');
         $statusId = $this->input->get('statusId');
 
+        $this->beschikbaarheid_model->updateAllStatusId($klantId, $statusId);
         $this->beschikbaarheid_model->updateStatusId($zwemgroepId, $klantId, $statusId);
     }
 }
